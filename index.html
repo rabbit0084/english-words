@@ -1,0 +1,518 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="manifest" href="./manifest.webmanifest">
+<link rel="apple-touch-icon" href="./icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="theme-color" content="#ff6fae">
+<title>えいごたんごチャレンジ</title>
+<style>
+:root{--pink:#ff6fae;--blue:#5aa9ff;--yellow:#ffd65a;--green:#69d59b;--purple:#8c78ff;--bg:#fff8fc;--ink:#384052;--card:#fff;--shadow:0 10px 28px rgba(66,52,91,.12)}
+*{box-sizing:border-box} body{margin:0;font-family:system-ui,-apple-system,"Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,sans-serif;background:linear-gradient(180deg,#fff8fc 0%,#f4fbff 100%);color:var(--ink)}
+header{padding:6px 10px 3px;text-align:center} h1{margin:0;font-size:clamp(20px,4vw,30px);color:#ff5b9c;letter-spacing:.04em;text-shadow:0 2px 0 #fff} .sub{margin:.25rem 0;color:#6d7485;font-weight:700}
+.wrap{max-width:1050px;margin:auto;padding:0 8px 10px}.tabs{display:flex;gap:6px;flex-wrap:nowrap;justify-content:center;align-items:center;margin:3px 0 5px}.tab,.mode{border:0;border-radius:999px;padding:7px 12px;font-size:15px;font-weight:800;box-shadow:var(--shadow);cursor:pointer;color:#5b6170;white-space:nowrap}.tab{background:#fff}.tab.active{background:var(--purple);color:#fff}.panel{background:var(--card);border-radius:18px;box-shadow:var(--shadow);padding:8px}.quiz{display:block}.modebar{display:contents}.mode{min-width:135px}.card{background:#fff;border-radius:16px;padding:7px;box-shadow:inset 0 0 0 2px #f1edf7}.prompt{font-size:15px;font-weight:800;color:#7a7f8d}.big{font-size:clamp(38px,7vw,60px);text-align:center;margin:1px 0}.jp{font-size:clamp(22px,4.5vw,34px);font-weight:900;text-align:center;margin:3px}.eng{font-size:clamp(36px,7vw,58px);font-weight:900;text-align:center;color:#4b64d9;letter-spacing:.03em}.meaning{text-align:center;font-size:23px;font-weight:900;color:#ff6fae;margin-bottom:12px}.actions{display:flex;gap:6px;justify-content:center;flex-wrap:wrap;margin-top:5px}.btn{border:0;border-radius:999px;padding:7px 12px;font-weight:900;font-size:16px;cursor:pointer}.primary{background:var(--pink);color:#fff}.secondary{background:#edf6ff;color:#3c66a3}.pronounce{background:#5b7cfa;color:#fff;box-shadow:0 3px 0 #435fc6}.pronounce:active{transform:translateY(2px);box-shadow:none}.success{background:var(--green);color:#fff}.warn{background:var(--yellow);color:#6f5d10}.danger{background:#ffe7ee;color:#b23a60}.progress{margin:1px 0 4px;font-weight:800;color:#737b8a}.inputrow{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap;justify-content:center}.letterboxes{display:flex;gap:5px;justify-content:center;flex-wrap:wrap;margin-top:4px}.autoch{display:inline-flex;align-items:center;justify-content:center;min-width:18px;font-size:28px;font-weight:900;color:#46516b}.letterbox{width:40px;height:44px;border:3px solid #dfe7ff;border-radius:12px;background:#fff;text-align:center;font-size:27px;font-weight:900;color:#4b64d9}.letterbox:focus{border-color:var(--blue);outline:none}.letterbank{display:flex;gap:5px;flex-wrap:wrap;justify-content:center;margin-top:5px}.letterbtn{min-width:40px;height:44px;border:3px solid #ffd3dc;border-radius:12px;background:#fff0f4;color:#e65777;font-size:27px;font-weight:900;cursor:pointer;box-shadow:0 3px 0 #f3b9c7}.letterbtn:active{transform:translateY(2px);box-shadow:none}.letterbtn:active{transform:translateY(2px);box-shadow:none}.letterbtn.used{opacity:.3;pointer-events:none}.hintnote{text-align:center;font-size:13px;color:#7a8190;margin-top:8px}.typein{flex:1;border:3px solid #dfe7ff;border-radius:14px;padding:14px 16px;font-size:22px;font-weight:800;outline:none}.typein:focus{border-color:var(--blue)}.feedback{text-align:center;min-height:32px;font-weight:900;margin-top:8px}.good{color:#26a866}.bad{color:#e65777}.small{font-size:13px;color:#777f8f}.listwrap{margin-top:14px}.row{display:grid;grid-template-columns:1.1fr 1fr 1.5fr .6fr auto;gap:8px;padding:10px 0;border-bottom:1px dashed #e7e3ef;align-items:center}.row input{width:100%;padding:9px;border:2px solid #eee;border-radius:10px}.count{display:inline-block;background:#fff4c8;border-radius:999px;padding:5px 10px;font-size:13px;font-weight:900}.tips{background:#f7fbff;border-radius:18px;padding:12px 14px;margin:12px 0}.empty{padding:24px;text-align:center;color:#7b8290}.footer-note{text-align:center;font-size:11px;color:#8b93a2;margin-top:8px}
+@media (max-width:760px){.quiz{display:block}.tabs{gap:4px}.tab,.mode{font-size:13px;padding:7px 9px}.row{grid-template-columns:1fr 1fr}.row .wide{grid-column:1/-1}.row .delete{grid-column:1/-1}.inputrow{flex-direction:column}}
+
+.flag{width:auto;height:64px;max-width:96px;display:block;margin:4px auto;border-radius:5px;box-shadow:0 1px 4px rgba(0,0,0,.15)}
+.emoji{font-size:72px;line-height:1;display:inline-block}
+
+.textbook-badge{display:inline-block;margin:0 0 5px;padding:4px 12px;border-radius:999px;font-weight:900;font-size:17px;background:#eef3ff;color:#314a8a;border:2px solid #cbd8ff}
+.textbook-badge.j{background:#eefbf3;color:#26714a;border-color:#bde7cd}
+</style>
+</head>
+<body>
+<header><h1>🌸 えいごたんごチャレンジ 🌸</h1><div class="sub">見る・聞く・打つ！ 小学生向け英単語アプリ</div></header>
+<div class="wrap">
+<div class="tabs">
+<button class="tab active" data-tab="study">📚 れんしゅう</button>
+<button class="btn primary mode active" data-mode="hint">💡 ヒントあり</button>
+<button class="btn secondary mode" data-mode="nohint">⭐ ヒントなし</button>
+<button class="tab" data-tab="list">📝 たんごリスト</button>
+</div>
+<section id="study" class="panel">
+<div class="modebar"></div>
+<div id="textbookBadge" class="textbook-badge">📘 W英語</div><div class="progress" id="progress"></div>
+<div class="quiz">
+<div class="card" id="leftCard"></div>
+</div>
+<div class="actions"><button class="btn secondary" id="prev">← 前のたんご</button><button class="btn success" id="next">次のたんご →</button><button class="btn warn" id="shuffle">🔀 シャッフル</button><button class="btn pronounce" id="pronounce">🔊 発音</button></div>
+<div class="tips">💡 コツ：<b>日本語と絵を見て → 発音を聞いて → ヒントを使いながらタイピング</b>しよう！</div>
+</section>
+<section id="list" class="panel" style="display:none">
+<h2>📝 たんごリストを作ろう</h2>
+<p>英語・日本語・絵（絵文字）を入力して「追加」できます。自分だけの単語帳にしよう！</p>
+<div class="row" style="font-weight:900"><div>英語</div><div>日本語</div><div class="wide">絵（絵文字）</div><div>★</div><div></div></div>
+<div id="rows"></div>
+<div class="actions"><button class="btn primary" id="add">＋ たんごを追加</button><button class="btn secondary" id="export">💾 保存用データをコピー</button><button class="btn secondary" id="import">📥 データを読み込む</button><button class="btn danger" id="reset">初期データに戻す</button></div>
+<p class="small">保存用データはJSON形式。家のPCなど別の端末でも使いたいときに便利です。</p>
+</section>
+<div class="footer-note">このアプリはブラウザだけで動きます。音声は端末の音声機能を使います。</div>
+</div>
+<script>
+const PHONICS_OVERRIDES={"cat":"k a t","dog":"d aw g","fish":"f i sh","ship":"sh i p","chair":"ch air","school":"s k oo l","three":"th r ee","night":"n igh t","classroom":"k l a ss r oo m","clock":"k l o k","desk":"d e s k","notebook":"n oh t b oo k","pencil":"p e n s i l","eraser":"ee r a s er","textbook":"t e k s t b oo k","picture":"p i k ch er","computer":"k uh m p y oo t er","train":"t r ai n","bus":"b uh s","car":"k ar","world":"w er l d","country":"k uh n t r ee","Japan":"j uh p a n","the U.S.A.":"th uh y oo ess ay","Canada":"k a n uh d uh","China":"ch ai n uh","Australia":"aw s t r ay l y uh","South Korea":"s ow th k uh r ee uh","the U.K.":"th uh y oo kay","France":"f r a n s","Germany":"j er m uh n ee","Russia":"r uh sh uh","Italy":"i t uh l ee","Spain":"s p ai n","Sunday":"s uh n d ay","Monday":"m uh n d ay","Tuesday":"t oo z d ay","Wednesday":"w e n z d ay","Thursday":"th er z d ay","Friday":"f r ai d ay","Saturday":"s a t er d ay","season":"s ee z uh n","spring":"s p r i ng","summer":"s uh m er","fall":"f aw l","autumn":"aw t uh m","winter":"w i n t er","January":"j a n y oo er ee","February":"f e b r oo er ee","March":"m ar ch","April":"ay p r uh l","May":"m ay","June":"j oo n","July":"j oo l ai","August":"aw g uh s t","September":"s e p t e m b er","October":"o k t oh b er","November":"n oh v e m b er","December":"d i s e m b er","month":"m uh n th","year":"y eer","subject":"s uh b j e k t","English":"i ng g l i sh","Math":"m a th","Japanese":"j a p uh n ee z","Science":"s ai uh n s","Social Studies":"s oh sh uh l s t uh d ee z","Music":"m y oo z i k","Art":"ar t","P.E.":"p ee","Home Economics":"h oh m e k uh n o m i k s","teacher":"t ee ch er","student":"s t oo d uh n t","family":"f a m uh l ee","father":"f ah th er","mother":"m uh th er","parents":"p air uh n t s","brother":"b r uh th er","sister":"s i s t er","child":"ch ai l d","children":"ch i l d r uh n","son":"s uh n","daughter":"d aw t er","grandfather":"g r a n d f ah th er","grandmother":"g r a n d m uh th er","grandparents":"g r a n d p air uh n t s","sport":"s p or t","baseball":"b ay s b aw l","soccer":"s o k er","tennis":"t e n i s","basketball":"b a s k uh t b aw l","volleyball":"v o l ee b aw l","table tennis":"t ay b uh l t e n i s","badminton":"b a d m i n t uh n","golf":"g o l f","swimming":"s w i m i ng","skiing":"s k ee i ng","go":"g oh","meet":"m ee t","eat":"ee t","like":"l ai k","run":"r uh n","sing":"s i ng","swim":"s w i m","stay":"s t ay","ride":"r ai d","walk":"w aw k","have":"h a v","open":"oh p uh n","live":"l i v","know":"n oh","help":"h e l p","play":"p l ay","climb":"k l ai m","bring":"b r i ng","take":"t ay k","watch":"w o ch","see":"s ee","look":"l oo k","read":"r ee d","listen":"l i s uh n","hear":"h eer","make":"m ay k","wear":"w air","wash":"w o sh","hope":"h oh p","ask":"a s k","catch":"k a ch","work":"w er k","get":"g e t","come":"k uh m","do":"d oo","use":"y oo z","speak":"s p ee k","tell":"t e l","talk":"t aw k","try":"t r ai","teach":"t ee ch","study":"s t uh d ee","enjoy":"e n j oi","buy":"b ai","become":"b i k uh m","stop":"s t o p","want":"w o n t","beautiful":"b y oo t uh f uh l","cute":"k y oo t","pretty":"p r i t ee","great":"g r ay t","important":"i m p or t uh n t","popular":"p o p y uh l er","famous":"f ay m uh s","interesting":"i n t er e s t i ng","big":"b i g","small":"s m aw l","tall":"t aw l","high":"h ai","short":"sh or t","long":"l aw ng","too":"t oo","only":"oh n l ee","just":"j uh s t","very":"v e r ee","so":"s oh","always":"aw l w ay z","often":"aw f uh n","sometimes":"s uh m t ai m z","fast":"f a s t","early":"er l ee","hard":"h ar d","well":"w e l","there":"th air","here":"h eer","wagon":"w a g uh n","octopus":"o k t uh p uh s","rocket":"r o k uh t","egg":"e g","question":"k w e s ch uh n","spoon":"s p oo n","kitten":"k i t uh n","zebra":"z ee b r uh","hate":"h ay t","mop":"m o p","bake":"b ay k","take out":"t ay k ow t","paint":"p ay n t","ski":"s k ee","skate":"s k ay t","safe":"s ay f","dangerous":"d ay n j er uh s","late":"l ay t","same":"s ay m","different":"d i f er uh n t","real":"r ee uh l","fake":"f ay k","clean":"k l ee n","hike":"h ai k","write":"r ai t","boring":"b or i ng","exciting":"e k s ai t i ng","alive":"uh l ai v","dead":"d e d","tiny":"t ai n ee","giant":"j ai uh n t","dark":"d ar k","light":"l ai t","brush":"b r uh sh","shop":"sh o p","carry":"k air ee","push":"p oo sh","pinch":"p i n ch","smile":"s m ai l","drive":"d r ai v","close":"k l oh z","drink":"d r i ng k","glue":"g l oo"};
+const DEFAULT_WORDS=[
+ {"en":"wagon","jp":"ワゴン","emoji":"🛒","stars":5},
+ {"en":"octopus","jp":"たこ","emoji":"🐙","stars":1},
+ {"en":"rocket","jp":"ロケット","emoji":"🚀","stars":3},
+ {"en":"egg","jp":"たまご","emoji":"🍳","stars":1},
+ {"en":"question","jp":"疑問","emoji":"❓","stars":0},
+ {"en":"spoon","jp":"スプーン","emoji":"🥄","stars":0},
+ {"en":"kitten","jp":"こねこ","emoji":"🐈","stars":0},
+ {"en":"zebra","jp":"シマウマ","emoji":"🦓","stars":0},
+ {"en":"hate","jp":"きらい","emoji":"😡","stars":0},
+ {"en":"mop","jp":"モップ","emoji":"🧹","stars":0},
+ {"en":"bake","jp":"焼く","emoji":"🍞","stars":0},
+ {"en":"take out","jp":"取り出す","emoji":"📤","stars":0},
+ {"en":"paint","jp":"絵をかく","emoji":"🎨","stars":0},
+ {"en":"ski","jp":"スキー","emoji":"🎿","stars":0},
+ {"en":"skate","jp":"スケート","emoji":"⛸","stars":0},
+ {"en":"safe","jp":"安全な","emoji":"🛡️","stars":0},
+ {"en":"dangerous","jp":"危険な","emoji":"⚠️","stars":0},
+ {"en":"late","jp":"遅い","emoji":"⏰","stars":0},
+ {"en":"same","jp":"同じ","emoji":"🟰","stars":0},
+ {"en":"different","jp":"違う","emoji":"🔀","stars":0},
+ {"en":"real","jp":"本物","emoji":"✅","stars":0},
+ {"en":"fake","jp":"にせもの","emoji":"🎭","stars":0},
+ {"en":"clean","jp":"掃除","emoji":"🧼","stars":0},
+ {"en":"hike","jp":"ハイキング","emoji":"🥾","stars":0},
+ {"en":"write","jp":"書く","emoji":"✍️","stars":0},
+ {"en":"boring","jp":"たいくつ","emoji":"🥱","stars":0},
+ {"en":"exciting","jp":"興奮する","emoji":"🤩","stars":0},
+ {"en":"alive","jp":"生きている","emoji":"🫀","stars":0},
+ {"en":"dead","jp":"死んでいる","emoji":"💀","stars":0},
+ {"en":"tiny","jp":"小さい","emoji":"🐜","stars":0},
+ {"en":"giant","jp":"巨人","emoji":"🗿","stars":0},
+ {"en":"dark","jp":"暗い","emoji":"🌑","stars":0},
+ {"en":"light","jp":"明るい","emoji":"💡","stars":0},
+{"en":"smile","jp":"ほほえむ","emoji":"😊","stars":0},
+{"en":"drive","jp":"運転する","emoji":"🚗","stars":0},
+{"en":"close","jp":"閉める","emoji":"🚪","stars":0},
+{"en":"use","jp":"使う","emoji":"🛠️","stars":0},
+{"en":"drink","jp":"飲む","emoji":"🥤","stars":0},
+{"en":"glue","jp":"のりでつける","emoji":"🧴","stars":0},
+{"en":"sing","jp":"歌う","emoji":"🎤","stars":0},
+{"en":"open","jp":"開ける","emoji":"📖","stars":0},
+ {"en":"brush","jp":"髪をとかす","emoji":"🪥","stars":0},
+ {"en":"shop","jp":"買い物をする","emoji":"🛍️","stars":0},
+ {"en":"carry","jp":"運ぶ","emoji":"👜","stars":0},
+ {"en":"push","jp":"押す","emoji":"👉","stars":0},
+ {"en":"fish","jp":"魚をつる","emoji":"🎣","stars":0},
+ {"en":"pinch","jp":"つまむ","emoji":"🤏","stars":0},
+ {"en":"classroom","jp":"教室","emoji":"🏫","stars":0},
+ {"en":"clock","jp":"時計（壁掛け）","emoji":"🕒","stars":0},
+ {"en":"desk","jp":"机","emoji":"🪑","stars":0},
+ {"en":"chair","jp":"いす","emoji":"🪑","stars":0},
+ {"en":"notebook","jp":"ノート","emoji":"📓","stars":0},
+ {"en":"pencil","jp":"えんぴつ","emoji":"✏️","stars":0},
+ {"en":"eraser","jp":"消しゴム","emoji":"🧽","stars":0},
+ {"en":"textbook","jp":"教科書","emoji":"📘","stars":0},
+ {"en":"picture","jp":"絵、写真","emoji":"🖼️","stars":0},
+ {"en":"computer","jp":"コンピューター","emoji":"💻","stars":0},
+ {"en":"train","jp":"電車","emoji":"🚆","stars":0},
+ {"en":"bus","jp":"バス","emoji":"🚌","stars":0},
+ {"en":"car","jp":"車","emoji":"🚗","stars":0},
+ {"en":"school","jp":"学校","emoji":"🏫","stars":0},
+ {"en":"world","jp":"世界","emoji":"🌏","stars":0},
+ {"en":"country","jp":"国","emoji":"🗺️","stars":0},
+ {"en":"Japan","jp":"日本","emoji":"🇯🇵","stars":0},
+ {"en":"the U.S.A.","jp":"アメリカ","emoji":"🇺🇸","stars":0},
+ {"en":"Canada","jp":"カナダ","emoji":"🇨🇦","stars":0},
+ {"en":"China","jp":"中国","emoji":"🇨🇳","stars":0},
+ {"en":"Australia","jp":"オーストラリア","emoji":"🇦🇺","stars":0},
+ {"en":"South Korea","jp":"韓国","emoji":"🇰🇷","stars":0},
+ {"en":"the U.K.","jp":"イギリス","emoji":"🇬🇧","stars":0},
+ {"en":"France","jp":"フランス","emoji":"🇫🇷","stars":0},
+ {"en":"Germany","jp":"ドイツ","emoji":"🇩🇪","stars":0},
+ {"en":"Russia","jp":"ロシア","emoji":"🇷🇺","stars":0},
+ {"en":"Italy","jp":"イタリア","emoji":"🇮🇹","stars":0},
+ {"en":"Spain","jp":"スペイン","emoji":"🇪🇸","stars":0},
+ {"en":"Sunday","jp":"日曜日","emoji":"📅","stars":0},
+ {"en":"Monday","jp":"月曜日","emoji":"📅","stars":0},
+ {"en":"Tuesday","jp":"火曜日","emoji":"📅","stars":0},
+ {"en":"Wednesday","jp":"水曜日","emoji":"📅","stars":0},
+ {"en":"Thursday","jp":"木曜日","emoji":"📅","stars":0},
+ {"en":"Friday","jp":"金曜日","emoji":"📅","stars":0},
+ {"en":"Saturday","jp":"土曜日","emoji":"📅","stars":0},
+ {"en":"season","jp":"季節","emoji":"🍀","stars":0},
+ {"en":"spring","jp":"春","emoji":"🌸","stars":0},
+ {"en":"summer","jp":"夏","emoji":"🌻","stars":0},
+ {"en":"fall","jp":"秋","emoji":"🍂","stars":0},
+ {"en":"autumn","jp":"秋","emoji":"🍁","stars":0},
+ {"en":"winter","jp":"冬","emoji":"❄️","stars":0},
+ {"en":"January","jp":"１月","emoji":"📅","stars":0},
+ {"en":"February","jp":"２月","emoji":"📅","stars":0},
+ {"en":"March","jp":"３月","emoji":"📅","stars":0},
+ {"en":"April","jp":"４月","emoji":"📅","stars":0},
+ {"en":"May","jp":"５月","emoji":"📅","stars":0},
+ {"en":"June","jp":"６月","emoji":"📅","stars":0},
+ {"en":"July","jp":"７月","emoji":"📅","stars":0},
+ {"en":"August","jp":"８月","emoji":"📅","stars":0},
+ {"en":"September","jp":"９月","emoji":"📅","stars":0},
+ {"en":"October","jp":"１０月","emoji":"📅","stars":0},
+ {"en":"November","jp":"１１月","emoji":"📅","stars":0},
+ {"en":"December","jp":"１２月","emoji":"📅","stars":0},
+ {"en":"month","jp":"月","emoji":"🗓️","stars":0},
+ {"en":"year","jp":"年","emoji":"📆","stars":0},
+ {"en":"subject","jp":"教科","emoji":"📚","stars":0},
+ {"en":"English","jp":"英語","emoji":"🔤","stars":0},
+ {"en":"Math","jp":"算数","emoji":"➗","stars":0},
+ {"en":"Japanese","jp":"国語","emoji":"📝","stars":0},
+ {"en":"Science","jp":"理科","emoji":"🔬","stars":0},
+ {"en":"Social Studies","jp":"社会","emoji":"🌏","stars":0},
+ {"en":"Music","jp":"音楽","emoji":"🎵","stars":0},
+ {"en":"Art","jp":"図工","emoji":"🎨","stars":0},
+ {"en":"P.E.","jp":"体育","emoji":"🏃","stars":0},
+ {"en":"Home Economics","jp":"家庭科","emoji":"🍳","stars":0},
+ {"en":"teacher","jp":"先生","emoji":"🧑‍🏫","stars":0},
+ {"en":"student","jp":"児童、生徒","emoji":"🎒","stars":0},
+ {"en":"family","jp":"家族","emoji":"👪","stars":0},
+ {"en":"father","jp":"父","emoji":"👨","stars":0},
+ {"en":"mother","jp":"母","emoji":"👩","stars":0},
+ {"en":"parents","jp":"両親","emoji":"👫","stars":0},
+ {"en":"brother","jp":"兄、弟","emoji":"👦","stars":0},
+ {"en":"sister","jp":"姉、妹","emoji":"👧","stars":0},
+ {"en":"child","jp":"子ども","emoji":"🧒","stars":0},
+ {"en":"children","jp":"子どもたち","emoji":"🧒","stars":0},
+ {"en":"son","jp":"息子","emoji":"👦","stars":0},
+ {"en":"daughter","jp":"娘","emoji":"👧","stars":0},
+ {"en":"grandfather","jp":"祖父","emoji":"👴","stars":0},
+ {"en":"grandmother","jp":"祖母","emoji":"👵","stars":0},
+ {"en":"grandparents","jp":"祖父母","emoji":"👴","stars":0},
+ {"en":"sport","jp":"スポーツ","emoji":"🏅","stars":0},
+ {"en":"baseball","jp":"野球","emoji":"⚾","stars":0},
+ {"en":"soccer","jp":"サッカー","emoji":"⚽","stars":0},
+ {"en":"tennis","jp":"テニス","emoji":"🎾","stars":0},
+ {"en":"basketball","jp":"バスケットボール","emoji":"🏀","stars":0},
+ {"en":"volleyball","jp":"バレーボール","emoji":"🏐","stars":0},
+ {"en":"table tennis","jp":"卓球","emoji":"🏓","stars":0},
+ {"en":"badminton","jp":"バドミントン","emoji":"🏸","stars":0},
+ {"en":"golf","jp":"ゴルフ","emoji":"⛳","stars":0},
+ {"en":"swimming","jp":"水泳","emoji":"🏊","stars":0},
+ {"en":"skiing","jp":"スキー","emoji":"⛷️","stars":0},
+ {"en":"go","jp":"～に行く","emoji":"➡️","stars":0},
+ {"en":"meet","jp":"～に会う","emoji":"🤝","stars":0},
+ {"en":"eat","jp":"～を食べる","emoji":"🍽️","stars":0},
+ {"en":"like","jp":"～を好む","emoji":"❤️","stars":0},
+ {"en":"run","jp":"走る","emoji":"🏃","stars":0},
+ {"en":"sing","jp":"歌う","emoji":"🎤","stars":0},
+ {"en":"swim","jp":"泳ぐ","emoji":"🏊","stars":0},
+ {"en":"stay","jp":"とどまる、滞在する","emoji":"🏠","stars":0},
+ {"en":"ride","jp":"～に乗る","emoji":"🚲","stars":0},
+ {"en":"walk","jp":"歩く","emoji":"🚶","stars":0},
+ {"en":"have","jp":"～を持っている","emoji":"🤲","stars":0},
+ {"en":"open","jp":"～を開く","emoji":"📖","stars":0},
+ {"en":"live","jp":"住む","emoji":"🏠","stars":0},
+ {"en":"know","jp":"～を知っている","emoji":"💡","stars":0},
+ {"en":"help","jp":"～を助ける","emoji":"🤝","stars":0},
+ {"en":"play","jp":"演奏する、行う","emoji":"🎹","stars":0},
+ {"en":"climb","jp":"登る","emoji":"🧗","stars":0},
+ {"en":"bring","jp":"持ってくる","emoji":"📦","stars":0},
+ {"en":"take","jp":"取る","emoji":"✋","stars":0},
+ {"en":"watch","jp":"～をみる（映画など）","emoji":"📺","stars":0},
+ {"en":"see","jp":"～をみる（目に入る）","emoji":"👀","stars":0},
+ {"en":"look","jp":"～をみる（絵など）","emoji":"👁️","stars":0},
+ {"en":"read","jp":"～を読む","emoji":"📖","stars":0},
+ {"en":"listen","jp":"～を聞く","emoji":"🎧","stars":0},
+ {"en":"hear","jp":"聞こえる","emoji":"👂","stars":0},
+ {"en":"make","jp":"～を作る","emoji":"🛠️","stars":0},
+ {"en":"wear","jp":"～を着る","emoji":"👕","stars":0},
+ {"en":"wash","jp":"～を洗う","emoji":"🧼","stars":0},
+ {"en":"hope","jp":"～を望む","emoji":"🌟","stars":0},
+ {"en":"ask","jp":"～をたずねる","emoji":"❓","stars":0},
+ {"en":"catch","jp":"～を捕まえる","emoji":"🫴","stars":0},
+ {"en":"work","jp":"働く","emoji":"💼","stars":0},
+ {"en":"get","jp":"～を手に入れる","emoji":"🎁","stars":0},
+ {"en":"come","jp":"来る","emoji":"➡️","stars":0},
+ {"en":"do","jp":"～をする","emoji":"✅","stars":0},
+ {"en":"use","jp":"～を使う","emoji":"🛠️","stars":0},
+ {"en":"speak","jp":"～を話す","emoji":"🗣️","stars":0},
+ {"en":"tell","jp":"伝える","emoji":"💬","stars":0},
+ {"en":"talk","jp":"話す","emoji":"💬","stars":0},
+ {"en":"try","jp":"～を試みる","emoji":"💪","stars":0},
+ {"en":"teach","jp":"～を教える","emoji":"🧑‍🏫","stars":0},
+ {"en":"study","jp":"～を勉強する","emoji":"📚","stars":0},
+ {"en":"enjoy","jp":"～を楽しむ","emoji":"😊","stars":0},
+ {"en":"buy","jp":"～を買う","emoji":"🛍️","stars":0},
+ {"en":"become","jp":"～になる","emoji":"🌱","stars":0},
+ {"en":"stop","jp":"～を止める","emoji":"🛑","stars":0},
+ {"en":"want","jp":"～をしたいと思う","emoji":"💭","stars":0},
+ {"en":"beautiful","jp":"美しい","emoji":"🌺","stars":0},
+ {"en":"cute","jp":"かわいい","emoji":"🐰","stars":0},
+ {"en":"pretty","jp":"かわいい","emoji":"🌷","stars":0},
+ {"en":"great","jp":"すばらしい","emoji":"🌟","stars":0},
+ {"en":"important","jp":"重要な","emoji":"❗","stars":0},
+ {"en":"popular","jp":"人気の","emoji":"👏","stars":0},
+ {"en":"famous","jp":"有名な","emoji":"⭐","stars":0},
+ {"en":"interesting","jp":"おもしろい","emoji":"🤩","stars":0},
+ {"en":"big","jp":"大きい","emoji":"🐘","stars":0},
+ {"en":"small","jp":"小さい","emoji":"🐭","stars":0},
+ {"en":"tall","jp":"高い（身長など）","emoji":"📏","stars":0},
+ {"en":"high","jp":"高い","emoji":"⬆️","stars":0},
+ {"en":"short","jp":"短い","emoji":"↔️","stars":0},
+ {"en":"long","jp":"長い","emoji":"📏","stars":0},
+ {"en":"too","jp":"～も","emoji":"➕","stars":0},
+ {"en":"only","jp":"～だけ","emoji":"1️⃣","stars":0},
+ {"en":"just","jp":"ちょうど","emoji":"🎯","stars":0},
+ {"en":"very","jp":"とても","emoji":"‼️","stars":0},
+ {"en":"so","jp":"とても","emoji":"‼️","stars":0},
+ {"en":"always","jp":"いつも","emoji":"🔁","stars":0},
+ {"en":"often","jp":"しばしば","emoji":"🔄","stars":0},
+ {"en":"sometimes","jp":"ときどき","emoji":"🕐","stars":0},
+ {"en":"fast","jp":"速く","emoji":"💨","stars":0},
+ {"en":"early","jp":"早く","emoji":"🌅","stars":0},
+ {"en":"hard","jp":"熱心に","emoji":"💪","stars":0},
+ {"en":"well","jp":"上手に","emoji":"👍","stars":0},
+ {"en":"there","jp":"そこで","emoji":"👉","stars":0},
+ {"en":"here","jp":"ここで","emoji":"👇","stars":0}
+];
+const SAVED_WORDS_KEY='englishWordsAllV3';
+const OLD_WORDS_KEY='englishWordsAllV2';
+const savedWords=JSON.parse(localStorage.getItem(SAVED_WORDS_KEY)||localStorage.getItem(OLD_WORDS_KEY)||'null');
+function mergeWordLists(defaults,saved){
+  if(!Array.isArray(saved)) return defaults.map(x=>({...x}));
+  const byEn=new Map(saved.map(x=>[String(x.en).toLowerCase(),x]));
+  const merged=defaults.map(d=>{
+    const s=byEn.get(String(d.en).toLowerCase());
+    return s ? {...d,...s} : {...d};
+  });
+  const defaultKeys=new Set(defaults.map(x=>String(x.en).toLowerCase()));
+  saved.forEach(s=>{ if(!defaultKeys.has(String(s.en).toLowerCase())) merged.push({...s}); });
+  return merged;
+}
+let words=mergeWordLists(DEFAULT_WORDS,savedWords);
+
+const EMOJI_BY_WORD={"hate":"😡","mop":"🧹","bake":"🥐","take out":"📦","paint":"🖌️","safe":"🛡️","dangerous":"⚠️","early":"🌅","late":"🌙","same":"🟰","different":"↔️","real":"✅","fake":"🎭","eat":"🍽️","clean":"🧽","hike":"🥾","write":"✍️","boring":"🥱","exciting":"🤩","alive":"🫀","dead":"💀","tiny":"🐜","giant":"🦖","dark":"🌑","light":"💡","brush":"🪥","shop":"🛍️","carry":"🧳","push":"👉","fish":"🎣","pinch":"🤏","question":"❓","spoon":"🥄","kitten":"🐱","octopus":"🐙","wagon":"🛒","rocket":"🚀","egg":"🥚","go":"🚶","meet":"🤝","like":"❤️","run":"🏃","sing":"🎤","swim":"🏊","stay":"🏠","ride":"🚲","walk":"🚶","have":"🎒","open":"🔓","live":"🏡","know":"🧠","help":"🆘","play":"🎮","climb":"🧗","bring":"👜","take":"🤲","watch":"🎬","see":"👁️","look":"🔍","read":"📖","listen":"🎧","hear":"👂","make":"🛠️","wear":"👚","wash":"🧼","hope":"🌈","ask":"🙋","catch":"🫴","work":"👷","get":"🎁","come":"🏃","do":"✅","use":"🛠️","speak":"🗣️","tell":"💬","talk":"🗨️","try":"💪","teach":"🧑‍🏫","study":"📚","enjoy":"😊","buy":"🛍️","become":"🌱","stop":"🛑","want":"💭","beautiful":"🌸","cute":"🐰","pretty":"🌷","great":"🌟","important":"❗","popular":"👏","famous":"🏆","interesting":"🔎","big":"🐘","small":"🐭","tall":"🧍","high":"⬆️","short":"📏","long":"📐","too":"➕","only":"🔹","just":"🎯","very":"❗","so":"✨","always":"🔁","often":"🔄","sometimes":"🕐","fast":"💨","hard":"💪","well":"👍","there":"👉","here":"👈","classroom":"🏫","clock":"🕰️","desk":"🪑","chair":"💺","notebook":"📓","pencil":"✏️","eraser":"🧽","textbook":"📚","picture":"🖼️","computer":"🖥️","train":"🚆","bus":"🚌","car":"🚗","school":"🏫","world":"🌎","country":"🗺️","Japan":"🇯🇵","the U.S.A.":"🇺🇸","Canada":"🇨🇦","China":"🇨🇳","Australia":"🇦🇺","South Korea":"🇰🇷","the U.K.":"🇬🇧","France":"🇫🇷","Germany":"🇩🇪","Russia":"🇷🇺","Italy":"🇮🇹","Spain":"🇪🇸","Sunday":"☀️","Monday":"🌙","Tuesday":"🔥","Wednesday":"🌿","Thursday":"⚡","Friday":"🎉","Saturday":"🌈","season":"🍃","spring":"🌸","summer":"☀️","fall":"🍁","autumn":"🍂","winter":"❄️","January":"🧣","February":"💘","March":"🌱","April":"☔","May":"🌷","June":"🏖️","July":"🍉","August":"🌻","September":"🎒","October":"🎃","November":"🍂","December":"🎄","month":"🗓️","year":"📅","subject":"📚","English":"🔤","Math":"➗","Japanese":"🈯","Science":"🔬","Social Studies":"🌏","Music":"🎵","Art":"🎨","P.E.":"🏃","Home Economics":"🍳","teacher":"👩‍🏫","student":"🎒","family":"👨‍👩‍👧‍👦","father":"👨","mother":"👩","parents":"👨‍👩‍👧","brother":"👦","sister":"👧","child":"🧒","children":"👧👦","son":"👦","daughter":"👧","grandfather":"👴","grandmother":"👵","grandparents":"👴👵","sport":"🏅","baseball":"⚾","soccer":"⚽","tennis":"🎾","basketball":"🏀","volleyball":"🏐","table tennis":"🏓","badminton":"🏸","golf":"⛳","swimming":"🏊","skiing":"⛷️"};
+words.forEach(w=>{ if(!w.emoji && EMOJI_BY_WORD[w.en]) w.emoji=EMOJI_BY_WORD[w.en]; });
+let idx=0;
+let practiceMode='hint';
+
+function flagSvg(code){
+ const svgs={
+  JP:`<svg viewBox="0 0 120 80" aria-label="Japan" class="flag"><rect width="120" height="80" fill="#fff"/><circle cx="60" cy="40" r="24" fill="#bc002d"/></svg>`,
+  US:`<svg viewBox="0 0 120 80" aria-label="United States" class="flag"><rect width="120" height="80" fill="#b22234"/><path d="M0 9.2h120v9.2H0zm0 18.4h120v9.2H0zm0 18.4h120v9.2H0zm0 18.4h120v6.4H0z" fill="#fff"/><rect width="52" height="43" fill="#3c3b6e"/><g fill="#fff"><circle cx="5" cy="5" r="1.7"/><circle cx="15" cy="5" r="1.7"/><circle cx="25" cy="5" r="1.7"/><circle cx="35" cy="5" r="1.7"/><circle cx="45" cy="5" r="1.7"/><circle cx="10" cy="12" r="1.7"/><circle cx="20" cy="12" r="1.7"/><circle cx="30" cy="12" r="1.7"/><circle cx="40" cy="12" r="1.7"/><circle cx="5" cy="19" r="1.7"/><circle cx="15" cy="19" r="1.7"/><circle cx="25" cy="19" r="1.7"/><circle cx="35" cy="19" r="1.7"/><circle cx="45" cy="19" r="1.7"/><circle cx="10" cy="26" r="1.7"/><circle cx="20" cy="26" r="1.7"/><circle cx="30" cy="26" r="1.7"/><circle cx="40" cy="26" r="1.7"/><circle cx="5" cy="33" r="1.7"/><circle cx="15" cy="33" r="1.7"/><circle cx="25" cy="33" r="1.7"/><circle cx="35" cy="33" r="1.7"/><circle cx="45" cy="33" r="1.7"/></g></svg>`,
+  CA:`<svg viewBox="0 0 120 80" aria-label="Canada" class="flag"><rect width="120" height="80" fill="#fff"/><rect width="30" height="80" fill="#d52b1e"/><rect x="90" width="30" height="80" fill="#d52b1e"/><path d="M60 17l5 12 10-5-5 12 12 4-12 4 5 12-10-5-5 12-5-12-10 5 5-12-12-4 12-4-5-12 10 5z" fill="#d52b1e"/></svg>`,
+  CN:`<svg viewBox="0 0 120 80" aria-label="China" class="flag"><rect width="120" height="80" fill="#de2910"/><text x="16" y="26" font-size="24" fill="#ffde00">★</text></svg>`,
+  AU:`<svg viewBox="0 0 120 80" aria-label="Australia" class="flag"><rect width="120" height="80" fill="#00008b"/><rect width="55" height="40" fill="#012169"/><path d="M0 0l55 40M55 0L0 40" stroke="#fff" stroke-width="9"/><path d="M0 0l55 40M55 0L0 40" stroke="#c8102e" stroke-width="4"/><circle cx="89" cy="52" r="7" fill="#fff"/><circle cx="101" cy="38" r="4" fill="#fff"/><circle cx="101" cy="64" r="4" fill="#fff"/><circle cx="77" cy="68" r="4" fill="#fff"/><circle cx="77" cy="36" r="4" fill="#fff"/></svg>`,
+  KR:`<svg viewBox="0 0 120 80" aria-label="South Korea" class="flag"><rect width="120" height="80" fill="#fff"/><circle cx="60" cy="40" r="19" fill="#cd2e3a"/><path d="M60 21a19 19 0 010 38 9.5 9.5 0 000-19 9.5 9.5 0 010-19z" fill="#003478"/><g stroke="#000" stroke-width="3"><path d="M23 18h16m-16 6h16m-16 6h16"/><path d="M81 50h16m-16 6h16m-16 6h16"/></g></svg>`,
+  GB:`<svg viewBox="0 0 120 80" aria-label="United Kingdom" class="flag"><rect width="120" height="80" fill="#012169"/><path d="M0 0l120 80M120 0L0 80" stroke="#fff" stroke-width="16"/><path d="M0 0l120 80M120 0L0 80" stroke="#c8102e" stroke-width="8"/><path d="M60 0v80M0 40h120" stroke="#fff" stroke-width="24"/><path d="M60 0v80M0 40h120" stroke="#c8102e" stroke-width="12"/></svg>`,
+  FR:`<svg viewBox="0 0 120 80" aria-label="France" class="flag"><rect width="40" height="80" fill="#0055a4"/><rect x="40" width="40" height="80" fill="#fff"/><rect x="80" width="40" height="80" fill="#ef4135"/></svg>`,
+  DE:`<svg viewBox="0 0 120 80" aria-label="Germany" class="flag"><rect width="120" height="80" fill="#000"/><rect y="26.67" width="120" height="26.67" fill="#dd0000"/><rect y="53.34" width="120" height="26.66" fill="#ffce00"/></svg>`,
+  RU:`<svg viewBox="0 0 120 80" aria-label="Russia" class="flag"><rect width="120" height="80" fill="#fff"/><rect y="26.67" width="120" height="26.67" fill="#0039a6"/><rect y="53.34" width="120" height="26.66" fill="#d52b1e"/></svg>`,
+  IT:`<svg viewBox="0 0 120 80" aria-label="Italy" class="flag"><rect width="40" height="80" fill="#009246"/><rect x="40" width="40" height="80" fill="#fff"/><rect x="80" width="40" height="80" fill="#ce2b37"/></svg>`,
+  ES:`<svg viewBox="0 0 120 80" aria-label="Spain" class="flag"><rect width="120" height="80" fill="#aa151b"/><rect y="20" width="120" height="40" fill="#f1bf00"/></svg>`
+ };
+ return svgs[code]||'';
+}
+function emojiOrFlag(value){
+ const map={"🇯🇵":"JP","🇺🇸":"US","🇨🇦":"CA","🇨🇳":"CN","🇦🇺":"AU","🇰🇷":"KR","🇬🇧":"GB","🇫🇷":"FR","🇩🇪":"DE","🇷🇺":"RU","🇮🇹":"IT","🇪🇸":"ES"};
+ const code=map[value];
+ return code ? flagSvg(code) : `<span class="emoji">${esc(value)}</span>`;
+}
+
+const $=s=>document.querySelector(s);
+const speak=(text)=>{if(!('speechSynthesis' in window)){alert('この端末では音声機能が使えません。');return;} speechSynthesis.cancel(); const u=new SpeechSynthesisUtterance(text);u.lang='en-US';u.rate=.82;speechSynthesis.speak(u)};
+const PHONICS_MAP = {
+  classroom: ['k','l','a','s','r','oo','m'], clock:['k','l','o','k'], desk:['d','e','s','k'], chair:['ch','air'], notebook:['n','oh','t','b','oo','k'], pencil:['p','e','n','s','i','l'], eraser:['ee','r','a','s','er'], textbook:['t','e','k','s','t','b','oo','k'], picture:['p','i','k','ch','er'], computer:['k','m','p','y','oo','t','er'], train:['t','r','ai','n'], bus:['b','u','s'], car:['k','ar'], school:['sk','oo','l'],
+  world:['w','er','l','d'], country:['k','u','n','t','r','ee'], Japan:['j','a','p','a','n'], 'the U.S.A.':['th','uh','yoo','ess','ay'], Canada:['k','a','n','uh','d','uh'], China:['ch','i','n','uh'], Australia:['aw','s','t','r','ay','l','ee','uh'], 'South Korea':['s','ow','th','k','oh','r','ee','uh'], 'the U.K.':['th','uh','yoo','k','ay'], France:['f','r','a','n','s'], Germany:['j','er','m','uh','n','ee'], Russia:['r','u','sh','uh'], Italy:['i','t','uh','l','ee'], Spain:['s','p','ai','n'],
+  Sunday:['s','u','n','d','ay'], Monday:['m','u','n','d','ay'], Tuesday:['t','oo','z','d','ay'], Wednesday:['w','e','n','z','d','ay'], Thursday:['th','er','z','d','ay'], Friday:['f','r','ai','d','ay'], Saturday:['s','a','t','er','d','ay'], season:['s','ee','z','un'], spring:['s','p','r','i','ng'], summer:['s','u','m','er'], fall:['f','aw','l'], autumn:['aw','t','u','m'], winter:['w','i','n','t','er'],
+  January:['j','a','n','yoo','er','ee'], February:['f','e','b','r','oo','er','ee'], March:['m','ar','ch'], April:['ay','p','r','i','l'], May:['m','ay'], June:['j','oo','n'], July:['j','oo','l','ai'], August:['aw','g','u','s','t'], September:['s','e','p','t','e','m','b','er'], October:['o','k','t','oh','b','er'], November:['n','oh','v','e','m','b','er'], December:['d','e','s','e','m','b','er'], month:['m','u','n','th'], year:['y','ear'],
+  subject:['s','u','b','j','e','k','t'], English:['e','ng','l','i','sh'], Math:['m','a','th'], Japanese:['j','a','p','uh','n','ee','z'], Science:['s','i','en','s'], 'Social Studies':['s','oh','sh','uh','l','s','t','u','d','ee','z'], Music:['m','yoo','z','i','k'], Art:['ar','t'], 'P.E.':['p','ee'], 'Home Economics':['h','oh','m','e','k','uh','n','ah','m','i','k','s'], teacher:['t','ee','ch','er'], student:['s','t','oo','d','e','n','t'],
+  family:['f','a','m','uh','l','ee'], father:['f','ah','th','er'], mother:['m','u','th','er'], parents:['p','air','uh','n','t','s'], brother:['b','r','u','th','er'], sister:['s','i','s','t','er'], child:['ch','ai','l','d'], children:['ch','i','l','d','r','en'], son:['s','u','n'], daughter:['d','aw','t','er'], grandfather:['g','r','a','n','d','f','ah','th','er'], grandmother:['g','r','a','n','d','m','u','th','er'], grandparents:['g','r','a','n','d','p','air','uh','n','t','s'],
+  sport:['s','p','or','t'], baseball:['b','ay','s','b','aw','l'], soccer:['s','o','k','er'], tennis:['t','e','n','i','s'], basketball:['b','a','s','k','e','t','b','aw','l'], volleyball:['v','o','l','ee','b','aw','l'], 'table tennis':['t','ay','b','l','t','e','n','i','s'], badminton:['b','a','d','m','i','n','t','un'], golf:['g','o','l','f'], swimming:['s','w','i','m','i','ng'], skiing:['s','k','ee','i','ng'], 
+  go:['g','oh'], meet:['m','ee','t'], eat:['ee','t'], like:['l','ai','k'], run:['r','u','n'], sing:['s','i','ng'], swim:['s','w','i','m'], stay:['s','t','ay'], ride:['r','ai','d'], walk:['w','aw','k'], have:['h','a','v'], open:['oh','p','en'], live:['l','i','v'], know:['n','oh'], help:['h','e','l','p'], play:['p','l','ay'],
+  climb:['k','l','ai','m'], bring:['b','r','i','ng'], take:['t','ay','k'], watch:['w','o','ch'], see:['s','ee'], look:['l','oo','k'], read:['r','ee','d'], listen:['l','i','s','un'], hear:['h','ear'], make:['m','ay','k'], wear:['w','air'], wash:['w','o','sh'], hope:['h','oh','p'], ask:['a','s','k'], catch:['k','a','ch'], work:['w','er','k'], get:['g','e','t'], come:['k','u','m'], do:['d','oo'], use:['yoo','z'], speak:['s','p','ee','k'], tell:['t','e','l'], talk:['t','aw','k'], try:['t','r','ai'], teach:['t','ee','ch'], study:['s','t','u','d','ee'], enjoy:['e','n','j','oy'], buy:['b','ai'], become:['b','i','k','u','m'], stop:['s','t','o','p'], want:['w','o','n','t'],
+  beautiful:['b','yoo','t','uh','f','uh','l'], cute:['k','yoo','t'], pretty:['p','r','i','t','ee'], great:['g','r','ay','t'], important:['i','m','p','or','t','un','t'], popular:['p','o','p','yoo','l','er'], famous:['f','ay','m','uh','s'], interesting:['i','n','t','er','e','s','t','i','ng'], big:['b','i','g'], small:['s','m','aw','l'], tall:['t','aw','l'], high:['h','ai'], short:['sh','or','t'], long:['l','aw','ng'], too:['t','oo'], only:['oh','n','l','ee'], just:['j','u','s','t'], very:['v','e','r','ee'], so:['s','oh'], always:['aw','l','way','z'], often:['aw','f','un'], sometimes:['s','u','m','t','ai','m','z'], fast:['f','a','s','t'], early:['er','l','ee'], hard:['h','ar','d'], well:['w','e','l'], there:['th','air'], here:['h','ear'],
+  wagon:['w','a','g','un'], octopus:['o','k','t','uh','p','u','s'], rocket:['r','o','k','e','t'], egg:['e','g'], question:['k','w','e','s','ch','un'], spoon:['s','p','oo','n'], kitten:['k','i','t','un'], zebra:['z','ee','b','r','uh'], hate:['h','ay','t'], mop:['m','o','p'], bake:['b','ay','k'], 'take out':['t','ay','k','ow','t'], paint:['p','ay','n','t'], ski:['s','k','ee'], skate:['s','k','ay','t'], safe:['s','ay','f'], dangerous:['d','ay','n','j','er','uh','s'], late:['l','ay','t'], same:['s','ay','m'], different:['d','i','f','er','un','t'], real:['r','ee','l'], fake:['f','ay','k'], clean:['k','l','ee','n'], hike:['h','ai','k'], write:['r','ai','t'], boring:['b','or','i','ng'], exciting:['e','k','s','ai','t','i','ng'], alive:['uh','l','ai','v'], dead:['d','e','d'], tiny:['t','ai','n','ee'], giant:['j','ai','un','t'], dark:['d','ar','k'], light:['l','ai','t'], brush:['b','r','u','sh'], shop:['sh','o','p'], carry:['k','air','ee'], push:['p','u','sh'], fish:['f','i','sh'], pinch:['p','i','n','ch'],
+};
+function phonicsText(word){
+  const parts=PHONICS_MAP[word] || word.toLowerCase().split('').filter(c=>/[a-z]/.test(c));
+  return parts.join(' ');
+}
+function speakPhonics(word){
+  if(!('speechSynthesis' in window)) return;
+  const u=new SpeechSynthesisUtterance(phonicsText(word));
+  u.lang='en-US'; u.rate=.72; speechSynthesis.speak(u);
+}
+function speakThreeTimes(text, boxes){
+  if(!('speechSynthesis' in window)){ boxes.forEach(b=>b.disabled=false); if(boxes[0]) boxes[0].focus(); return; }
+  boxes.forEach(b=>b.disabled=true); speechSynthesis.cancel();
+  const p=new SpeechSynthesisUtterance(phonicsText(text)); p.lang='en-US'; p.rate=.72;
+  p.onend=()=>{
+    boxes.forEach(b=>b.disabled=false); if(boxes[0]) boxes[0].focus();
+    const a=new SpeechSynthesisUtterance(text); a.lang='en-US'; a.rate=.82;
+    a.onend=()=>{ const b=new SpeechSynthesisUtterance(text); b.lang='en-US'; b.rate=.82; speechSynthesis.speak(b); };
+    speechSynthesis.speak(a);
+  };
+  speechSynthesis.speak(p);
+}
+
+function phonicsCue(word){
+  return PHONICS_OVERRIDES[word] || word.toLowerCase().split('').join(' ');
+}
+function speakOne(text, rate=.78, lang='en-US', onend=null){
+  if(!('speechSynthesis' in window)){ if(onend) onend(); return; }
+  const u=new SpeechSynthesisUtterance(text); u.lang=lang; u.rate=rate; if(onend) u.onend=onend; speechSynthesis.speak(u);
+}
+function speakTwiceAndUnlock(text, boxes){
+  boxes.forEach(b=>b.disabled=true);
+  if(!('speechSynthesis' in window)){ boxes.forEach(b=>b.disabled=false); if(boxes[0]) boxes[0].focus(); return; }
+  speechSynthesis.cancel();
+  // 1st: phonics. Unlock typing immediately after phonics finishes.
+  const cue=phonicsCue(text);
+  speakOne(cue,.68,'en-US',()=>{
+    boxes.forEach(b=>b.disabled=false);
+    if(boxes[0]) boxes[0].focus();
+    // 2nd: normal word pronunciation
+    speakOne(text,.82,'en-US',()=>{
+      // 3rd: normal word pronunciation again
+      speakOne(text,.82,'en-US');
+    });
+  });
+}
+function save(){localStorage.setItem(SAVED_WORDS_KEY,JSON.stringify(words));}
+function current(){return words[idx]||words[0];}
+function textbookForIndex(i){
+  let wagonIndex=words.findIndex(w=>w.en.toLowerCase()==='wagon');
+  let lightIndex=words.findIndex(w=>w.en.toLowerCase()==='light');
+  let boundaryOpen=-1;
+  if(lightIndex>=0){
+    boundaryOpen=words.findIndex((w,n)=>n>lightIndex && w.en.toLowerCase()==='open');
+  }
+  if(wagonIndex>=0 && boundaryOpen>=wagonIndex && i>=wagonIndex && i<=boundaryOpen) return 'W';
+  return 'J';
+}
+function makeLetters(word){
+  const a=word.toLowerCase().split('');
+  for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}
+  return a;
+}
+function renderStudy(){
+ if(!words.length){$('#leftCard').innerHTML='<div class="empty">たんごがありません。<br>「たんごリスト」から追加してね。</div>';$('#progress').textContent='';return;}
+ const w=current();
+ const tb=textbookForIndex(idx);
+ const badge=$('#textbookBadge');
+ if(badge){badge.textContent=tb==='W'?'📘 W英語':'📗 J英語';badge.className='textbook-badge'+(tb==='J'?' j':'');}
+ $('#progress').textContent=`${idx+1} / ${words.length} たんご　　★ ${w.stars||0}`;
+ const left=$('#leftCard'); left.innerHTML='';
+ const fullChars=w.en.toLowerCase().split('');
+ const letters=fullChars.filter(ch=>/[a-z]/.test(ch));
+ let alphaPos=0;
+ const displayCells=fullChars.map(ch=>/[a-z]/.test(ch)
+   ? `<input class="letterbox" maxlength="1" data-pos="${alphaPos++}" inputmode="latin" autocomplete="off" spellcheck="false" />`
+   : `<span class="autoch">${ch===' ' ? '&nbsp;' : esc(ch)}</span>`).join('');
+ left.innerHTML=`<div class="prompt">日本語と絵を見て、英語をタイピングしてみよう！</div><div class="big">${emojiOrFlag(w.emoji)}</div><div class="jp">${esc(w.jp)}</div><div class="letterboxes" id="letterboxes">${displayCells}</div><div class="actions"><button class="btn secondary" id="clearBtn">↶ けす</button></div><div id="letterbank" class="letterbank"></div><div id="hintnote" class="hintnote"></div><div id="feedback" class="feedback"></div>`;
+ const boxes=[...document.querySelectorAll('.letterbox')];
+ let solved=false;
+ const bank=$('#letterbank');
+ const hintnote=$('#hintnote');
+ const feedback=$('#feedback');
+ const getExpected=i=>letters[i]||'';
+ if(practiceMode==='hint'){ hintnote.textContent='💡 正解の単語の文字だけがランダムに出るよ。'; }else{ $('#letterbank').style.display='none'; hintnote.textContent='⭐ ヒントなしで挑戦しよう！'; }
+ const markWrong=box=>{box.style.background='#fff0f4';box.style.borderColor='#e65777';feedback.textContent='❌ ちがうよ！';feedback.className='feedback bad';};
+ const markRight=box=>{box.style.background='#e9fff3';box.style.borderColor='#69d59b';feedback.textContent='⭕ あってるよ！';feedback.className='feedback good';};
+ const consumeHintChar=ch=>{
+   const btn=[...bank.querySelectorAll('.letterbtn')].find(b=>b.dataset.ch===ch);
+   if(btn) btn.remove();
+ };
+ const restoreHintChar=ch=>{
+   if(practiceMode!=='hint' || bank.style.display==='none' || !ch)return;
+   const b=document.createElement('button');
+   b.className='letterbtn';
+   b.textContent=ch;
+   b.dataset.ch=ch;
+   b.dataset.n=String(bank.querySelectorAll('.letterbtn').length);
+   b.onclick=()=>{const next=boxes.findIndex(x=>!x.value); if(next>=0)fillBox(next,ch,b);};
+   bank.appendChild(b);
+ };
+ const fillBox=(i,ch,sourceButton=null)=>{
+   if(i>=boxes.length)return;
+   ch=String(ch).toLowerCase().replace(/[^a-z]/g,'').slice(0,1); if(!ch)return;
+   const box=boxes[i]; box.value=ch;
+   if(ch===getExpected(i)){
+     if(sourceButton)sourceButton.remove(); else if(practiceMode==='hint' && bank.style.display!=='none')consumeHintChar(ch);
+     markRight(box);
+     if(i===boxes.length-1)checkBoxes(); else boxes[i+1].focus();
+   }else{ markWrong(box); box.focus(); }
+ };
+ boxes.forEach((box,i)=>box.addEventListener('input',()=>{
+   const ch=box.value.replace(/[^a-zA-Z]/g,'').slice(0,1).toLowerCase(); box.value=ch; if(!ch)return;
+   if(ch===getExpected(i)){
+     if(practiceMode==='hint' && bank.style.display!=='none')consumeHintChar(ch);
+     markRight(box); if(i===boxes.length-1)checkBoxes(); else boxes[i+1].focus();
+   }else{ markWrong(box); box.focus(); }
+ }));
+ boxes.forEach((box,i)=>box.addEventListener('keydown',e=>{
+   if(e.key==='Backspace'){
+     e.preventDefault();
+     if(box.value){
+       const old=box.value.toLowerCase();
+       const expected=getExpected(i);
+       box.value='';
+       box.style.background='#fff';
+       box.style.borderColor='#dfe7ff';
+       if(practiceMode==='hint' && old===expected) restoreHintChar(old);
+       feedback.textContent='';
+       feedback.className='feedback';
+       box.focus();
+     }else if(i>0){
+       boxes[i-1].focus();
+     }
+   }
+ }));
+ const renderHintBank=()=>{
+   bank.style.display='flex'; bank.innerHTML='';
+   makeLetters(w.en.replace(/[^a-zA-Z]/g,'')).forEach((ch,n)=>{const b=document.createElement('button'); b.className='letterbtn'; b.textContent=ch; b.dataset.ch=ch; b.dataset.n=n; b.onclick=()=>{const next=boxes.findIndex(x=>!x.value); if(next>=0)fillBox(next,ch,b);}; bank.appendChild(b);});
+ };
+ if(practiceMode==='hint'){
+   renderHintBank();
+ }
+ $('#clearBtn').onclick=()=>{
+   let target=-1;
+   for(let i=boxes.length-1;i>=0;i--){ if(boxes[i].value){ target=i; break; } }
+   if(target<0){ boxes[0].focus(); return; }
+   const box=boxes[target];
+   const old=box.value.toLowerCase();
+   const expected=getExpected(target);
+   box.value='';
+   box.style.background='#fff';
+   box.style.borderColor='#dfe7ff';
+   if(practiceMode==='hint' && old===expected) restoreHintChar(old);
+   feedback.textContent='';
+   feedback.className='feedback';
+   box.focus();
+ };
+ setTimeout(()=>speakThreeTimes(w.en, boxes),80);
+}
+function checkBoxes(){
+ const w=current(); const boxes=[...document.querySelectorAll('.letterbox')]; const val=boxes.map(b=>b.value).join('').toLowerCase();
+ const expected=w.en.toLowerCase().replace(/[^a-z]/g,''); const fb=$('#feedback'); if(!fb)return;
+ if(val===expected){
+   solved=true;
+   fb.textContent='🎉 せいかい！ Enterでつぎのたんごへ';fb.className='feedback good';w.stars=(w.stars||0)+1;save();boxes.forEach(b=>{b.style.background='#e9fff3';b.style.borderColor='#69d59b'});const bank=$('#letterbank');if(bank)bank.style.display='none';
+ }else if(val.length===expected.length){
+   solved=false;
+   fb.textContent='❌ ちがうよ！ 赤い文字をなおしてみよう。';fb.className='feedback bad';
+   boxes.forEach((b,i)=>{b.style.background=b.value===expected[i]?'#e9fff3':'#fff0f4';b.style.borderColor=b.value===expected[i]?'#69d59b':'#e65777'});
+ }
+}
+function renderRows(){const box=$('#rows');box.innerHTML='';if(!words.length){box.innerHTML='<div class="empty">まだたんごがないよ。</div>';return}words.forEach((w,i)=>{const r=document.createElement('div');r.className='row';r.innerHTML=`<input value="${esc(w.en)}" data-i="${i}" data-k="en"><input value="${esc(w.jp)}" data-i="${i}" data-k="jp"><input class="wide" value="${esc(w.emoji)}" data-i="${i}" data-k="emoji"><div class="count">★ ${w.stars||0}</div><button class="btn danger delete" data-del="${i}">削除</button>`;box.appendChild(r)});box.querySelectorAll('input').forEach(inp=>inp.addEventListener('change',()=>{words[+inp.dataset.i][inp.dataset.k]=inp.value;save();renderStudy()}));box.querySelectorAll('[data-del]').forEach(b=>b.onclick=()=>{words.splice(+b.dataset.del,1);if(idx>=words.length)idx=Math.max(0,words.length-1);save();renderRows();renderStudy()})}
+const esc=s=>String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+$('#add').onclick=()=>{words.push({en:'newword',jp:'日本語',emoji:'✨',stars:0});idx=words.length-1;save();renderRows();renderStudy()};
+$('#reset').onclick=()=>{if(confirm('初期データに戻しますか？')){words=DEFAULT_WORDS.map(x=>({...x}));idx=0;save();renderRows();renderStudy()}};
+$('#export').onclick=async()=>{const text=JSON.stringify(words,null,2);try{await navigator.clipboard.writeText(text);alert('保存用データをコピーしました！')}catch{prompt('このデータをコピーして保存してください',text)}};
+$('#import').onclick=()=>{const text=prompt('JSONデータを貼り付けてください');if(!text)return;try{const data=JSON.parse(text);if(!Array.isArray(data))throw Error();words=data.map(x=>({en:String(x.en||''),jp:String(x.jp||''),emoji:String(x.emoji||'✨'),stars:Number(x.stars||0)})).filter(x=>x.en&&x.jp);idx=0;save();renderRows();renderStudy();alert('読み込みました！')}catch{alert('データの形式が正しくありません。')}};
+$('#next').onclick=()=>{idx=(idx+1)%words.length;renderStudy()};$('#prev').onclick=()=>{idx=(idx-1+words.length)%words.length;renderStudy()};$('#shuffle').onclick=()=>{idx=Math.floor(Math.random()*words.length);renderStudy()};$('#pronounce').onclick=()=>speak(current().en);
+document.querySelectorAll('.mode').forEach(b=>b.onclick=()=>{practiceMode=b.dataset.mode;document.querySelectorAll('.mode').forEach(x=>{x.classList.toggle('active',x.dataset.mode===practiceMode);x.classList.toggle('primary',x.dataset.mode===practiceMode);x.classList.toggle('secondary',x.dataset.mode!==practiceMode)});renderStudy();});
+document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>{document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));b.classList.add('active');const t=b.dataset.tab;$('#study').style.display=t==='study'?'block':'none';$('#list').style.display=t==='list'?'block':'none';if(t==='list')renderRows()});
+document.addEventListener('keydown',e=>{if(e.key==='Enter' && solved && $('#study').style.display!=='none'){e.preventDefault();idx=(idx+1)%words.length;renderStudy();}});
+renderStudy();
+</script>
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => navigator.serviceWorker.register('./sw.js').catch(() => {}));
+}
+</script>
+</body></html>
