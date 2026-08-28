@@ -97,9 +97,55 @@ header{padding:6px 10px 3px;text-align:center} h1{margin:0;font-size:clamp(20px,
   }
 }
 
+
+/* FINAL iPad input-box fix */
+#letterboxes input.letterbox{
+  -webkit-appearance:none !important;
+  appearance:none !important;
+  box-sizing:border-box !important;
+  width:72px !important;
+  min-width:72px !important;
+  height:76px !important;
+  min-height:76px !important;
+  padding:0 !important;
+  margin:0 !important;
+  border:4px solid #5aa9ff !important;
+  border-radius:12px !important;
+  background:#ffffff !important;
+  color:#20304a !important;
+  -webkit-text-fill-color:#20304a !important;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif !important;
+  font-size:44px !important;
+  font-weight:800 !important;
+  line-height:1 !important;
+  text-align:center !important;
+  opacity:1 !important;
+}
+#letterboxes input.letterbox:disabled{
+  color:#20304a !important;
+  -webkit-text-fill-color:#20304a !important;
+  opacity:1 !important;
+}
+
 </style>
 </head>
 <body>
+
+<script>
+(async function(){
+  try{
+    if('serviceWorker' in navigator){
+      const regs=await navigator.serviceWorker.getRegistrations();
+      for(const r of regs){ await r.unregister(); }
+    }
+    if(window.caches){
+      const keys=await caches.keys();
+      for(const k of keys){ await caches.delete(k); }
+    }
+  }catch(e){}
+})();
+</script>
+
 <header><h1>🌸 えいごたんごチャレンジ 🌸</h1><div class="sub">見る・聞く・打つ！ 小学生向け英単語アプリ</div></header>
 <div class="wrap">
 <div class="tabs">
