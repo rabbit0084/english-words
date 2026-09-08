@@ -127,6 +127,344 @@ header{padding:6px 10px 3px;text-align:center} h1{margin:0;font-size:clamp(20px,
   opacity:1 !important;
 }
 
+.weekly{font-size:13px;padding:7px 10px;box-shadow:0 3px 0 rgba(0,0,0,.08)}.wtest{background:#e8efff;color:#3155a5}.jtest{background:#eaf9ef;color:#2c7a4b}.weekly.active-test{outline:3px solid #6f8cff;transform:translateY(-1px)}
+
+.select-actions{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin:8px}
+.select-words{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:7px;max-height:62vh;overflow:auto;padding:8px}
+.select-word{display:flex;align-items:center;gap:8px;background:#fff;border:2px solid #dfe7ff;border-radius:12px;padding:9px;font-weight:800}
+.select-word input{width:22px;height:22px}
+.letterbox.answer-hint{background:#fff !important;color:rgba(75,100,217,.22) !important;-webkit-text-fill-color:rgba(75,100,217,.22) !important}
+
+
+.furigana-cell{display:inline-flex;flex-direction:column;align-items:center;justify-content:flex-end;vertical-align:bottom;min-width:72px}
+.furigana-above{height:25px;line-height:25px;font-size:16px;font-weight:900;color:#555;white-space:nowrap}
+@media(max-width:700px){.furigana-cell{min-width:66px}.furigana-above{font-size:15px;height:23px;line-height:23px}}
+
+
+.furigana-cell.grouped{display:inline-flex;flex-direction:column;align-items:center;justify-content:flex-end;vertical-align:bottom}
+.furigana-cell.grouped .furigana-above{min-width:100%;text-align:center}
+.furigana-cell.grouped .letterbox{margin:0 2px}
+
+
+/* Keep furigana + answer boxes in one row */
+#letterboxes{
+  display:flex !important;
+  flex-wrap:nowrap !important;
+  justify-content:center !important;
+  align-items:flex-end !important;
+  gap:4px !important;
+  width:100% !important;
+  overflow-x:auto !important;
+  overflow-y:hidden !important;
+  padding:4px 2px 8px !important;
+  -webkit-overflow-scrolling:touch;
+}
+#letterboxes .furigana-cell,
+#letterboxes .furigana-cell.grouped{
+  flex:0 0 auto !important;
+}
+#letterboxes input.letterbox{
+  flex:0 0 auto !important;
+  width:52px !important;
+  min-width:52px !important;
+  height:60px !important;
+  min-height:60px !important;
+  font-size:34px !important;
+}
+#letterboxes .furigana-above{
+  font-size:15px !important;
+  line-height:22px !important;
+  height:22px !important;
+}
+@media (min-width:700px){
+  #letterboxes input.letterbox{
+    width:56px !important;
+    min-width:56px !important;
+    height:64px !important;
+    min-height:64px !important;
+    font-size:36px !important;
+  }
+}
+
+
+#letterboxes .furigana-cell.grouped{display:inline-flex !important;flex-direction:column !important;align-items:center !important;justify-content:flex-end !important;flex:0 0 auto !important;white-space:nowrap !important;}
+#letterboxes .furigana-cell.grouped .group-inputs{display:flex !important;flex-direction:row !important;flex-wrap:nowrap !important;align-items:center !important;justify-content:center !important;gap:4px !important;white-space:nowrap !important;}
+#letterboxes .furigana-cell.grouped .letterbox{flex:0 0 auto !important;}
+
+
+/* Furigana starts directly above the English letters that make that sound */
+#letterboxes .furigana-cell.grouped{
+  align-items:flex-start !important;
+}
+#letterboxes .furigana-cell.grouped .furigana-above{
+  width:100% !important;
+  min-width:0 !important;
+  text-align:left !important;
+  padding-left:2px !important;
+  box-sizing:border-box !important;
+}
+
+.furiedit{font-size:12px;padding:6px 8px}
+
+.furi-modal{position:fixed;inset:0;background:rgba(0,0,0,.35);z-index:9999;display:flex;align-items:center;justify-content:center;padding:16px}
+.furi-card{background:#fff;border-radius:18px;padding:16px;width:min(620px,96vw);max-height:85vh;overflow:auto;box-shadow:0 12px 40px rgba(0,0,0,.2)}
+.furi-word{font-size:28px;font-weight:900;text-align:center;margin:8px}
+.furi-pair{display:grid;grid-template-columns:1fr 1fr auto;gap:7px}
+.furi-pair input{font-size:20px;padding:10px;border:2px solid #dfe7ff;border-radius:10px;min-width:0}
+.furi-pairs{margin:12px 0;display:flex;flex-wrap:wrap;gap:7px}
+.furi-chip{display:flex;align-items:center;gap:5px;background:#f4f7ff;border:2px solid #dfe7ff;border-radius:12px;padding:7px 9px;font-weight:800}
+.furi-chip button{border:0;background:#fff0f4;border-radius:8px;padding:4px 7px}
+@media(max-width:600px){.furi-pair{grid-template-columns:1fr 1fr}.furi-pair button{grid-column:1/-1}}
+
+
+.furi-list-view{display:flex;flex-direction:column;justify-content:center;min-width:110px;padding:4px 7px;background:#fff8e8;border:2px solid #ffe1a3;border-radius:10px}
+.furi-list-view span{font-size:11px;color:#7a6a4a;font-weight:800}
+.furi-list-view b{font-size:15px;color:#4c4334;line-height:1.25;word-break:keep-all}
+
+
+#letterboxes .autoch.separator{flex:0 0 22px!important;width:22px!important;min-width:22px!important;height:60px;display:inline-flex;align-items:center;justify-content:center}
+
+
+/* Natural answer-box spacing: no artificial gaps between letters */
+#letterboxes{gap:0 !important;}
+#letterboxes .furigana-cell{margin:0 !important;padding:0 !important;}
+#letterboxes .group-inputs{gap:0 !important;margin:0 !important;padding:0 !important;}
+#letterboxes input.letterbox{margin:0 !important;}
+#letterboxes .autoch.separator{
+  flex:0 0 16px !important;
+  width:16px !important;
+  min-width:16px !important;
+  margin:0 !important;
+  padding:0 !important;
+}
+
+
+/* Final: remove artificial group whitespace while preserving real word spaces */
+#letterboxes .furigana-cell.grouped{
+  min-width:0 !important;
+  width:auto !important;
+  margin:0 !important;
+  padding:0 !important;
+  flex:0 0 auto !important;
+}
+#letterboxes .furigana-cell.grouped .group-inputs{
+  display:flex !important;
+  flex-direction:row !important;
+  flex-wrap:nowrap !important;
+  gap:0 !important;
+  margin:0 !important;
+  padding:0 !important;
+  width:max-content !important;
+}
+#letterboxes .furigana-cell.grouped .letterbox{
+  margin:0 !important;
+  flex:0 0 52px !important;
+  width:52px !important;
+  min-width:52px !important;
+}
+#letterboxes .furigana-cell.grouped .furigana-above{
+  width:max-content !important;
+  min-width:0 !important;
+  white-space:nowrap !important;
+  margin:0 !important;
+  padding:0 0 1px 0 !important;
+  text-align:left !important;
+}
+@media(min-width:700px){
+  #letterboxes .furigana-cell.grouped .letterbox{
+    flex-basis:56px !important;
+    width:56px !important;
+    min-width:56px !important;
+  }
+}
+
+
+/* Furigana sits directly on top of its corresponding alphabet boxes */
+#letterboxes .furigana-cell.grouped{
+  position:relative !important;
+  display:inline-flex !important;
+  flex-direction:column !important;
+  align-items:flex-start !important;
+  min-width:0 !important;
+  width:auto !important;
+  padding-top:24px !important;
+}
+#letterboxes .furigana-cell.grouped .furigana-above{
+  position:absolute !important;
+  top:0 !important;
+  left:0 !important;
+  width:auto !important;
+  min-width:0 !important;
+  height:22px !important;
+  line-height:22px !important;
+  margin:0 !important;
+  padding:0 !important;
+  text-align:left !important;
+  white-space:nowrap !important;
+  z-index:2;
+}
+#letterboxes .furigana-cell.grouped .group-inputs{
+  margin:0 !important;
+  padding:0 !important;
+  gap:0 !important;
+}
+#letterboxes .furigana-cell:not(.grouped){
+  position:relative !important;
+  padding-top:24px !important;
+}
+#letterboxes .furigana-cell:not(.grouped) .furigana-above{
+  position:absolute !important;
+  top:0 !important;
+  left:0 !important;
+  width:100% !important;
+  text-align:left !important;
+}
+
+
+/* FINAL: furigana immediately above the answer squares */
+#letterboxes{
+  align-items:flex-end !important;
+}
+#letterboxes .furigana-cell.grouped{
+  position:relative !important;
+  display:inline-flex !important;
+  flex-direction:column !important;
+  align-items:flex-start !important;
+  justify-content:flex-end !important;
+  padding-top:22px !important;
+  margin:0 !important;
+}
+#letterboxes .furigana-cell.grouped .furigana-above{
+  position:absolute !important;
+  left:0 !important;
+  top:0 !important;
+  height:20px !important;
+  line-height:20px !important;
+  margin:0 !important;
+  padding:0 !important;
+  font-size:15px !important;
+  font-weight:900 !important;
+  text-align:left !important;
+  white-space:nowrap !important;
+}
+#letterboxes .furigana-cell.grouped .group-inputs{
+  display:flex !important;
+  flex-direction:row !important;
+  align-items:flex-end !important;
+  gap:0 !important;
+  margin:0 !important;
+  padding:0 !important;
+}
+#letterboxes .furigana-cell:not(.grouped){
+  position:relative !important;
+  padding-top:22px !important;
+  margin:0 !important;
+}
+#letterboxes .furigana-cell:not(.grouped) .furigana-above{
+  position:absolute !important;
+  left:0 !important;
+  top:0 !important;
+  height:20px !important;
+  line-height:20px !important;
+  margin:0 !important;
+  padding:0 !important;
+}
+
+
+.furi-char-editor{display:flex;flex-wrap:nowrap;gap:4px;overflow-x:auto;justify-content:center;padding:8px 2px 12px}
+.furi-letter-cell{display:flex;flex-direction:column;align-items:center;flex:0 0 auto}
+.furi-letter{font-size:22px;font-weight:900;line-height:28px;min-width:45px;text-align:center;color:#4b64d9}
+.furi-one{width:45px;height:40px;text-align:center;font-size:22px;border:2px solid #dfe7ff;border-radius:8px}
+.furi-space{width:45px;height:40px;display:flex;align-items:center;justify-content:center;color:#888;font-size:12px}
+
+
+.furi-one{width:60px!important;min-width:60px!important;font-size:21px!important;padding:2px 3px!important}
+
+
+@media (max-width:1100px), (max-height:900px){
+header{padding:2px 8px 0!important} header h1{font-size:22px!important;line-height:1.1!important} header .sub{display:none!important}
+.wrap{padding-top:0!important}.tabs{margin:1px 0 3px!important;gap:4px!important}.tabs .btn,.tabs .tab{padding:7px 9px!important;font-size:14px!important}
+#study{padding:7px!important}#study .modebar{margin:0!important;min-height:0!important}#textbookBadge{margin:0 0 2px!important;padding:2px 9px!important;font-size:14px!important}
+#progress{margin:1px 0 3px!important;font-size:14px!important}.quiz{margin:0!important}.card{padding:7px 8px!important;min-height:0!important}
+.prompt{margin:0 0 2px!important;font-size:14px!important}.big{font-size:48px!important;line-height:1!important;margin:0!important}.jp{font-size:21px!important;margin:1px 0 2px!important}
+#letterboxes{padding:1px 2px 3px!important;margin:0!important}#letterboxes .furigana-cell.grouped,#letterboxes .furigana-cell:not(.grouped){padding-top:19px!important}
+#letterboxes .furigana-above{height:18px!important;line-height:18px!important;font-size:13px!important}#letterboxes input.letterbox{height:54px!important;min-height:54px!important;font-size:32px!important}
+#letterbank{margin:3px 0!important;gap:4px!important}.letterbtn{min-height:42px!important;min-width:42px!important;font-size:24px!important;padding:3px!important}
+#hintnote,#feedback{margin:2px 0!important;min-height:18px!important;font-size:13px!important}#study .card .actions{margin:3px 0!important}
+#study>.actions{margin:4px 0 1px!important;gap:5px!important;position:sticky!important;bottom:0!important;z-index:20!important;background:rgba(255,255,255,.96)!important;padding:4px 2px!important}
+#study>.actions .btn{padding:8px 10px!important;font-size:14px!important}#study .tips{display:none!important}
+}
+
+
+/* Furigana: centered directly above each answer square */
+#letterboxes .furigana-cell,
+#letterboxes .furigana-cell.grouped{
+  position:relative !important;
+  display:inline-flex !important;
+  flex-direction:column !important;
+  align-items:center !important;
+  justify-content:flex-end !important;
+}
+#letterboxes .furigana-cell .furigana-above,
+#letterboxes .furigana-cell.grouped .furigana-above{
+  position:absolute !important;
+  top:0 !important;
+  left:50% !important;
+  transform:translateX(-50%) !important;
+  width:max-content !important;
+  min-width:0 !important;
+  margin:0 !important;
+  padding:0 !important;
+  text-align:center !important;
+  white-space:nowrap !important;
+}
+
+
+/* Long-word furigana editor: keep every letter/input visible on iPad */
+.furi-card{
+  width:min(760px,96vw) !important;
+  overflow:hidden !important;
+}
+.furi-char-editor{
+  display:flex !important;
+  flex-wrap:nowrap !important;
+  justify-content:flex-start !important;
+  align-items:flex-start !important;
+  gap:4px !important;
+  width:100% !important;
+  max-width:100% !important;
+  overflow-x:auto !important;
+  overflow-y:hidden !important;
+  padding:10px 4px 16px !important;
+  box-sizing:border-box !important;
+  -webkit-overflow-scrolling:touch !important;
+  scrollbar-width:auto;
+}
+.furi-char-editor .furi-letter-cell{
+  flex:0 0 60px !important;
+  min-width:60px !important;
+}
+.furi-char-editor .furi-letter{
+  width:60px !important;
+  min-width:60px !important;
+}
+.furi-char-editor .furi-one{
+  width:58px !important;
+  min-width:58px !important;
+  box-sizing:border-box !important;
+}
+@media(max-width:700px){
+  .furi-char-editor .furi-letter-cell{flex-basis:54px !important;min-width:54px !important;}
+  .furi-char-editor .furi-letter{width:54px !important;min-width:54px !important;}
+  .furi-char-editor .furi-one{width:52px !important;min-width:52px !important;}
+}
+
+
+/* In no-hint mode, furigana is hidden too */
+#letterboxes.hide-furigana .furigana-above{
+  visibility:hidden !important;
+}
+
 </style>
 </head>
 <body>
@@ -152,8 +490,17 @@ header{padding:6px 10px 3px;text-align:center} h1{margin:0;font-size:clamp(20px,
 <button class="tab active" data-tab="study">📚 れんしゅう</button>
 <button class="btn primary mode active" data-mode="hint">💡 ヒントあり</button>
 <button class="btn secondary mode" data-mode="nohint">⭐ ヒントなし</button>
-<button class="tab" data-tab="list">📝 たんごリスト</button>
+<button class="btn weekly wtest" id="wtest">📘 W英語 全部</button>
+<button class="btn weekly wtest" id="wselect">☑️ W英語 選ぶ</button>
+<button class="btn weekly jtest" id="jtest">📗 J英語 全部</button>
+<button class="btn weekly jtest" id="jselect">☑️ J英語 選ぶ</button>
+<button class="tab" id="listTab" data-tab="list">📝 たんごリスト</button>
 </div>
+<section id="selector" class="panel" style="display:none">
+<h2 id="selectorTitle">単語を選んでテスト</h2>
+<div class="select-actions"><button class="btn secondary" id="selectAll">全部選ぶ</button><button class="btn secondary" id="selectNone">全部はずす</button><button class="btn success" id="startSelected">🎯 選んだ単語をテスト</button><button class="btn secondary" id="cancelSelect">もどる</button></div>
+<div id="selectWords" class="select-words"></div>
+</section>
 <section id="study" class="panel">
 <div class="modebar"></div>
 <div id="textbookBadge" class="textbook-badge">📘 W英語</div><div class="progress" id="progress"></div>
@@ -174,7 +521,8 @@ header{padding:6px 10px 3px;text-align:center} h1{margin:0;font-size:clamp(20px,
 <div class="footer-note">このアプリはブラウザだけで動きます。音声は端末の音声機能を使います。</div>
 </div>
 <script>
-const PHONICS_OVERRIDES={"cat":"k a t","dog":"d aw g","fish":"f i sh","ship":"sh i p","chair":"ch air","school":"s k oo l","three":"th r ee","night":"n igh t","classroom":"k l a ss r oo m","clock":"k l o k","desk":"d e s k","notebook":"n oh t b oo k","pencil":"p e n s i l","eraser":"ee r a s er","textbook":"t e k s t b oo k","picture":"p i k ch er","computer":"k uh m p y oo t er","train":"t r ai n","bus":"b uh s","car":"k ar","world":"w er l d","country":"k uh n t r ee","Japan":"j uh p a n","the U.S.A.":"th uh y oo ess ay","Canada":"k a n uh d uh","China":"ch ai n uh","Australia":"aw s t r ay l y uh","South Korea":"s ow th k uh r ee uh","the U.K.":"th uh y oo kay","France":"f r a n s","Germany":"j er m uh n ee","Russia":"r uh sh uh","Italy":"i t uh l ee","Spain":"s p ai n","Sunday":"s uh n d ay","Monday":"m uh n d ay","Tuesday":"t oo z d ay","Wednesday":"w e n z d ay","Thursday":"th er z d ay","Friday":"f r ai d ay","Saturday":"s a t er d ay","season":"s ee z uh n","spring":"s p r i ng","summer":"s uh m er","fall":"f aw l","autumn":"aw t uh m","winter":"w i n t er","January":"j a n y oo er ee","February":"f e b r oo er ee","March":"m ar ch","April":"ay p r uh l","May":"m ay","June":"j oo n","July":"j oo l ai","August":"aw g uh s t","September":"s e p t e m b er","October":"o k t oh b er","November":"n oh v e m b er","December":"d i s e m b er","month":"m uh n th","year":"y eer","subject":"s uh b j e k t","English":"i ng g l i sh","Math":"m a th","Japanese":"j a p uh n ee z","Science":"s ai uh n s","Social Studies":"s oh sh uh l s t uh d ee z","Music":"m y oo z i k","Art":"ar t","P.E.":"p ee","Home Economics":"h oh m e k uh n o m i k s","teacher":"t ee ch er","student":"s t oo d uh n t","family":"f a m uh l ee","father":"f ah th er","mother":"m uh th er","parents":"p air uh n t s","brother":"b r uh th er","sister":"s i s t er","child":"ch ai l d","children":"ch i l d r uh n","son":"s uh n","daughter":"d aw t er","grandfather":"g r a n d f ah th er","grandmother":"g r a n d m uh th er","grandparents":"g r a n d p air uh n t s","sport":"s p or t","baseball":"b ay s b aw l","soccer":"s o k er","tennis":"t e n i s","basketball":"b a s k uh t b aw l","volleyball":"v o l ee b aw l","table tennis":"t ay b uh l t e n i s","badminton":"b a d m i n t uh n","golf":"g o l f","swimming":"s w i m i ng","skiing":"s k ee i ng","go":"g oh","meet":"m ee t","eat":"ee t","like":"l ai k","run":"r uh n","sing":"s i ng","swim":"s w i m","stay":"s t ay","ride":"r ai d","walk":"w aw k","have":"h a v","open":"oh p uh n","live":"l i v","know":"n oh","help":"h e l p","play":"p l ay","climb":"k l ai m","bring":"b r i ng","take":"t ay k","watch":"w o ch","see":"s ee","look":"l oo k","read":"r ee d","listen":"l i s uh n","hear":"h eer","make":"m ay k","wear":"w air","wash":"w o sh","hope":"h oh p","ask":"a s k","catch":"k a ch","work":"w er k","get":"g e t","come":"k uh m","do":"d oo","use":"y oo z","speak":"s p ee k","tell":"t e l","talk":"t aw k","try":"t r ai","teach":"t ee ch","study":"s t uh d ee","enjoy":"e n j oi","buy":"b ai","become":"b i k uh m","stop":"s t o p","want":"w o n t","beautiful":"b y oo t uh f uh l","cute":"k y oo t","pretty":"p r i t ee","great":"g r ay t","important":"i m p or t uh n t","popular":"p o p y uh l er","famous":"f ay m uh s","interesting":"i n t er e s t i ng","big":"b i g","small":"s m aw l","tall":"t aw l","high":"h ai","short":"sh or t","long":"l aw ng","too":"t oo","only":"oh n l ee","just":"j uh s t","very":"v e r ee","so":"s oh","always":"aw l w ay z","often":"aw f uh n","sometimes":"s uh m t ai m z","fast":"f a s t","early":"er l ee","hard":"h ar d","well":"w e l","there":"th air","here":"h eer","wagon":"w a g uh n","octopus":"o k t uh p uh s","rocket":"r o k uh t","egg":"e g","question":"k w e s ch uh n","spoon":"s p oo n","kitten":"k i t uh n","zebra":"z ee b r uh","hate":"h ay t","mop":"m o p","bake":"b ay k","take out":"t ay k ow t","paint":"p ay n t","ski":"s k ee","skate":"s k ay t","safe":"s ay f","dangerous":"d ay n j er uh s","late":"l ay t","same":"s ay m","different":"d i f er uh n t","real":"r ee uh l","fake":"f ay k","clean":"k l ee n","hike":"h ai k","write":"r ai t","boring":"b or i ng","exciting":"e k s ai t i ng","alive":"uh l ai v","dead":"d e d","tiny":"t ai n ee","giant":"j ai uh n t","dark":"d ar k","light":"l ai t","brush":"b r uh sh","shop":"sh o p","carry":"k air ee","push":"p oo sh","pinch":"p i n ch","smile":"s m ai l","drive":"d r ai v","close":"k l oh z","drink":"d r i ng k","glue":"g l oo"};
+const FURIGANA={"open":"オウプン","close":"クロウズ","round":"ラウンド","flat":"フラット","poor":"プア","rich":"リッチ","high":"ハイ","low":"ロウ","study":"スタディ","play":"プレイ","enjoy":"エンジョイ","brush":"ブラシ","shop":"ショップ","carry":"キャリー","push":"プッシュ","buy":"バイ","wash":"ウォッシュ","fish":"フィッシュ","pinch":"ピンチ","watch":"ウォッチ","listen":"リスン","have":"ハヴ","know":"ノウ","strong":"ストロング","weak":"ウィーク","short":"ショート","long":"ロング","fixed":"フィクスト","broken":"ブロークン","pretty":"プリティ","ugly":"アグリー","call":"コール","give":"ギヴ","learn":"ラーン","think":"シンク","live":"リヴ","dance":"ダンス","get up":"ゲット アップ","ask":"アスク","closed":"クローズド","early":"アーリー","late":"レイト","expensive":"イクスペンシブ","cheap":"チープ","many":"メニー","few":"フュー","wide":"ワイド","narrow":"ナロウ","bad":"バッド","good":"グッド","fat":"グッド","thin":"シン","careless":"ケアレス","careful":"ケアフル","classroom":"クラスルーム","clock":"クロック","desk":"デスク","chair":"チェア","notebook":"ノートブック","pencil":"ペンシル","eraser":"イレイサー","textbook":"テキストブック","picture":"ピクチャー","computer":"コンピューター","train":"トレイン","bus":"バス","car":"カー","school":"スクール","world":"ワールド","country":"カントリー","Japan":"ジャパン","the U.S.A.":"ザ ユーエスエー","Canada":"カナダ","China":"チャイナ","Australia":"オーストレイリア","South Korea":"サウス コリア","the U.K.":"ザ ユーケイ","France":"フランス","Germany":"ジャーマニー","Russia":"ロシア","Italy":"イタリー","Spain":"スペイン","Sunday":"サンデー","Monday":"マンデー","Tuesday":"チューズデー","Wednesday":"ウェンズデー","Thursday":"サーズデー","Friday":"フライデー","Saturday":"サタデー","season":"シーズン","spring":"スプリング","summer":"サマー","fall":"フォール","autumn":"オータム","winter":"ウィンター","January":"ジャニュアリー","February":"フェブラリー","March":"マーチ","April":"エイプリル","May":"メイ","June":"ジューン","July":"ジュライ","August":"オーガスト","September":"セプテンバー","October":"オクトーバー","November":"ノーベンバー","December":"ディセンバー","month":"マンス","year":"イヤー","subject":"サブジェクト","English":"イングリッシュ","Math":"マス","Japanese":"ジャパニーズ","Science":"サイエンス","Social Studies":"ソーシャル スタディーズ","Music":"ミュージック","Art":"アート","P.E.":"ピーイー","Home Economics":"ホーム エコノミクス","teacher":"ティーチャー","student":"スチューデント","family":"ファミリー","father":"ファーザー","mother":"マザー","parents":"ペアレンツ","brother":"ブラザー","sister":"シスター","child":"チャイルド","children":"チルドレン","son":"サン","daughter":"ドーター","grandfather":"グランドファーザー","grandmother":"グランドマザー","grandparents":"グランドペアレンツ","sport":"スポート","baseball":"ベイスボール","soccer":"サッカー","tennis":"テニス","basketball":"バスケットボール","volleyball":"バレーボール","table tennis":"テーブル テニス","badminton":"バドミントン","golf":"ゴルフ","swimming":"スウィミング","skiing":"スキーイング","go":"ゴウ","meet":"ミート","eat":"イート","like":"ライク","run":"ラン","sing":"シング","swim":"スウィム","stay":"ステイ","ride":"ライド","walk":"ウォーク","help":"ヘルプ","climb":"クライム","bring":"ブリング","take":"テイク","see":"シー","look":"ルック","read":"リード","hear":"ヒア","make":"メイク","wear":"ウェア","hope":"ホウプ","catch":"キャッチ","work":"ワーク","get":"ゲット","come":"カム","do":"ドゥ","use":"ユーズ","speak":"スピーク","tell":"テル","talk":"トーク","try":"トライ","teach":"ティーチ","become":"ビカム","stop":"ストップ","want":"ウォント","beautiful":"ビューティフル","cute":"キュート","great":"グレイト","important":"インポータント","popular":"ポピュラー","famous":"フェイマス","interesting":"インタレスティング","big":"ビッグ","small":"スモール","tall":"トール","too":"トゥー","only":"オンリー","just":"ジャスト","very":"ベリー","so":"ソウ","always":"オールウェイズ","often":"オフン","sometimes":"サムタイムズ","fast":"ファスト","hard":"ハード","well":"ウェル","there":"ゼア","here":"ヒア","wagon":"ワゴン","octopus":"オクトパス","rocket":"ロケット","egg":"エッグ","question":"クエスチョン","spoon":"スプーン","kitten":"キトン","zebra":"ズィーブラ","hate":"ヘイト","mop":"モップ","bake":"ベイク","take out":"テイク アウト","paint":"ペイント","ski":"スキー","skate":"スケート","safe":"セイフ","dangerous":"デインジャラス","same":"セイム","different":"ディファレント","real":"リアル","fake":"フェイク","clean":"クリーン","hike":"ハイク","write":"ライト","boring":"ボーリング","exciting":"エキサイティング","alive":"アライブ","dead":"デッド","tiny":"タイニー","giant":"ジャイアント","dark":"ダーク","light":"ライト","smile":"スマイル","drive":"ドライブ","drink":"ドリンク","glue":"グルー"};
+const PHONICS_OVERRIDES={"cat":"k a t","dog":"d aw g","fish":"f i sh","ship":"sh i p","chair":"ch air","school":"s k oo l","three":"th r ee","night":"n igh t","classroom":"k l a ss r oo m","clock":"k l o k","desk":"d e s k","notebook":"n oh t b oo k","pencil":"p e n s i l","eraser":"ee r a s er","textbook":"t e k s t b oo k","picture":"p i k ch er","computer":"k uh m p y oo t er","train":"t r ai n","bus":"b uh s","car":"k ar","world":"w er l d","country":"k uh n t r ee","Japan":"j uh p a n","the U.S.A.":"th uh y oo ess ay","Canada":"k a n uh d uh","China":"ch ai n uh","Australia":"aw s t r ay l y uh","South Korea":"s ow th k uh r ee uh","the U.K.":"th uh y oo kay","France":"f r a n s","Germany":"j er m uh n ee","Russia":"r uh sh uh","Italy":"i t uh l ee","Spain":"s p ai n","Sunday":"s uh n d ay","Monday":"m uh n d ay","Tuesday":"t oo z d ay","Wednesday":"w e n z d ay","Thursday":"th er z d ay","Friday":"f r ai d ay","Saturday":"s a t er d ay","season":"s ee z uh n","spring":"s p r i ng","summer":"s uh m er","fall":"f aw l","autumn":"aw t uh m","winter":"w i n t er","January":"j a n y oo er ee","February":"f e b r oo er ee","March":"m ar ch","April":"ay p r uh l","May":"m ay","June":"j oo n","July":"j oo l ai","August":"aw g uh s t","September":"s e p t e m b er","October":"o k t oh b er","November":"n oh v e m b er","December":"d i s e m b er","month":"m uh n th","year":"y eer","subject":"s uh b j e k t","English":"i ng g l i sh","Math":"m a th","Japanese":"j a p uh n ee z","Science":"s ai uh n s","Social Studies":"s oh sh uh l s t uh d ee z","Music":"m y oo z i k","Art":"ar t","P.E.":"p ee","Home Economics":"h oh m e k uh n o m i k s","teacher":"t ee ch er","student":"s t oo d uh n t","family":"f a m uh l ee","father":"f ah th er","mother":"m uh th er","parents":"p air uh n t s","brother":"b r uh th er","sister":"s i s t er","child":"ch ai l d","children":"ch i l d r uh n","son":"s uh n","daughter":"d aw t er","grandfather":"g r a n d f ah th er","grandmother":"g r a n d m uh th er","grandparents":"g r a n d p air uh n t s","sport":"s p or t","baseball":"b ay s b aw l","soccer":"s o k er","tennis":"t e n i s","basketball":"b a s k uh t b aw l","volleyball":"v o l ee b aw l","table tennis":"t ay b uh l t e n i s","badminton":"b a d m i n t uh n","golf":"g o l f","swimming":"s w i m i ng","skiing":"s k ee i ng","go":"g oh","meet":"m ee t","eat":"ee t","like":"l ai k","run":"r uh n","sing":"s i ng","swim":"s w i m","stay":"s t ay","ride":"r ai d","walk":"w aw k","have":"h a v","open":"oh p uh n","live":"l i v","know":"n oh","help":"h e l p","play":"p l ay","climb":"k l ai m","bring":"b r i ng","take":"t ay k","watch":"w o ch","see":"s ee","look":"l oo k","read":"r ee d","listen":"l i s uh n","hear":"h eer","make":"m ay k","wear":"w air","wash":"w o sh","hope":"h oh p","ask":"a s k","catch":"k a ch","work":"w er k","get":"g e t","come":"k uh m","do":"d oo","use":"y oo z","speak":"s p ee k","tell":"t e l","talk":"t aw k","try":"t r ai","teach":"t ee ch","study":"s t uh d ee","enjoy":"e n j oi","buy":"b ai","become":"b i k uh m","stop":"s t o p","want":"w o n t","beautiful":"b y oo t uh f uh l","cute":"k y oo t","pretty":"p r i t ee","great":"g r ay t","important":"i m p or t uh n t","popular":"p o p y uh l er","famous":"f ay m uh s","interesting":"i n t er e s t i ng","big":"b i g","small":"s m aw l","tall":"t aw l","high":"h ai","short":"sh or t","long":"l aw ng","too":"t oo","only":"oh n l ee","just":"j uh s t","very":"v e r ee","so":"s oh","always":"aw l w ay z","often":"aw f uh n","sometimes":"s uh m t ai m z","fast":"f a s t","early":"er l ee","hard":"h ar d","well":"w e l","there":"th air","here":"h eer","wagon":"w a g uh n","octopus":"o k t uh p uh s","rocket":"r o k uh t","egg":"e g","question":"k w e s ch uh n","spoon":"s p oo n","kitten":"k i t uh n","zebra":"z ee b r uh","hate":"h ay t","mop":"m o p","bake":"b ay k","take out":"t ay k ow t","paint":"p ay n t","ski":"s k ee","skate":"s k ay t","safe":"s ay f","dangerous":"d ay n j er uh s","late":"l ay t","same":"s ay m","different":"d i f er uh n t","real":"r ee uh l","fake":"f ay k","clean":"k l ee n","hike":"h ai k","write":"r ai t","boring":"b or i ng","exciting":"e k s ai t i ng","alive":"uh l ai v","dead":"d e d","tiny":"t ai n ee","giant":"j ai uh n t","dark":"d ar k","light":"l ai t","brush":"b r uh sh","shop":"sh o p","carry":"k air ee","push":"p oo sh","pinch":"p i n ch","smile":"s m ai l","drive":"d r ai v","close":"k l oh z","drink":"d r i ng k","glue":"g l oo","round":"r ow n d","flat":"f l a t","poor":"p or","rich":"r i ch","low":"l oh","strong":"s t r aw ng","weak":"w ee k","fixed":"f i k s t","broken":"b r oh k uh n","ugly":"uh g l ee","call":"k aw l","give":"g i v","learn":"l er n","think":"th i ng k","dance":"d a n s","get up":"g e t uh p","closed":"k l oh z d","expensive":"e k s p e n s i v","cheap":"ch ee p","many":"m e n ee","few":"f y oo","wide":"w ai d","narrow":"n a r oh","bad":"b a d","good":"g oo d","fat":"f a t","thin":"th i n","careless":"k air l e s","careful":"k air f uh l"};
 const DEFAULT_WORDS=[
  {"en":"wagon","jp":"ワゴン","emoji":"🛒","stars":5},
  {"en":"octopus","jp":"たこ","emoji":"🐙","stars":1},
@@ -217,6 +565,61 @@ const DEFAULT_WORDS=[
 {"en":"glue","jp":"のりでつける","emoji":"🧴","stars":0},
 {"en":"sing","jp":"歌う","emoji":"🎤","stars":0},
 {"en":"open","jp":"開ける","emoji":"📖","stars":0},
+{"en":"open","jp":"開いている","emoji":"🚪","stars":0},
+{"en":"close","jp":"閉じる","emoji":"🚪","stars":0},
+{"en":"round","jp":"丸い","emoji":"⚪","stars":0},
+{"en":"flat","jp":"平らな","emoji":"➖","stars":0},
+{"en":"poor","jp":"貧しい","emoji":"🪙","stars":0},
+{"en":"rich","jp":"裕福な","emoji":"💰","stars":0},
+{"en":"high","jp":"高い","emoji":"⬆️","stars":0},
+{"en":"low","jp":"低い","emoji":"⬇️","stars":0},
+{"en":"study","jp":"勉強する","emoji":"📚","stars":0},
+{"en":"play","jp":"遊ぶ","emoji":"🛝","stars":0},
+{"en":"enjoy","jp":"楽しむ","emoji":"😊","stars":0},
+{"en":"brush","jp":"ブラシをかける","emoji":"🪮","stars":0},
+{"en":"shop","jp":"買い物をする","emoji":"🛍️","stars":0},
+{"en":"carry","jp":"運ぶ","emoji":"📦","stars":0},
+{"en":"push","jp":"押す","emoji":"👉","stars":0},
+{"en":"buy","jp":"買う","emoji":"🛒","stars":0},
+{"en":"wash","jp":"洗う","emoji":"🧼","stars":0},
+{"en":"fish","jp":"魚を釣る","emoji":"🎣","stars":0},
+{"en":"pinch","jp":"つまむ","emoji":"🤏","stars":0},
+{"en":"watch","jp":"見る","emoji":"📺","stars":0},
+{"en":"listen","jp":"聞く","emoji":"🎧","stars":0},
+{"en":"have","jp":"持っている","emoji":"🤲","stars":0},
+{"en":"know","jp":"知っている","emoji":"💡","stars":0},
+{"en":"strong","jp":"強い","emoji":"💪","stars":0},
+{"en":"weak","jp":"弱い","emoji":"🪫","stars":0},
+{"en":"short","jp":"短い","emoji":"↔️","stars":0},
+{"en":"long","jp":"長い","emoji":"📏","stars":0},
+{"en":"fixed","jp":"直っている","emoji":"🔧","stars":0},
+{"en":"broken","jp":"壊れている","emoji":"💔","stars":0},
+{"en":"pretty","jp":"かわいい","emoji":"🌷","stars":0},
+{"en":"ugly","jp":"みにくい","emoji":"👹","stars":0},
+{"en":"call","jp":"呼ぶ、電話する","emoji":"📞","stars":0},
+{"en":"give","jp":"あげる","emoji":"🎁","stars":0},
+{"en":"learn","jp":"学ぶ","emoji":"📖","stars":0},
+{"en":"think","jp":"考える","emoji":"🤔","stars":0},
+{"en":"live","jp":"住む","emoji":"🏠","stars":0},
+{"en":"dance","jp":"踊る","emoji":"💃","stars":0},
+{"en":"get up","jp":"起きる","emoji":"⏰","stars":0},
+{"en":"ask","jp":"たずねる","emoji":"❓","stars":0},
+{"en":"open","jp":"開いている","emoji":"🚪","stars":0},
+{"en":"closed","jp":"閉まっている","emoji":"🔒","stars":0},
+{"en":"early","jp":"早い","emoji":"🌅","stars":0},
+{"en":"late","jp":"遅い","emoji":"⏰","stars":0},
+{"en":"expensive","jp":"高価な","emoji":"💎","stars":0},
+{"en":"cheap","jp":"安い","emoji":"🏷️","stars":0},
+{"en":"many","jp":"たくさんの","emoji":"🔢","stars":0},
+{"en":"few","jp":"少しの","emoji":"🤏","stars":0},
+{"en":"wide","jp":"広い","emoji":"↔️","stars":0},
+{"en":"narrow","jp":"狭い","emoji":"↕️","stars":0},
+{"en":"bad","jp":"悪い","emoji":"👎","stars":0},
+{"en":"good","jp":"良い","emoji":"👍","stars":0},
+{"en":"fat","jp":"太った","emoji":"🐻","stars":0},
+{"en":"thin","jp":"やせた","emoji":"🪶","stars":0},
+{"en":"careless","jp":"不注意な","emoji":"⚠️","stars":0},
+{"en":"careful","jp":"注意深い","emoji":"🔎","stars":0},
  {"en":"brush","jp":"髪をとかす","emoji":"🪥","stars":0},
  {"en":"shop","jp":"買い物をする","emoji":"🛍️","stars":0},
  {"en":"carry","jp":"運ぶ","emoji":"👜","stars":0},
@@ -410,6 +813,37 @@ const EMOJI_BY_WORD={"hate":"😡","mop":"🧹","bake":"🥐","take out":"📦",
 words.forEach(w=>{ if(!w.emoji && EMOJI_BY_WORD[w.en]) w.emoji=EMOJI_BY_WORD[w.en]; });
 let idx=0;
 let practiceMode='hint';
+let activeTest='all';
+let selectedIndices=[];
+let selectedPos=0;
+let selectingKind='W';
+function testRange(kind){
+  if(kind==='all') return {start:0,end:Math.max(0,words.length-1)};
+  const wagon=words.findIndex(w=>String(w.en).toLowerCase()==='wagon');
+  const light=words.findIndex(w=>String(w.en).toLowerCase()==='light');
+  let careful=-1;
+  if(light>=0) careful=words.findIndex((w,n)=>n>light && String(w.en).toLowerCase()==='careful');
+  if(wagon<0 || careful<wagon) return {start:0,end:-1};
+  if(kind==='W') return {start:wagon,end:careful};
+  return {start:careful+1,end:Math.max(careful,words.length-1)};
+}
+function applyTest(kind){
+  activeTest=kind;
+  const r=testRange(kind);
+  if(r.end>=r.start) idx=r.start;
+  document.querySelectorAll('.weekly').forEach(b=>b.classList.toggle('active-test', (kind==='W'&&b.id==='wtest') || (kind==='J'&&b.id==='jtest')));
+  renderStudy();
+}
+function moveTest(delta){
+  const r=testRange(activeTest);
+  if(r.end<r.start){ idx=(idx+delta+words.length)%words.length; return; }
+  idx=Math.min(r.end,Math.max(r.start,idx+delta));
+}
+function randomTestIndex(){
+  const r=testRange(activeTest);
+  if(r.end<r.start) return Math.floor(Math.random()*words.length);
+  return r.start+Math.floor(Math.random()*(r.end-r.start+1));
+}
 
 function flagSvg(code){
  const svgs={
@@ -459,16 +893,15 @@ function speakPhonics(word){
   u.lang='en-US'; u.rate=.72; speechSynthesis.speak(u);
 }
 function speakThreeTimes(text, boxes){
-  if(!('speechSynthesis' in window)){ boxes.forEach(b=>b.disabled=false); if(boxes[0]) boxes[0].focus(); return; }
-  boxes.forEach(b=>b.disabled=true); speechSynthesis.cancel();
-  const p=new SpeechSynthesisUtterance(phonicsText(text)); p.lang='en-US'; p.rate=.72;
-  p.onend=()=>{
-    boxes.forEach(b=>b.disabled=false); if(boxes[0]) boxes[0].focus();
-    const a=new SpeechSynthesisUtterance(text); a.lang='en-US'; a.rate=.82;
-    a.onend=()=>{ const b=new SpeechSynthesisUtterance(text); b.lang='en-US'; b.rate=.82; speechSynthesis.speak(b); };
-    speechSynthesis.speak(a);
-  };
-  speechSynthesis.speak(p);
+  boxes.forEach(b=>b.disabled=false);
+  if(!('speechSynthesis' in window)) return;
+  speechSynthesis.cancel();
+  const first=new SpeechSynthesisUtterance(text);
+  first.lang='en-US'; first.rate=.82;
+  const second=new SpeechSynthesisUtterance(text);
+  second.lang='en-US'; second.rate=.82;
+  first.onend=()=>speechSynthesis.speak(second);
+  speechSynthesis.speak(first);
 }
 
 function phonicsCue(word){
@@ -496,35 +929,116 @@ function speakTwiceAndUnlock(text, boxes){
 }
 function save(){localStorage.setItem(SAVED_WORDS_KEY,JSON.stringify(words));}
 function current(){return words[idx]||words[0];}
+function selectedMode(){return activeTest==='selectedW'||activeTest==='selectedJ';}
+function selectedNext(delta=1){
+ if(!selectedIndices.length)return;
+ selectedPos=(selectedPos+delta+selectedIndices.length)%selectedIndices.length;
+ idx=selectedIndices[selectedPos];
+}
+function showSelector(kind){
+ selectingKind=kind;
+ const r=testRange(kind);
+ const list=$('#selectWords'); list.innerHTML='';
+ for(let i=r.start;i<=r.end;i++){
+   const w=words[i]; const lab=document.createElement('label'); lab.className='select-word';
+   lab.innerHTML=`<input type="checkbox" data-select-index="${i}"><span>${esc(w.en)}<br><small>${esc(w.jp)}</small></span>`;
+   list.appendChild(lab);
+ }
+ $('#selectorTitle').textContent=(kind==='W'?'📘 W英語':'📗 J英語')+'：テストする単語を選ぶ';
+ $('#study').style.display='none'; $('#list').style.display='none'; $('#selector').style.display='block';
+}
+
 function textbookForIndex(i){
-  let wagonIndex=words.findIndex(w=>w.en.toLowerCase()==='wagon');
-  let lightIndex=words.findIndex(w=>w.en.toLowerCase()==='light');
-  let boundaryOpen=-1;
-  if(lightIndex>=0){
-    boundaryOpen=words.findIndex((w,n)=>n>lightIndex && w.en.toLowerCase()==='open');
-  }
-  if(wagonIndex>=0 && boundaryOpen>=wagonIndex && i>=wagonIndex && i<=boundaryOpen) return 'W';
-  return 'J';
+  const r=testRange('W');
+  return (r.end>=r.start && i>=r.start && i<=r.end) ? 'W' : 'J';
 }
 function makeLetters(word){
   const a=word.toLowerCase().split('');
   for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}
   return a;
 }
+const RUBY_GROUPS={"wagon":[["ワ","wa"],["ゴ","go"],["ン","n"]],"octopus":[["オク","oc"],["ト","to"],["パス","pus"]],"rocket":[["ロ","ro"],["ケット","cket"]],"apple":[["ア","a"],["ッ","pp"],["プル","le"]],"smile":[["スマ","smi"],["イル","le"]],"drive":[["ドラ","dri"],["イブ","ve"]],"close":[["クロ","clo"],["ウズ","se"]],"drink":[["ドリ","dri"],["ンク","nk"]],"glue":[["グルー","glue"]],"school":[["スク","sch"],["ー","oo"],["ル","l"]],"chair":[["チェ","ch"],["ア","air"]],"train":[["トレ","tr"],["イン","ain"]],"country":[["カン","coun"],["トリー","try"]],"japan":[["ジャ","ja"],["パン","pan"]],"canada":[["カ","ca"],["ナ","na"],["ダ","da"]],"china":[["チャ","chi"],["イ","n"],["ナ","a"]],"australia":[["オー","aus"],["ストレイ","tra"],["リア","lia"]],"france":[["フラ","fr"],["ンス","ance"]],"germany":[["ジャー","ger"],["マ","ma"],["ニー","ny"]],"italy":[["イ","i"],["タ","ta"],["リー","ly"]],"spain":[["スペ","spa"],["イン","in"]],"sunday":[["サン","sun"],["デー","day"]],"monday":[["マン","mon"],["デー","day"]],"tuesday":[["チューズ","tue"],["デー","sday"]],"friday":[["フライ","fri"],["デー","day"]],"saturday":[["サタ","sat"],["デー","urday"]],"spring":[["スプ","sp"],["リング","ring"]],"summer":[["サ","sum"],["マー","mer"]],"winter":[["ウィン","win"],["ター","ter"]],"january":[["ジャ","jan"],["ニュ","uar"],["アリー","y"]],"february":[["フェ","feb"],["ブラ","ru"],["リー","ary"]],"march":[["マー","mar"],["チ","ch"]],"april":[["エイ","ap"],["プリル","ril"]],"june":[["ジューン","june"]],"july":[["ジュ","ju"],["ライ","ly"]],"august":[["オー","au"],["ガ","gus"],["スト","t"]],"september":[["セプ","sep"],["テン","tem"],["バー","ber"]],"october":[["オク","oc"],["トー","to"],["バー","ber"]],"november":[["ノウ","nov"],["ベン","em"],["バー","ber"]],"december":[["ディ","dec"],["セン","em"],["バー","ber"]],"month":[["マ","mo"],["ンス","nth"]],"year":[["イア","year"]],"english":[["イン","en"],["グリ","gli"],["ッシュ","sh"]],"teacher":[["ティー","tea"],["チャ","ch"],["ー","er"]],"student":[["ステュ","stu"],["ーデン","dent"],["ト",""]],"family":[["ファ","fam"],["ミ","i"],["リー","ly"]],"father":[["ファ","fa"],["ー","th"],["ザー","er"]],"mother":[["マ","mo"],["ザー","ther"]],"brother":[["ブラ","bro"],["ザー","ther"]],"sister":[["シ","si"],["スター","ster"]],"children":[["チル","chil"],["ドレン","dren"]],"grandfather":[["グラン","grand"],["ファー","fa"],["ザー","ther"]],"grandmother":[["グラン","grand"],["マ","mo"],["ザー","ther"]],"baseball":[["ベース","base"],["ボール","ball"]],"soccer":[["サッ","soc"],["カー","cer"]],"tennis":[["テ","ten"],["ニス","nis"]],"basketball":[["バス","bas"],["ケッ","ket"],["ト","t"],["ボール","ball"]],"volleyball":[["バレー","volley"],["ボール","ball"]],"swimming":[["スウィ","swim"],["ミング","ming"]],"skiing":[["スキー","ski"],["イング","ing"]],"meet":[["ミート","meet"]],"eat":[["イート","eat"]],"like":[["ライク","like"]],"run":[["ラン","run"]],"sing":[["シング","sing"]],"swim":[["スウィム","swim"]],"stay":[["ステイ","stay"]],"ride":[["ライド","ride"]],"walk":[["ウォーク","walk"]],"have":[["ハ","ha"],["ヴ","ve"]],"open":[["オウ","op"],["プン","en"]],"live":[["リ","li"],["ヴ","ve"]],"know":[["ノウ","know"]],"help":[["ヘルプ","help"]],"play":[["プレイ","play"]],"climb":[["クライム","climb"]],"bring":[["ブリング","bring"]],"take":[["テイク","take"]],"watch":[["ウォッ","wat"],["チ","ch"]],"see":[["シー","see"]],"look":[["ルック","look"]],"read":[["リード","read"]],"listen":[["リ","lis"],["スン","ten"]],"hear":[["ヒア","hear"]],"make":[["メイク","make"]],"wear":[["ウェア","wear"]],"wash":[["ウォッ","was"],["シュ","h"]],"hope":[["ホウプ","hope"]],"ask":[["アスク","ask"]],"catch":[["キャッ","cat"],["チ","ch"]],"work":[["ワーク","work"]],"get":[["ゲット","get"]],"come":[["カム","come"]],"do":[["ドゥ","do"]],"use":[["ユーズ","use"]],"speak":[["スピーク","speak"]],"tell":[["テル","tell"]],"talk":[["トーク","talk"]],"try":[["トライ","try"]],"teach":[["ティーチ","teach"]],"study":[["スタ","stu"],["ディ","dy"]],"enjoy":[["エン","en"],["ジョイ","joy"]],"buy":[["バイ","buy"]],"become":[["ビ","be"],["カム","come"]],"stop":[["ストップ","stop"]],"want":[["ウォント","want"]],"beautiful":[["ビュー","beau"],["ティ","ti"],["フル","ful"]],"cute":[["キュート","cute"]],"pretty":[["プリ","pre"],["ティ","tty"]],"great":[["グレイト","great"]],"important":[["イン","im"],["ポー","por"],["タント","tant"]],"popular":[["ポ","pop"],["ピュ","pu"],["ラー","lar"]],"famous":[["フェイ","fam"],["マス","ous"]],"interesting":[["イン","in"],["タ","ter"],["レス","est"],["ティング","ing"]],"small":[["スモール","small"]],"tall":[["トール","tall"]],"high":[["ハイ","high"]],"short":[["ショート","short"]],"long":[["ロング","long"]],"always":[["オール","al"],["ウェイ","way"],["ズ","s"]],"often":[["オフ","of"],["ン","ten"]],"sometimes":[["サム","some"],["タイムズ","times"]],"early":[["アー","ear"],["リー","ly"]],"there":[["ゼア","there"]],"here":[["ヒア","here"]]};
 function renderStudy(){
  if(!words.length){$('#leftCard').innerHTML='<div class="empty">たんごがありません。<br>「たんごリスト」から追加してね。</div>';$('#progress').textContent='';return;}
  const w=current();
  const tb=textbookForIndex(idx);
  const badge=$('#textbookBadge');
  if(badge){badge.textContent=tb==='W'?'📘 W英語':'📗 J英語';badge.className='textbook-badge'+(tb==='J'?' j':'');}
- $('#progress').textContent=`${idx+1} / ${words.length} たんご　　★ ${w.stars||0}`;
+ let localNo,localTotal;
+ if(selectedMode()){localNo=selectedPos+1;localTotal=selectedIndices.length;}
+ else{const range=testRange(activeTest);localNo=(range.end>=range.start)?(idx-range.start+1):(idx+1);localTotal=(range.end>=range.start)?(range.end-range.start+1):words.length;}
+ $('#progress').textContent=`${localNo} / ${localTotal} たんご　　★ ${w.stars||0}`;
  const left=$('#leftCard'); left.innerHTML='';
  const fullChars=w.en.toLowerCase().split('');
  const letters=fullChars.filter(ch=>/[a-z]/.test(ch));
  let alphaPos=0;
- const displayCells=fullChars.map(ch=>/[a-z]/.test(ch)
-   ? `<input class="letterbox" maxlength="1" data-pos="${alphaPos++}" inputmode="latin" autocomplete="off" spellcheck="false" />`
-   : `<span class="autoch">${ch===' ' ? '&nbsp;' : esc(ch)}</span>`).join('');
+ function perLetterReading(word){
+  const reading=String(FURIGANA[word]||'');
+  const chars=String(word).toLowerCase().split('');
+  const alphaCount=chars.filter(c=>/[a-z]/.test(c)).length;
+  const kana=Array.from(reading.replace(/\s+/g,''));
+  if(!alphaCount) return [];
+  const out=Array(alphaCount).fill('');
+  for(let i=0;i<kana.length;i++){
+    const pos=Math.min(alphaCount-1, Math.floor(i*alphaCount/kana.length));
+    out[pos]+=kana[i];
+  }
+  return out;
+}
+const normalizedWord=w.en.toLowerCase();
+ alphaPos=0;
+ const charReadings=Array.isArray(w.furiganaChars)?w.furiganaChars.map(x=>String(x.reading||'')):[];
+ const hasCharReadings=charReadings.length>0;
+ const explicitGroups=(!hasCharReadings && w.furiganaSegments&&w.furiganaSegments.length)?w.furiganaSegments.map(x=>[x.reading,x.letters]):(!hasCharReadings?RUBY_GROUPS[normalizedWord]:null);
+ let displayCells='';
+ let p=0;
+ if(hasCharReadings){
+   displayCells=fullChars.map((ch,k)=>{
+     if(/[a-z]/.test(ch)){
+       const r=charReadings[k]||'';
+       const pp=alphaPos++;
+       return `<span class="furigana-cell grouped"><span class="furigana-above">${esc(r)}</span><input class="letterbox" maxlength="1" data-pos="${pp}" inputmode="none" autocomplete="off" spellcheck="false" /></span>`;
+     }
+     return `<span class="autoch separator">${ch===' ' ? '&nbsp;' : esc(ch)}</span>`;
+   }).join('');
+ }else if(explicitGroups){
+   for(const [reading,lettersText] of explicitGroups){
+     // Before each reading group, copy spaces/punctuation from the original
+     // word as independent cells. They must not count as part of the reading.
+     while(p<fullChars.length && !/[a-z]/.test(fullChars[p])){
+       const sep=fullChars[p++];
+       displayCells+=`<span class="autoch separator">${sep===' ' ? '&nbsp;' : esc(sep)}</span>`;
+     }
+     const wanted=String(lettersText||'').toLowerCase().replace(/[^a-z]/g,'');
+     displayCells+=`<span class="furigana-cell grouped"><span class="furigana-above">${esc(reading)}</span><span class="group-inputs">`;
+     let used=0;
+     while(p<fullChars.length && used<wanted.length){
+       const ch=fullChars[p];
+       if(/[a-z]/.test(ch)){
+         displayCells+=`<input class="letterbox" maxlength="1" data-pos="${alphaPos++}" inputmode="none" autocomplete="off" spellcheck="false" />`;
+         used++; p++;
+       }else{
+         break;
+       }
+     }
+     displayCells+='</span></span>';
+   }
+   // Render any remaining characters, preserving spaces/punctuation.
+   for(let k=p;k<fullChars.length;k++){
+     const ch=fullChars[k];
+     if(/[a-z]/.test(ch)){
+       displayCells+=`<span class="furigana-cell"><span class="furigana-above"></span><input class="letterbox" maxlength="1" data-pos="${alphaPos++}" inputmode="none" autocomplete="off" spellcheck="false" /></span>`;
+     }else{
+       displayCells+=`<span class="autoch separator">${ch===' ' ? '&nbsp;' : esc(ch)}</span>`;
+     }
+   }
+ }else{
+   const readings=perLetterReading(w.en);
+   alphaPos=0;
+   displayCells=fullChars.map(ch=>/[a-z]/.test(ch)
+     ? (()=>{const pp=alphaPos++; const r=readings[pp]||''; return `<span class="furigana-cell"><span class="furigana-above">${esc(r)}</span><input class="letterbox" maxlength="1" data-pos="${pp}" inputmode="none" autocomplete="off" spellcheck="false" /></span>`;})()
+     : `<span class="autoch">${ch===' ' ? '&nbsp;' : esc(ch)}</span>`).join('');
+ }
  left.innerHTML=`<div class="prompt">日本語と絵を見て、英語をタイピングしてみよう！</div><div class="big">${emojiOrFlag(w.emoji)}</div><div class="jp">${esc(w.jp)}</div><div class="letterboxes" id="letterboxes">${displayCells}</div><div class="actions"><button class="btn secondary" id="clearBtn">↶ けす</button></div><div id="letterbank" class="letterbank"></div><div id="hintnote" class="hintnote"></div><div id="feedback" class="feedback"></div>`;
  const boxes=[...document.querySelectorAll('.letterbox')];
  let solved=false;
@@ -532,39 +1046,64 @@ function renderStudy(){
  const hintnote=$('#hintnote');
  const feedback=$('#feedback');
  const getExpected=i=>letters[i]||'';
+ const mistakeCounts=Array(boxes.length).fill(0);
+ const letterboxesEl=$('#letterboxes');
+ if(letterboxesEl) letterboxesEl.classList.toggle('hide-furigana', practiceMode==='nohint');
  if(practiceMode==='hint'){ hintnote.textContent='💡 正解の単語の文字だけがランダムに出るよ。'; }else{ $('#letterbank').style.display='none'; hintnote.textContent='⭐ ヒントなしで挑戦しよう！'; }
- const markWrong=box=>{box.style.background='#fff0f4';box.style.borderColor='#e65777';feedback.textContent='❌ ちがうよ！';feedback.className='feedback bad';};
+ const markWrong=(box,i)=>{
+   mistakeCounts[i]=(mistakeCounts[i]||0)+1;
+   box.style.background='#fff0f4';box.style.borderColor='#e65777';
+   feedback.textContent=mistakeCounts[i]>=2?'💡 2回まちがえたので、うすく答えを出したよ。':'❌ ちがうよ！';
+   feedback.className='feedback bad';
+   if(mistakeCounts[i]>=2){
+     box.value=getExpected(i);
+     box.setAttribute('value',getExpected(i));
+     box.classList.add('answer-hint');
+     setTimeout(()=>{box.focus();box.select();},0);
+   }
+ };
  const markRight=box=>{box.style.background='#e9fff3';box.style.borderColor='#69d59b';feedback.textContent='⭕ あってるよ！';feedback.className='feedback good';};
- const consumeHintChar=ch=>{
-   const btn=[...bank.querySelectorAll('.letterbtn')].find(b=>b.dataset.ch===ch);
-   if(btn) btn.remove();
+ const syncHintBank=()=>{
+   if(practiceMode!=='hint' || bank.style.display==='none')return;
+   // Rebuild the bank from the exact multiset of letters still unanswered.
+   // This handles duplicate letters reliably (e.g. school, classroom).
+   const remaining=[];
+   boxes.forEach((box,i)=>{
+     const typed=String(box.value||'').toLowerCase();
+     if(typed!==getExpected(i)) remaining.push(getExpected(i));
+   });
+   // Keep the remaining letters shuffled.
+   for(let i=remaining.length-1;i>0;i--){
+     const j=Math.floor(Math.random()*(i+1));
+     [remaining[i],remaining[j]]=[remaining[j],remaining[i]];
+   }
+   bank.innerHTML='';
+   remaining.forEach((ch,n)=>{
+     const b=document.createElement('button');
+     b.className='letterbtn'; b.textContent=ch; b.dataset.ch=ch; b.dataset.n=String(n);
+     b.onclick=()=>{const next=boxes.findIndex((x,k)=>String(x.value||'').toLowerCase()!==getExpected(k));if(next>=0)fillBox(next,ch,b);};
+     bank.appendChild(b);
+   });
  };
- const restoreHintChar=ch=>{
-   if(practiceMode!=='hint' || bank.style.display==='none' || !ch)return;
-   const b=document.createElement('button');
-   b.className='letterbtn';
-   b.textContent=ch;
-   b.dataset.ch=ch;
-   b.dataset.n=String(bank.querySelectorAll('.letterbtn').length);
-   b.onclick=()=>{const next=boxes.findIndex(x=>!x.value); if(next>=0)fillBox(next,ch,b);};
-   bank.appendChild(b);
- };
+ const consumeHintChar=ch=>{ syncHintBank(); };
+ const restoreHintChar=ch=>{ syncHintBank(); };
  const fillBox=(i,ch,sourceButton=null)=>{
    if(i>=boxes.length)return;
    ch=String(ch).toLowerCase().replace(/[^a-z]/g,'').slice(0,1); if(!ch)return;
-   const box=boxes[i]; box.value=ch; box.setAttribute("value",ch); box.style.webkitTextFillColor="#4b64d9"; box.style.color="#4b64d9"; box.style.opacity="1";
+   const box=boxes[i]; box.classList.remove('answer-hint'); box.value=ch; box.setAttribute("value",ch); box.style.webkitTextFillColor="#4b64d9"; box.style.color="#4b64d9"; box.style.opacity="1";
    if(ch===getExpected(i)){
-     if(sourceButton)sourceButton.remove(); else if(practiceMode==='hint' && bank.style.display!=='none')consumeHintChar(ch);
      markRight(box);
+     if(practiceMode==='hint' && bank.style.display!=='none')syncHintBank();
      if(i===boxes.length-1)checkBoxes(); else boxes[i+1].focus();
-   }else{ markWrong(box); box.focus(); }
+   }else{ markWrong(box,i); box.focus(); }
  };
  boxes.forEach((box,i)=>box.addEventListener('input',()=>{
+   box.classList.remove('answer-hint');
    const ch=box.value.replace(/[^a-zA-Z]/g,'').slice(0,1).toLowerCase(); box.value=ch; box.setAttribute("value",ch); box.style.webkitTextFillColor="#4b64d9"; box.style.color="#4b64d9"; box.style.opacity="1"; if(!ch)return;
    if(ch===getExpected(i)){
-     if(practiceMode==='hint' && bank.style.display!=='none')consumeHintChar(ch);
-     markRight(box); if(i===boxes.length-1)checkBoxes(); else boxes[i+1].focus();
-   }else{ markWrong(box); box.focus(); }
+     markRight(box);
+     if(practiceMode==='hint' && bank.style.display!=='none')syncHintBank(); if(i===boxes.length-1)checkBoxes(); else boxes[i+1].focus();
+   }else{ markWrong(box,i); box.focus(); }
  }));
  boxes.forEach((box,i)=>box.addEventListener('keydown',e=>{
    if(e.key==='Backspace'){
@@ -573,9 +1112,10 @@ function renderStudy(){
        const old=box.value.toLowerCase();
        const expected=getExpected(i);
        box.value='';
+       box.classList.remove('answer-hint');
        box.style.background='#fff';
        box.style.borderColor='#dfe7ff';
-       if(practiceMode==='hint' && old===expected) restoreHintChar(old);
+       if(practiceMode==='hint' && old===expected) syncHintBank();
        feedback.textContent='';
        feedback.className='feedback';
        box.focus();
@@ -585,8 +1125,8 @@ function renderStudy(){
    }
  }));
  const renderHintBank=()=>{
-   bank.style.display='flex'; bank.innerHTML='';
-   makeLetters(w.en.replace(/[^a-zA-Z]/g,'')).forEach((ch,n)=>{const b=document.createElement('button'); b.className='letterbtn'; b.textContent=ch; b.dataset.ch=ch; b.dataset.n=n; b.onclick=()=>{const next=boxes.findIndex(x=>!x.value); if(next>=0)fillBox(next,ch,b);}; bank.appendChild(b);});
+   bank.style.display='flex';
+   syncHintBank();
  };
  if(practiceMode==='hint'){
    renderHintBank();
@@ -599,9 +1139,10 @@ function renderStudy(){
    const old=box.value.toLowerCase();
    const expected=getExpected(target);
    box.value='';
+   box.classList.remove('answer-hint');
    box.style.background='#fff';
    box.style.borderColor='#dfe7ff';
-   if(practiceMode==='hint' && old===expected) restoreHintChar(old);
+   if(practiceMode==='hint' && old===expected) syncHintBank();
    feedback.textContent='';
    feedback.className='feedback';
    box.focus();
@@ -620,16 +1161,113 @@ function checkBoxes(){
    boxes.forEach((b,i)=>{b.style.background=b.value===expected[i]?'#e9fff3':'#fff0f4';b.style.borderColor=b.value===expected[i]?'#69d59b':'#e65777'});
  }
 }
-function renderRows(){const box=$('#rows');box.innerHTML='';if(!words.length){box.innerHTML='<div class="empty">まだたんごがないよ。</div>';return}words.forEach((w,i)=>{const r=document.createElement('div');r.className='row';r.innerHTML=`<input value="${esc(w.en)}" data-i="${i}" data-k="en"><input value="${esc(w.jp)}" data-i="${i}" data-k="jp"><input class="wide" value="${esc(w.emoji)}" data-i="${i}" data-k="emoji"><div class="count">★ ${w.stars||0}</div><button class="btn danger delete" data-del="${i}">削除</button>`;box.appendChild(r)});box.querySelectorAll('input').forEach(inp=>inp.addEventListener('change',()=>{words[+inp.dataset.i][inp.dataset.k]=inp.value;save();renderStudy()}));box.querySelectorAll('[data-del]').forEach(b=>b.onclick=()=>{words.splice(+b.dataset.del,1);if(idx>=words.length)idx=Math.max(0,words.length-1);save();renderRows();renderStudy()})}
+function renderRows(){
+ const box=$('#rows'); box.innerHTML='';
+ if(!words.length){box.innerHTML='<div class=\"empty\">まだたんごがないよ。</div>';return;}
+ words.forEach((w,i)=>{
+  const r=document.createElement('div'); r.className='row';
+  const seg=(w.furiganaSegments||[]).map(x=>`${x.reading}|${x.letters}`).join(' / ');
+  const furiSummary=(Array.isArray(w.furiganaChars)&&w.furiganaChars.some(x=>x&&x.reading))
+    ? w.furiganaChars.map(x=>x&&x.reading?x.reading:'・').join('')
+    : ((w.furiganaSegments&&w.furiganaSegments.length)
+      ? w.furiganaSegments.map(x=>x.reading).join('・')
+      : (w.furigana||FURIGANA[w.en]||'未設定'));
+  r.innerHTML=`<input value=\"${esc(w.en)}\" data-i=\"${i}\" data-k=\"en\"><input value=\"${esc(w.jp)}\" data-i=\"${i}\" data-k=\"jp\"><input class=\"wide\" value=\"${esc(w.emoji||'✨')}\" data-i=\"${i}\" data-k=\"emoji\"><div class=\"furi-list-view\"><span>よみ</span><b>${esc(furiSummary)}</b></div><div class=\"count\">★ ${w.stars||0}</div><button class=\"btn danger delete\" data-del=\"${i}\">削除</button><button class=\"btn secondary furiedit\" data-furi=\"${i}\">🔤 フリガナ</button>`;
+  box.appendChild(r);
+ });
+ box.querySelectorAll('input').forEach(inp=>inp.addEventListener('change',()=>{
+  const i=+inp.dataset.i; words[i][inp.dataset.k]=inp.value; save(); renderStudy();
+ }));
+ box.querySelectorAll('[data-del]').forEach(b=>b.onclick=()=>{
+  words.splice(+b.dataset.del,1); idx=Math.min(idx,Math.max(0,words.length-1)); save(); renderRows(); renderStudy();
+ });
+ let editingFuriIndex=-1;
+ let tempFuriLetters=[];
+ function drawFuriCharEditor(){
+   const box=$('#furiCharEditor'); box.innerHTML='';
+   const w=words[editingFuriIndex];
+   const chars=String(w.en).toLowerCase().split('');
+   let saved=[];
+   if(Array.isArray(w.furiganaChars)) saved=w.furiganaChars;
+   else if(Array.isArray(w.furiganaSegments)){
+     // Convert legacy grouped data to best-effort per-letter readings.
+     let pos=0;
+     for(const seg of w.furiganaSegments){
+       const kana=Array.from(String(seg.reading||'').replace(/\\s+/g,''));
+       const letters=String(seg.letters||'').toLowerCase().replace(/[^a-z]/g,'');
+       for(let j=0;j<letters.length;j++) saved[pos+j]=j===0?kana.join(''):''; 
+       pos+=letters.length;
+     }
+   }
+   tempFuriLetters=chars.map((ch,i)=>({
+     letter:/[a-z]/.test(ch)?ch:'',
+     reading:(saved[i]&&saved[i].reading)||''
+   }));
+   chars.forEach((ch,i)=>{
+     const d=document.createElement('div'); d.className='furi-letter-cell';
+     if(/[a-z]/.test(ch)){
+       d.innerHTML=`<div class="furi-letter">${esc(ch)}</div><input class="furi-one" data-pos="${i}" inputmode="text" lang="ja" autocapitalize="off" autocomplete="off" value="${esc(tempFuriLetters[i].reading)}" placeholder="ひらがな">`;
+     }else{
+       d.innerHTML=`<div class="furi-letter">${ch===' ' ? '↔' : esc(ch)}</div><div class="furi-space">自動</div>`;
+     }
+     box.appendChild(d);
+   });
+   box.querySelectorAll('.furi-one').forEach(inp=>{
+     let composing=false;
+     const commit=()=>{
+       let v=Array.from(inp.value).filter(ch=>/[ぁ-ゖー]/.test(ch)).join('');
+       inp.value=v.slice(0,2);
+       tempFuriLetters[+inp.dataset.pos].reading=inp.value;
+     };
+     inp.addEventListener('compositionstart',()=>{composing=true;});
+     inp.addEventListener('compositionend',()=>{composing=false;commit();});
+     inp.addEventListener('input',()=>{if(!composing)commit();});
+     inp.addEventListener('change',commit);
+   });
+ }
+ box.querySelectorAll('[data-furi]').forEach(b=>b.onclick=()=>{
+   editingFuriIndex=+b.dataset.furi;
+   $('#furiWord').textContent=words[editingFuriIndex].en;
+   drawFuriCharEditor();
+   $('#furiModal').style.display='flex';
+ });
+ $('#furiSave').onclick=()=>{
+   if(editingFuriIndex<0)return;
+   words[editingFuriIndex].furiganaChars=tempFuriLetters.map(x=>({reading:x.reading}));
+   words[editingFuriIndex].furigana=tempFuriLetters.map(x=>x.reading).join('');
+   words[editingFuriIndex].furiganaSegments=[];
+   save();$('#furiModal').style.display='none';renderRows();renderStudy();
+ };
+ $('#furiCancel').onclick=()=>{$('#furiModal').style.display='none';};
+
+}
 const esc=s=>String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
 $('#add').onclick=()=>{words.push({en:'newword',jp:'日本語',emoji:'✨',stars:0});idx=words.length-1;save();renderRows();renderStudy()};
 $('#reset').onclick=()=>{if(confirm('初期データに戻しますか？')){words=DEFAULT_WORDS.map(x=>({...x}));idx=0;save();renderRows();renderStudy()}};
 $('#export').onclick=async()=>{const text=JSON.stringify(words,null,2);try{await navigator.clipboard.writeText(text);alert('保存用データをコピーしました！')}catch{prompt('このデータをコピーして保存してください',text)}};
 $('#import').onclick=()=>{const text=prompt('JSONデータを貼り付けてください');if(!text)return;try{const data=JSON.parse(text);if(!Array.isArray(data))throw Error();words=data.map(x=>({en:String(x.en||''),jp:String(x.jp||''),emoji:String(x.emoji||'✨'),stars:Number(x.stars||0)})).filter(x=>x.en&&x.jp);idx=0;save();renderRows();renderStudy();alert('読み込みました！')}catch{alert('データの形式が正しくありません。')}};
-$('#next').onclick=()=>{idx=(idx+1)%words.length;renderStudy()};$('#prev').onclick=()=>{idx=(idx-1+words.length)%words.length;renderStudy()};$('#shuffle').onclick=()=>{idx=Math.floor(Math.random()*words.length);renderStudy()};$('#pronounce').onclick=()=>speak(current().en);
+$('#next').onclick=()=>{if(selectedMode()){selectedNext(1);}else if(activeTest==='all'){idx=(idx+1)%words.length;}else{const r=testRange(activeTest);if(r.end>=r.start)idx=idx>=r.end?r.start:idx+1;}renderStudy()};
+$('#prev').onclick=()=>{if(selectedMode()){selectedNext(-1);}else if(activeTest==='all'){idx=(idx-1+words.length)%words.length;}else{const r=testRange(activeTest);if(r.end>=r.start)idx=idx<=r.start?r.end:idx-1;}renderStudy()};
+$('#shuffle').onclick=()=>{if(selectedMode()){selectedPos=Math.floor(Math.random()*selectedIndices.length);idx=selectedIndices[selectedPos];}else idx=randomTestIndex();renderStudy()};
+$('#pronounce').onclick=()=>speak(current().en);
 document.querySelectorAll('.mode').forEach(b=>b.onclick=()=>{practiceMode=b.dataset.mode;document.querySelectorAll('.mode').forEach(x=>{x.classList.toggle('active',x.dataset.mode===practiceMode);x.classList.toggle('primary',x.dataset.mode===practiceMode);x.classList.toggle('secondary',x.dataset.mode!==practiceMode)});renderStudy();});
-document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>{document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));b.classList.add('active');const t=b.dataset.tab;$('#study').style.display=t==='study'?'block':'none';$('#list').style.display=t==='list'?'block':'none';if(t==='list')renderRows()});
-document.addEventListener('keydown',e=>{if(e.key==='Enter' && solved && $('#study').style.display!=='none'){e.preventDefault();idx=(idx+1)%words.length;renderStudy();}});
+document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>{document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));b.classList.add('active');const t=b.dataset.tab;$('#study').style.display=t==='study'?'block':'none';$('#list').style.display=t==='list'?'block':'none';$('#selector').style.display='none';if(t==='study'){activeTest='all';document.querySelectorAll('.weekly').forEach(x=>x.classList.remove('active-test'));renderStudy()}if(t==='list')renderRows()});
+$('#wtest').onclick=()=>applyTest('W');
+$('#jtest').onclick=()=>applyTest('J');
+$('#wselect').onclick=()=>showSelector('W');
+$('#jselect').onclick=()=>showSelector('J');
+$('#selectAll').onclick=()=>document.querySelectorAll('#selectWords input[type=checkbox]').forEach(x=>x.checked=true);
+$('#selectNone').onclick=()=>document.querySelectorAll('#selectWords input[type=checkbox]').forEach(x=>x.checked=false);
+$('#cancelSelect').onclick=()=>{$('#selector').style.display='none';$('#study').style.display='block';renderStudy();};
+$('#startSelected').onclick=()=>{
+ selectedIndices=[...document.querySelectorAll('#selectWords input[type=checkbox]:checked')].map(x=>+x.dataset.selectIndex);
+ if(!selectedIndices.length){alert('テストする単語を1つ以上選んでください。');return;}
+ selectedPos=0;idx=selectedIndices[0];activeTest=selectingKind==='W'?'selectedW':'selectedJ';
+ $('#selector').style.display='none';$('#study').style.display='block';
+ document.querySelectorAll('.weekly').forEach(x=>x.classList.remove('active-test'));
+ renderStudy();
+};
+document.addEventListener('keydown',e=>{if(e.key==='Enter' && solved && $('#study').style.display!=='none'){e.preventDefault();if(selectedMode()){selectedNext(1);}else if(activeTest==='all'){idx=(idx+1)%words.length;}else{const r=testRange(activeTest);if(r.end>=r.start)idx=idx>=r.end?r.start:idx+1;}renderStudy();}});
 renderStudy();
 </script>
 <script>
@@ -637,4 +1275,29 @@ if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => navigator.serviceWorker.register('./sw.js').catch(() => {}));
 }
 </script>
+
+<div id="furiModal" class="furi-modal" style="display:none">
+ <div class="furi-card">
+  <h3>🔤 フリガナを1文字ずつ設定</h3>
+  <div id="furiWord" class="furi-word"></div>
+  <p>表示されたアルファベットの下に、ひらがなを1文字ずつ入力してください。不要なところは空欄でOKです。長い単語は、入力欄を左右にスライドしてください。基本は1文字。必要な音は「じゃ」「じゅ」「じょ」など2文字まで1つの欄に入れられます。</p>
+  <div id="furiCharEditor" class="furi-char-editor"></div>
+  <div class="actions">
+   <button class="btn success" id="furiSave">保存</button>
+   <button class="btn secondary" id="furiCancel">キャンセル</button>
+  </div>
+ </div>
+</div>
+</div>
+
+
+<script>
+document.addEventListener('touchstart',function(e){
+  if(e.target && e.target.classList && e.target.classList.contains('letterbox')){
+    e.preventDefault();
+    e.target.blur();
+  }
+},{passive:false});
+</script>
+
 </body></html>
