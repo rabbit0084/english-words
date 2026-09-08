@@ -513,6 +513,42 @@ header{padding:2px 8px 0!important} header h1{font-size:22px!important;line-heig
  #letterboxes .furigana-cell.per-letter input.letterbox{width:56px !important;min-width:56px !important;}
 }
 
+
+#letterboxes .furigana-cell.per-letter{
+  position:relative!important; display:inline-flex!important; flex-direction:column!important;
+  align-items:center!important; justify-content:flex-end!important;
+  flex:0 0 52px!important; width:52px!important; min-width:52px!important;
+  margin:0!important; padding-top:22px!important; padding-bottom:0!important;
+  box-sizing:border-box!important;
+}
+#letterboxes .furigana-cell.per-letter .furigana-above{
+  position:absolute!important; top:0!important; left:0!important;
+  width:52px!important; min-width:52px!important; height:20px!important; line-height:20px!important;
+  text-align:center!important; white-space:nowrap!important; overflow:visible!important;
+  font-size:15px!important; font-weight:900!important; margin:0!important; padding:0!important;
+}
+#letterboxes .furigana-cell.per-letter .letterbox{
+  width:52px!important; min-width:52px!important; margin:0!important;
+}
+@media(min-width:700px){
+ #letterboxes .furigana-cell.per-letter{flex-basis:56px!important;width:56px!important;min-width:56px!important}
+ #letterboxes .furigana-cell.per-letter .furigana-above{width:56px!important;min-width:56px!important}
+ #letterboxes .furigana-cell.per-letter .letterbox{width:56px!important;min-width:56px!important}
+}
+
+
+#letterboxes .furigana-cell.per-letter{position:relative!important;display:inline-flex!important;flex-direction:column!important;align-items:center!important;justify-content:flex-end!important;width:52px!important;min-width:52px!important;flex:0 0 52px!important;margin:0!important;padding:22px 0 0!important;box-sizing:border-box!important;overflow:visible!important}
+#letterboxes .furigana-cell.per-letter .furigana-above{position:absolute!important;top:0!important;left:0!important;width:52px!important;min-width:52px!important;height:20px!important;line-height:20px!important;text-align:center!important;white-space:nowrap!important;overflow:visible!important;font-size:15px!important;font-weight:900!important;margin:0!important;padding:0!important}
+#letterboxes .furigana-cell.per-letter .letterbox{width:52px!important;min-width:52px!important;margin:0!important}
+@media(min-width:700px){#letterboxes .furigana-cell.per-letter{width:56px!important;min-width:56px!important;flex-basis:56px!important}#letterboxes .furigana-cell.per-letter .furigana-above{width:56px!important;min-width:56px!important}#letterboxes .furigana-cell.per-letter .letterbox{width:56px!important;min-width:56px!important}}
+
+
+/* Exact furigana layout: one alphabet box and one 0-2 character hiragana slot */
+#letterboxes .furigana-cell.per-letter{position:relative!important;display:inline-flex!important;flex-direction:column!important;align-items:center!important;justify-content:flex-end!important;flex:0 0 52px!important;width:52px!important;min-width:52px!important;margin:0!important;padding:22px 0 0!important;box-sizing:border-box!important;overflow:visible!important}
+#letterboxes .furigana-cell.per-letter .furigana-above{position:absolute!important;left:0!important;top:0!important;width:52px!important;min-width:52px!important;height:20px!important;line-height:20px!important;text-align:center!important;white-space:nowrap!important;overflow:visible!important;font-size:15px!important;font-weight:900!important;margin:0!important;padding:0!important}
+#letterboxes .furigana-cell.per-letter .letterbox{width:52px!important;min-width:52px!important;margin:0!important}
+@media(min-width:700px){#letterboxes .furigana-cell.per-letter{flex-basis:56px!important;width:56px!important;min-width:56px!important}#letterboxes .furigana-cell.per-letter .furigana-above{width:56px!important;min-width:56px!important}#letterboxes .furigana-cell.per-letter .letterbox{width:56px!important;min-width:56px!important}}
+
 </style>
 </head>
 <body>
@@ -1041,61 +1077,17 @@ function renderStudy(){
 const normalizedWord=w.en.toLowerCase();
  alphaPos=0;
  const rawCharReadings=Array.isArray(w.furiganaChars)?w.furiganaChars.map(x=>String(x&&x.reading||'')):[];
- const letterOnlyReadings=[];
- rawCharReadings.forEach((r,k)=>{ if(/[a-z]/.test(fullChars[k]||'')) letterOnlyReadings.push(r); });
- const hasCharReadings=rawCharReadings.some(Boolean);
- const explicitGroups=(!hasCharReadings && w.furiganaSegments&&w.furiganaSegments.length)?w.furiganaSegments.map(x=>[x.reading,x.letters]):(!hasCharReadings?RUBY_GROUPS[normalizedWord]:null);
+ const hasCharReadings=rawCharReadings.length>0;
  let displayCells='';
- let p=0;
- if(hasCharReadings){
-   let letterIndex=0;
-   displayCells=fullChars.map((ch,k)=>{
-     if(/[a-z]/.test(ch)){
-       const r=(rawCharReadings.length===fullChars.length ? rawCharReadings[k] : (letterOnlyReadings[letterIndex]||rawCharReadings[letterIndex]||''));
-       const pp=alphaPos++;
-       letterIndex++;
-       return `<span class="furigana-cell per-letter"><span class="furigana-above">${esc(r)}</span><input class="letterbox" maxlength="1" data-pos="${pp}" inputmode="none" autocomplete="off" spellcheck="false" /></span>`;
-     }
-     return `<span class="autoch separator">${ch===' ' ? '&nbsp;' : esc(ch)}</span>`;
-   }).join('');
- }else if(explicitGroups){
-   for(const [reading,lettersText] of explicitGroups){
-     // Before each reading group, copy spaces/punctuation from the original
-     // word as independent cells. They must not count as part of the reading.
-     while(p<fullChars.length && !/[a-z]/.test(fullChars[p])){
-       const sep=fullChars[p++];
-       displayCells+=`<span class="autoch separator">${sep===' ' ? '&nbsp;' : esc(sep)}</span>`;
-     }
-     const wanted=String(lettersText||'').toLowerCase().replace(/[^a-z]/g,'');
-     displayCells+=`<span class="furigana-cell grouped"><span class="furigana-above">${esc(reading)}</span><span class="group-inputs">`;
-     let used=0;
-     while(p<fullChars.length && used<wanted.length){
-       const ch=fullChars[p];
-       if(/[a-z]/.test(ch)){
-         displayCells+=`<input class="letterbox" maxlength="1" data-pos="${alphaPos++}" inputmode="none" autocomplete="off" spellcheck="false" />`;
-         used++; p++;
-       }else{
-         break;
-       }
-     }
-     displayCells+='</span></span>';
+ let alphaIndex=0;
+ displayCells=fullChars.map(ch=>{
+   if(/[a-z]/.test(ch)){
+     const r=hasCharReadings?(rawCharReadings[alphaIndex]||''):'';
+     const pp=alphaPos++; alphaIndex++;
+     return `<span class="furigana-cell per-letter"><span class="furigana-above">${esc(r)}</span><input class="letterbox" maxlength="1" data-pos="${pp}" inputmode="none" autocomplete="off" spellcheck="false" /></span>`;
    }
-   // Render any remaining characters, preserving spaces/punctuation.
-   for(let k=p;k<fullChars.length;k++){
-     const ch=fullChars[k];
-     if(/[a-z]/.test(ch)){
-       displayCells+=`<span class="furigana-cell"><span class="furigana-above"></span><input class="letterbox" maxlength="1" data-pos="${alphaPos++}" inputmode="none" autocomplete="off" spellcheck="false" /></span>`;
-     }else{
-       displayCells+=`<span class="autoch separator">${ch===' ' ? '&nbsp;' : esc(ch)}</span>`;
-     }
-   }
- }else{
-   const readings=perLetterReading(w.en);
-   alphaPos=0;
-   displayCells=fullChars.map(ch=>/[a-z]/.test(ch)
-     ? (()=>{const pp=alphaPos++; const r=readings[pp]||''; return `<span class="furigana-cell"><span class="furigana-above">${esc(r)}</span><input class="letterbox" maxlength="1" data-pos="${pp}" inputmode="none" autocomplete="off" spellcheck="false" /></span>`;})()
-     : `<span class="autoch">${ch===' ' ? '&nbsp;' : esc(ch)}</span>`).join('');
- }
+   return `<span class="autoch separator">${ch===' ' ? '&nbsp;' : esc(ch)}</span>`;
+ }).join('');
  left.innerHTML=`<div class="prompt">日本語と絵を見て、英語をタイピングしてみよう！</div><div class="big">${emojiOrFlag(w.emoji)}</div><div class="jp">${esc(w.jp)}</div><div class="letterboxes" id="letterboxes">${displayCells}</div><div class="actions"><button class="btn secondary" id="clearBtn">↶ けす</button></div><div id="letterbank" class="letterbank"></div><div id="hintnote" class="hintnote"></div><div id="feedback" class="feedback"></div>`;
  const boxes=[...document.querySelectorAll('.letterbox')];
  let solved=false;
@@ -1244,29 +1236,27 @@ function renderRows(){
    const box=$('#furiCharEditor'); box.innerHTML='';
    const w=words[editingFuriIndex];
    const chars=String(w.en).toLowerCase().split('');
-   let saved=[];
-   if(Array.isArray(w.furiganaChars)) saved=w.furiganaChars;
-   tempFuriLetters=chars.map((ch,i)=>({
-     letter:/[a-z]/.test(ch)?ch:'',
-     reading:(saved[i]&&saved[i].reading)||''
-   }));
-   chars.forEach((ch,i)=>{
+   const alphaChars=chars.filter(ch=>/[a-z]/.test(ch));
+   const saved=Array.isArray(w.furiganaChars)?w.furiganaChars:[];
+   tempFuriLetters=alphaChars.map((ch,i)=>({letter:ch,reading:String(saved[i]&&saved[i].reading||'').slice(0,2)}));
+   let ai=0;
+   chars.forEach(ch=>{
      const d=document.createElement('div'); d.className='furi-letter-cell';
      if(/[a-z]/.test(ch)){
-       d.innerHTML=`<div class="furi-letter">${esc(ch)}</div><input class="furi-one" data-pos="${i}" inputmode="text" lang="ja" autocapitalize="off" autocomplete="off" value="${esc(tempFuriLetters[i].reading)}" placeholder="ひらがな">`;
+       const pos=ai++;
+       d.innerHTML=`<div class="furi-letter">${esc(ch)}</div><input class="furi-one" data-pos="${pos}" inputmode="text" lang="ja" autocapitalize="off" autocomplete="off" value="${esc(tempFuriLetters[pos].reading)}" placeholder="ひらがな">`;
      }else{
-       d.innerHTML=`<div class="furi-letter">${ch===' ' ? '↔' : esc(ch)}</div><div class="furi-space">自動</div>`;
+       d.innerHTML=`<div class="furi-letter">↔</div><div class="furi-space">スペース</div>`;
      }
      box.appendChild(d);
    });
    box.querySelectorAll('.furi-one').forEach(inp=>{
      let composing=false;
      const commit=()=>{
-       let v=Array.from(inp.value).filter(ch=>/[ぁ-ゖー]/.test(ch)).join('');
-       inp.value=v.slice(0,2);
-       tempFuriLetters[+inp.dataset.pos].reading=inp.value;
+       const v=Array.from(inp.value).filter(ch=>/[ぁ-ゖー]/.test(ch)).join('').slice(0,2);
+       inp.value=v; tempFuriLetters[+inp.dataset.pos].reading=v;
      };
-     inp.addEventListener('compositionstart',()=>{composing=true;});
+     inp.addEventListener('compositionstart',()=>composing=true);
      inp.addEventListener('compositionend',()=>{composing=false;commit();});
      inp.addEventListener('input',()=>{if(!composing)commit();});
      inp.addEventListener('change',commit);
