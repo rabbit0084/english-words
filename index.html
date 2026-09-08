@@ -660,6 +660,9 @@ header{padding:2px 8px 0!important} header h1{font-size:22px!important;line-heig
   #letterboxes .furigana-cell.per-letter .letterbox{width:52px !important;min-width:52px !important;height:60px !important;min-height:60px !important;font-size:32px !important;}
 }
 
+
+.furi-one{ime-mode:active!important;width:56px!important;min-width:56px!important;height:42px!important;text-align:center!important;font-size:21px!important;}
+
 </style>
 </head>
 <body>
@@ -1333,6 +1336,15 @@ function checkBoxes(){
    boxes.forEach((b,i)=>{b.style.background=b.value===expected[i]?'#e9fff3':'#fff0f4';b.style.borderColor=b.value===expected[i]?'#69d59b':'#e65777'});
  }
 }
+function normalizeHiragana(s){
+  return Array.from(String(s||''))
+    .map(ch=>/[\u30a1-\u30f6]/.test(ch)
+      ? String.fromCharCode(ch.charCodeAt(0)-0x60)
+      : ch)
+    .filter(ch=>/^[ぁ-ゖー]$/.test(ch))
+    .slice(0,2)
+    .join('');
+}
 function renderRows(){
  const box=$('#rows'); box.innerHTML='';
  if(!words.length){box.innerHTML='<div class=\"empty\">まだたんごがないよ。</div>';return;}
@@ -1342,8 +1354,7 @@ function renderRows(){
   const furiSummary=(Array.isArray(w.furiganaChars)&&w.furiganaChars.some(x=>x&&x.reading))
     ? w.furiganaChars.map(x=>x&&x.reading?normalizeHiragana(x.reading):'・').join('')
     : '未設定';
-    ? w.furiganaChars.map(x=>x&&x.reading?kataToHira(x.reading):'・').join('')
-    : '未設定';
+
   r.innerHTML=`<input value=\"${esc(w.en)}\" data-i=\"${i}\" data-k=\"en\"><input value=\"${esc(w.jp)}\" data-i=\"${i}\" data-k=\"jp\"><input class=\"wide\" value=\"${esc(w.emoji||'✨')}\" data-i=\"${i}\" data-k=\"emoji\"><div class=\"furi-list-view\"><span>よみ</span><b>${esc(furiSummary)}</b></div><div class=\"count\">★ ${w.stars||0}</div><button class=\"btn danger delete\" data-del=\"${i}\">削除</button><button class=\"btn secondary furiedit\" data-furi=\"${i}\">🔤 フリガナ</button>`;
   box.appendChild(r);
  });
@@ -1356,15 +1367,7 @@ function renderRows(){
  let editingFuriIndex=-1;
 let tempFuriLetters=[];
 
-function normalizeHiragana(s){
-  return Array.from(String(s||''))
-    .map(ch=>/[\u30a1-\u30f6]/.test(ch)
-      ? String.fromCharCode(ch.charCodeAt(0)-0x60)
-      : ch)
-    .filter(ch=>/^[ぁ-ゖー]$/.test(ch))
-    .slice(0,2)
-    .join('');
-}
+
 
 function drawFuriCharEditor(){
   const box=$('#furiCharEditor');
@@ -1387,7 +1390,7 @@ function drawFuriCharEditor(){
     if(/[a-z]/.test(ch)){
       const pos=ai++;
       d.innerHTML=`<div class="furi-letter">${esc(ch)}</div>
-        <input class="furi-one" data-pos="${pos}"
+        <input class="furi-one" data-pos="${pos}" maxlength="2"
           inputmode="text" lang="ja" autocapitalize="off"
           autocomplete="off" spellcheck="false"
           value="${esc(tempFuriLetters[pos].reading)}"
@@ -1441,6 +1444,7 @@ $('#furiSave').onclick=()=>{
 $('#furiCancel').onclick=()=>{
   $('#furiModal').style.display='none';
 };
+}
 
 const esc=s=>String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
 $('#add').onclick=()=>{words.push({en:'newword',jp:'日本語',emoji:'✨',stars:0});idx=words.length-1;save();renderRows();renderStudy()};
