@@ -1,0 +1,6892 @@
+[
+  {
+    "en": "wagon",
+    "jp": "ワゴン",
+    "emoji": "🛒",
+    "stars": 21,
+    "furiganaSegments": [],
+    "furigana": "わぁごぉん",
+    "furiganaChars": [
+      {
+        "reading": "わ"
+      },
+      {
+        "reading": "ぁ"
+      },
+      {
+        "reading": "ご"
+      },
+      {
+        "reading": "ぉ"
+      },
+      {
+        "reading": "ん"
+      }
+    ]
+  },
+  {
+    "en": "octopus",
+    "jp": "たこ",
+    "emoji": "🐙",
+    "stars": 12,
+    "furiganaSegments": [],
+    "furigana": "おくとぉぱぅす",
+    "furiganaChars": [
+      {
+        "reading": "お"
+      },
+      {
+        "reading": "く"
+      },
+      {
+        "reading": "と"
+      },
+      {
+        "reading": "ぉ"
+      },
+      {
+        "reading": "ぱ"
+      },
+      {
+        "reading": "ぅ"
+      },
+      {
+        "reading": "す"
+      }
+    ]
+  },
+  {
+    "en": "rocket",
+    "jp": "ロケット",
+    "emoji": "🚀",
+    "stars": 13,
+    "furiganaSegments": [],
+    "furigana": "ろおくくえと",
+    "furiganaChars": [
+      {
+        "reading": "ろ"
+      },
+      {
+        "reading": "お"
+      },
+      {
+        "reading": "く"
+      },
+      {
+        "reading": "く"
+      },
+      {
+        "reading": "え"
+      },
+      {
+        "reading": "と"
+      }
+    ]
+  },
+  {
+    "en": "egg",
+    "jp": "たまご",
+    "emoji": "🍳",
+    "stars": 8,
+    "furiganaSegments": [],
+    "furigana": "えぐぐ",
+    "furiganaChars": [
+      {
+        "reading": "え"
+      },
+      {
+        "reading": "ぐ"
+      },
+      {
+        "reading": "ぐ"
+      }
+    ]
+  },
+  {
+    "en": "question",
+    "jp": "疑問",
+    "emoji": "❓",
+    "stars": 7,
+    "furiganaSegments": [],
+    "furigana": "くぅえすちぃおん",
+    "furiganaChars": [
+      {
+        "reading": "く"
+      },
+      {
+        "reading": "ぅ"
+      },
+      {
+        "reading": "え"
+      },
+      {
+        "reading": "す"
+      },
+      {
+        "reading": "ち"
+      },
+      {
+        "reading": "ぃ"
+      },
+      {
+        "reading": "お"
+      },
+      {
+        "reading": "ん"
+      }
+    ]
+  },
+  {
+    "en": "spoon",
+    "jp": "スプーン",
+    "emoji": "🥄",
+    "stars": 5,
+    "furiganaSegments": [],
+    "furigana": "すぷぉぉん",
+    "furiganaChars": [
+      {
+        "reading": "す"
+      },
+      {
+        "reading": "ぷ"
+      },
+      {
+        "reading": "ぉ"
+      },
+      {
+        "reading": "ぉ"
+      },
+      {
+        "reading": "ん"
+      }
+    ]
+  },
+  {
+    "en": "kitten",
+    "jp": "こねこ",
+    "emoji": "🐈",
+    "stars": 3,
+    "furiganaSegments": [],
+    "furigana": "きぃててぇん",
+    "furiganaChars": [
+      {
+        "reading": "き"
+      },
+      {
+        "reading": "ぃ"
+      },
+      {
+        "reading": "て"
+      },
+      {
+        "reading": "て"
+      },
+      {
+        "reading": "ぇ"
+      },
+      {
+        "reading": "ん"
+      }
+    ]
+  },
+  {
+    "en": "zebra",
+    "jp": "シマウマ",
+    "emoji": "🦓",
+    "stars": 3,
+    "furiganaSegments": [],
+    "furigana": "じぃぶらぁ",
+    "furiganaChars": [
+      {
+        "reading": "じ"
+      },
+      {
+        "reading": "ぃ"
+      },
+      {
+        "reading": "ぶ"
+      },
+      {
+        "reading": "ら"
+      },
+      {
+        "reading": "ぁ"
+      }
+    ]
+  },
+  {
+    "en": "hate",
+    "jp": "きらい",
+    "emoji": "😡",
+    "stars": 3,
+    "furiganaSegments": [],
+    "furigana": "へぇとー",
+    "furiganaChars": [
+      {
+        "reading": "へ"
+      },
+      {
+        "reading": "ぇ"
+      },
+      {
+        "reading": "と"
+      },
+      {
+        "reading": "ー"
+      }
+    ]
+  },
+  {
+    "en": "mop",
+    "jp": "モップ",
+    "emoji": "🧹",
+    "stars": 3,
+    "furiganaSegments": [],
+    "furigana": "もぉぷ",
+    "furiganaChars": [
+      {
+        "reading": "も"
+      },
+      {
+        "reading": "ぉ"
+      },
+      {
+        "reading": "ぷ"
+      }
+    ]
+  },
+  {
+    "en": "bake",
+    "jp": "焼く",
+    "emoji": "🍞",
+    "stars": 3,
+    "furiganaSegments": [],
+    "furigana": "べぇくー",
+    "furiganaChars": [
+      {
+        "reading": "べ"
+      },
+      {
+        "reading": "ぇ"
+      },
+      {
+        "reading": "く"
+      },
+      {
+        "reading": "ー"
+      }
+    ]
+  },
+  {
+    "en": "take out",
+    "jp": "取り出す",
+    "emoji": "📤",
+    "stars": 3,
+    "furiganaSegments": [],
+    "furigana": "てぇくーあうと",
+    "furiganaChars": [
+      {
+        "reading": "て"
+      },
+      {
+        "reading": "ぇ"
+      },
+      {
+        "reading": "く"
+      },
+      {
+        "reading": "ー"
+      },
+      {
+        "reading": "あ"
+      },
+      {
+        "reading": "う"
+      },
+      {
+        "reading": "と"
+      }
+    ]
+  },
+  {
+    "en": "paint",
+    "jp": "絵をかく",
+    "emoji": "🎨",
+    "stars": 3,
+    "furiganaSegments": [],
+    "furigana": "ぺぇいんと",
+    "furiganaChars": [
+      {
+        "reading": "ぺ"
+      },
+      {
+        "reading": "ぇ"
+      },
+      {
+        "reading": "い"
+      },
+      {
+        "reading": "ん"
+      },
+      {
+        "reading": "と"
+      }
+    ]
+  },
+  {
+    "en": "ski",
+    "jp": "スキー",
+    "emoji": "🎿",
+    "stars": 3,
+    "furiganaSegments": [],
+    "furigana": "すきぃ",
+    "furiganaChars": [
+      {
+        "reading": "す"
+      },
+      {
+        "reading": "き"
+      },
+      {
+        "reading": "ぃ"
+      }
+    ]
+  },
+  {
+    "en": "skate",
+    "jp": "スケート",
+    "emoji": "⛸",
+    "stars": 3,
+    "furiganaSegments": [],
+    "furigana": "すけぇとー",
+    "furiganaChars": [
+      {
+        "reading": "す"
+      },
+      {
+        "reading": "け"
+      },
+      {
+        "reading": "ぇ"
+      },
+      {
+        "reading": "と"
+      },
+      {
+        "reading": "ー"
+      }
+    ]
+  },
+  {
+    "en": "safe",
+    "jp": "安全な",
+    "emoji": "🛡️",
+    "stars": 3,
+    "furiganaSegments": [],
+    "furigana": "せえふー",
+    "furiganaChars": [
+      {
+        "reading": "せ"
+      },
+      {
+        "reading": "え"
+      },
+      {
+        "reading": "ふ"
+      },
+      {
+        "reading": "ー"
+      }
+    ]
+  },
+  {
+    "en": "dangerous",
+    "jp": "危険な",
+    "emoji": "⚠️",
+    "stars": 3,
+    "furiganaSegments": [],
+    "furigana": "でぇんじぁらぉぅす",
+    "furiganaChars": [
+      {
+        "reading": "で"
+      },
+      {
+        "reading": "ぇ"
+      },
+      {
+        "reading": "ん"
+      },
+      {
+        "reading": "じ"
+      },
+      {
+        "reading": "ぁ"
+      },
+      {
+        "reading": "ら"
+      },
+      {
+        "reading": "ぉ"
+      },
+      {
+        "reading": "ぅ"
+      },
+      {
+        "reading": "す"
+      }
+    ]
+  },
+  {
+    "en": "late",
+    "jp": "遅い",
+    "emoji": "⏰",
+    "stars": 2,
+    "furiganaChars": [
+      {
+        "reading": "れ"
+      },
+      {
+        "reading": "え"
+      },
+      {
+        "reading": "と"
+      },
+      {
+        "reading": "ー"
+      }
+    ],
+    "furigana": "れえとー",
+    "furiganaSegments": []
+  },
+  {
+    "en": "same",
+    "jp": "同じ",
+    "emoji": "🟰",
+    "stars": 2,
+    "furiganaSegments": [],
+    "furigana": "せえむー",
+    "furiganaChars": [
+      {
+        "reading": "せ"
+      },
+      {
+        "reading": "え"
+      },
+      {
+        "reading": "む"
+      },
+      {
+        "reading": "ー"
+      }
+    ]
+  },
+  {
+    "en": "different",
+    "jp": "違う",
+    "emoji": "🔀",
+    "stars": 2,
+    "furiganaSegments": [],
+    "furigana": "でぃふふぁれぇんと",
+    "furiganaChars": [
+      {
+        "reading": "で"
+      },
+      {
+        "reading": "ぃ"
+      },
+      {
+        "reading": "ふ"
+      },
+      {
+        "reading": "ふ"
+      },
+      {
+        "reading": "ぁ"
+      },
+      {
+        "reading": "れ"
+      },
+      {
+        "reading": "ぇ"
+      },
+      {
+        "reading": "ん"
+      },
+      {
+        "reading": "と"
+      }
+    ]
+  },
+  {
+    "en": "real",
+    "jp": "本物",
+    "emoji": "✅",
+    "stars": 2,
+    "furiganaSegments": [],
+    "furigana": "りぃある",
+    "furiganaChars": [
+      {
+        "reading": "り"
+      },
+      {
+        "reading": "ぃ"
+      },
+      {
+        "reading": "あ"
+      },
+      {
+        "reading": "る"
+      }
+    ]
+  },
+  {
+    "en": "fake",
+    "jp": "にせもの",
+    "emoji": "🎭",
+    "stars": 3,
+    "furiganaSegments": [],
+    "furigana": "ふぇくー",
+    "furiganaChars": [
+      {
+        "reading": "ふ"
+      },
+      {
+        "reading": "ぇ"
+      },
+      {
+        "reading": "く"
+      },
+      {
+        "reading": "ー"
+      }
+    ]
+  },
+  {
+    "en": "clean",
+    "jp": "掃除",
+    "emoji": "🧼",
+    "stars": 3,
+    "furiganaSegments": [],
+    "furigana": "くりーぁん",
+    "furiganaChars": [
+      {
+        "reading": "く"
+      },
+      {
+        "reading": "り"
+      },
+      {
+        "reading": "ー"
+      },
+      {
+        "reading": "ぁ"
+      },
+      {
+        "reading": "ん"
+      }
+    ]
+  },
+  {
+    "en": "hike",
+    "jp": "ハイキング",
+    "emoji": "🥾",
+    "stars": 3,
+    "furiganaSegments": [],
+    "furigana": "はいくー",
+    "furiganaChars": [
+      {
+        "reading": "は"
+      },
+      {
+        "reading": "い"
+      },
+      {
+        "reading": "く"
+      },
+      {
+        "reading": "ー"
+      }
+    ]
+  },
+  {
+    "en": "write",
+    "jp": "書く",
+    "emoji": "✍️",
+    "stars": 3,
+    "furiganaSegments": [],
+    "furigana": "ぅらいとー",
+    "furiganaChars": [
+      {
+        "reading": "ぅ"
+      },
+      {
+        "reading": "ら"
+      },
+      {
+        "reading": "い"
+      },
+      {
+        "reading": "と"
+      },
+      {
+        "reading": "ー"
+      }
+    ]
+  },
+  {
+    "en": "boring",
+    "jp": "たいくつ",
+    "emoji": "🥱",
+    "stars": 3,
+    "furiganaSegments": [],
+    "furigana": "ぼおりいんぐ",
+    "furiganaChars": [
+      {
+        "reading": "ぼ"
+      },
+      {
+        "reading": "お"
+      },
+      {
+        "reading": "り"
+      },
+      {
+        "reading": "い"
+      },
+      {
+        "reading": "ん"
+      },
+      {
+        "reading": "ぐ"
+      }
+    ]
+  },
+  {
+    "en": "exciting",
+    "jp": "興奮する",
+    "emoji": "🤩",
+    "stars": 3,
+    "furiganaSegments": [],
+    "furigana": "えきさいてぃんぐ",
+    "furiganaChars": [
+      {
+        "reading": "え"
+      },
+      {
+        "reading": "き"
+      },
+      {
+        "reading": "さ"
+      },
+      {
+        "reading": "い"
+      },
+      {
+        "reading": "て"
+      },
+      {
+        "reading": "ぃ"
+      },
+      {
+        "reading": "ん"
+      },
+      {
+        "reading": "ぐ"
+      }
+    ]
+  },
+  {
+    "en": "alive",
+    "jp": "生きている",
+    "emoji": "🫀",
+    "stars": 3,
+    "furiganaChars": [
+      {
+        "reading": "あ"
+      },
+      {
+        "reading": "ら"
+      },
+      {
+        "reading": "い"
+      },
+      {
+        "reading": "ぶ"
+      },
+      {
+        "reading": "ー"
+      }
+    ],
+    "furigana": "あらいぶー",
+    "furiganaSegments": []
+  },
+  {
+    "en": "dead",
+    "jp": "死んでいる",
+    "emoji": "💀",
+    "stars": 3,
+    "furiganaChars": [
+      {
+        "reading": "で"
+      },
+      {
+        "reading": "ー"
+      },
+      {
+        "reading": "ぁ"
+      },
+      {
+        "reading": "ど"
+      }
+    ],
+    "furigana": "でーぁど",
+    "furiganaSegments": []
+  },
+  {
+    "en": "tiny",
+    "jp": "小さい",
+    "emoji": "🐜",
+    "stars": 2,
+    "furiganaChars": [
+      {
+        "reading": "た"
+      },
+      {
+        "reading": "い"
+      },
+      {
+        "reading": "に"
+      },
+      {
+        "reading": "ぃ"
+      }
+    ],
+    "furigana": "たいにぃ",
+    "furiganaSegments": []
+  },
+  {
+    "en": "giant",
+    "jp": "巨人",
+    "emoji": "🗿",
+    "stars": 2,
+    "furiganaChars": [
+      {
+        "reading": "じゃ"
+      },
+      {
+        "reading": "い"
+      },
+      {
+        "reading": "あ"
+      },
+      {
+        "reading": "ん"
+      },
+      {
+        "reading": "と"
+      }
+    ],
+    "furigana": "じゃいあんと",
+    "furiganaSegments": []
+  },
+  {
+    "en": "dark",
+    "jp": "暗い",
+    "emoji": "🌑",
+    "stars": 2,
+    "furiganaChars": [
+      {
+        "reading": "だ"
+      },
+      {
+        "reading": "ぁ"
+      },
+      {
+        "reading": "ー"
+      },
+      {
+        "reading": "く"
+      }
+    ],
+    "furigana": "だぁーく",
+    "furiganaSegments": []
+  },
+  {
+    "en": "light",
+    "jp": "明るい",
+    "emoji": "💡",
+    "stars": 2,
+    "furiganaChars": [
+      {
+        "reading": "ら"
+      },
+      {
+        "reading": "ぃ"
+      },
+      {
+        "reading": "ぐ"
+      },
+      {
+        "reading": "ぅ"
+      },
+      {
+        "reading": "と"
+      }
+    ],
+    "furigana": "らぃぐぅと",
+    "furiganaSegments": []
+  },
+  {
+    "en": "smile",
+    "jp": "ほほえむ",
+    "emoji": "😊",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "す"
+      },
+      {
+        "reading": "ま"
+      },
+      {
+        "reading": "ぃ"
+      },
+      {
+        "reading": "る"
+      },
+      {
+        "reading": "ー"
+      }
+    ],
+    "furigana": "すまぃるー",
+    "furiganaSegments": []
+  },
+  {
+    "en": "drive",
+    "jp": "運転する",
+    "emoji": "🚗",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "ど"
+      },
+      {
+        "reading": "ら"
+      },
+      {
+        "reading": "い"
+      },
+      {
+        "reading": "ぶ"
+      },
+      {
+        "reading": "ー"
+      }
+    ],
+    "furigana": "どらいぶー",
+    "furiganaSegments": []
+  },
+  {
+    "en": "close",
+    "jp": "閉める",
+    "emoji": "🚪",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "く"
+      },
+      {
+        "reading": "ろ"
+      },
+      {
+        "reading": "ぉ"
+      },
+      {
+        "reading": "ず"
+      },
+      {
+        "reading": "ー"
+      }
+    ],
+    "furigana": "くろぉずー",
+    "furiganaSegments": []
+  },
+  {
+    "en": "use",
+    "jp": "～を使う",
+    "emoji": "🛠️",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "ゆー"
+      },
+      {
+        "reading": "ず"
+      },
+      {
+        "reading": "ー"
+      }
+    ],
+    "furigana": "ゆーずー",
+    "furiganaSegments": []
+  },
+  {
+    "en": "drink",
+    "jp": "飲む",
+    "emoji": "🥤",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "ど"
+      },
+      {
+        "reading": "り"
+      },
+      {
+        "reading": "い"
+      },
+      {
+        "reading": "ん"
+      },
+      {
+        "reading": "く"
+      }
+    ],
+    "furigana": "どりいんく",
+    "furiganaSegments": []
+  },
+  {
+    "en": "glue",
+    "jp": "のりでつける",
+    "emoji": "🧴",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "ぐ"
+      },
+      {
+        "reading": "る"
+      },
+      {
+        "reading": "ぅ"
+      },
+      {
+        "reading": "ー"
+      }
+    ],
+    "furigana": "ぐるぅー",
+    "furiganaSegments": []
+  },
+  {
+    "en": "sing",
+    "jp": "歌う",
+    "emoji": "🎤",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "し"
+      },
+      {
+        "reading": "い"
+      },
+      {
+        "reading": "ん"
+      },
+      {
+        "reading": "ぐ"
+      }
+    ],
+    "furigana": "しいんぐ",
+    "furiganaSegments": []
+  },
+  {
+    "en": "open",
+    "jp": "～を開く",
+    "emoji": "📖",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "おー"
+      },
+      {
+        "reading": "ぷ"
+      },
+      {
+        "reading": "ぇ"
+      },
+      {
+        "reading": "ん"
+      }
+    ],
+    "furigana": "おーぷぇん",
+    "furiganaSegments": []
+  },
+  {
+    "en": "open",
+    "jp": "～を開く",
+    "emoji": "📖",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "おー"
+      },
+      {
+        "reading": "ぷ"
+      },
+      {
+        "reading": "ぇ"
+      },
+      {
+        "reading": "ん"
+      }
+    ],
+    "furigana": "おーぷぇん",
+    "furiganaSegments": []
+  },
+  {
+    "en": "close",
+    "jp": "閉める",
+    "emoji": "🚪",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "く"
+      },
+      {
+        "reading": "ろ"
+      },
+      {
+        "reading": "ぉ"
+      },
+      {
+        "reading": "ず"
+      },
+      {
+        "reading": "ー"
+      }
+    ],
+    "furigana": "くろぉずー",
+    "furiganaSegments": []
+  },
+  {
+    "en": "round",
+    "jp": "丸い",
+    "emoji": "⚪",
+    "stars": 1,
+    "furiganaChars": [
+      {
+        "reading": "ら"
+      },
+      {
+        "reading": "ぉ"
+      },
+      {
+        "reading": "う"
+      },
+      {
+        "reading": "ん"
+      },
+      {
+        "reading": "ど"
+      }
+    ],
+    "furigana": "らぉうんど",
+    "furiganaSegments": []
+  },
+  {
+    "en": "flat",
+    "jp": "平らな",
+    "emoji": "➖",
+    "stars": 1,
+    "furiganaChars": [
+      {
+        "reading": "ふ"
+      },
+      {
+        "reading": "ら"
+      },
+      {
+        "reading": "ぁ"
+      },
+      {
+        "reading": "と"
+      }
+    ],
+    "furigana": "ふらぁと",
+    "furiganaSegments": []
+  },
+  {
+    "en": "poor",
+    "jp": "貧しい",
+    "emoji": "🪙",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "ぷ"
+      },
+      {
+        "reading": "ぉ"
+      },
+      {
+        "reading": "ぉ"
+      },
+      {
+        "reading": "あ"
+      }
+    ],
+    "furigana": "ぷぉぉあ",
+    "furiganaSegments": []
+  },
+  {
+    "en": "rich",
+    "jp": "裕福な",
+    "emoji": "💰",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "り"
+      },
+      {
+        "reading": "い"
+      },
+      {
+        "reading": "っ"
+      },
+      {
+        "reading": "ち"
+      }
+    ],
+    "furigana": "りいっち",
+    "furiganaSegments": []
+  },
+  {
+    "en": "high",
+    "jp": "高い",
+    "emoji": "⬆️",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "は"
+      },
+      {
+        "reading": "い"
+      },
+      {
+        "reading": ""
+      },
+      {
+        "reading": ""
+      }
+    ],
+    "furigana": "はい",
+    "furiganaSegments": []
+  },
+  {
+    "en": "low",
+    "jp": "低い",
+    "emoji": "⬇️",
+    "stars": 1,
+    "furiganaChars": [
+      {
+        "reading": "ろ"
+      },
+      {
+        "reading": "お"
+      },
+      {
+        "reading": "ぅ"
+      }
+    ],
+    "furigana": "ろおぅ",
+    "furiganaSegments": []
+  },
+  {
+    "en": "study",
+    "jp": "～を勉強する",
+    "emoji": "📚",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "す"
+      },
+      {
+        "reading": "た"
+      },
+      {
+        "reading": "ぁ"
+      },
+      {
+        "reading": "で"
+      },
+      {
+        "reading": "ぃ"
+      }
+    ],
+    "furigana": "すたぁでぃ",
+    "furiganaSegments": []
+  },
+  {
+    "en": "play",
+    "jp": "演奏する、行う",
+    "emoji": "🎹",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "ぷ"
+      },
+      {
+        "reading": "れ"
+      },
+      {
+        "reading": "え"
+      },
+      {
+        "reading": "い"
+      }
+    ],
+    "furigana": "ぷれえい",
+    "furiganaSegments": []
+  },
+  {
+    "en": "enjoy",
+    "jp": "～を楽しむ",
+    "emoji": "😊",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "え"
+      },
+      {
+        "reading": "ん"
+      },
+      {
+        "reading": "じ"
+      },
+      {
+        "reading": "ぉ"
+      },
+      {
+        "reading": "ぃ"
+      }
+    ],
+    "furigana": "えんじぉぃ",
+    "furiganaSegments": []
+  },
+  {
+    "en": "brush",
+    "jp": "髪をとかす",
+    "emoji": "🪥",
+    "stars": 2,
+    "furiganaChars": [
+      {
+        "reading": "ぶ"
+      },
+      {
+        "reading": "ら"
+      },
+      {
+        "reading": "ぅ"
+      },
+      {
+        "reading": "し"
+      },
+      {
+        "reading": "ゅ"
+      }
+    ],
+    "furigana": "ぶらぅしゅ",
+    "furiganaSegments": []
+  },
+  {
+    "en": "shop",
+    "jp": "買い物をする",
+    "emoji": "🛍️",
+    "stars": 2,
+    "furiganaChars": [
+      {
+        "reading": "し"
+      },
+      {
+        "reading": "ぃ"
+      },
+      {
+        "reading": "ぉ"
+      },
+      {
+        "reading": "ぷ"
+      }
+    ],
+    "furigana": "しぃぉぷ",
+    "furiganaSegments": []
+  },
+  {
+    "en": "carry",
+    "jp": "運ぶ",
+    "emoji": "👜",
+    "stars": 2,
+    "furiganaChars": [
+      {
+        "reading": "き"
+      },
+      {
+        "reading": "ゃ"
+      },
+      {
+        "reading": "り"
+      },
+      {
+        "reading": "り"
+      },
+      {
+        "reading": "ぃ"
+      }
+    ],
+    "furigana": "きゃりりぃ",
+    "furiganaSegments": []
+  },
+  {
+    "en": "push",
+    "jp": "押す",
+    "emoji": "👉",
+    "stars": 2,
+    "furiganaChars": [
+      {
+        "reading": "ぷ"
+      },
+      {
+        "reading": "ぅ"
+      },
+      {
+        "reading": "っし"
+      },
+      {
+        "reading": "ゅ"
+      }
+    ],
+    "furigana": "ぷぅっしゅ",
+    "furiganaSegments": []
+  },
+  {
+    "en": "buy",
+    "jp": "～を買う",
+    "emoji": "🛍️",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "ば"
+      },
+      {
+        "reading": "ぁ"
+      },
+      {
+        "reading": "ぃ"
+      }
+    ],
+    "furigana": "ばぁぃ",
+    "furiganaSegments": []
+  },
+  {
+    "en": "wash",
+    "jp": "～を洗う",
+    "emoji": "🧼",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "う"
+      },
+      {
+        "reading": "ぁ"
+      },
+      {
+        "reading": "し"
+      },
+      {
+        "reading": "ゅ"
+      }
+    ],
+    "furigana": "うぁしゅ",
+    "furiganaSegments": []
+  },
+  {
+    "en": "fish",
+    "jp": "魚をつる",
+    "emoji": "🎣",
+    "stars": 2,
+    "furiganaChars": [
+      {
+        "reading": "ふ"
+      },
+      {
+        "reading": "ぃ"
+      },
+      {
+        "reading": "し"
+      },
+      {
+        "reading": "ゅ"
+      }
+    ],
+    "furigana": "ふぃしゅ",
+    "furiganaSegments": []
+  },
+  {
+    "en": "pinch",
+    "jp": "つまむ",
+    "emoji": "🤏",
+    "stars": 2,
+    "furiganaChars": [
+      {
+        "reading": "ぴ"
+      },
+      {
+        "reading": "い"
+      },
+      {
+        "reading": "ん"
+      },
+      {
+        "reading": "ち"
+      },
+      {
+        "reading": "ぃ"
+      }
+    ],
+    "furigana": "ぴいんちぃ",
+    "furiganaSegments": []
+  },
+  {
+    "en": "watch",
+    "jp": "～をみる（映画など）",
+    "emoji": "📺",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "わ"
+      },
+      {
+        "reading": "ぁ"
+      },
+      {
+        "reading": ""
+      },
+      {
+        "reading": "ち"
+      },
+      {
+        "reading": "ぃ"
+      }
+    ],
+    "furigana": "わぁちぃ",
+    "furiganaSegments": []
+  },
+  {
+    "en": "listen",
+    "jp": "～を聞く",
+    "emoji": "🎧",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "り"
+      },
+      {
+        "reading": "ぃ"
+      },
+      {
+        "reading": "す"
+      },
+      {
+        "reading": ""
+      },
+      {
+        "reading": "ぇ"
+      },
+      {
+        "reading": "ん"
+      }
+    ],
+    "furigana": "りぃすぇん",
+    "furiganaSegments": []
+  },
+  {
+    "en": "have",
+    "jp": "～を持っている",
+    "emoji": "🤲",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "は"
+      },
+      {
+        "reading": "あ"
+      },
+      {
+        "reading": "ぶ"
+      },
+      {
+        "reading": "ー"
+      }
+    ],
+    "furigana": "はあぶー",
+    "furiganaSegments": []
+  },
+  {
+    "en": "know",
+    "jp": "～を知っている",
+    "emoji": "💡",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": ""
+      },
+      {
+        "reading": "の"
+      },
+      {
+        "reading": "お"
+      },
+      {
+        "reading": "う"
+      }
+    ],
+    "furigana": "のおう",
+    "furiganaSegments": []
+  },
+  {
+    "en": "strong",
+    "jp": "強い",
+    "emoji": "💪",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "す"
+      },
+      {
+        "reading": "と"
+      },
+      {
+        "reading": "ろ"
+      },
+      {
+        "reading": "ぉ"
+      },
+      {
+        "reading": "ん"
+      },
+      {
+        "reading": "ぐ"
+      }
+    ],
+    "furigana": "すとろぉんぐ",
+    "furiganaSegments": []
+  },
+  {
+    "en": "weak",
+    "jp": "弱い",
+    "emoji": "🪫",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "う"
+      },
+      {
+        "reading": "ぃ"
+      },
+      {
+        "reading": "ぁ"
+      },
+      {
+        "reading": "く"
+      }
+    ],
+    "furigana": "うぃぁく",
+    "furiganaSegments": []
+  },
+  {
+    "en": "short",
+    "jp": "短い",
+    "emoji": "↔️",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "し"
+      },
+      {
+        "reading": "ょ"
+      },
+      {
+        "reading": "お"
+      },
+      {
+        "reading": "ぉ"
+      },
+      {
+        "reading": "と"
+      }
+    ],
+    "furigana": "しょおぉと",
+    "furiganaSegments": []
+  },
+  {
+    "en": "long",
+    "jp": "長い",
+    "emoji": "📏",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "ろ"
+      },
+      {
+        "reading": "お"
+      },
+      {
+        "reading": "ん"
+      },
+      {
+        "reading": "ぐ"
+      }
+    ],
+    "furigana": "ろおんぐ",
+    "furiganaSegments": []
+  },
+  {
+    "en": "fixed",
+    "jp": "直っている",
+    "emoji": "🔧",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "ふ"
+      },
+      {
+        "reading": "ぃ"
+      },
+      {
+        "reading": "く"
+      },
+      {
+        "reading": "す"
+      },
+      {
+        "reading": "ど"
+      }
+    ],
+    "furigana": "ふぃくすど",
+    "furiganaSegments": []
+  },
+  {
+    "en": "broken",
+    "jp": "壊れている",
+    "emoji": "💔",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "ぶ"
+      },
+      {
+        "reading": "ろ"
+      },
+      {
+        "reading": "ぉ"
+      },
+      {
+        "reading": "く"
+      },
+      {
+        "reading": "ぇ"
+      },
+      {
+        "reading": "ん"
+      }
+    ],
+    "furigana": "ぶろぉくぇん",
+    "furiganaSegments": []
+  },
+  {
+    "en": "pretty",
+    "jp": "かわいい",
+    "emoji": "🌷",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "ぷ"
+      },
+      {
+        "reading": "り"
+      },
+      {
+        "reading": "ぃ"
+      },
+      {
+        "reading": "て"
+      },
+      {
+        "reading": "て"
+      },
+      {
+        "reading": "ぃ"
+      }
+    ],
+    "furigana": "ぷりぃててぃ",
+    "furiganaSegments": []
+  },
+  {
+    "en": "ugly",
+    "jp": "みにくい",
+    "emoji": "👹",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "あ"
+      },
+      {
+        "reading": "ぐ"
+      },
+      {
+        "reading": "り"
+      },
+      {
+        "reading": "ぃ"
+      }
+    ],
+    "furigana": "あぐりぃ",
+    "furiganaSegments": []
+  },
+  {
+    "en": "call",
+    "jp": "呼ぶ、電話する",
+    "emoji": "📞",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "こ"
+      },
+      {
+        "reading": "ぁ"
+      },
+      {
+        "reading": "る"
+      },
+      {
+        "reading": "る"
+      }
+    ],
+    "furigana": "こぁるる",
+    "furiganaSegments": []
+  },
+  {
+    "en": "give",
+    "jp": "あげる",
+    "emoji": "🎁",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "ぎ"
+      },
+      {
+        "reading": "い"
+      },
+      {
+        "reading": "ぶ"
+      },
+      {
+        "reading": "ー"
+      }
+    ],
+    "furigana": "ぎいぶー",
+    "furiganaSegments": []
+  },
+  {
+    "en": "learn",
+    "jp": "学ぶ",
+    "emoji": "📖",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "ら"
+      },
+      {
+        "reading": "ー"
+      },
+      {
+        "reading": "あ"
+      },
+      {
+        "reading": "ぁ"
+      },
+      {
+        "reading": "ん"
+      }
+    ],
+    "furigana": "らーあぁん",
+    "furiganaSegments": []
+  },
+  {
+    "en": "think",
+    "jp": "考える",
+    "emoji": "🤔",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "し"
+      },
+      {
+        "reading": ""
+      },
+      {
+        "reading": "い"
+      },
+      {
+        "reading": "ん"
+      },
+      {
+        "reading": "く"
+      }
+    ],
+    "furigana": "しいんく",
+    "furiganaSegments": []
+  },
+  {
+    "en": "live",
+    "jp": "住む",
+    "emoji": "🏠",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "り"
+      },
+      {
+        "reading": "い"
+      },
+      {
+        "reading": "ぶ"
+      },
+      {
+        "reading": "ー"
+      }
+    ],
+    "furigana": "りいぶー",
+    "furiganaSegments": []
+  },
+  {
+    "en": "dance",
+    "jp": "踊る",
+    "emoji": "💃",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "だ"
+      },
+      {
+        "reading": "ぁ"
+      },
+      {
+        "reading": "ん"
+      },
+      {
+        "reading": "す"
+      },
+      {
+        "reading": "ー"
+      }
+    ],
+    "furigana": "だぁんすー",
+    "furiganaSegments": []
+  },
+  {
+    "en": "get up",
+    "jp": "起きる",
+    "emoji": "⏰",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "げ"
+      },
+      {
+        "reading": "ぇ"
+      },
+      {
+        "reading": "と"
+      },
+      {
+        "reading": "あ"
+      },
+      {
+        "reading": "ぷ"
+      }
+    ],
+    "furigana": "げぇとあぷ",
+    "furiganaSegments": []
+  },
+  {
+    "en": "ask",
+    "jp": "～をたずねる",
+    "emoji": "❓",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "あ"
+      },
+      {
+        "reading": "す"
+      },
+      {
+        "reading": "く"
+      }
+    ],
+    "furigana": "あすく",
+    "furiganaSegments": []
+  },
+  {
+    "en": "open",
+    "jp": "～を開く",
+    "emoji": "📖",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "おー"
+      },
+      {
+        "reading": "ぷ"
+      },
+      {
+        "reading": "ぇ"
+      },
+      {
+        "reading": "ん"
+      }
+    ],
+    "furigana": "おーぷぇん",
+    "furiganaSegments": []
+  },
+  {
+    "en": "closed",
+    "jp": "閉まっている",
+    "emoji": "🔒",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "く"
+      },
+      {
+        "reading": "ろ"
+      },
+      {
+        "reading": "ぉ"
+      },
+      {
+        "reading": "ず"
+      },
+      {
+        "reading": "ー"
+      },
+      {
+        "reading": "ど"
+      }
+    ],
+    "furigana": "くろぉずーど",
+    "furiganaSegments": []
+  },
+  {
+    "en": "early",
+    "jp": "早く",
+    "emoji": "🌅",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "あ"
+      },
+      {
+        "reading": "ぁ"
+      },
+      {
+        "reading": "ぁ"
+      },
+      {
+        "reading": "り"
+      },
+      {
+        "reading": "ぃ"
+      }
+    ],
+    "furigana": "あぁぁりぃ",
+    "furiganaSegments": []
+  },
+  {
+    "en": "late",
+    "jp": "遅い",
+    "emoji": "⏰",
+    "stars": 2,
+    "furiganaChars": [
+      {
+        "reading": "れ"
+      },
+      {
+        "reading": "え"
+      },
+      {
+        "reading": "と"
+      },
+      {
+        "reading": "ー"
+      }
+    ],
+    "furigana": "れえとー",
+    "furiganaSegments": []
+  },
+  {
+    "en": "expensive",
+    "jp": "高価な",
+    "emoji": "💎",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "え"
+      },
+      {
+        "reading": "くす"
+      },
+      {
+        "reading": "ぺ"
+      },
+      {
+        "reading": "ぇ"
+      },
+      {
+        "reading": "ん"
+      },
+      {
+        "reading": "し"
+      },
+      {
+        "reading": "ぃ"
+      },
+      {
+        "reading": "ぶ"
+      },
+      {
+        "reading": "ー"
+      }
+    ],
+    "furigana": "えくすぺぇんしぃぶー",
+    "furiganaSegments": []
+  },
+  {
+    "en": "cheap",
+    "jp": "安い",
+    "emoji": "🏷️",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "ち"
+      },
+      {
+        "reading": "ぃ"
+      },
+      {
+        "reading": "ぃ"
+      },
+      {
+        "reading": "ぁ"
+      },
+      {
+        "reading": "ぷ"
+      }
+    ],
+    "furigana": "ちぃぃぁぷ",
+    "furiganaSegments": []
+  },
+  {
+    "en": "many",
+    "jp": "たくさんの",
+    "emoji": "🔢",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "め"
+      },
+      {
+        "reading": "ぇ"
+      },
+      {
+        "reading": "に"
+      },
+      {
+        "reading": "ぃ"
+      }
+    ],
+    "furigana": "めぇにぃ",
+    "furiganaSegments": []
+  },
+  {
+    "en": "few",
+    "jp": "少しの",
+    "emoji": "🤏",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "ふ"
+      },
+      {
+        "reading": "ぇ"
+      },
+      {
+        "reading": "う"
+      }
+    ],
+    "furigana": "ふぇう",
+    "furiganaSegments": []
+  },
+  {
+    "en": "wide",
+    "jp": "広い",
+    "emoji": "↔️",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "わ"
+      },
+      {
+        "reading": "い"
+      },
+      {
+        "reading": "ど"
+      },
+      {
+        "reading": "ー"
+      }
+    ],
+    "furigana": "わいどー",
+    "furiganaSegments": []
+  },
+  {
+    "en": "narrow",
+    "jp": "狭い",
+    "emoji": "↕️",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "な"
+      },
+      {
+        "reading": "ぁ"
+      },
+      {
+        "reading": "ろ"
+      },
+      {
+        "reading": "ろ"
+      },
+      {
+        "reading": "ぉ"
+      },
+      {
+        "reading": "ぅ"
+      }
+    ],
+    "furigana": "なぁろろぉぅ",
+    "furiganaSegments": []
+  },
+  {
+    "en": "bad",
+    "jp": "悪い",
+    "emoji": "👎",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "ば"
+      },
+      {
+        "reading": "ぁ"
+      },
+      {
+        "reading": "ど"
+      }
+    ],
+    "furigana": "ばぁど",
+    "furiganaSegments": []
+  },
+  {
+    "en": "good",
+    "jp": "良い",
+    "emoji": "👍",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "ぐ"
+      },
+      {
+        "reading": "ぉ"
+      },
+      {
+        "reading": "ぉ"
+      },
+      {
+        "reading": "ど"
+      }
+    ],
+    "furigana": "ぐぉぉど",
+    "furiganaSegments": []
+  },
+  {
+    "en": "fat",
+    "jp": "太った",
+    "emoji": "🐻",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "ふ"
+      },
+      {
+        "reading": "ぁ"
+      },
+      {
+        "reading": "と"
+      }
+    ],
+    "furigana": "ふぁと",
+    "furiganaSegments": []
+  },
+  {
+    "en": "thin",
+    "jp": "やせた",
+    "emoji": "🪶",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "す"
+      },
+      {
+        "reading": "ぅ"
+      },
+      {
+        "reading": "い"
+      },
+      {
+        "reading": "ん"
+      }
+    ],
+    "furigana": "すぅいん",
+    "furiganaSegments": []
+  },
+  {
+    "en": "careless",
+    "jp": "不注意な",
+    "emoji": "⚠️",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "け"
+      },
+      {
+        "reading": "え"
+      },
+      {
+        "reading": "あ"
+      },
+      {
+        "reading": "ー"
+      },
+      {
+        "reading": "れ"
+      },
+      {
+        "reading": "ぇ"
+      },
+      {
+        "reading": "す"
+      },
+      {
+        "reading": "す"
+      }
+    ],
+    "furigana": "けえあーれぇすす",
+    "furiganaSegments": []
+  },
+  {
+    "en": "careful",
+    "jp": "注意深い",
+    "emoji": "🔎",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "け"
+      },
+      {
+        "reading": "え"
+      },
+      {
+        "reading": "あ"
+      },
+      {
+        "reading": "ー"
+      },
+      {
+        "reading": "ふ"
+      },
+      {
+        "reading": "ぅ"
+      },
+      {
+        "reading": "る"
+      }
+    ],
+    "furigana": "けえあーふぅる",
+    "furiganaSegments": []
+  },
+  {
+    "en": "brush",
+    "jp": "髪をとかす",
+    "emoji": "🪥",
+    "stars": 2,
+    "furiganaChars": [
+      {
+        "reading": "ぶ"
+      },
+      {
+        "reading": "ら"
+      },
+      {
+        "reading": "ぅ"
+      },
+      {
+        "reading": "し"
+      },
+      {
+        "reading": "ゅ"
+      }
+    ],
+    "furigana": "ぶらぅしゅ",
+    "furiganaSegments": []
+  },
+  {
+    "en": "shop",
+    "jp": "買い物をする",
+    "emoji": "🛍️",
+    "stars": 2,
+    "furiganaChars": [
+      {
+        "reading": "し"
+      },
+      {
+        "reading": "ぃ"
+      },
+      {
+        "reading": "ぉ"
+      },
+      {
+        "reading": "ぷ"
+      }
+    ],
+    "furigana": "しぃぉぷ",
+    "furiganaSegments": []
+  },
+  {
+    "en": "carry",
+    "jp": "運ぶ",
+    "emoji": "👜",
+    "stars": 2,
+    "furiganaChars": [
+      {
+        "reading": "き"
+      },
+      {
+        "reading": "ゃ"
+      },
+      {
+        "reading": "り"
+      },
+      {
+        "reading": "り"
+      },
+      {
+        "reading": "ぃ"
+      }
+    ],
+    "furigana": "きゃりりぃ",
+    "furiganaSegments": []
+  },
+  {
+    "en": "push",
+    "jp": "押す",
+    "emoji": "👉",
+    "stars": 2,
+    "furiganaChars": [
+      {
+        "reading": "ぷ"
+      },
+      {
+        "reading": "ぅ"
+      },
+      {
+        "reading": "っし"
+      },
+      {
+        "reading": "ゅ"
+      }
+    ],
+    "furigana": "ぷぅっしゅ",
+    "furiganaSegments": []
+  },
+  {
+    "en": "fish",
+    "jp": "魚をつる",
+    "emoji": "🎣",
+    "stars": 2,
+    "furiganaChars": [
+      {
+        "reading": "ふ"
+      },
+      {
+        "reading": "ぃ"
+      },
+      {
+        "reading": "し"
+      },
+      {
+        "reading": "ゅ"
+      }
+    ],
+    "furigana": "ふぃしゅ",
+    "furiganaSegments": []
+  },
+  {
+    "en": "pinch",
+    "jp": "つまむ",
+    "emoji": "🤏",
+    "stars": 2,
+    "furiganaChars": [
+      {
+        "reading": "ぴ"
+      },
+      {
+        "reading": "い"
+      },
+      {
+        "reading": "ん"
+      },
+      {
+        "reading": "ち"
+      },
+      {
+        "reading": "ぃ"
+      }
+    ],
+    "furigana": "ぴいんちぃ",
+    "furiganaSegments": []
+  },
+  {
+    "en": "classroom",
+    "jp": "教室",
+    "emoji": "🏫",
+    "stars": 2,
+    "furiganaChars": [
+      {
+        "reading": "く"
+      },
+      {
+        "reading": "ら"
+      },
+      {
+        "reading": "あ"
+      },
+      {
+        "reading": "す"
+      },
+      {
+        "reading": "す"
+      },
+      {
+        "reading": "る"
+      },
+      {
+        "reading": "ぉ"
+      },
+      {
+        "reading": "ぉ"
+      },
+      {
+        "reading": "む"
+      }
+    ],
+    "furigana": "くらあすするぉぉむ",
+    "furiganaSegments": []
+  },
+  {
+    "en": "clock",
+    "jp": "時計（壁掛け）",
+    "emoji": "🕒",
+    "stars": 2,
+    "furiganaChars": [
+      {
+        "reading": "く"
+      },
+      {
+        "reading": "ろ"
+      },
+      {
+        "reading": "お"
+      },
+      {
+        "reading": "っ"
+      },
+      {
+        "reading": "く"
+      }
+    ],
+    "furigana": "くろおっく",
+    "furiganaSegments": []
+  },
+  {
+    "en": "desk",
+    "jp": "机",
+    "emoji": "🪑",
+    "stars": 2,
+    "furiganaChars": [
+      {
+        "reading": "で"
+      },
+      {
+        "reading": "え"
+      },
+      {
+        "reading": "す"
+      },
+      {
+        "reading": "く"
+      }
+    ],
+    "furigana": "でえすく",
+    "furiganaSegments": []
+  },
+  {
+    "en": "chair",
+    "jp": "いす",
+    "emoji": "🪑",
+    "stars": 2,
+    "furiganaChars": [
+      {
+        "reading": "ち"
+      },
+      {
+        "reading": "ぃ"
+      },
+      {
+        "reading": "え"
+      },
+      {
+        "reading": "い"
+      },
+      {
+        "reading": "あ"
+      }
+    ],
+    "furigana": "ちぃえいあ",
+    "furiganaSegments": []
+  },
+  {
+    "en": "notebook",
+    "jp": "ノート",
+    "emoji": "📓",
+    "stars": 2,
+    "furiganaChars": [
+      {
+        "reading": "の"
+      },
+      {
+        "reading": "ぉ"
+      },
+      {
+        "reading": "と"
+      },
+      {
+        "reading": "ー"
+      },
+      {
+        "reading": "ぶ"
+      },
+      {
+        "reading": "ぉ"
+      },
+      {
+        "reading": "ぉ"
+      },
+      {
+        "reading": "く"
+      }
+    ],
+    "furigana": "のぉとーぶぉぉく",
+    "furiganaSegments": []
+  },
+  {
+    "en": "pencil",
+    "jp": "えんぴつ",
+    "emoji": "✏️",
+    "stars": 2,
+    "furiganaChars": [
+      {
+        "reading": "ぺ"
+      },
+      {
+        "reading": "え"
+      },
+      {
+        "reading": "ん"
+      },
+      {
+        "reading": "し"
+      },
+      {
+        "reading": "い"
+      },
+      {
+        "reading": "る"
+      }
+    ],
+    "furigana": "ぺえんしいる",
+    "furiganaSegments": []
+  },
+  {
+    "en": "eraser",
+    "jp": "消しゴム",
+    "emoji": "🧽",
+    "stars": 2,
+    "furiganaChars": [
+      {
+        "reading": "い"
+      },
+      {
+        "reading": "れ"
+      },
+      {
+        "reading": "え"
+      },
+      {
+        "reading": "さ"
+      },
+      {
+        "reading": "ー"
+      },
+      {
+        "reading": "あ"
+      }
+    ],
+    "furigana": "いれえさーあ",
+    "furiganaSegments": []
+  },
+  {
+    "en": "textbook",
+    "jp": "教科書",
+    "emoji": "📘",
+    "stars": 2,
+    "furiganaChars": [],
+    "furigana": "",
+    "furiganaSegments": []
+  },
+  {
+    "en": "picture",
+    "jp": "絵、写真",
+    "emoji": "🖼️",
+    "stars": 2,
+    "furiganaChars": [
+      {
+        "reading": "ぴ"
+      },
+      {
+        "reading": "い"
+      },
+      {
+        "reading": "く"
+      },
+      {
+        "reading": "ち"
+      },
+      {
+        "reading": "ゅ"
+      },
+      {
+        "reading": "あ"
+      },
+      {
+        "reading": "ー"
+      }
+    ],
+    "furigana": "ぴいくちゅあー",
+    "furiganaSegments": []
+  },
+  {
+    "en": "computer",
+    "jp": "コンピューター",
+    "emoji": "💻",
+    "stars": 2,
+    "furiganaChars": [
+      {
+        "reading": "こ"
+      },
+      {
+        "reading": "お"
+      },
+      {
+        "reading": "ん"
+      },
+      {
+        "reading": "ぴ"
+      },
+      {
+        "reading": "ゅー"
+      },
+      {
+        "reading": "た"
+      },
+      {
+        "reading": "ー"
+      },
+      {
+        "reading": "あ"
+      }
+    ],
+    "furigana": "こおんぴゅーたーあ",
+    "furiganaSegments": []
+  },
+  {
+    "en": "train",
+    "jp": "電車",
+    "emoji": "🚆",
+    "stars": 2,
+    "furiganaChars": [
+      {
+        "reading": "と"
+      },
+      {
+        "reading": "れ"
+      },
+      {
+        "reading": "ぇ"
+      },
+      {
+        "reading": "い"
+      },
+      {
+        "reading": "ん"
+      }
+    ],
+    "furigana": "とれぇいん",
+    "furiganaSegments": []
+  },
+  {
+    "en": "bus",
+    "jp": "バス",
+    "emoji": "🚌",
+    "stars": 3,
+    "furiganaChars": [
+      {
+        "reading": "ば"
+      },
+      {
+        "reading": "ぅ"
+      },
+      {
+        "reading": "す"
+      }
+    ],
+    "furigana": "ばぅす",
+    "furiganaSegments": []
+  },
+  {
+    "en": "car",
+    "jp": "車",
+    "emoji": "🚗",
+    "stars": 3,
+    "furiganaChars": [
+      {
+        "reading": "か"
+      },
+      {
+        "reading": "ぁ"
+      },
+      {
+        "reading": "あ"
+      }
+    ],
+    "furigana": "かぁあ",
+    "furiganaSegments": []
+  },
+  {
+    "en": "school",
+    "jp": "学校",
+    "emoji": "🏫",
+    "stars": 3,
+    "furiganaChars": [
+      {
+        "reading": "す"
+      },
+      {
+        "reading": "こ"
+      },
+      {
+        "reading": "ー"
+      },
+      {
+        "reading": "ぉ"
+      },
+      {
+        "reading": "ぉ"
+      },
+      {
+        "reading": "る"
+      }
+    ],
+    "furigana": "すこーぉぉる",
+    "furiganaSegments": []
+  },
+  {
+    "en": "world",
+    "jp": "世界",
+    "emoji": "🌏",
+    "stars": 3,
+    "furiganaChars": [
+      {
+        "reading": "わ"
+      },
+      {
+        "reading": "ぉ"
+      },
+      {
+        "reading": "ぁ"
+      },
+      {
+        "reading": "る"
+      },
+      {
+        "reading": "ど"
+      }
+    ],
+    "furigana": "わぉぁるど",
+    "furiganaSegments": []
+  },
+  {
+    "en": "country",
+    "jp": "国",
+    "emoji": "🌍",
+    "stars": 2,
+    "furiganaChars": [
+      {
+        "reading": "こ"
+      },
+      {
+        "reading": "ぉ"
+      },
+      {
+        "reading": "う"
+      },
+      {
+        "reading": "ん"
+      },
+      {
+        "reading": "と"
+      },
+      {
+        "reading": "り"
+      },
+      {
+        "reading": "ぃ"
+      }
+    ],
+    "furigana": "こぉうんとりぃ",
+    "furiganaSegments": []
+  },
+  {
+    "en": "Japan",
+    "jp": "日本",
+    "emoji": "🇯🇵",
+    "stars": 2,
+    "furiganaChars": [
+      {
+        "reading": "じゃ"
+      },
+      {
+        "reading": "あ"
+      },
+      {
+        "reading": "ぱ"
+      },
+      {
+        "reading": "あ"
+      },
+      {
+        "reading": "ん"
+      }
+    ],
+    "furigana": "じゃあぱあん",
+    "furiganaSegments": []
+  },
+  {
+    "en": "the U.S.A.",
+    "jp": "アメリカ",
+    "emoji": "🇺🇸",
+    "stars": 2,
+    "furiganaChars": [
+      {
+        "reading": "ざ"
+      },
+      {
+        "reading": "ぁ"
+      },
+      {
+        "reading": "ー"
+      },
+      {
+        "reading": "ゆー"
+      },
+      {
+        "reading": "えす"
+      },
+      {
+        "reading": "えー"
+      }
+    ],
+    "furigana": "ざぁーゆーえすえー",
+    "furiganaSegments": []
+  },
+  {
+    "en": "Canada",
+    "jp": "カナダ",
+    "emoji": "🇨🇦",
+    "stars": 1,
+    "furiganaChars": [
+      {
+        "reading": "か"
+      },
+      {
+        "reading": "ぁ"
+      },
+      {
+        "reading": "な"
+      },
+      {
+        "reading": "ぁ"
+      },
+      {
+        "reading": "だ"
+      },
+      {
+        "reading": "ぁ"
+      }
+    ],
+    "furigana": "かぁなぁだぁ",
+    "furiganaSegments": []
+  },
+  {
+    "en": "China",
+    "jp": "中国",
+    "emoji": "🇨🇳",
+    "stars": 1,
+    "furiganaChars": [
+      {
+        "reading": "ち"
+      },
+      {
+        "reading": "ち"
+      },
+      {
+        "reading": "ぃ"
+      },
+      {
+        "reading": "な"
+      },
+      {
+        "reading": "あ"
+      }
+    ],
+    "furigana": "ちちぃなあ",
+    "furiganaSegments": []
+  },
+  {
+    "en": "Australia",
+    "jp": "オーストラリア",
+    "emoji": "🇦🇺",
+    "stars": 1,
+    "furiganaChars": [
+      {
+        "reading": "あ"
+      },
+      {
+        "reading": "う"
+      },
+      {
+        "reading": "す"
+      },
+      {
+        "reading": "と"
+      },
+      {
+        "reading": "ら"
+      },
+      {
+        "reading": "あ"
+      },
+      {
+        "reading": "り"
+      },
+      {
+        "reading": "い"
+      },
+      {
+        "reading": "あ"
+      }
+    ],
+    "furigana": "あうすとらありいあ",
+    "furiganaSegments": []
+  },
+  {
+    "en": "South Korea",
+    "jp": "韓国",
+    "emoji": "🇰🇷",
+    "stars": 1,
+    "furiganaChars": [
+      {
+        "reading": "さ"
+      },
+      {
+        "reading": "お"
+      },
+      {
+        "reading": "う"
+      },
+      {
+        "reading": "す"
+      },
+      {
+        "reading": "ぅ"
+      },
+      {
+        "reading": "こ"
+      },
+      {
+        "reading": "お"
+      },
+      {
+        "reading": "り"
+      },
+      {
+        "reading": "ー"
+      },
+      {
+        "reading": "あ"
+      }
+    ],
+    "furigana": "さおうすぅこおりーあ",
+    "furiganaSegments": []
+  },
+  {
+    "en": "the U.K.",
+    "jp": "イギリス",
+    "emoji": "🇬🇧",
+    "stars": 1,
+    "furiganaChars": [
+      {
+        "reading": "ざ"
+      },
+      {
+        "reading": "ぁ"
+      },
+      {
+        "reading": "ー"
+      },
+      {
+        "reading": "ゆー"
+      },
+      {
+        "reading": "けー"
+      }
+    ],
+    "furigana": "ざぁーゆーけー",
+    "furiganaSegments": []
+  },
+  {
+    "en": "France",
+    "jp": "フランス",
+    "emoji": "🇫🇷",
+    "stars": 1,
+    "furiganaChars": [
+      {
+        "reading": "ふ"
+      },
+      {
+        "reading": "ら"
+      },
+      {
+        "reading": "あ"
+      },
+      {
+        "reading": "ん"
+      },
+      {
+        "reading": "す"
+      },
+      {
+        "reading": "ー"
+      }
+    ],
+    "furigana": "ふらあんすー",
+    "furiganaSegments": []
+  },
+  {
+    "en": "Germany",
+    "jp": "ドイツ",
+    "emoji": "🇩🇪",
+    "stars": 1,
+    "furiganaChars": [
+      {
+        "reading": "じ"
+      },
+      {
+        "reading": "ぃ"
+      },
+      {
+        "reading": "あ"
+      },
+      {
+        "reading": "ま"
+      },
+      {
+        "reading": "あ"
+      },
+      {
+        "reading": "に"
+      },
+      {
+        "reading": "ぃ"
+      }
+    ],
+    "furigana": "じぃあまあにぃ",
+    "furiganaSegments": []
+  },
+  {
+    "en": "Russia",
+    "jp": "ロシア",
+    "emoji": "🇷🇺",
+    "stars": 1,
+    "furiganaChars": [
+      {
+        "reading": "る"
+      },
+      {
+        "reading": "ぅ"
+      },
+      {
+        "reading": "し"
+      },
+      {
+        "reading": "し"
+      },
+      {
+        "reading": "ぃ"
+      },
+      {
+        "reading": "あ"
+      }
+    ],
+    "furigana": "るぅししぃあ",
+    "furiganaSegments": []
+  },
+  {
+    "en": "Italy",
+    "jp": "イタリア",
+    "emoji": "🇮🇹",
+    "stars": 1,
+    "furiganaChars": [
+      {
+        "reading": "い"
+      },
+      {
+        "reading": "た"
+      },
+      {
+        "reading": "あ"
+      },
+      {
+        "reading": "り"
+      },
+      {
+        "reading": "ぃ"
+      }
+    ],
+    "furigana": "いたありぃ",
+    "furiganaSegments": []
+  },
+  {
+    "en": "Spain",
+    "jp": "スペイン",
+    "emoji": "🇪🇸",
+    "stars": 1,
+    "furiganaChars": [
+      {
+        "reading": "す"
+      },
+      {
+        "reading": "ぺ"
+      },
+      {
+        "reading": "え"
+      },
+      {
+        "reading": "い"
+      },
+      {
+        "reading": "ん"
+      }
+    ],
+    "furigana": "すぺえいん",
+    "furiganaSegments": []
+  },
+  {
+    "en": "Sunday",
+    "jp": "日曜日",
+    "emoji": "📅",
+    "stars": 1,
+    "furiganaChars": [
+      {
+        "reading": "さ"
+      },
+      {
+        "reading": "ぁ"
+      },
+      {
+        "reading": "ん"
+      },
+      {
+        "reading": "で"
+      },
+      {
+        "reading": "ぇ"
+      },
+      {
+        "reading": "ぃ"
+      }
+    ],
+    "furigana": "さぁんでぇぃ",
+    "furiganaSegments": []
+  },
+  {
+    "en": "Monday",
+    "jp": "月曜日",
+    "emoji": "📅",
+    "stars": 1,
+    "furiganaChars": [
+      {
+        "reading": "ま"
+      },
+      {
+        "reading": "ぁ"
+      },
+      {
+        "reading": "ん"
+      },
+      {
+        "reading": "で"
+      },
+      {
+        "reading": "ぇ"
+      },
+      {
+        "reading": "ぃ"
+      }
+    ],
+    "furigana": "まぁんでぇぃ",
+    "furiganaSegments": []
+  },
+  {
+    "en": "Tuesday",
+    "jp": "火曜日",
+    "emoji": "📅",
+    "stars": 1,
+    "furiganaChars": [
+      {
+        "reading": "ち"
+      },
+      {
+        "reading": "ぅ"
+      },
+      {
+        "reading": "ー"
+      },
+      {
+        "reading": "ず"
+      },
+      {
+        "reading": "で"
+      },
+      {
+        "reading": "ぇ"
+      },
+      {
+        "reading": "ぃ"
+      }
+    ],
+    "furigana": "ちぅーずでぇぃ",
+    "furiganaSegments": []
+  },
+  {
+    "en": "Wednesday",
+    "jp": "水曜日",
+    "emoji": "📅",
+    "stars": 1,
+    "furiganaChars": [
+      {
+        "reading": "う"
+      },
+      {
+        "reading": "え"
+      },
+      {
+        "reading": ""
+      },
+      {
+        "reading": "ん"
+      },
+      {
+        "reading": "ー"
+      },
+      {
+        "reading": "ず"
+      },
+      {
+        "reading": "で"
+      },
+      {
+        "reading": "ぇ"
+      },
+      {
+        "reading": "ぃ"
+      }
+    ],
+    "furigana": "うえんーずでぇぃ",
+    "furiganaSegments": []
+  },
+  {
+    "en": "Thursday",
+    "jp": "木曜日",
+    "emoji": "📅",
+    "stars": 1,
+    "furiganaChars": [
+      {
+        "reading": "さ"
+      },
+      {
+        "reading": "さ"
+      },
+      {
+        "reading": "ぅ"
+      },
+      {
+        "reading": "ぁ"
+      },
+      {
+        "reading": "ず"
+      },
+      {
+        "reading": "で"
+      },
+      {
+        "reading": "ぇ"
+      },
+      {
+        "reading": "ぃ"
+      }
+    ],
+    "furigana": "ささぅぁずでぇぃ",
+    "furiganaSegments": []
+  },
+  {
+    "en": "Friday",
+    "jp": "金曜日",
+    "emoji": "📅",
+    "stars": 1,
+    "furiganaChars": [
+      {
+        "reading": "ふ"
+      },
+      {
+        "reading": "ら"
+      },
+      {
+        "reading": "い"
+      },
+      {
+        "reading": "で"
+      },
+      {
+        "reading": "ぇ"
+      },
+      {
+        "reading": "ぃ"
+      }
+    ],
+    "furigana": "ふらいでぇぃ",
+    "furiganaSegments": []
+  },
+  {
+    "en": "Saturday",
+    "jp": "土曜日",
+    "emoji": "📅",
+    "stars": 1,
+    "furiganaChars": [
+      {
+        "reading": "さ"
+      },
+      {
+        "reading": "あ"
+      },
+      {
+        "reading": "つ"
+      },
+      {
+        "reading": "ぅ"
+      },
+      {
+        "reading": "あ"
+      },
+      {
+        "reading": "で"
+      },
+      {
+        "reading": "ぇ"
+      },
+      {
+        "reading": "ぃ"
+      }
+    ],
+    "furigana": "さあつぅあでぇぃ",
+    "furiganaSegments": []
+  },
+  {
+    "en": "season",
+    "jp": "季節",
+    "emoji": "🍀",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "し"
+      },
+      {
+        "reading": "ー"
+      },
+      {
+        "reading": "あ"
+      },
+      {
+        "reading": "ず"
+      },
+      {
+        "reading": "ぉ"
+      },
+      {
+        "reading": "ん"
+      }
+    ],
+    "furigana": "しーあずぉん",
+    "furiganaSegments": []
+  },
+  {
+    "en": "spring",
+    "jp": "春",
+    "emoji": "🌸",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "す"
+      },
+      {
+        "reading": "ぷ"
+      },
+      {
+        "reading": "り"
+      },
+      {
+        "reading": "い"
+      },
+      {
+        "reading": "ん"
+      },
+      {
+        "reading": "ぐ"
+      }
+    ],
+    "furigana": "すぷりいんぐ",
+    "furiganaSegments": []
+  },
+  {
+    "en": "summer",
+    "jp": "夏",
+    "emoji": "🌻",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "さ"
+      },
+      {
+        "reading": "ぁ"
+      },
+      {
+        "reading": "ま"
+      },
+      {
+        "reading": "ま"
+      },
+      {
+        "reading": "ー"
+      },
+      {
+        "reading": "ぁ"
+      }
+    ],
+    "furigana": "さぁままーぁ",
+    "furiganaSegments": []
+  },
+  {
+    "en": "fall",
+    "jp": "秋",
+    "emoji": "🍂",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "ふ"
+      },
+      {
+        "reading": "ぉー"
+      },
+      {
+        "reading": "る"
+      },
+      {
+        "reading": "る"
+      }
+    ],
+    "furigana": "ふぉーるる",
+    "furiganaSegments": []
+  },
+  {
+    "en": "autumn",
+    "jp": "秋",
+    "emoji": "🍁",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "お"
+      },
+      {
+        "reading": "ぅ"
+      },
+      {
+        "reading": "た"
+      },
+      {
+        "reading": "ぅ"
+      },
+      {
+        "reading": "む"
+      },
+      {
+        "reading": "ん"
+      }
+    ],
+    "furigana": "おぅたぅむん",
+    "furiganaSegments": []
+  },
+  {
+    "en": "winter",
+    "jp": "冬",
+    "emoji": "❄️",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "う"
+      },
+      {
+        "reading": "い"
+      },
+      {
+        "reading": "ん"
+      },
+      {
+        "reading": "た"
+      },
+      {
+        "reading": "ー"
+      },
+      {
+        "reading": "ぁ"
+      }
+    ],
+    "furigana": "ういんたーぁ",
+    "furiganaSegments": []
+  },
+  {
+    "en": "January",
+    "jp": "１月",
+    "emoji": "📅",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "じ"
+      },
+      {
+        "reading": "ぁ"
+      },
+      {
+        "reading": "に"
+      },
+      {
+        "reading": "ぅ"
+      },
+      {
+        "reading": "あ"
+      },
+      {
+        "reading": "り"
+      },
+      {
+        "reading": "ぃ"
+      }
+    ],
+    "furigana": "じぁにぅありぃ",
+    "furiganaSegments": []
+  },
+  {
+    "en": "February",
+    "jp": "２月",
+    "emoji": "📅",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "ふ"
+      },
+      {
+        "reading": "ぇ"
+      },
+      {
+        "reading": "ぶ"
+      },
+      {
+        "reading": "ら"
+      },
+      {
+        "reading": "ぁ"
+      },
+      {
+        "reading": "ぁ"
+      },
+      {
+        "reading": "り"
+      },
+      {
+        "reading": "ぃ"
+      }
+    ],
+    "furigana": "ふぇぶらぁぁりぃ",
+    "furiganaSegments": []
+  },
+  {
+    "en": "March",
+    "jp": "３月",
+    "emoji": "📅",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "ま"
+      },
+      {
+        "reading": "あ"
+      },
+      {
+        "reading": "ぁ"
+      },
+      {
+        "reading": "ち"
+      },
+      {
+        "reading": "ぃ"
+      }
+    ],
+    "furigana": "まあぁちぃ",
+    "furiganaSegments": []
+  },
+  {
+    "en": "April",
+    "jp": "４月",
+    "emoji": "📅",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "え"
+      },
+      {
+        "reading": "ぷ"
+      },
+      {
+        "reading": "り"
+      },
+      {
+        "reading": "い"
+      },
+      {
+        "reading": "る"
+      }
+    ],
+    "furigana": "えぷりいる",
+    "furiganaSegments": []
+  },
+  {
+    "en": "May",
+    "jp": "５月",
+    "emoji": "📅",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "め"
+      },
+      {
+        "reading": "ぇ"
+      },
+      {
+        "reading": "い"
+      }
+    ],
+    "furigana": "めぇい",
+    "furiganaSegments": []
+  },
+  {
+    "en": "June",
+    "jp": "６月",
+    "emoji": "📅",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "じ"
+      },
+      {
+        "reading": "ゅ"
+      },
+      {
+        "reading": "ん"
+      },
+      {
+        "reading": "ー"
+      }
+    ],
+    "furigana": "じゅんー",
+    "furiganaSegments": []
+  },
+  {
+    "en": "July",
+    "jp": "７月",
+    "emoji": "📅",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "じ"
+      },
+      {
+        "reading": "ゅ"
+      },
+      {
+        "reading": "ら"
+      },
+      {
+        "reading": "ぃ"
+      }
+    ],
+    "furigana": "じゅらぃ",
+    "furiganaSegments": []
+  },
+  {
+    "en": "August",
+    "jp": "８月",
+    "emoji": "📅",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "お"
+      },
+      {
+        "reading": "ぅ"
+      },
+      {
+        "reading": "が"
+      },
+      {
+        "reading": "ぅ"
+      },
+      {
+        "reading": "す"
+      },
+      {
+        "reading": "と"
+      }
+    ],
+    "furigana": "おぅがぅすと",
+    "furiganaSegments": []
+  },
+  {
+    "en": "September",
+    "jp": "９月",
+    "emoji": "📅",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "せ"
+      },
+      {
+        "reading": "ぇ"
+      },
+      {
+        "reading": "ぷ"
+      },
+      {
+        "reading": "て"
+      },
+      {
+        "reading": "ぇ"
+      },
+      {
+        "reading": "ん"
+      },
+      {
+        "reading": "ば"
+      },
+      {
+        "reading": "ー"
+      },
+      {
+        "reading": "あ"
+      }
+    ],
+    "furigana": "せぇぷてぇんばーあ",
+    "furiganaSegments": []
+  },
+  {
+    "en": "October",
+    "jp": "１０月",
+    "emoji": "📅",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "お"
+      },
+      {
+        "reading": "く"
+      },
+      {
+        "reading": "と"
+      },
+      {
+        "reading": "お"
+      },
+      {
+        "reading": "ば"
+      },
+      {
+        "reading": "ー"
+      },
+      {
+        "reading": "あ"
+      }
+    ],
+    "furigana": "おくとおばーあ",
+    "furiganaSegments": []
+  },
+  {
+    "en": "November",
+    "jp": "１１月",
+    "emoji": "📅",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "の"
+      },
+      {
+        "reading": "ぉ"
+      },
+      {
+        "reading": "べ"
+      },
+      {
+        "reading": "ぇ"
+      },
+      {
+        "reading": "ん"
+      },
+      {
+        "reading": "ば"
+      },
+      {
+        "reading": "ー"
+      },
+      {
+        "reading": "ぁ"
+      }
+    ],
+    "furigana": "のぉべぇんばーぁ",
+    "furiganaSegments": []
+  },
+  {
+    "en": "December",
+    "jp": "１２月",
+    "emoji": "📅",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "で"
+      },
+      {
+        "reading": "ぃ"
+      },
+      {
+        "reading": "せ"
+      },
+      {
+        "reading": "え"
+      },
+      {
+        "reading": "ん"
+      },
+      {
+        "reading": "ば"
+      },
+      {
+        "reading": "ー"
+      },
+      {
+        "reading": "あ"
+      }
+    ],
+    "furigana": "でぃせえんばーあ",
+    "furiganaSegments": []
+  },
+  {
+    "en": "month",
+    "jp": "月",
+    "emoji": "🗓️",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "ま"
+      },
+      {
+        "reading": "ぉ"
+      },
+      {
+        "reading": "ん"
+      },
+      {
+        "reading": "す"
+      },
+      {
+        "reading": "す"
+      }
+    ],
+    "furigana": "まぉんすす",
+    "furiganaSegments": []
+  },
+  {
+    "en": "year",
+    "jp": "年",
+    "emoji": "📆",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "い"
+      },
+      {
+        "reading": "い"
+      },
+      {
+        "reading": "あ"
+      },
+      {
+        "reading": "あ"
+      }
+    ],
+    "furigana": "いいああ",
+    "furiganaSegments": []
+  },
+  {
+    "en": "subject",
+    "jp": "教科",
+    "emoji": "📚",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "す"
+      },
+      {
+        "reading": "ぅ"
+      },
+      {
+        "reading": "ぶ"
+      },
+      {
+        "reading": "じ"
+      },
+      {
+        "reading": "ぇ"
+      },
+      {
+        "reading": "く"
+      },
+      {
+        "reading": "と"
+      }
+    ],
+    "furigana": "すぅぶじぇくと",
+    "furiganaSegments": []
+  },
+  {
+    "en": "English",
+    "jp": "英語",
+    "emoji": "🔤",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "い"
+      },
+      {
+        "reading": "ん"
+      },
+      {
+        "reading": "ぐ"
+      },
+      {
+        "reading": "り"
+      },
+      {
+        "reading": "い"
+      },
+      {
+        "reading": "し"
+      },
+      {
+        "reading": "ゅ"
+      }
+    ],
+    "furigana": "いんぐりいしゅ",
+    "furiganaSegments": []
+  },
+  {
+    "en": "Math",
+    "jp": "算数",
+    "emoji": "➗",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "ま"
+      },
+      {
+        "reading": "ぁ"
+      },
+      {
+        "reading": "す"
+      },
+      {
+        "reading": "す"
+      }
+    ],
+    "furigana": "まぁすす",
+    "furiganaSegments": []
+  },
+  {
+    "en": "Japanese",
+    "jp": "国語",
+    "emoji": "📝",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "じ"
+      },
+      {
+        "reading": "ぁ"
+      },
+      {
+        "reading": "ぱ"
+      },
+      {
+        "reading": "あ"
+      },
+      {
+        "reading": "に"
+      },
+      {
+        "reading": "ー"
+      },
+      {
+        "reading": "ず"
+      },
+      {
+        "reading": "ー"
+      }
+    ],
+    "furigana": "じぁぱあにーずー",
+    "furiganaSegments": []
+  },
+  {
+    "en": "Science",
+    "jp": "理科",
+    "emoji": "🔬",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "す"
+      },
+      {
+        "reading": "さ"
+      },
+      {
+        "reading": "い"
+      },
+      {
+        "reading": "え"
+      },
+      {
+        "reading": "ん"
+      },
+      {
+        "reading": "す"
+      },
+      {
+        "reading": "ー"
+      }
+    ],
+    "furigana": "すさいえんすー",
+    "furiganaSegments": []
+  },
+  {
+    "en": "Social Studies",
+    "jp": "社会",
+    "emoji": "🌏",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": ""
+      },
+      {
+        "reading": "そ"
+      },
+      {
+        "reading": "し"
+      },
+      {
+        "reading": "ぃ"
+      },
+      {
+        "reading": "あ"
+      },
+      {
+        "reading": "る"
+      },
+      {
+        "reading": "す"
+      },
+      {
+        "reading": "た"
+      },
+      {
+        "reading": "ぁ"
+      },
+      {
+        "reading": "で"
+      },
+      {
+        "reading": "ぃ"
+      },
+      {
+        "reading": ""
+      },
+      {
+        "reading": ""
+      }
+    ],
+    "furigana": "そしぃあるすたぁでぃ",
+    "furiganaSegments": []
+  },
+  {
+    "en": "Music",
+    "jp": "音楽",
+    "emoji": "🎵",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "み"
+      },
+      {
+        "reading": "ゅー"
+      },
+      {
+        "reading": "じ"
+      },
+      {
+        "reading": "ぃ"
+      },
+      {
+        "reading": "く"
+      }
+    ],
+    "furigana": "みゅーじぃく",
+    "furiganaSegments": []
+  },
+  {
+    "en": "Art",
+    "jp": "図工",
+    "emoji": "🎨",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "あ"
+      },
+      {
+        "reading": "ぁ"
+      },
+      {
+        "reading": "と"
+      }
+    ],
+    "furigana": "あぁと",
+    "furiganaSegments": []
+  },
+  {
+    "en": "P.E.",
+    "jp": "体育",
+    "emoji": "🏃",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "ぴー"
+      },
+      {
+        "reading": "いー"
+      }
+    ],
+    "furigana": "ぴーいー",
+    "furiganaSegments": []
+  },
+  {
+    "en": "Home Economics",
+    "jp": "家庭科",
+    "emoji": "🍳",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": ""
+      },
+      {
+        "reading": ""
+      },
+      {
+        "reading": "む"
+      },
+      {
+        "reading": "ー"
+      },
+      {
+        "reading": "え"
+      },
+      {
+        "reading": "こ"
+      },
+      {
+        "reading": "ぉ"
+      },
+      {
+        "reading": "の"
+      },
+      {
+        "reading": "ぉ"
+      },
+      {
+        "reading": "み"
+      },
+      {
+        "reading": "ぃ"
+      },
+      {
+        "reading": "く"
+      },
+      {
+        "reading": "す"
+      }
+    ],
+    "furigana": "むーえこぉのぉみぃくす",
+    "furiganaSegments": []
+  },
+  {
+    "en": "teacher",
+    "jp": "先生",
+    "emoji": "🧑‍🏫",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "て"
+      },
+      {
+        "reading": "ぃ"
+      },
+      {
+        "reading": "ぁ"
+      },
+      {
+        "reading": "ち"
+      },
+      {
+        "reading": "ぃ"
+      },
+      {
+        "reading": "ー"
+      },
+      {
+        "reading": "ぁ"
+      }
+    ],
+    "furigana": "てぃぁちぃーぁ",
+    "furiganaSegments": []
+  },
+  {
+    "en": "student",
+    "jp": "児童、生徒",
+    "emoji": "🎒",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "す"
+      },
+      {
+        "reading": "ち"
+      },
+      {
+        "reading": "ぅ"
+      },
+      {
+        "reading": "で"
+      },
+      {
+        "reading": "え"
+      },
+      {
+        "reading": "ん"
+      },
+      {
+        "reading": "と"
+      }
+    ],
+    "furigana": "すちぅでえんと",
+    "furiganaSegments": []
+  },
+  {
+    "en": "family",
+    "jp": "家族",
+    "emoji": "👪",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "ふ"
+      },
+      {
+        "reading": "ぁ"
+      },
+      {
+        "reading": "み"
+      },
+      {
+        "reading": "ぃ"
+      },
+      {
+        "reading": "り"
+      },
+      {
+        "reading": "ぃ"
+      }
+    ],
+    "furigana": "ふぁみぃりぃ",
+    "furiganaSegments": []
+  },
+  {
+    "en": "father",
+    "jp": "父",
+    "emoji": "👨",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "ふ"
+      },
+      {
+        "reading": "ぁ"
+      },
+      {
+        "reading": "ざ"
+      },
+      {
+        "reading": "ぁ"
+      },
+      {
+        "reading": "ー"
+      },
+      {
+        "reading": "ぁ"
+      }
+    ],
+    "furigana": "ふぁざぁーぁ",
+    "furiganaSegments": []
+  },
+  {
+    "en": "mother",
+    "jp": "母",
+    "emoji": "👩",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "も"
+      },
+      {
+        "reading": "ぉ"
+      },
+      {
+        "reading": "ざ"
+      },
+      {
+        "reading": "ぁ"
+      },
+      {
+        "reading": "ー"
+      },
+      {
+        "reading": "ぁ"
+      }
+    ],
+    "furigana": "もぉざぁーぁ",
+    "furiganaSegments": []
+  },
+  {
+    "en": "parents",
+    "jp": "両親",
+    "emoji": "👫",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "ぺ"
+      },
+      {
+        "reading": "あ"
+      },
+      {
+        "reading": "れ"
+      },
+      {
+        "reading": "ー"
+      },
+      {
+        "reading": "ん"
+      },
+      {
+        "reading": ""
+      },
+      {
+        "reading": "つ"
+      }
+    ],
+    "furigana": "ぺあれーんつ",
+    "furiganaSegments": []
+  },
+  {
+    "en": "brother",
+    "jp": "兄、弟",
+    "emoji": "👦",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "ぶ"
+      },
+      {
+        "reading": "ら"
+      },
+      {
+        "reading": "ぉ"
+      },
+      {
+        "reading": "ざ"
+      },
+      {
+        "reading": "ぁ"
+      },
+      {
+        "reading": "ー"
+      },
+      {
+        "reading": "ぁ"
+      }
+    ],
+    "furigana": "ぶらぉざぁーぁ",
+    "furiganaSegments": []
+  },
+  {
+    "en": "sister",
+    "jp": "姉、妹",
+    "emoji": "👧",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "し"
+      },
+      {
+        "reading": "ぃ"
+      },
+      {
+        "reading": "す"
+      },
+      {
+        "reading": "た"
+      },
+      {
+        "reading": "ー"
+      },
+      {
+        "reading": "ぁ"
+      }
+    ],
+    "furigana": "しぃすたーぁ",
+    "furiganaSegments": []
+  },
+  {
+    "en": "child",
+    "jp": "子ども",
+    "emoji": "🧒",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "ち"
+      },
+      {
+        "reading": "ち"
+      },
+      {
+        "reading": "あい"
+      },
+      {
+        "reading": "る"
+      },
+      {
+        "reading": "ど"
+      }
+    ],
+    "furigana": "ちちあいるど",
+    "furiganaSegments": []
+  },
+  {
+    "en": "children",
+    "jp": "子どもたち",
+    "emoji": "🧒",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "ち"
+      },
+      {
+        "reading": "ち"
+      },
+      {
+        "reading": "ぃ"
+      },
+      {
+        "reading": "る"
+      },
+      {
+        "reading": "ど"
+      },
+      {
+        "reading": "れ"
+      },
+      {
+        "reading": "え"
+      },
+      {
+        "reading": "ん"
+      }
+    ],
+    "furigana": "ちちぃるどれえん",
+    "furiganaSegments": []
+  },
+  {
+    "en": "son",
+    "jp": "息子",
+    "emoji": "👦",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "そ"
+      },
+      {
+        "reading": "お"
+      },
+      {
+        "reading": "ん"
+      }
+    ],
+    "furigana": "そおん",
+    "furiganaSegments": []
+  },
+  {
+    "en": "daughter",
+    "jp": "娘",
+    "emoji": "👧",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "ど"
+      },
+      {
+        "reading": "ぉ"
+      },
+      {
+        "reading": "ぅ"
+      },
+      {
+        "reading": ""
+      },
+      {
+        "reading": ""
+      },
+      {
+        "reading": "た"
+      },
+      {
+        "reading": "ー"
+      },
+      {
+        "reading": "ぁ"
+      }
+    ],
+    "furigana": "どぉぅたーぁ",
+    "furiganaSegments": []
+  },
+  {
+    "en": "grandfather",
+    "jp": "祖父",
+    "emoji": "👴",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "ぐ"
+      },
+      {
+        "reading": "ら"
+      },
+      {
+        "reading": "ぁ"
+      },
+      {
+        "reading": "ん"
+      },
+      {
+        "reading": "ど"
+      },
+      {
+        "reading": "ふ"
+      },
+      {
+        "reading": "ぁ"
+      },
+      {
+        "reading": "ざ"
+      },
+      {
+        "reading": "ぁ"
+      },
+      {
+        "reading": "ー"
+      },
+      {
+        "reading": "ぁ"
+      }
+    ],
+    "furigana": "ぐらぁんどふぁざぁーぁ",
+    "furiganaSegments": []
+  },
+  {
+    "en": "grandmother",
+    "jp": "祖母",
+    "emoji": "👵",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "ぐ"
+      },
+      {
+        "reading": "ら"
+      },
+      {
+        "reading": "ぁ"
+      },
+      {
+        "reading": "ん"
+      },
+      {
+        "reading": "ど"
+      },
+      {
+        "reading": "も"
+      },
+      {
+        "reading": "ぉ"
+      },
+      {
+        "reading": "ざ"
+      },
+      {
+        "reading": "ぁ"
+      },
+      {
+        "reading": "ー"
+      },
+      {
+        "reading": "ぁ"
+      }
+    ],
+    "furigana": "ぐらぁんどもぉざぁーぁ",
+    "furiganaSegments": []
+  },
+  {
+    "en": "grandparents",
+    "jp": "祖父母",
+    "emoji": "👴",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "ぐ"
+      },
+      {
+        "reading": "ら"
+      },
+      {
+        "reading": "ぁ"
+      },
+      {
+        "reading": "ん"
+      },
+      {
+        "reading": "ど"
+      },
+      {
+        "reading": "ぺ"
+      },
+      {
+        "reading": "あ"
+      },
+      {
+        "reading": "れ"
+      },
+      {
+        "reading": "え"
+      },
+      {
+        "reading": "ん"
+      },
+      {
+        "reading": ""
+      },
+      {
+        "reading": "つ"
+      }
+    ],
+    "furigana": "ぐらぁんどぺあれえんつ",
+    "furiganaSegments": []
+  },
+  {
+    "en": "sport",
+    "jp": "スポーツ",
+    "emoji": "🏅",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "す"
+      },
+      {
+        "reading": "ぽ"
+      },
+      {
+        "reading": "お"
+      },
+      {
+        "reading": "ぉ"
+      },
+      {
+        "reading": "つ"
+      }
+    ],
+    "furigana": "すぽおぉつ",
+    "furiganaSegments": []
+  },
+  {
+    "en": "baseball",
+    "jp": "野球",
+    "emoji": "⚾",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "べ"
+      },
+      {
+        "reading": "ぇ"
+      },
+      {
+        "reading": "す"
+      },
+      {
+        "reading": "ー"
+      },
+      {
+        "reading": "ぼ"
+      },
+      {
+        "reading": "ぁ"
+      },
+      {
+        "reading": "る"
+      },
+      {
+        "reading": "る"
+      }
+    ],
+    "furigana": "べぇすーぼぁるる",
+    "furiganaSegments": []
+  },
+  {
+    "en": "soccer",
+    "jp": "サッカー",
+    "emoji": "⚽",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "す"
+      },
+      {
+        "reading": "ぉ"
+      },
+      {
+        "reading": "か"
+      },
+      {
+        "reading": "か"
+      },
+      {
+        "reading": "ー"
+      },
+      {
+        "reading": "ぁ"
+      }
+    ],
+    "furigana": "すぉかかーぁ",
+    "furiganaSegments": []
+  },
+  {
+    "en": "tennis",
+    "jp": "テニス",
+    "emoji": "🎾",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "て"
+      },
+      {
+        "reading": "え"
+      },
+      {
+        "reading": "に"
+      },
+      {
+        "reading": "に"
+      },
+      {
+        "reading": "い"
+      },
+      {
+        "reading": "す"
+      }
+    ],
+    "furigana": "てえににいす",
+    "furiganaSegments": []
+  },
+  {
+    "en": "basketball",
+    "jp": "バスケットボール",
+    "emoji": "🏀",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "ば"
+      },
+      {
+        "reading": "ぁ"
+      },
+      {
+        "reading": "す"
+      },
+      {
+        "reading": "け"
+      },
+      {
+        "reading": "え"
+      },
+      {
+        "reading": "と"
+      },
+      {
+        "reading": "ぼ"
+      },
+      {
+        "reading": "ぁ"
+      },
+      {
+        "reading": "る"
+      },
+      {
+        "reading": "る"
+      }
+    ],
+    "furigana": "ばぁすけえとぼぁるる",
+    "furiganaSegments": []
+  },
+  {
+    "en": "volleyball",
+    "jp": "バレーボール",
+    "emoji": "🏐",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "ぼ"
+      },
+      {
+        "reading": "ぉ"
+      },
+      {
+        "reading": "れ"
+      },
+      {
+        "reading": "れ"
+      },
+      {
+        "reading": "ぇ"
+      },
+      {
+        "reading": "ぃ"
+      },
+      {
+        "reading": "ぼ"
+      },
+      {
+        "reading": "ぁ"
+      },
+      {
+        "reading": "る"
+      },
+      {
+        "reading": "る"
+      }
+    ],
+    "furigana": "ぼぉれれぇぃぼぁるる",
+    "furiganaSegments": []
+  },
+  {
+    "en": "table tennis",
+    "jp": "卓球",
+    "emoji": "🏓",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "て"
+      },
+      {
+        "reading": "ぇ"
+      },
+      {
+        "reading": "ぶ"
+      },
+      {
+        "reading": "る"
+      },
+      {
+        "reading": "ー"
+      },
+      {
+        "reading": "て"
+      },
+      {
+        "reading": "え"
+      },
+      {
+        "reading": "に"
+      },
+      {
+        "reading": "に"
+      },
+      {
+        "reading": "い"
+      },
+      {
+        "reading": "す"
+      }
+    ],
+    "furigana": "てぇぶるーてえににいす",
+    "furiganaSegments": []
+  },
+  {
+    "en": "badminton",
+    "jp": "バドミントン",
+    "emoji": "🏸",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "ば"
+      },
+      {
+        "reading": "ぁ"
+      },
+      {
+        "reading": "ど"
+      },
+      {
+        "reading": "み"
+      },
+      {
+        "reading": "い"
+      },
+      {
+        "reading": "ん"
+      },
+      {
+        "reading": "と"
+      },
+      {
+        "reading": "ぉ"
+      },
+      {
+        "reading": "ん"
+      }
+    ],
+    "furigana": "ばぁどみいんとぉん",
+    "furiganaSegments": []
+  },
+  {
+    "en": "golf",
+    "jp": "ゴルフ",
+    "emoji": "⛳",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "ご"
+      },
+      {
+        "reading": "お"
+      },
+      {
+        "reading": "る"
+      },
+      {
+        "reading": "ふ"
+      }
+    ],
+    "furigana": "ごおるふ",
+    "furiganaSegments": []
+  },
+  {
+    "en": "swimming",
+    "jp": "水泳",
+    "emoji": "🏊",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "す"
+      },
+      {
+        "reading": "う"
+      },
+      {
+        "reading": "い"
+      },
+      {
+        "reading": "み"
+      },
+      {
+        "reading": "み"
+      },
+      {
+        "reading": "い"
+      },
+      {
+        "reading": "ん"
+      },
+      {
+        "reading": "ぐ"
+      }
+    ],
+    "furigana": "すういみみいんぐ",
+    "furiganaSegments": []
+  },
+  {
+    "en": "skiing",
+    "jp": "スキー",
+    "emoji": "⛷️",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "す"
+      },
+      {
+        "reading": "き"
+      },
+      {
+        "reading": "い"
+      },
+      {
+        "reading": "い"
+      },
+      {
+        "reading": "ん"
+      },
+      {
+        "reading": "ぐ"
+      }
+    ],
+    "furigana": "すきいいんぐ",
+    "furiganaSegments": []
+  },
+  {
+    "en": "go",
+    "jp": "～に行く",
+    "emoji": "➡️",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "ご"
+      },
+      {
+        "reading": "お"
+      }
+    ],
+    "furigana": "ごお",
+    "furiganaSegments": []
+  },
+  {
+    "en": "meet",
+    "jp": "～に会う",
+    "emoji": "🤝",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "み"
+      },
+      {
+        "reading": "ぃ"
+      },
+      {
+        "reading": "ぃ"
+      },
+      {
+        "reading": "と"
+      }
+    ],
+    "furigana": "みぃぃと",
+    "furiganaSegments": []
+  },
+  {
+    "en": "eat",
+    "jp": "～を食べる",
+    "emoji": "🍽️",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "い"
+      },
+      {
+        "reading": "ぁ"
+      },
+      {
+        "reading": "と"
+      }
+    ],
+    "furigana": "いぁと",
+    "furiganaSegments": []
+  },
+  {
+    "en": "like",
+    "jp": "～を好む",
+    "emoji": "❤️",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "ら"
+      },
+      {
+        "reading": "い"
+      },
+      {
+        "reading": "く"
+      },
+      {
+        "reading": "ー"
+      }
+    ],
+    "furigana": "らいくー",
+    "furiganaSegments": []
+  },
+  {
+    "en": "run",
+    "jp": "走る",
+    "emoji": "🏃",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "ら"
+      },
+      {
+        "reading": "う"
+      },
+      {
+        "reading": "ん"
+      }
+    ],
+    "furigana": "らうん",
+    "furiganaSegments": []
+  },
+  {
+    "en": "sing",
+    "jp": "歌う",
+    "emoji": "🎤",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "し"
+      },
+      {
+        "reading": "い"
+      },
+      {
+        "reading": "ん"
+      },
+      {
+        "reading": "ぐ"
+      }
+    ],
+    "furigana": "しいんぐ",
+    "furiganaSegments": []
+  },
+  {
+    "en": "swim",
+    "jp": "泳ぐ",
+    "emoji": "🏊",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "す"
+      },
+      {
+        "reading": "う"
+      },
+      {
+        "reading": "い"
+      },
+      {
+        "reading": "む"
+      }
+    ],
+    "furigana": "すういむ",
+    "furiganaSegments": []
+  },
+  {
+    "en": "stay",
+    "jp": "とどまる、滞在する",
+    "emoji": "🏠",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "す"
+      },
+      {
+        "reading": "て"
+      },
+      {
+        "reading": "え"
+      },
+      {
+        "reading": "い"
+      }
+    ],
+    "furigana": "すてえい",
+    "furiganaSegments": []
+  },
+  {
+    "en": "ride",
+    "jp": "～に乗る",
+    "emoji": "🚲",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "ら"
+      },
+      {
+        "reading": "い"
+      },
+      {
+        "reading": "ど"
+      },
+      {
+        "reading": "ー"
+      }
+    ],
+    "furigana": "らいどー",
+    "furiganaSegments": []
+  },
+  {
+    "en": "walk",
+    "jp": "歩く",
+    "emoji": "🚶",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "わ"
+      },
+      {
+        "reading": "ぁ"
+      },
+      {
+        "reading": "あ"
+      },
+      {
+        "reading": "く"
+      }
+    ],
+    "furigana": "わぁあく",
+    "furiganaSegments": []
+  },
+  {
+    "en": "have",
+    "jp": "～を持っている",
+    "emoji": "🤲",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "は"
+      },
+      {
+        "reading": "あ"
+      },
+      {
+        "reading": "ぶ"
+      },
+      {
+        "reading": "ー"
+      }
+    ],
+    "furigana": "はあぶー",
+    "furiganaSegments": []
+  },
+  {
+    "en": "open",
+    "jp": "～を開く",
+    "emoji": "📖",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "おー"
+      },
+      {
+        "reading": "ぷ"
+      },
+      {
+        "reading": "ぇ"
+      },
+      {
+        "reading": "ん"
+      }
+    ],
+    "furigana": "おーぷぇん",
+    "furiganaSegments": []
+  },
+  {
+    "en": "live",
+    "jp": "住む",
+    "emoji": "🏠",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "り"
+      },
+      {
+        "reading": "い"
+      },
+      {
+        "reading": "ぶ"
+      },
+      {
+        "reading": "ー"
+      }
+    ],
+    "furigana": "りいぶー",
+    "furiganaSegments": []
+  },
+  {
+    "en": "know",
+    "jp": "～を知っている",
+    "emoji": "💡",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": ""
+      },
+      {
+        "reading": "の"
+      },
+      {
+        "reading": "お"
+      },
+      {
+        "reading": "う"
+      }
+    ],
+    "furigana": "のおう",
+    "furiganaSegments": []
+  },
+  {
+    "en": "help",
+    "jp": "～を助ける",
+    "emoji": "🤝",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "へ"
+      },
+      {
+        "reading": "え"
+      },
+      {
+        "reading": "る"
+      },
+      {
+        "reading": "ぷ"
+      }
+    ],
+    "furigana": "へえるぷ",
+    "furiganaSegments": []
+  },
+  {
+    "en": "play",
+    "jp": "演奏する、行う",
+    "emoji": "🎹",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "ぷ"
+      },
+      {
+        "reading": "れ"
+      },
+      {
+        "reading": "え"
+      },
+      {
+        "reading": "い"
+      }
+    ],
+    "furigana": "ぷれえい",
+    "furiganaSegments": []
+  },
+  {
+    "en": "climb",
+    "jp": "登る",
+    "emoji": "🧗",
+    "stars": 0,
+    "furiganaChars": [],
+    "furigana": "",
+    "furiganaSegments": []
+  },
+  {
+    "en": "bring",
+    "jp": "持ってくる",
+    "emoji": "📦",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "ぶ"
+      },
+      {
+        "reading": "り"
+      },
+      {
+        "reading": "い"
+      },
+      {
+        "reading": "ん"
+      },
+      {
+        "reading": "ぐ"
+      }
+    ],
+    "furigana": "ぶりいんぐ",
+    "furiganaSegments": []
+  },
+  {
+    "en": "take",
+    "jp": "取る",
+    "emoji": "✋",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "て"
+      },
+      {
+        "reading": "ぇ"
+      },
+      {
+        "reading": "く"
+      },
+      {
+        "reading": "ー"
+      }
+    ],
+    "furigana": "てぇくー",
+    "furiganaSegments": []
+  },
+  {
+    "en": "watch",
+    "jp": "～をみる（映画など）",
+    "emoji": "📺",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "わ"
+      },
+      {
+        "reading": "ぁ"
+      },
+      {
+        "reading": ""
+      },
+      {
+        "reading": "ち"
+      },
+      {
+        "reading": "ぃ"
+      }
+    ],
+    "furigana": "わぁちぃ",
+    "furiganaSegments": []
+  },
+  {
+    "en": "see",
+    "jp": "～をみる（目に入る）",
+    "emoji": "👀",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "し"
+      },
+      {
+        "reading": "ぃ"
+      },
+      {
+        "reading": "ぃ"
+      }
+    ],
+    "furigana": "しぃぃ",
+    "furiganaSegments": []
+  },
+  {
+    "en": "look",
+    "jp": "～をみる（絵など）",
+    "emoji": "👁️",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "る"
+      },
+      {
+        "reading": "ぉ"
+      },
+      {
+        "reading": "ぉ"
+      },
+      {
+        "reading": "く"
+      }
+    ],
+    "furigana": "るぉぉく",
+    "furiganaSegments": []
+  },
+  {
+    "en": "read",
+    "jp": "～を読む",
+    "emoji": "📖",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "り"
+      },
+      {
+        "reading": "ぃ"
+      },
+      {
+        "reading": "ぁ"
+      },
+      {
+        "reading": "ど"
+      }
+    ],
+    "furigana": "りぃぁど",
+    "furiganaSegments": []
+  },
+  {
+    "en": "listen",
+    "jp": "～を聞く",
+    "emoji": "🎧",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "り"
+      },
+      {
+        "reading": "ぃ"
+      },
+      {
+        "reading": "す"
+      },
+      {
+        "reading": ""
+      },
+      {
+        "reading": "ぇ"
+      },
+      {
+        "reading": "ん"
+      }
+    ],
+    "furigana": "りぃすぇん",
+    "furiganaSegments": []
+  },
+  {
+    "en": "hear",
+    "jp": "聞こえる",
+    "emoji": "👂",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "ひ"
+      },
+      {
+        "reading": "い"
+      },
+      {
+        "reading": "あ"
+      },
+      {
+        "reading": "ぁ"
+      }
+    ],
+    "furigana": "ひいあぁ",
+    "furiganaSegments": []
+  },
+  {
+    "en": "make",
+    "jp": "～を作る",
+    "emoji": "🛠️",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "め"
+      },
+      {
+        "reading": "え"
+      },
+      {
+        "reading": "く"
+      },
+      {
+        "reading": "ー"
+      }
+    ],
+    "furigana": "めえくー",
+    "furiganaSegments": []
+  },
+  {
+    "en": "wear",
+    "jp": "～を着る",
+    "emoji": "👕",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "う"
+      },
+      {
+        "reading": "え"
+      },
+      {
+        "reading": "あ"
+      },
+      {
+        "reading": "ぁ"
+      }
+    ],
+    "furigana": "うえあぁ",
+    "furiganaSegments": []
+  },
+  {
+    "en": "wash",
+    "jp": "～を洗う",
+    "emoji": "🧼",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "う"
+      },
+      {
+        "reading": "ぁ"
+      },
+      {
+        "reading": "し"
+      },
+      {
+        "reading": "ゅ"
+      }
+    ],
+    "furigana": "うぁしゅ",
+    "furiganaSegments": []
+  },
+  {
+    "en": "hope",
+    "jp": "～を望む",
+    "emoji": "🌟",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "ほ"
+      },
+      {
+        "reading": "ぉ"
+      },
+      {
+        "reading": "ぷ"
+      },
+      {
+        "reading": "ー"
+      }
+    ],
+    "furigana": "ほぉぷー",
+    "furiganaSegments": []
+  },
+  {
+    "en": "ask",
+    "jp": "～をたずねる",
+    "emoji": "❓",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "あ"
+      },
+      {
+        "reading": "す"
+      },
+      {
+        "reading": "く"
+      }
+    ],
+    "furigana": "あすく",
+    "furiganaSegments": []
+  },
+  {
+    "en": "catch",
+    "jp": "～を捕まえる",
+    "emoji": "🫴",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "き"
+      },
+      {
+        "reading": "ぁ"
+      },
+      {
+        "reading": ""
+      },
+      {
+        "reading": "ち"
+      },
+      {
+        "reading": "ぃ"
+      }
+    ],
+    "furigana": "きぁちぃ",
+    "furiganaSegments": []
+  },
+  {
+    "en": "work",
+    "jp": "働く",
+    "emoji": "💼",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "わ"
+      },
+      {
+        "reading": "ぉ"
+      },
+      {
+        "reading": "あ"
+      },
+      {
+        "reading": "く"
+      }
+    ],
+    "furigana": "わぉあく",
+    "furiganaSegments": []
+  },
+  {
+    "en": "get",
+    "jp": "～を手に入れる",
+    "emoji": "🎁",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "げ"
+      },
+      {
+        "reading": "え"
+      },
+      {
+        "reading": "と"
+      }
+    ],
+    "furigana": "げえと",
+    "furiganaSegments": []
+  },
+  {
+    "en": "come",
+    "jp": "来る",
+    "emoji": "➡️",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "こ"
+      },
+      {
+        "reading": "お"
+      },
+      {
+        "reading": "む"
+      },
+      {
+        "reading": "ー"
+      }
+    ],
+    "furigana": "こおむー",
+    "furiganaSegments": []
+  },
+  {
+    "en": "do",
+    "jp": "～をする",
+    "emoji": "✅",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "ど"
+      },
+      {
+        "reading": "ぉ"
+      }
+    ],
+    "furigana": "どぉ",
+    "furiganaSegments": []
+  },
+  {
+    "en": "use",
+    "jp": "～を使う",
+    "emoji": "🛠️",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "ゆー"
+      },
+      {
+        "reading": "ず"
+      },
+      {
+        "reading": "ー"
+      }
+    ],
+    "furigana": "ゆーずー",
+    "furiganaSegments": []
+  },
+  {
+    "en": "speak",
+    "jp": "～を話す",
+    "emoji": "🗣️",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "す"
+      },
+      {
+        "reading": "ぴ"
+      },
+      {
+        "reading": "ぃ"
+      },
+      {
+        "reading": "ぁ"
+      },
+      {
+        "reading": "く"
+      }
+    ],
+    "furigana": "すぴぃぁく",
+    "furiganaSegments": []
+  },
+  {
+    "en": "tell",
+    "jp": "伝える",
+    "emoji": "💬",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "て"
+      },
+      {
+        "reading": "ぇ"
+      },
+      {
+        "reading": "る"
+      },
+      {
+        "reading": "る"
+      }
+    ],
+    "furigana": "てぇるる",
+    "furiganaSegments": []
+  },
+  {
+    "en": "talk",
+    "jp": "話す",
+    "emoji": "💬",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "と"
+      },
+      {
+        "reading": "ぉ"
+      },
+      {
+        "reading": "ぉ"
+      },
+      {
+        "reading": "く"
+      }
+    ],
+    "furigana": "とぉぉく",
+    "furiganaSegments": []
+  },
+  {
+    "en": "try",
+    "jp": "～を試みる",
+    "emoji": "💪",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "と"
+      },
+      {
+        "reading": "ら"
+      },
+      {
+        "reading": "ぃ"
+      }
+    ],
+    "furigana": "とらぃ",
+    "furiganaSegments": []
+  },
+  {
+    "en": "teach",
+    "jp": "～を教える",
+    "emoji": "🧑‍🏫",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "て"
+      },
+      {
+        "reading": "ぃ"
+      },
+      {
+        "reading": "ぁ"
+      },
+      {
+        "reading": "ち"
+      },
+      {
+        "reading": "ぃ"
+      }
+    ],
+    "furigana": "てぃぁちぃ",
+    "furiganaSegments": []
+  },
+  {
+    "en": "study",
+    "jp": "～を勉強する",
+    "emoji": "📚",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "す"
+      },
+      {
+        "reading": "た"
+      },
+      {
+        "reading": "ぁ"
+      },
+      {
+        "reading": "で"
+      },
+      {
+        "reading": "ぃ"
+      }
+    ],
+    "furigana": "すたぁでぃ",
+    "furiganaSegments": []
+  },
+  {
+    "en": "enjoy",
+    "jp": "～を楽しむ",
+    "emoji": "😊",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "え"
+      },
+      {
+        "reading": "ん"
+      },
+      {
+        "reading": "じ"
+      },
+      {
+        "reading": "ぉ"
+      },
+      {
+        "reading": "ぃ"
+      }
+    ],
+    "furigana": "えんじぉぃ",
+    "furiganaSegments": []
+  },
+  {
+    "en": "buy",
+    "jp": "～を買う",
+    "emoji": "🛍️",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "ば"
+      },
+      {
+        "reading": "ぁ"
+      },
+      {
+        "reading": "ぃ"
+      }
+    ],
+    "furigana": "ばぁぃ",
+    "furiganaSegments": []
+  },
+  {
+    "en": "become",
+    "jp": "～になる",
+    "emoji": "🌱",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "び"
+      },
+      {
+        "reading": "ぃ"
+      },
+      {
+        "reading": "こ"
+      },
+      {
+        "reading": "お"
+      },
+      {
+        "reading": "む"
+      },
+      {
+        "reading": "ー"
+      }
+    ],
+    "furigana": "びぃこおむー",
+    "furiganaSegments": []
+  },
+  {
+    "en": "stop",
+    "jp": "～を止める",
+    "emoji": "🛑",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "す"
+      },
+      {
+        "reading": "と"
+      },
+      {
+        "reading": "ぉ"
+      },
+      {
+        "reading": "ぷ"
+      }
+    ],
+    "furigana": "すとぉぷ",
+    "furiganaSegments": []
+  },
+  {
+    "en": "want",
+    "jp": "～をしたいと思う",
+    "emoji": "💭",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "わ"
+      },
+      {
+        "reading": "ぁ"
+      },
+      {
+        "reading": "ん"
+      },
+      {
+        "reading": "と"
+      }
+    ],
+    "furigana": "わぁんと",
+    "furiganaSegments": []
+  },
+  {
+    "en": "beautiful",
+    "jp": "美しい",
+    "emoji": "🌺",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "び"
+      },
+      {
+        "reading": "ぃ"
+      },
+      {
+        "reading": "ぁ"
+      },
+      {
+        "reading": "ゆ"
+      },
+      {
+        "reading": "て"
+      },
+      {
+        "reading": "ぃ"
+      },
+      {
+        "reading": "ふ"
+      },
+      {
+        "reading": "ぅ"
+      },
+      {
+        "reading": "る"
+      }
+    ],
+    "furigana": "びぃぁゆてぃふぅる",
+    "furiganaSegments": []
+  },
+  {
+    "en": "cute",
+    "jp": "かわいい",
+    "emoji": "🐰",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "き"
+      },
+      {
+        "reading": "ゅ"
+      },
+      {
+        "reading": "と"
+      },
+      {
+        "reading": "ー"
+      }
+    ],
+    "furigana": "きゅとー",
+    "furiganaSegments": []
+  },
+  {
+    "en": "pretty",
+    "jp": "かわいい",
+    "emoji": "🌷",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "ぷ"
+      },
+      {
+        "reading": "り"
+      },
+      {
+        "reading": "ぃ"
+      },
+      {
+        "reading": "て"
+      },
+      {
+        "reading": "て"
+      },
+      {
+        "reading": "ぃ"
+      }
+    ],
+    "furigana": "ぷりぃててぃ",
+    "furiganaSegments": []
+  },
+  {
+    "en": "great",
+    "jp": "すばらしい",
+    "emoji": "🌟",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "ぐ"
+      },
+      {
+        "reading": "れ"
+      },
+      {
+        "reading": "ー"
+      },
+      {
+        "reading": "ぁ"
+      },
+      {
+        "reading": "と"
+      }
+    ],
+    "furigana": "ぐれーぁと",
+    "furiganaSegments": []
+  },
+  {
+    "en": "important",
+    "jp": "重要な",
+    "emoji": "❗",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "い"
+      },
+      {
+        "reading": "む"
+      },
+      {
+        "reading": "ぽ"
+      },
+      {
+        "reading": "お"
+      },
+      {
+        "reading": "ぉ"
+      },
+      {
+        "reading": "た"
+      },
+      {
+        "reading": "あ"
+      },
+      {
+        "reading": "ん"
+      },
+      {
+        "reading": "と"
+      }
+    ],
+    "furigana": "いむぽおぉたあんと",
+    "furiganaSegments": []
+  },
+  {
+    "en": "popular",
+    "jp": "人気の",
+    "emoji": "👏",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "ぽ"
+      },
+      {
+        "reading": "ぉ"
+      },
+      {
+        "reading": "ぴ"
+      },
+      {
+        "reading": "ぅ"
+      },
+      {
+        "reading": "ら"
+      },
+      {
+        "reading": "あ"
+      },
+      {
+        "reading": "ぁ"
+      }
+    ],
+    "furigana": "ぽぉぴぅらあぁ",
+    "furiganaSegments": []
+  },
+  {
+    "en": "famous",
+    "jp": "有名な",
+    "emoji": "⭐",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "ふ"
+      },
+      {
+        "reading": "ぇ"
+      },
+      {
+        "reading": "も"
+      },
+      {
+        "reading": "ぉ"
+      },
+      {
+        "reading": "ぅ"
+      },
+      {
+        "reading": "す"
+      }
+    ],
+    "furigana": "ふぇもぉぅす",
+    "furiganaSegments": []
+  },
+  {
+    "en": "interesting",
+    "jp": "おもしろい",
+    "emoji": "🤩",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "い"
+      },
+      {
+        "reading": "ん"
+      },
+      {
+        "reading": "た"
+      },
+      {
+        "reading": "ー"
+      },
+      {
+        "reading": "れ"
+      },
+      {
+        "reading": "え"
+      },
+      {
+        "reading": "す"
+      },
+      {
+        "reading": "て"
+      },
+      {
+        "reading": "い"
+      },
+      {
+        "reading": "ん"
+      },
+      {
+        "reading": "ぐ"
+      }
+    ],
+    "furigana": "いんたーれえすていんぐ",
+    "furiganaSegments": []
+  },
+  {
+    "en": "big",
+    "jp": "大きい",
+    "emoji": "🐘",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "び"
+      },
+      {
+        "reading": "ぃ"
+      },
+      {
+        "reading": "ぐ"
+      }
+    ],
+    "furigana": "びぃぐ",
+    "furiganaSegments": []
+  },
+  {
+    "en": "small",
+    "jp": "小さい",
+    "emoji": "🐭",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "す"
+      },
+      {
+        "reading": "も"
+      },
+      {
+        "reading": "ぁ"
+      },
+      {
+        "reading": "る"
+      },
+      {
+        "reading": "る"
+      }
+    ],
+    "furigana": "すもぁるる",
+    "furiganaSegments": []
+  },
+  {
+    "en": "tall",
+    "jp": "高い（身長など）",
+    "emoji": "📏",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "た"
+      },
+      {
+        "reading": "ぁ"
+      },
+      {
+        "reading": "る"
+      },
+      {
+        "reading": "る"
+      }
+    ],
+    "furigana": "たぁるる",
+    "furiganaSegments": []
+  },
+  {
+    "en": "high",
+    "jp": "高い",
+    "emoji": "⬆️",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "は"
+      },
+      {
+        "reading": "い"
+      },
+      {
+        "reading": ""
+      },
+      {
+        "reading": ""
+      }
+    ],
+    "furigana": "はい",
+    "furiganaSegments": []
+  },
+  {
+    "en": "short",
+    "jp": "短い",
+    "emoji": "↔️",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "し"
+      },
+      {
+        "reading": "ょ"
+      },
+      {
+        "reading": "お"
+      },
+      {
+        "reading": "ぉ"
+      },
+      {
+        "reading": "と"
+      }
+    ],
+    "furigana": "しょおぉと",
+    "furiganaSegments": []
+  },
+  {
+    "en": "long",
+    "jp": "長い",
+    "emoji": "📏",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "ろ"
+      },
+      {
+        "reading": "お"
+      },
+      {
+        "reading": "ん"
+      },
+      {
+        "reading": "ぐ"
+      }
+    ],
+    "furigana": "ろおんぐ",
+    "furiganaSegments": []
+  },
+  {
+    "en": "too",
+    "jp": "～も",
+    "emoji": "➕",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "と"
+      },
+      {
+        "reading": "ぉ"
+      },
+      {
+        "reading": "ぉ"
+      }
+    ],
+    "furigana": "とぉぉ",
+    "furiganaSegments": []
+  },
+  {
+    "en": "only",
+    "jp": "～だけ",
+    "emoji": "1️⃣",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "お"
+      },
+      {
+        "reading": "ん"
+      },
+      {
+        "reading": "り"
+      },
+      {
+        "reading": "ぃ"
+      }
+    ],
+    "furigana": "おんりぃ",
+    "furiganaSegments": []
+  },
+  {
+    "en": "just",
+    "jp": "ちょうど",
+    "emoji": "🎯",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "じ"
+      },
+      {
+        "reading": "ゅ"
+      },
+      {
+        "reading": "す"
+      },
+      {
+        "reading": "と"
+      }
+    ],
+    "furigana": "じゅすと",
+    "furiganaSegments": []
+  },
+  {
+    "en": "very",
+    "jp": "とても",
+    "emoji": "‼️",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "べ"
+      },
+      {
+        "reading": "え"
+      },
+      {
+        "reading": "り"
+      },
+      {
+        "reading": "ぃ"
+      }
+    ],
+    "furigana": "べえりぃ",
+    "furiganaSegments": []
+  },
+  {
+    "en": "so",
+    "jp": "とても",
+    "emoji": "‼️",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "そ"
+      },
+      {
+        "reading": "ぉ"
+      }
+    ],
+    "furigana": "そぉ",
+    "furiganaSegments": []
+  },
+  {
+    "en": "always",
+    "jp": "いつも",
+    "emoji": "🔁",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "お"
+      },
+      {
+        "reading": "る"
+      },
+      {
+        "reading": "うぇ"
+      },
+      {
+        "reading": "ぇ"
+      },
+      {
+        "reading": "ぃ"
+      },
+      {
+        "reading": "ず"
+      }
+    ],
+    "furigana": "おるうぇぇぃず",
+    "furiganaSegments": []
+  },
+  {
+    "en": "often",
+    "jp": "しばしば",
+    "emoji": "🔄",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "お"
+      },
+      {
+        "reading": "ふ"
+      },
+      {
+        "reading": ""
+      },
+      {
+        "reading": "ぇ"
+      },
+      {
+        "reading": "ん"
+      }
+    ],
+    "furigana": "おふぇん",
+    "furiganaSegments": []
+  },
+  {
+    "en": "sometimes",
+    "jp": "ときどき",
+    "emoji": "🕐",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "さ"
+      },
+      {
+        "reading": "ぉ"
+      },
+      {
+        "reading": "む"
+      },
+      {
+        "reading": "ー"
+      },
+      {
+        "reading": "た"
+      },
+      {
+        "reading": "い"
+      },
+      {
+        "reading": "む"
+      },
+      {
+        "reading": "ー"
+      },
+      {
+        "reading": "ず"
+      }
+    ],
+    "furigana": "さぉむーたいむーず",
+    "furiganaSegments": []
+  },
+  {
+    "en": "fast",
+    "jp": "速く",
+    "emoji": "💨",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "ふ"
+      },
+      {
+        "reading": "ぁ"
+      },
+      {
+        "reading": "す"
+      },
+      {
+        "reading": "と"
+      }
+    ],
+    "furigana": "ふぁすと",
+    "furiganaSegments": []
+  },
+  {
+    "en": "early",
+    "jp": "早く",
+    "emoji": "🌅",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "あ"
+      },
+      {
+        "reading": "ぁ"
+      },
+      {
+        "reading": "ぁ"
+      },
+      {
+        "reading": "り"
+      },
+      {
+        "reading": "ぃ"
+      }
+    ],
+    "furigana": "あぁぁりぃ",
+    "furiganaSegments": []
+  },
+  {
+    "en": "hard",
+    "jp": "熱心に",
+    "emoji": "💪",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "は"
+      },
+      {
+        "reading": "ぁ"
+      },
+      {
+        "reading": "ぁ"
+      },
+      {
+        "reading": "ど"
+      }
+    ],
+    "furigana": "はぁぁど",
+    "furiganaSegments": []
+  },
+  {
+    "en": "well",
+    "jp": "上手に",
+    "emoji": "👍",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "う"
+      },
+      {
+        "reading": "ぇ"
+      },
+      {
+        "reading": "る"
+      },
+      {
+        "reading": "る"
+      }
+    ],
+    "furigana": "うぇるる",
+    "furiganaSegments": []
+  },
+  {
+    "en": "there",
+    "jp": "そこで",
+    "emoji": "👉",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "ぜ"
+      },
+      {
+        "reading": "ぜ"
+      },
+      {
+        "reading": "ぇ"
+      },
+      {
+        "reading": "あ"
+      },
+      {
+        "reading": "ぁ"
+      }
+    ],
+    "furigana": "ぜぜぇあぁ",
+    "furiganaSegments": []
+  },
+  {
+    "en": "here",
+    "jp": "ここで",
+    "emoji": "👇",
+    "stars": 0,
+    "furiganaChars": [
+      {
+        "reading": "ひ"
+      },
+      {
+        "reading": "ぃ"
+      },
+      {
+        "reading": "あ"
+      },
+      {
+        "reading": "ぁ"
+      }
+    ],
+    "furigana": "ひぃあぁ",
+    "furiganaSegments": []
+  }
+]
