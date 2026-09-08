@@ -897,6 +897,12 @@ function mergeWordLists(defaults,saved){
   return merged;
 }
 let words=mergeWordLists(DEFAULT_WORDS,savedWords);
+words.forEach(w=>{
+  if(Array.isArray(w.furiganaChars)){
+    w.furiganaChars=w.furiganaChars.map(x=>({reading:kataToHira(String(x&&x.reading||''))}));
+  }
+  if(w.furigana) w.furigana=kataToHira(w.furigana);
+});
 
 const EMOJI_BY_WORD={"hate":"😡","mop":"🧹","bake":"🥐","take out":"📦","paint":"🖌️","safe":"🛡️","dangerous":"⚠️","early":"🌅","late":"🌙","same":"🟰","different":"↔️","real":"✅","fake":"🎭","eat":"🍽️","clean":"🧽","hike":"🥾","write":"✍️","boring":"🥱","exciting":"🤩","alive":"🫀","dead":"💀","tiny":"🐜","giant":"🦖","dark":"🌑","light":"💡","brush":"🪥","shop":"🛍️","carry":"🧳","push":"👉","fish":"🎣","pinch":"🤏","question":"❓","spoon":"🥄","kitten":"🐱","octopus":"🐙","wagon":"🛒","rocket":"🚀","egg":"🥚","go":"🚶","meet":"🤝","like":"❤️","run":"🏃","sing":"🎤","swim":"🏊","stay":"🏠","ride":"🚲","walk":"🚶","have":"🎒","open":"🔓","live":"🏡","know":"🧠","help":"🆘","play":"🎮","climb":"🧗","bring":"👜","take":"🤲","watch":"🎬","see":"👁️","look":"🔍","read":"📖","listen":"🎧","hear":"👂","make":"🛠️","wear":"👚","wash":"🧼","hope":"🌈","ask":"🙋","catch":"🫴","work":"👷","get":"🎁","come":"🏃","do":"✅","use":"🛠️","speak":"🗣️","tell":"💬","talk":"🗨️","try":"💪","teach":"🧑‍🏫","study":"📚","enjoy":"😊","buy":"🛍️","become":"🌱","stop":"🛑","want":"💭","beautiful":"🌸","cute":"🐰","pretty":"🌷","great":"🌟","important":"❗","popular":"👏","famous":"🏆","interesting":"🔎","big":"🐘","small":"🐭","tall":"🧍","high":"⬆️","short":"📏","long":"📐","too":"➕","only":"🔹","just":"🎯","very":"❗","so":"✨","always":"🔁","often":"🔄","sometimes":"🕐","fast":"💨","hard":"💪","well":"👍","there":"👉","here":"👈","classroom":"🏫","clock":"🕰️","desk":"🪑","chair":"💺","notebook":"📓","pencil":"✏️","eraser":"🧽","textbook":"📚","picture":"🖼️","computer":"🖥️","train":"🚆","bus":"🚌","car":"🚗","school":"🏫","world":"🌎","country":"🗺️","Japan":"🇯🇵","the U.S.A.":"🇺🇸","Canada":"🇨🇦","China":"🇨🇳","Australia":"🇦🇺","South Korea":"🇰🇷","the U.K.":"🇬🇧","France":"🇫🇷","Germany":"🇩🇪","Russia":"🇷🇺","Italy":"🇮🇹","Spain":"🇪🇸","Sunday":"☀️","Monday":"🌙","Tuesday":"🔥","Wednesday":"🌿","Thursday":"⚡","Friday":"🎉","Saturday":"🌈","season":"🍃","spring":"🌸","summer":"☀️","fall":"🍁","autumn":"🍂","winter":"❄️","January":"🧣","February":"💘","March":"🌱","April":"☔","May":"🌷","June":"🏖️","July":"🍉","August":"🌻","September":"🎒","October":"🎃","November":"🍂","December":"🎄","month":"🗓️","year":"📅","subject":"📚","English":"🔤","Math":"➗","Japanese":"🈯","Science":"🔬","Social Studies":"🌏","Music":"🎵","Art":"🎨","P.E.":"🏃","Home Economics":"🍳","teacher":"👩‍🏫","student":"🎒","family":"👨‍👩‍👧‍👦","father":"👨","mother":"👩","parents":"👨‍👩‍👧","brother":"👦","sister":"👧","child":"🧒","children":"👧👦","son":"👦","daughter":"👧","grandfather":"👴","grandmother":"👵","grandparents":"👴👵","sport":"🏅","baseball":"⚾","soccer":"⚽","tennis":"🎾","basketball":"🏀","volleyball":"🏐","table tennis":"🏓","badminton":"🏸","golf":"⛳","swimming":"🏊","skiing":"⛷️"};
 words.forEach(w=>{ if(!w.emoji && EMOJI_BY_WORD[w.en]) w.emoji=EMOJI_BY_WORD[w.en]; });
@@ -1076,7 +1082,7 @@ function renderStudy(){
 }
 const normalizedWord=w.en.toLowerCase();
  alphaPos=0;
- const rawCharReadings=Array.isArray(w.furiganaChars)?w.furiganaChars.map(x=>String(x&&x.reading||'')):[];
+ const rawCharReadings=Array.isArray(w.furiganaChars)?w.furiganaChars.map(x=>kataToHira(String(x&&x.reading||''))):[];
  const hasCharReadings=rawCharReadings.length>0;
  let displayCells='';
  let alphaIndex=0;
@@ -1217,10 +1223,8 @@ function renderRows(){
   const r=document.createElement('div'); r.className='row';
   const seg=(w.furiganaSegments||[]).map(x=>`${x.reading}|${x.letters}`).join(' / ');
   const furiSummary=(Array.isArray(w.furiganaChars)&&w.furiganaChars.some(x=>x&&x.reading))
-    ? w.furiganaChars.map(x=>x&&x.reading?x.reading:'・').join('')
-    : ((w.furiganaSegments&&w.furiganaSegments.length)
-      ? w.furiganaSegments.map(x=>x.reading).join('・')
-      : (w.furigana||kataToHira(FURIGANA[w.en]||'')||'未設定'));
+    ? w.furiganaChars.map(x=>x&&x.reading?kataToHira(x.reading):'・').join('')
+    : '未設定';
   r.innerHTML=`<input value=\"${esc(w.en)}\" data-i=\"${i}\" data-k=\"en\"><input value=\"${esc(w.jp)}\" data-i=\"${i}\" data-k=\"jp\"><input class=\"wide\" value=\"${esc(w.emoji||'✨')}\" data-i=\"${i}\" data-k=\"emoji\"><div class=\"furi-list-view\"><span>よみ</span><b>${esc(furiSummary)}</b></div><div class=\"count\">★ ${w.stars||0}</div><button class=\"btn danger delete\" data-del=\"${i}\">削除</button><button class=\"btn secondary furiedit\" data-furi=\"${i}\">🔤 フリガナ</button>`;
   box.appendChild(r);
  });
