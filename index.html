@@ -549,6 +549,117 @@ header{padding:2px 8px 0!important} header h1{font-size:22px!important;line-heig
 #letterboxes .furigana-cell.per-letter .letterbox{width:52px!important;min-width:52px!important;margin:0!important}
 @media(min-width:700px){#letterboxes .furigana-cell.per-letter{flex-basis:56px!important;width:56px!important;min-width:56px!important}#letterboxes .furigana-cell.per-letter .furigana-above{width:56px!important;min-width:56px!important}#letterboxes .furigana-cell.per-letter .letterbox{width:56px!important;min-width:56px!important}}
 
+
+/* FINAL FURIGANA LAYOUT
+   One English letter = one answer box = one hiragana slot (0-2 chars). */
+#letterboxes{
+  display:flex !important;
+  flex-wrap:nowrap !important;
+  align-items:flex-end !important;
+  justify-content:center !important;
+  gap:0 !important;
+  overflow-x:auto !important;
+  overflow-y:visible !important;
+  padding:24px 2px 4px !important;
+}
+#letterboxes .furigana-cell.per-letter{
+  position:relative !important;
+  display:inline-flex !important;
+  flex:0 0 58px !important;
+  width:58px !important;
+  min-width:58px !important;
+  height:100px !important;
+  padding:0 !important;
+  margin:0 !important;
+  flex-direction:column !important;
+  align-items:center !important;
+  justify-content:flex-end !important;
+  vertical-align:bottom !important;
+  overflow:visible !important;
+}
+#letterboxes .furigana-cell.per-letter .furigana-above{
+  position:absolute !important;
+  left:0 !important;
+  top:0 !important;
+  width:58px !important;
+  min-width:58px !important;
+  height:25px !important;
+  line-height:25px !important;
+  text-align:center !important;
+  white-space:nowrap !important;
+  overflow:visible !important;
+  font-size:16px !important;
+  font-weight:900 !important;
+  color:#555 !important;
+  margin:0 !important;
+  padding:0 !important;
+}
+#letterboxes .furigana-cell.per-letter .letterbox{
+  width:58px !important;
+  min-width:58px !important;
+  height:64px !important;
+  min-height:64px !important;
+  margin:0 !important;
+  padding:0 !important;
+  font-size:34px !important;
+  line-height:1 !important;
+}
+#letterboxes.hide-furigana .furigana-cell.per-letter .furigana-above{
+  visibility:hidden !important;
+}
+#letterboxes .autoch.separator{
+  flex:0 0 18px !important;
+  width:18px !important;
+  min-width:18px !important;
+  height:64px !important;
+  display:inline-flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  margin:0 !important;
+  padding:0 !important;
+}
+.furi-char-editor{
+  display:flex !important;
+  flex-wrap:nowrap !important;
+  justify-content:flex-start !important;
+  align-items:flex-start !important;
+  gap:5px !important;
+  overflow-x:auto !important;
+  max-width:100% !important;
+  padding:10px 4px 14px !important;
+}
+.furi-letter-cell{
+  flex:0 0 60px !important;
+  min-width:60px !important;
+  display:flex !important;
+  flex-direction:column !important;
+  align-items:center !important;
+}
+.furi-letter{
+  width:60px !important;
+  font-size:22px !important;
+  line-height:28px !important;
+  text-align:center !important;
+  color:#4b64d9 !important;
+  font-weight:900 !important;
+}
+.furi-one{
+  width:56px !important;
+  min-width:56px !important;
+  height:42px !important;
+  padding:2px 3px !important;
+  font-size:21px !important;
+  line-height:1.2 !important;
+  text-align:center !important;
+  border:2px solid #dfe7ff !important;
+  border-radius:8px !important;
+}
+@media(max-width:700px){
+  #letterboxes .furigana-cell.per-letter{flex-basis:52px !important;width:52px !important;min-width:52px !important;}
+  #letterboxes .furigana-cell.per-letter .furigana-above{width:52px !important;min-width:52px !important;font-size:15px !important;}
+  #letterboxes .furigana-cell.per-letter .letterbox{width:52px !important;min-width:52px !important;height:60px !important;min-height:60px !important;font-size:32px !important;}
+}
+
 </style>
 </head>
 <body>
@@ -1082,15 +1193,21 @@ function renderStudy(){
 }
 const normalizedWord=w.en.toLowerCase();
  alphaPos=0;
- const rawCharReadings=Array.isArray(w.furiganaChars)?w.furiganaChars.map(x=>kataToHira(String(x&&x.reading||''))):[];
- const hasCharReadings=rawCharReadings.length>0;
+ const rawCharReadings=Array.isArray(w.furiganaChars)
+  ? w.furiganaChars.map(x=>normalizeHiragana(String(x&&x.reading||'')))
+  : [];
+ const hasCharReadings=rawCharReadings.some(Boolean);
  let displayCells='';
  let alphaIndex=0;
  displayCells=fullChars.map(ch=>{
    if(/[a-z]/.test(ch)){
-     const r=hasCharReadings?(rawCharReadings[alphaIndex]||''):'';
-     const pp=alphaPos++; alphaIndex++;
-     return `<span class="furigana-cell per-letter"><span class="furigana-above">${esc(r)}</span><input class="letterbox" maxlength="1" data-pos="${pp}" inputmode="none" autocomplete="off" spellcheck="false" /></span>`;
+     const r=hasCharReadings ? (rawCharReadings[alphaIndex]||'') : '';
+     const pp=alphaPos++;
+     alphaIndex++;
+     return `<span class="furigana-cell per-letter">
+       <span class="furigana-above">${esc(r)}</span>
+       <input class="letterbox" maxlength="1" data-pos="${pp}" inputmode="none" autocomplete="off" spellcheck="false" />
+     </span>`;
    }
    return `<span class="autoch separator">${ch===' ' ? '&nbsp;' : esc(ch)}</span>`;
  }).join('');
@@ -1223,6 +1340,8 @@ function renderRows(){
   const r=document.createElement('div'); r.className='row';
   const seg=(w.furiganaSegments||[]).map(x=>`${x.reading}|${x.letters}`).join(' / ');
   const furiSummary=(Array.isArray(w.furiganaChars)&&w.furiganaChars.some(x=>x&&x.reading))
+    ? w.furiganaChars.map(x=>x&&x.reading?normalizeHiragana(x.reading):'・').join('')
+    : '未設定';
     ? w.furiganaChars.map(x=>x&&x.reading?kataToHira(x.reading):'・').join('')
     : '未設定';
   r.innerHTML=`<input value=\"${esc(w.en)}\" data-i=\"${i}\" data-k=\"en\"><input value=\"${esc(w.jp)}\" data-i=\"${i}\" data-k=\"jp\"><input class=\"wide\" value=\"${esc(w.emoji||'✨')}\" data-i=\"${i}\" data-k=\"emoji\"><div class=\"furi-list-view\"><span>よみ</span><b>${esc(furiSummary)}</b></div><div class=\"count\">★ ${w.stars||0}</div><button class=\"btn danger delete\" data-del=\"${i}\">削除</button><button class=\"btn secondary furiedit\" data-furi=\"${i}\">🔤 フリガナ</button>`;
@@ -1235,53 +1354,94 @@ function renderRows(){
   words.splice(+b.dataset.del,1); idx=Math.min(idx,Math.max(0,words.length-1)); save(); renderRows(); renderStudy();
  });
  let editingFuriIndex=-1;
- let tempFuriLetters=[];
- function drawFuriCharEditor(){
-   const box=$('#furiCharEditor'); box.innerHTML='';
-   const w=words[editingFuriIndex];
-   const chars=String(w.en).toLowerCase().split('');
-   const alphaChars=chars.filter(ch=>/[a-z]/.test(ch));
-   const saved=Array.isArray(w.furiganaChars)?w.furiganaChars:[];
-   tempFuriLetters=alphaChars.map((ch,i)=>({letter:ch,reading:String(saved[i]&&saved[i].reading||'').slice(0,2)}));
-   let ai=0;
-   chars.forEach(ch=>{
-     const d=document.createElement('div'); d.className='furi-letter-cell';
-     if(/[a-z]/.test(ch)){
-       const pos=ai++;
-       d.innerHTML=`<div class="furi-letter">${esc(ch)}</div><input class="furi-one" data-pos="${pos}" inputmode="text" lang="ja" autocapitalize="off" autocomplete="off" value="${esc(tempFuriLetters[pos].reading)}" placeholder="ひらがな">`;
-     }else{
-       d.innerHTML=`<div class="furi-letter">↔</div><div class="furi-space">スペース</div>`;
-     }
-     box.appendChild(d);
-   });
-   box.querySelectorAll('.furi-one').forEach(inp=>{
-     let composing=false;
-     const commit=()=>{
-       const v=Array.from(inp.value).filter(ch=>/[ぁ-ゖー]/.test(ch)).join('').slice(0,2);
-       inp.value=v; tempFuriLetters[+inp.dataset.pos].reading=v;
-     };
-     inp.addEventListener('compositionstart',()=>composing=true);
-     inp.addEventListener('compositionend',()=>{composing=false;commit();});
-     inp.addEventListener('input',()=>{if(!composing)commit();});
-     inp.addEventListener('change',commit);
-   });
- }
- box.querySelectorAll('[data-furi]').forEach(b=>b.onclick=()=>{
-   editingFuriIndex=+b.dataset.furi;
-   $('#furiWord').textContent=words[editingFuriIndex].en;
-   drawFuriCharEditor();
-   $('#furiModal').style.display='flex';
- });
- $('#furiSave').onclick=()=>{
-   if(editingFuriIndex<0)return;
-   words[editingFuriIndex].furiganaChars=tempFuriLetters.map(x=>({reading:x.reading}));
-   words[editingFuriIndex].furigana=tempFuriLetters.map(x=>x.reading).join('');
-   words[editingFuriIndex].furiganaSegments=[];
-   save();$('#furiModal').style.display='none';renderRows();renderStudy();
- };
- $('#furiCancel').onclick=()=>{$('#furiModal').style.display='none';};
+let tempFuriLetters=[];
 
+function normalizeHiragana(s){
+  return Array.from(String(s||''))
+    .map(ch=>/[\u30a1-\u30f6]/.test(ch)
+      ? String.fromCharCode(ch.charCodeAt(0)-0x60)
+      : ch)
+    .filter(ch=>/^[ぁ-ゖー]$/.test(ch))
+    .slice(0,2)
+    .join('');
 }
+
+function drawFuriCharEditor(){
+  const box=$('#furiCharEditor');
+  box.innerHTML='';
+  const w=words[editingFuriIndex];
+  const chars=String(w.en).toLowerCase().split('');
+  const alphaChars=chars.filter(ch=>/[a-z]/.test(ch));
+
+  let saved=Array.isArray(w.furiganaChars)?w.furiganaChars:[];
+  tempFuriLetters=alphaChars.map((ch,i)=>({
+    letter:ch,
+    reading:normalizeHiragana(saved[i] && saved[i].reading || '')
+  }));
+
+  let ai=0;
+  chars.forEach(ch=>{
+    const d=document.createElement('div');
+    d.className='furi-letter-cell';
+
+    if(/[a-z]/.test(ch)){
+      const pos=ai++;
+      d.innerHTML=`<div class="furi-letter">${esc(ch)}</div>
+        <input class="furi-one" data-pos="${pos}"
+          inputmode="text" lang="ja" autocapitalize="off"
+          autocomplete="off" spellcheck="false"
+          value="${esc(tempFuriLetters[pos].reading)}"
+          placeholder="ひらがな">`;
+    }else{
+      d.innerHTML=`<div class="furi-letter">↔</div><div class="furi-space">スペース</div>`;
+    }
+    box.appendChild(d);
+  });
+
+  box.querySelectorAll('.furi-one').forEach(inp=>{
+    let composing=false;
+
+    const commit=()=>{
+      const pos=+inp.dataset.pos;
+      const v=normalizeHiragana(inp.value);
+      inp.value=v;
+      tempFuriLetters[pos].reading=v;
+    };
+
+    inp.addEventListener('compositionstart',()=>{composing=true;});
+    inp.addEventListener('compositionend',()=>{composing=false;commit();});
+    inp.addEventListener('input',()=>{if(!composing)commit();});
+    inp.addEventListener('change',commit);
+    inp.addEventListener('blur',commit);
+  });
+}
+
+box.querySelectorAll('[data-furi]').forEach(b=>b.onclick=()=>{
+  editingFuriIndex=+b.dataset.furi;
+  $('#furiWord').textContent=words[editingFuriIndex].en;
+  drawFuriCharEditor();
+  $('#furiModal').style.display='flex';
+});
+
+$('#furiSave').onclick=()=>{
+  if(editingFuriIndex<0)return;
+
+  words[editingFuriIndex].furiganaChars=tempFuriLetters.map(x=>({
+    reading:normalizeHiragana(x.reading)
+  }));
+  words[editingFuriIndex].furigana=tempFuriLetters.map(x=>x.reading).join('');
+  words[editingFuriIndex].furiganaSegments=[];
+
+  save();
+  $('#furiModal').style.display='none';
+  renderRows();
+  renderStudy();
+};
+
+$('#furiCancel').onclick=()=>{
+  $('#furiModal').style.display='none';
+};
+
 const esc=s=>String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
 $('#add').onclick=()=>{words.push({en:'newword',jp:'日本語',emoji:'✨',stars:0});idx=words.length-1;save();renderRows();renderStudy()};
 $('#reset').onclick=()=>{if(confirm('初期データに戻しますか？')){words=DEFAULT_WORDS.map(x=>({...x}));idx=0;save();renderRows();renderStudy()}};
@@ -1321,13 +1481,14 @@ if ('serviceWorker' in navigator) {
  <div class="furi-card">
   <h3>🔤 フリガナを1文字ずつ設定</h3>
   <div id="furiWord" class="furi-word"></div>
-  <p>表示されたアルファベットの下に、ひらがなを1文字ずつ入力してください。不要なところは空欄でOKです。長い単語は、入力欄を左右にスライドしてください。基本は1文字。必要な音は「じゃ」「じゅ」「じょ」など2文字まで1つの欄に入れられます。</p>
+  <p>英語の文字の下に、ひらがなを1〜2文字入力してください。必要なところだけ入力します。</p>
   <div id="furiCharEditor" class="furi-char-editor"></div>
   <div class="actions">
    <button class="btn success" id="furiSave">保存</button>
    <button class="btn secondary" id="furiCancel">キャンセル</button>
   </div>
  </div>
+</div>
 </div>
 </div>
 
