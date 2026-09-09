@@ -682,7 +682,7 @@ header{padding:2px 8px 0!important} header h1{font-size:22px!important;line-heig
 
 
 
-.course-input,.unit-input{width:100%!important;min-width:0!important;min-height:40px!important;border:2px solid #dfe7ff!important;border-radius:8px!important;padding:5px 7px!important;background:#fff!important;font-weight:800!important;text-align:center!important}
+.unit-input{width:100%!important;min-width:0!important;min-height:40px!important;border:2px solid #dfe7ff!important;border-radius:8px!important;padding:5px 7px!important;background:#fff!important;font-weight:800!important;text-align:center!important}
 .practice-check{display:flex!important;align-items:center!important;justify-content:center!important}
 .practice-check .practice-toggle{width:22px!important;height:22px!important;margin:0!important}
 .list-header{align-items:center!important;text-align:center!important}
@@ -721,6 +721,79 @@ header{padding:2px 8px 0!important} header h1{font-size:22px!important;line-heig
 }
 #study{
   overflow-x:auto!important;
+}
+
+
+/* Simplified list: no separate course column */
+#list .row{
+  grid-template-columns:minmax(105px,1fr) minmax(105px,1fr) 60px minmax(95px,1fr)
+  120px 125px 105px 46px!important;
+  gap:6px!important;
+}
+#list .list-header{
+  grid-template-columns:minmax(105px,1fr) minmax(105px,1fr) 60px minmax(95px,1fr)
+  120px 125px 105px 46px!important;
+  gap:6px!important;
+}
+#list .list-header,#list #rows .row{min-width:900px!important;width:max-content!important}
+#list #rows{min-width:900px!important}
+
+
+.word-search{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin:8px 0 10px;padding:8px;border:2px solid #e7ebff;border-radius:12px;background:#fafbff}
+.search-label{font-weight:900;white-space:nowrap}
+#wordSearch{flex:1 1 320px;min-width:220px;min-height:42px;border:2px solid #dfe7ff;border-radius:8px;padding:6px 9px;font-size:16px;background:#fff}
+#clearWordSearch{min-height:42px}
+.word-search-count{font-weight:800;white-space:nowrap}
+
+
+#runWordSearch{min-height:42px!important;white-space:nowrap!important}
+.word-search{flex-wrap:nowrap!important}
+#wordSearch{min-width:220px!important}
+
+
+.multi-test-note{margin:6px 0;padding:7px 9px;background:#fff8dc;border-radius:9px;font-size:14px}
+
+
+.auto-furi{white-space:nowrap!important;min-height:40px!important;padding:6px 9px!important}
+#list .row{
+ grid-template-columns:minmax(100px,1fr) minmax(100px,1fr) 60px minmax(90px,1fr)
+ 120px 125px 170px 120px 46px!important;
+ gap:6px!important;
+}
+#list .list-header{
+ grid-template-columns:minmax(100px,1fr) minmax(100px,1fr) 60px minmax(90px,1fr)
+ 120px 125px 170px 120px 46px!important;
+ gap:6px!important;
+}
+#list .list-header,#list #rows .row{min-width:1120px!important;width:max-content!important}
+#list #rows{min-width:1120px!important}
+
+.learned-furi-note{margin:6px 0;padding:7px 9px;background:#eef9ff;border-radius:9px;font-size:13px}
+
+/* Compact auto-furigana button */
+.auto-furi{
+  font-size:12px!important;
+  padding:4px 7px!important;
+  min-height:32px!important;
+  line-height:1.2!important;
+  white-space:nowrap!important;
+}
+
+
+.auto-furi,.furiedit{
+  font-size:12px!important;
+  padding:4px 7px!important;
+  min-height:32px!important;
+  line-height:1.2!important;
+  white-space:nowrap!important;
+}
+
+.file-import-note{margin:8px 0;padding:8px 10px;border-radius:10px;background:#eef9ff;font-size:13px;font-weight:700}#importFile{white-space:nowrap}
+
+.total-word-count{
+ display:inline-flex!important;align-items:center!important;padding:7px 10px!important;
+ border:2px solid #e7ebff!important;border-radius:10px!important;background:#fff!important;
+ font-weight:900!important;white-space:nowrap!important;margin:6px 0 10px!important;
 }
 
 </style>
@@ -773,14 +846,19 @@ function normalizeHiragana(s){
 <div class="tips">💡 コツ：<b>日本語と絵を見て → 発音を聞いて → ヒントを使いながらタイピング</b>しよう！</div>
 </section>
 <section id="list" class="panel" style="display:none">
-<h2>📝 たんごリストを作ろう</h2><p class="list-instruction">れんしゅうしたい単語にチェックを入れてください。上の「れんしゅう開始」でまとめて練習できます。</p><div id="practiceActions" class="practice-actions"></div>
+<h2>📝 たんごリストを作ろう</h2><p class="list-instruction">れんしゅうしたい単語にチェックを入れてください。上の「れんしゅう開始」でまとめて練習できます。</p><div id="practiceActions" class="practice-actions"></div><div id="totalWordCount" class="total-word-count">📚 全0語</div><div class="multi-test-note">テスト欄は複数入力できます。例：<b>J英語1, W英語2</b>（全角の ｊ英語１ でも検索できます）</div><div class="learned-furi-note">✨ 自動作成は、これまで入力したフリガナのパターンを参考に候補を作ります。</div><form class="word-search" id="wordSearchForm" onreset="setTimeout(function(){renderRows();},0)">
+  <span class="search-label">🔎 たんごを検索</span>
+  <input id="wordSearch" type="search" placeholder="英語・日本語・テスト名で検索" autocomplete="off" spellcheck="false">
+  <button id="runWordSearch" class="btn primary" type="button" onclick="window.searchWordListNow()">🔎 検索</button>
+  <button id="clearWordSearch" class="btn secondary" type="reset">クリア</button><span id="wordSearchCount" class="word-search-count"></span>
+</form>
 <p>英語・日本語・絵（絵文字）を入力して「追加」できます。自分だけの単語帳にしよう！</p>
 <div class="row list-header" style="font-weight:900">
 <div>英語</div><div>日本語</div><div>絵</div><div>よみ</div>
-<div>教科</div><div>テスト</div><div>れんしゅうに追加</div><div>フリガナ</div><div>操作</div>
+<div>テスト</div><div>れんしゅうに追加</div><div>フリガナ</div><div>操作</div>
 </div>
 <div id="rows"></div>
-<div class="actions"><button class="btn primary" id="add">＋ たんごを追加</button><button class="btn secondary" id="export">💾 保存用データをコピー</button><button class="btn secondary" id="import">📥 データを読み込む</button><button class="btn danger" id="reset">初期データに戻す</button></div>
+<div class="file-import-note">📱 iPadでは「バックアップファイルを選ぶ」からGoogle Driveの .txt を直接選べます。</div><div class="actions"><button class="btn primary" id="add">＋ たんごを追加</button><button class="btn secondary" id="export">💾 保存用データをコピー</button><button class="btn secondary" id="import">📥 データを読み込む</button><button class="btn success" id="importFile">📂 バックアップファイルを選ぶ</button><input id="importFilePicker" type="file" accept=".txt,.json,text/plain,application/json" style="display:none"><button class="btn danger" id="reset">初期データに戻す</button></div>
 <p class="small">保存用データはJSON形式。家のPCなど別の端末でも使いたいときに便利です。</p>
 </section>
 <div class="footer-note">このアプリはブラウザだけで動きます。音声は端末の音声機能を使います。</div>
@@ -861,6 +939,31 @@ words.forEach(w=>{ if(!w.emoji && EMOJI_BY_WORD[w.en]) w.emoji=EMOJI_BY_WORD[w.e
  try{localStorage.setItem(SAVED_WORDS_KEY,JSON.stringify(words));}catch(e){}
 })();
 
+// J英語番号: モジュール用英単語表①〜⑫
+const J_LIST_NUMBER={"classroom":1,"clock":1,"desk":1,"chair":1,"notebook":1,"pencil":1,"eraser":1,"textbook":1,"picture":1,"computer":1,"train":1,"bus":1,"car":1,"school":1,"world":2,"country":2,"japan":2,"the u.s.a.":2,"canada":2,"china":2,"australia":2,"south korea":2,"the u.k.":2,"france":2,"germany":2,"russia":2,"italy":2,"spain":2,"sunday":3,"monday":3,"tuesday":3,"wednesday":3,"thursday":3,"friday":3,"saturday":3,"season":3,"spring":3,"summer":3,"fall":3,"autumn":3,"winter":3,"january":4,"february":4,"march":4,"april":4,"may":4,"june":4,"july":4,"august":4,"september":4,"october":4,"november":4,"december":4,"month":4,"year":4,"subject":5,"english":5,"math":5,"japanese":5,"science":5,"social studies":5,"music":5,"art":5,"p.e.":5,"home economics":5,"teacher":5,"student":5,"family":6,"father":6,"mother":6,"parents":6,"brother":6,"sister":6,"child":6,"children":6,"son":6,"daughter":6,"grandfather":6,"grandmother":6,"grandparents":6,"sport":7,"baseball":7,"soccer":7,"tennis":7,"basketball":7,"volleyball":7,"table tennis":7,"badminton":7,"golf":7,"swimming":7,"skiing":7,"go":8,"meet":8,"eat":8,"like":8,"run":8,"sing":8,"swim":8,"stay":8,"ride":8,"walk":8,"have":8,"open":8,"live":8,"know":8,"help":8,"play":8,"climb":9,"bring":9,"take":9,"watch":9,"see":9,"look":9,"read":9,"listen":9,"hear":9,"make":9,"wear":9,"wash":9,"hope":9,"ask":9,"catch":9,"work":9,"get":10,"come":10,"do":10,"use":10,"speak":10,"tell":10,"talk":10,"try":10,"teach":10,"study":10,"enjoy":10,"buy":10,"become":10,"stop":10,"want":10,"beautiful":11,"cute":11,"pretty":11,"great":11,"important":11,"popular":11,"famous":11,"interesting":11,"big":11,"small":11,"tall":11,"high":11,"short":11,"long":11,"too":12,"only":12,"just":12,"very":12,"so":12,"always":12,"often":12,"sometimes":12,"fast":12,"early":12,"hard":12,"well":12,"there":12,"here":12};
+words.forEach(w=>{
+ const k=String(w.en||'').trim().toLowerCase();
+ if(J_LIST_NUMBER[k]){w.course='J英語';w.unit='J英語'+J_LIST_NUMBER[k];}
+});
+try{localStorage.setItem(SAVED_WORDS_KEY,JSON.stringify(words));}catch(e){}
+
+(function fillOnlyMissingFurigana(){
+ const suggestions={
+  textbook:['て','','くす','と','ぶ','っ','','く'],
+  climb:['く','ら','い','む','']
+ };
+ words.forEach(w=>{
+  const key=String(w.en||'').trim().toLowerCase();
+  const has=Array.isArray(w.furiganaChars)&&w.furiganaChars.some(x=>x&&String(x.reading||'').trim());
+  if(!has&&suggestions[key]){
+   w.furiganaChars=suggestions[key].map(reading=>({reading}));
+   w.furigana=suggestions[key].join('');
+   w.furiganaSegments=[];
+   w.furiganaAutoSuggested=true;
+  }
+ });
+ try{localStorage.setItem(SAVED_WORDS_KEY,JSON.stringify(words));}catch(e){}
+})();
 let idx=0;
 let practiceMode='hint';
 let activeTest='all';
@@ -1055,9 +1158,10 @@ const RUBY_GROUPS={"wagon":[["ワ","wa"],["ゴ","go"],["ン","n"]],"octopus":[["
 function renderStudy(){
  if(!words.length){$('#leftCard').innerHTML='<div class="empty">たんごがありません。<br>「たんごリスト」から追加してね。</div>';$('#progress').textContent='';return;}
  const w=current();
- const tb=(activeTest==='selectedBoth' && selectedItems[selectedPos])?selectedItems[selectedPos].source:(String(w.course||'W英語').startsWith('J')?'J':'W');
+ const testLabel=String(w.unit||w.course||'W英語').trim();
+ const tb=/^J英語/i.test(testLabel)?'J':'W';
  const badge=$('#textbookBadge');
- if(badge){badge.textContent=tb==='W'?'📘 W英語':'📗 J英語';badge.className='textbook-badge'+(tb==='J'?' j':'');}
+ if(badge){badge.textContent=(tb==='J'?'📗 ':'📘 ')+testLabel;badge.className='textbook-badge'+(tb==='J'?' j':'');}
  let localNo,localTotal;
  if(selectedMode()){localNo=selectedPos+1;localTotal=selectedItems.length;}
  else{const range=testRange(activeTest);localNo=(range.end>=range.start)?(idx-range.start+1):(idx+1);localTotal=(range.end>=range.start)?(range.end-range.start+1):words.length;}
@@ -1244,7 +1348,7 @@ function togglePractice(index){
   if(at>=0) practiceQueue.splice(at,1);
   else {
     const w=words[i];
-    if(w) practiceQueue.push({index:i,source:String(w.course||'W英語').startsWith('J')?'J':'W'});
+    if(w) practiceQueue.push({index:i,source:/^J英語/i.test(String(w.unit||w.course||'W英語').trim())?'J':'W'});
   }
   practicePos=Math.min(practicePos,Math.max(0,practiceQueue.length-1));
   savePracticeQueue();
@@ -1257,6 +1361,16 @@ function renderPracticeBar(){
   label.className='practice-count';
   label.textContent=`れんしゅうに追加：${practiceQueue.length}語`;
   box.appendChild(label);
+  if(!practiceQueue.length && words.length){
+    const selectAll=document.createElement('button');
+    selectAll.className='btn secondary';
+    selectAll.textContent='☑️ すべて選ぶ';
+    selectAll.onclick=()=>{
+      practiceQueue=words.map((w,i)=>({index:i,source:String(w.unit||w.course||'W英語').trim().startsWith('J')?'J':'W'}));
+      practicePos=0;savePracticeQueue();renderPracticeBar();renderRows();
+    };
+    box.appendChild(selectAll);
+  }
   if(practiceQueue.length){
     const start=document.createElement('button');
     start.className='btn success';
@@ -1274,41 +1388,183 @@ function renderPracticeBar(){
     clear.textContent='🧹 すべて外す';
     clear.onclick=()=>{practiceQueue=[];practicePos=0;savePracticeQueue();renderPracticeBar();renderRows();};
     box.appendChild(clear);
+
+    const selectAll=document.createElement('button');
+    selectAll.className='btn secondary';
+    selectAll.textContent='☑️ すべて選ぶ';
+    selectAll.onclick=()=>{
+      practiceQueue=words.map((w,i)=>({
+        index:i,
+        source:String(w.unit||w.course||'W英語').trim().startsWith('J')?'J':'W'
+      }));
+      practicePos=0;
+      savePracticeQueue();
+      renderPracticeBar();
+      renderRows();
+    };
+    box.appendChild(selectAll);
   }
 }
+function getWordSearchQuery(){
+ const el=$('#wordSearch');
+ return el ? String(el.value||'').trim().toLowerCase() : '';
+}
+function normalizeSearchText(v){
+ return String(v||'')
+   .normalize('NFKC')
+   .toLowerCase()
+   .replace(/[ー−‐‑‒–—―ｰ]/g,'-')
+   .replace(/[、/／]/g,',')
+   .replace(/\s+/g,' ')
+   .trim();
+}
+function wordMatchesSearch(w,q){
+ if(!q)return true;
+ const query=normalizeSearchText(q);
+
+ const tags=String(w.unit||w.course||'')
+   .split(/[,、/／]/)
+   .map(normalizeSearchText)
+   .filter(Boolean);
+
+ // Subject-only search: W英語 -> W英語1, W英語2, ... / J英語 likewise.
+ if(/^[jw]英語$/i.test(query)){
+   return tags.some(tag=>tag.startsWith(query));
+ }
+
+ // Exact test search: J英語1 must not match J英語11 or J英語12.
+ if(/^[jw]英語\d+(?:-\d+)*$/i.test(query)){
+   return tags.includes(query);
+ }
+
+ // Ordinary English/Japanese word searches remain partial matches.
+ const hay=[w.en,w.jp].map(normalizeSearchText).join('\n');
+ return hay.includes(query);
+}
+
+function hasAnyFurigana(w){
+ return Array.isArray(w&&w.furiganaChars)&&w.furiganaChars.some(x=>x&&String(x.reading||'').trim());
+}
+function makeEditableAutoFurigana(word){
+ const letters=String(word||'').toLowerCase().split('').filter(ch=>/[a-z]/.test(ch));
+ const basic={
+  a:'あ',b:'ぶ',c:'く',d:'ど',e:'え',f:'ふ',g:'ぐ',h:'は',
+  i:'い',j:'じ',k:'く',l:'る',m:'む',n:'ん',o:'お',p:'ぷ',
+  q:'く',r:'る',s:'す',t:'と',u:'う',v:'ぶ',w:'わ',x:'くす',
+  y:'い',z:'ず'
+ };
+ return letters.map(ch=>({reading:basic[ch]||''}));
+}
+
+function buildLearnedFuriganaPatterns(){
+ const byLetter={},byChunk={};
+ words.forEach(w=>{
+  const chars=Array.isArray(w.furiganaChars)?w.furiganaChars:[];
+  const letters=String(w.en||'').toLowerCase().split('').filter(ch=>/[a-z]/.test(ch));
+  if(chars.length!==letters.length)return;
+  letters.forEach((ch,i)=>{
+   const r=normalizeHiragana(chars[i]&&chars[i].reading||'');
+   if(r){byLetter[ch]=byLetter[ch]||{};byLetter[ch][r]=(byLetter[ch][r]||0)+1;}
+  });
+  for(let i=0;i<letters.length-1;i++){
+   const pair=letters[i]+letters[i+1];
+   const r=normalizeHiragana(chars[i]?.reading||'')+normalizeHiragana(chars[i+1]?.reading||'');
+   if(r){byChunk[pair]=byChunk[pair]||{};byChunk[pair][r]=(byChunk[pair][r]||0)+1;}
+  }
+ });
+ return {byLetter,byChunk};
+}
+function pickMostCommon(table){
+ if(!table)return '';
+ let best='',score=-1;
+ Object.keys(table).forEach(k=>{if(table[k]>score){score=table[k];best=k;}});
+ return best;
+}
+function autoFuriganaFromUserData(word){
+ const letters=String(word||'').toLowerCase().split('').filter(ch=>/[a-z]/.test(ch));
+ const learned=buildLearnedFuriganaPatterns();
+ const out=[];
+ letters.forEach(ch=>out.push(pickMostCommon(learned.byLetter[ch])||''));
+ return out;
+}
+function autoCreateFurigana(index){
+ const i=Number(index),w=words[i];
+ if(!w)return;
+ if(hasAnyFurigana(w)){
+   alert('この単語にはすでにフリガナがあります。自動作成では上書きしません。直す場合は「🔤 修正」を使ってください。');
+   return;
+ }
+ const learned=autoFuriganaFromUserData(w.en);
+ const basic=makeEditableAutoFurigana(w.en);
+ const readings=basic.map((fallback,i)=>learned[i]||fallback||'');
+ w.furiganaChars=readings.map(reading=>({reading:normalizeHiragana(reading)}));
+ w.furigana=w.furiganaChars.map(x=>x.reading).join('');
+ w.furiganaSegments=[];
+ w.furiganaAutoSuggested=true;
+ save();
+ renderRows();
+ renderStudy();
+}
 function renderRows(){
+ const totalCount=$('#totalWordCount'); if(totalCount) totalCount.textContent=`📚 全${words.length}語`;
  const box=$('#rows'); if(!box)return;
  box.innerHTML='';
  if(!Array.isArray(words)||!words.length){box.innerHTML='<div class="empty">まだたんごがないよ。</div>';return;}
- words.forEach((w,i)=>{
+
+ const q=getWordSearchQuery();
+ const visible=[];
+ words.forEach((w,i)=>{if(wordMatchesSearch(w,q))visible.push([w,i]);});
+
+ const count=$('#wordSearchCount');
+ if(count) count.textContent=q ? `${visible.length}件 / ${words.length}件` : `${words.length}件`;
+
+ if(!visible.length){
+   box.innerHTML='<div class="empty">「'+esc(q)+'」に一致するたんごはありません。</div>';
+   return;
+ }
+
+ visible.forEach(([w,i])=>{
   const r=document.createElement('div'); r.className='row word-row';
   const furi=(Array.isArray(w.furiganaChars)?w.furiganaChars.map(x=>normalizeHiragana(x&&x.reading||'')).join(''):'')||'未設定';
-  const course=w.course||'W英語', unit=w.unit||course+'1', checked=practiceIsChecked(i);
+  const furiAuto=!!w.furiganaAutoSuggested;
+  const unit=w.unit||w.course||'';
+  const checked=practiceQueue.some(x=>x.index===i);
   r.innerHTML=
    '<input value="'+esc(w.en||'')+'" data-i="'+i+'" data-k="en">'+
    '<input value="'+esc(w.jp||'')+'" data-i="'+i+'" data-k="jp">'+
    '<input class="wide" value="'+esc(w.emoji||'✨')+'" data-i="'+i+'" data-k="emoji">'+
-   '<div class="furi-list-view"><span>よみ</span><b>'+esc(furi)+'</b></div>'+
-   '<input class="course-input" value="'+esc(course)+'" data-i="'+i+'" data-k="course" placeholder="W英語">'+
-   '<input class="unit-input" value="'+esc(unit)+'" data-i="'+i+'" data-k="unit" placeholder="W英語1">'+
+   '<div class="furi-list-view"><span>'+(furiAuto?'よみ（自動）':'よみ')+'</span><b>'+esc(furi)+'</b></div>'+
+   '<input class="unit-input" value="'+esc(unit)+'" data-i="'+i+'" data-k="unit" placeholder="J英語1, W英語2">'+
    '<div class="practice-check"><input type="checkbox" class="practice-toggle" data-practice-index="'+i+'"'+(checked?' checked':'')+'></div>'+
-   '<button class="btn secondary furiedit" data-furi="'+i+'">🔤 フリガナ</button>'+
+   '<button class="btn auto-furi" data-auto-furi="'+i+'">✨ 自動作成</button>'+
+   '<button class="btn secondary furiedit" data-furi="'+i+'">🔤 修正</button>'+
    '<button class="more-btn" data-more="'+i+'">⋯</button>'+
    '<div class="more-menu" data-menu="'+i+'" style="display:none"><button class="btn danger" data-del="'+i+'">🗑️ この単語を削除</button></div>';
   box.appendChild(r);
  });
+
  box.querySelectorAll('input[data-k]').forEach(inp=>inp.addEventListener('change',()=>{
   const i=+inp.dataset.i,k=inp.dataset.k;
   if(words[i]){
-    words[i][k]=inp.value;
-    if(k==='course'){
-      const q=practiceQueue.find(x=>x.index===i);
-      if(q)q.source=String(inp.value||'').startsWith('J')?'J':'W';
+    if(k==='unit'){
+      let v=String(inp.value||'').normalize('NFKC').trim();
+      v=v.replace(/(^|[,、/／]\s*)j(?=英語)/gi,'$1J').replace(/(^|[,、/／]\s*)w(?=英語)/gi,'$1W');
+      inp.value=v;
+      words[i][k]=v;
+    }else{
+      words[i][k]=inp.value;
+    }
+    if(k==='unit'){
+      const qitem=practiceQueue.find(x=>x.index===i);
+      if(qitem)qitem.source=String(inp.value||'').startsWith('J')?'J':'W';
       savePracticeQueue();
     }
     save();renderRows();renderPracticeBar();
   }
  }));
+ box.querySelectorAll('[data-auto-furi]').forEach(btn=>btn.onclick=()=>{
+  autoCreateFurigana(+btn.dataset.autoFuri);
+ });
  box.querySelectorAll('.practice-toggle').forEach(cb=>cb.onchange=()=>{
   togglePractice(+cb.dataset.practiceIndex);
   renderRows();
@@ -1322,10 +1578,12 @@ function renderRows(){
   const i=+btn.dataset.del,name=words[i]?.en||'この単語';
   if(!confirm(`「${name}」を削除しますか？`))return;
   practiceQueue=practiceQueue.filter(x=>x.index!==i).map(x=>({...x,index:x.index>i?x.index-1:x.index}));
+  words.splice(i,1);
   if(practicePos>=practiceQueue.length)practicePos=Math.max(0,practiceQueue.length-1);
-  words.splice(i,1);idx=Math.min(idx,Math.max(0,words.length-1));
+  idx=Math.min(idx,Math.max(0,words.length-1));
   savePracticeQueue();save();renderRows();renderPracticeBar();renderStudy();
  });
+
  let editingFuriIndex=-1,tempFuriLetters=[];
  function drawFuriCharEditor(){
   const editor=$('#furiCharEditor');if(!editor)return;editor.innerHTML='';
@@ -1339,14 +1597,33 @@ function renderRows(){
   editor.querySelectorAll('.furi-one').forEach(inp=>{let composing=false;const commit=()=>{const pos=+inp.dataset.pos,v=normalizeHiragana(inp.value);inp.value=v;tempFuriLetters[pos].reading=v;};inp.addEventListener('compositionstart',()=>composing=true);inp.addEventListener('compositionend',()=>{composing=false;commit();});inp.addEventListener('input',()=>{if(!composing)commit();});inp.addEventListener('change',commit);inp.addEventListener('blur',commit);});
  }
  box.querySelectorAll('[data-furi]').forEach(btn=>btn.onclick=()=>{editingFuriIndex=+btn.dataset.furi;$('#furiWord').textContent=words[editingFuriIndex].en;drawFuriCharEditor();$('#furiModal').style.display='flex';});
- $('#furiSave').onclick=()=>{if(editingFuriIndex<0)return;words[editingFuriIndex].furiganaChars=tempFuriLetters.map(x=>({reading:normalizeHiragana(x.reading)}));words[editingFuriIndex].furigana=tempFuriLetters.map(x=>x.reading).join('');words[editingFuriIndex].furiganaSegments=[];save();$('#furiModal').style.display='none';renderRows();renderStudy();};
+ $('#furiSave').onclick=()=>{if(editingFuriIndex<0)return;words[editingFuriIndex].furiganaChars=tempFuriLetters.map(x=>({reading:normalizeHiragana(x.reading)}));words[editingFuriIndex].furigana=tempFuriLetters.map(x=>x.reading).join('');words[editingFuriIndex].furiganaSegments=[];words[editingFuriIndex].furiganaAutoSuggested=false;save();$('#furiModal').style.display='none';renderRows();renderStudy();};
  $('#furiCancel').onclick=()=>$('#furiModal').style.display='none';
 }
 
 const esc=s=>String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
-$('#add').onclick=()=>{words.push({en:'newword',jp:'日本語',emoji:'✨',stars:0,course:'W英語',unit:'W英語1'});idx=words.length-1;save();renderRows();renderStudy()};
+$('#add').onclick=()=>{words.push({en:'newword',jp:'日本語',emoji:'✨',stars:0,course:'W英語',unit:'W英語1',furigana:'',furiganaChars:[],furiganaSegments:[],furiganaAutoSuggested:false});idx=words.length-1;save();renderRows();renderStudy()};
 $('#reset').onclick=()=>{if(confirm('初期データに戻しますか？')){words=DEFAULT_WORDS.map(x=>({...x}));idx=0;save();renderRows();renderStudy()}};
 $('#export').onclick=async()=>{const text=JSON.stringify(words,null,2);try{await navigator.clipboard.writeText(text);alert('保存用データをコピーしました！')}catch{prompt('このデータをコピーして保存してください',text)}};
+
+const importFileBtn=$('#importFile'),importFilePicker=$('#importFilePicker');
+if(importFileBtn&&importFilePicker){
+ importFileBtn.onclick=()=>importFilePicker.click();
+ importFilePicker.onchange=async()=>{
+  const file=importFilePicker.files&&importFilePicker.files[0];if(!file)return;
+  try{
+   const parsed=JSON.parse(await file.text());
+   if(!Array.isArray(parsed))throw new Error();
+   const valid=parsed.filter(w=>w&&typeof w==='object'&&typeof w.en==='string');
+   if(!valid.length)throw new Error();
+   if(!confirm(`バックアップから ${valid.length}語を読み込みます。\n現在の単語リストは置き換わります。よろしいですか？`)){importFilePicker.value='';return;}
+   try{localStorage.setItem('englishWordsBeforeFileImport',JSON.stringify(words));}catch(e){}
+   words=valid;idx=0;practiceQueue=[];practicePos=0;savePracticeQueue();save();renderPracticeBar();renderRows();renderStudy();
+   alert(`${valid.length}語を読み込みました。`);
+  }catch(e){alert('読み込めませんでした。英単語アプリの保存用データ（.txt）を選んでください。');}
+  finally{importFilePicker.value='';}
+ };
+}
 $('#import').onclick=()=>{const text=prompt('JSONデータを貼り付けてください');if(!text)return;try{const data=JSON.parse(text);if(!Array.isArray(data))throw Error();words=data.map(x=>({en:String(x.en||''),jp:String(x.jp||''),emoji:String(x.emoji||'✨'),stars:Number(x.stars||0)})).filter(x=>x.en&&x.jp);idx=0;save();renderRows();renderStudy();alert('読み込みました！')}catch{alert('データの形式が正しくありません。')}};
 $('#next').onclick=()=>{if(selectedMode()){selectedNext(1);}else if(activeTest==='all'){idx=(idx+1)%words.length;}else{const r=testRange(activeTest);if(r.end>=r.start)idx=idx>=r.end?r.start:idx+1;}renderStudy()};
 $('#prev').onclick=()=>{if(selectedMode()){selectedNext(-1);}else if(activeTest==='all'){idx=(idx-1+words.length)%words.length;}else{const r=testRange(activeTest);if(r.end>=r.start)idx=idx<=r.start?r.end:idx-1;}renderStudy()};
@@ -1377,6 +1654,10 @@ document.addEventListener('keydown',e=>{if(e.key==='Enter' && solved && $('#stud
 loadPracticeQueue();
 renderPracticeBar();
 renderRows();
+const wordSearch=$('#wordSearch');
+window.searchWordList=function(){ renderRows(); };
+if(window.wordSearchEnterBound!==true){var ws=document.getElementById('wordSearch');if(ws){ws.addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();window.searchWordListNow();}});}window.wordSearchEnterBound=true;}
+renderRows();
 renderStudy();
 </script>
 <script>/* no service worker */</script>
@@ -1385,7 +1666,7 @@ renderStudy();
  <div class="furi-card">
   <h3>🔤 フリガナを1文字ずつ設定</h3>
   <div id="furiWord" class="furi-word"></div>
-  <p>英語の文字の下に、ひらがなを1〜2文字入力してください。必要なところだけ入力します。</p>
+  <p>自動入力した読みも自由に直せます。英語の文字ごとに、ひらがなを1〜2文字入力してください。</p>
   <div id="furiCharEditor" class="furi-char-editor"></div>
   <div class="actions">
    <button class="btn success" id="furiSave">保存</button>
@@ -1404,6 +1685,17 @@ document.addEventListener('touchstart',function(e){
     e.target.blur();
   }
 },{passive:false});
+</script>
+
+
+<script>
+window.searchWordListNow=function(){
+  var input=document.getElementById('wordSearch');
+  if(!input) return;
+  var q=String(input.value||'').trim();
+  // Render uses the current search box value.
+  if(typeof window.renderRows==='function') window.renderRows();
+};
 </script>
 
 </body></html>
