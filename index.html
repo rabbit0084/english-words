@@ -896,13 +896,12 @@ function speakOne(text, rate=.82, lang='en-US', onend=null){
   speechSynthesis.speak(u);
 }
 function speakTwiceAndUnlock(text, boxes){
-  // Typing must be possible as soon as the pronunciation starts.
+  // AUTO PLAY: normal pronunciation twice only. No phonics.
   boxes.forEach(b=>b.disabled=false);
   if(boxes[0]) boxes[0].focus();
-
   if(!('speechSynthesis' in window)) return;
-
   speechSynthesis.cancel();
+
   const playTwice=()=>{
     const first=makeEnglishUtterance(text,.82);
     const second=makeEnglishUtterance(text,.82);
@@ -910,7 +909,6 @@ function speakTwiceAndUnlock(text, boxes){
     speechSynthesis.speak(first);
   };
 
-  // iPad Safari may populate voices asynchronously. Wait for them when needed.
   if((speechSynthesis.getVoices()||[]).length){
     playTwice();
   }else{
@@ -922,7 +920,13 @@ function speakTwiceAndUnlock(text, boxes){
       playTwice();
     };
     speechSynthesis.addEventListener('voiceschanged',handler);
-    setTimeout(()=>{if(!done){done=true;speechSynthesis.removeEventListener('voiceschanged',handler);playTwice();}},700);
+    setTimeout(()=>{
+      if(!done){
+        done=true;
+        speechSynthesis.removeEventListener('voiceschanged',handler);
+        playTwice();
+      }
+    },700);
   }
 }
 function speak(text){
@@ -932,29 +936,6 @@ function speak(text){
   speechSynthesis.speak(u);
 }
 
-function phonicsCue(word){
-  return PHONICS_OVERRIDES[word] || word.toLowerCase().split('').join(' ');
-}
-function speakOne(text, rate=.78, lang='en-US', onend=null){
-  if(!('speechSynthesis' in window)){ if(onend) onend(); return; }
-  const u=new SpeechSynthesisUtterance(text); u.lang=lang; u.rate=rate; if(onend) u.onend=onend; speechSynthesis.speak(u);
-}
-function speakTwiceAndUnlock(text, boxes){
-  boxes.forEach(b=>b.disabled=true);
-  if(!('speechSynthesis' in window)){ boxes.forEach(b=>b.disabled=false); if(boxes[0]) boxes[0].focus(); return; }
-  speechSynthesis.cancel();
-  // 1st: phonics. Unlock typing immediately after phonics finishes.
-  const cue=phonicsCue(text);
-  speakOne(cue,.68,'en-US',()=>{
-    boxes.forEach(b=>b.disabled=false);
-    if(boxes[0]) boxes[0].focus();
-    // 2nd: normal word pronunciation
-    speakOne(text,.82,'en-US',()=>{
-      // 3rd: normal word pronunciation again
-      speakOne(text,.82,'en-US');
-    });
-  });
-}
 function save(){localStorage.setItem(SAVED_WORDS_KEY,JSON.stringify(words));}
 function current(){return words[idx]||words[0];}
 function selectedMode(){return activeTest==='selectedW'||activeTest==='selectedJ';}
@@ -1141,7 +1122,7 @@ const normalizedWord=w.en.toLowerCase();
    feedback.className='feedback';
    box.focus();
  };
- setTimeout(()=>speakThreeTimes(w.en, boxes),80);
+ setTimeout(()=>speakTwiceAndUnlock(w.en, boxes),120);
 }
 function checkBoxes(){
  const w=current(); const boxes=[...document.querySelectorAll('.letterbox')]; const val=boxes.map(b=>b.value).join('').toLowerCase();
