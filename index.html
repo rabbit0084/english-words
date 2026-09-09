@@ -669,6 +669,8 @@ header{padding:2px 8px 0!important} header h1{font-size:22px!important;line-heig
 .furi-char-editor{display:flex!important;flex-wrap:nowrap!important;overflow-x:auto!important;gap:5px!important}
 .furi-letter-cell{flex:0 0 60px!important;min-width:60px!important}
 .furi-one{width:58px!important;min-width:58px!important;max-width:58px!important;text-align:center!important}
+
+/* Voice behavior */
 </style>
 </head>
 <body>
@@ -853,7 +855,6 @@ function emojiOrFlag(value){
 }
 
 const $=s=>document.querySelector(s);
-const speak=(text)=>{if(!('speechSynthesis' in window)){alert('この端末では音声機能が使えません。');return;} speechSynthesis.cancel(); const u=new SpeechSynthesisUtterance(text);u.lang='en-US';u.rate=.82;speechSynthesis.speak(u)};
 const PHONICS_MAP = {
   classroom: ['k','l','a','s','r','oo','m'], clock:['k','l','o','k'], desk:['d','e','s','k'], chair:['ch','air'], notebook:['n','oh','t','b','oo','k'], pencil:['p','e','n','s','i','l'], eraser:['ee','r','a','s','er'], textbook:['t','e','k','s','t','b','oo','k'], picture:['p','i','k','ch','er'], computer:['k','m','p','y','oo','t','er'], train:['t','r','ai','n'], bus:['b','u','s'], car:['k','ar'], school:['sk','oo','l'],
   world:['w','er','l','d'], country:['k','u','n','t','r','ee'], Japan:['j','a','p','a','n'], 'the U.S.A.':['th','uh','yoo','ess','ay'], Canada:['k','a','n','uh','d','uh'], China:['ch','i','n','uh'], Australia:['aw','s','t','r','ay','l','ee','uh'], 'South Korea':['s','ow','th','k','oh','r','ee','uh'], 'the U.K.':['th','uh','yoo','k','ay'], France:['f','r','a','n','s'], Germany:['j','er','m','uh','n','ee'], Russia:['r','u','sh','uh'], Italy:['i','t','uh','l','ee'], Spain:['s','p','ai','n'],
@@ -871,21 +872,64 @@ function phonicsText(word){
   const parts=PHONICS_MAP[word] || word.toLowerCase().split('').filter(c=>/[a-z]/.test(c));
   return parts.join(' ');
 }
-function speakPhonics(word){
-  if(!('speechSynthesis' in window)) return;
-  const u=new SpeechSynthesisUtterance(phonicsText(word));
-  u.lang='en-US'; u.rate=.72; speechSynthesis.speak(u);
+function getEnglishVoice(){
+  if(!('speechSynthesis' in window)) return null;
+  const voices=speechSynthesis.getVoices()||[];
+  return voices.find(v=>String(v.lang||'').toLowerCase()==='en-us')
+      || voices.find(v=>String(v.lang||'').toLowerCase().startsWith('en-us'))
+      || voices.find(v=>String(v.lang||'').toLowerCase().startsWith('en-gb'))
+      || voices.find(v=>String(v.lang||'').toLowerCase().startsWith('en'));
 }
-function speakThreeTimes(text, boxes){
+function makeEnglishUtterance(text,rate=.82){
+  const u=new SpeechSynthesisUtterance(String(text));
+  u.lang='en-US';
+  u.rate=rate;
+  const v=getEnglishVoice();
+  if(v) u.voice=v;
+  return u;
+}
+function speakOne(text, rate=.82, lang='en-US', onend=null){
+  if(!('speechSynthesis' in window)){ if(onend) onend(); return; }
+  const u=makeEnglishUtterance(text,rate);
+  u.lang=lang;
+  if(onend) u.onend=onend;
+  speechSynthesis.speak(u);
+}
+function speakTwiceAndUnlock(text, boxes){
+  // Typing must be possible as soon as the pronunciation starts.
   boxes.forEach(b=>b.disabled=false);
+  if(boxes[0]) boxes[0].focus();
+
   if(!('speechSynthesis' in window)) return;
+
   speechSynthesis.cancel();
-  const first=new SpeechSynthesisUtterance(text);
-  first.lang='en-US'; first.rate=.82;
-  const second=new SpeechSynthesisUtterance(text);
-  second.lang='en-US'; second.rate=.82;
-  first.onend=()=>speechSynthesis.speak(second);
-  speechSynthesis.speak(first);
+  const playTwice=()=>{
+    const first=makeEnglishUtterance(text,.82);
+    const second=makeEnglishUtterance(text,.82);
+    first.onend=()=>speechSynthesis.speak(second);
+    speechSynthesis.speak(first);
+  };
+
+  // iPad Safari may populate voices asynchronously. Wait for them when needed.
+  if((speechSynthesis.getVoices()||[]).length){
+    playTwice();
+  }else{
+    let done=false;
+    const handler=()=>{
+      if(done)return;
+      done=true;
+      speechSynthesis.removeEventListener('voiceschanged',handler);
+      playTwice();
+    };
+    speechSynthesis.addEventListener('voiceschanged',handler);
+    setTimeout(()=>{if(!done){done=true;speechSynthesis.removeEventListener('voiceschanged',handler);playTwice();}},700);
+  }
+}
+function speak(text){
+  if(!('speechSynthesis' in window)){alert('この端末では音声機能が使えません。');return;}
+  speechSynthesis.cancel();
+  const u=makeEnglishUtterance(text,.82);
+  speechSynthesis.speak(u);
 }
 
 function phonicsCue(word){
