@@ -660,14 +660,27 @@ header{padding:2px 8px 0!important} header h1{font-size:22px!important;line-heig
   #letterboxes .furigana-cell.per-letter .letterbox{width:52px !important;min-width:52px !important;height:60px !important;min-height:60px !important;font-size:32px !important;}
 }
 
-
-.furi-one{ime-mode:active!important;width:56px!important;min-width:56px!important;height:42px!important;text-align:center!important;font-size:21px!important;}
-
+/* Final word-list and furigana layout */
+#list .row{display:grid!important;align-items:center!important}
+#letterboxes .furigana-cell.per-letter{position:relative!important;display:inline-flex!important;flex-direction:column!important;align-items:center!important;justify-content:flex-end!important;flex:0 0 58px!important;width:58px!important;min-width:58px!important;height:96px!important;padding:0!important;margin:0!important;overflow:visible!important}
+#letterboxes .furigana-cell.per-letter .furigana-above{position:absolute!important;left:0!important;top:0!important;width:58px!important;height:24px!important;line-height:24px!important;text-align:center!important;white-space:nowrap!important;font-size:16px!important;font-weight:900!important}
+#letterboxes .furigana-cell.per-letter .letterbox{width:58px!important;min-width:58px!important;height:64px!important;min-height:64px!important;margin:0!important}
+#letterboxes.hide-furigana .furigana-above{visibility:hidden!important}
+.furi-char-editor{display:flex!important;flex-wrap:nowrap!important;overflow-x:auto!important;gap:5px!important}
+.furi-letter-cell{flex:0 0 60px!important;min-width:60px!important}
+.furi-one{width:58px!important;min-width:58px!important;max-width:58px!important;text-align:center!important}
 </style>
 </head>
 <body>
 
 <script>
+function normalizeHiragana(s){
+  return Array.from(String(s||''))
+    .map(ch=>/[ァ-ヶ]/.test(ch)?String.fromCharCode(ch.charCodeAt(0)-0x60):ch)
+    .filter(ch=>/^[ぁ-ゖー]$/.test(ch))
+    .slice(0,2)
+    .join('');
+}
 (async function(){
   try{
     if('serviceWorker' in navigator){
@@ -692,7 +705,7 @@ header{padding:2px 8px 0!important} header h1{font-size:22px!important;line-heig
 <button class="btn weekly wtest" id="wselect">☑️ W英語 選ぶ</button>
 <button class="btn weekly jtest" id="jtest">📗 J英語 全部</button>
 <button class="btn weekly jtest" id="jselect">☑️ J英語 選ぶ</button>
-<button class="tab" id="listTab" data-tab="list">📝 たんごリスト</button>
+<button class="tab" id="listTab" data-tab="list" onclick="document.getElementById('study').style.display='none';document.getElementById('selector').style.display='none';document.getElementById('list').style.display='block';if(window.renderRows)renderRows();window.scrollTo(0,0)">📝 たんごリスト</button>
 </div>
 <section id="selector" class="panel" style="display:none">
 <h2 id="selectorTitle">単語を選んでテスト</h2>
@@ -726,297 +739,59 @@ function kataToHira(s){
 
 const FURIGANA={"open":"オウプン","close":"クロウズ","round":"ラウンド","flat":"フラット","poor":"プア","rich":"リッチ","high":"ハイ","low":"ロウ","study":"スタディ","play":"プレイ","enjoy":"エンジョイ","brush":"ブラシ","shop":"ショップ","carry":"キャリー","push":"プッシュ","buy":"バイ","wash":"ウォッシュ","fish":"フィッシュ","pinch":"ピンチ","watch":"ウォッチ","listen":"リスン","have":"ハヴ","know":"ノウ","strong":"ストロング","weak":"ウィーク","short":"ショート","long":"ロング","fixed":"フィクスト","broken":"ブロークン","pretty":"プリティ","ugly":"アグリー","call":"コール","give":"ギヴ","learn":"ラーン","think":"シンク","live":"リヴ","dance":"ダンス","get up":"ゲット アップ","ask":"アスク","closed":"クローズド","early":"アーリー","late":"レイト","expensive":"イクスペンシブ","cheap":"チープ","many":"メニー","few":"フュー","wide":"ワイド","narrow":"ナロウ","bad":"バッド","good":"グッド","fat":"グッド","thin":"シン","careless":"ケアレス","careful":"ケアフル","classroom":"クラスルーム","clock":"クロック","desk":"デスク","chair":"チェア","notebook":"ノートブック","pencil":"ペンシル","eraser":"イレイサー","textbook":"テキストブック","picture":"ピクチャー","computer":"コンピューター","train":"トレイン","bus":"バス","car":"カー","school":"スクール","world":"ワールド","country":"カントリー","Japan":"ジャパン","the U.S.A.":"ザ ユーエスエー","Canada":"カナダ","China":"チャイナ","Australia":"オーストレイリア","South Korea":"サウス コリア","the U.K.":"ザ ユーケイ","France":"フランス","Germany":"ジャーマニー","Russia":"ロシア","Italy":"イタリー","Spain":"スペイン","Sunday":"サンデー","Monday":"マンデー","Tuesday":"チューズデー","Wednesday":"ウェンズデー","Thursday":"サーズデー","Friday":"フライデー","Saturday":"サタデー","season":"シーズン","spring":"スプリング","summer":"サマー","fall":"フォール","autumn":"オータム","winter":"ウィンター","January":"ジャニュアリー","February":"フェブラリー","March":"マーチ","April":"エイプリル","May":"メイ","June":"ジューン","July":"ジュライ","August":"オーガスト","September":"セプテンバー","October":"オクトーバー","November":"ノーベンバー","December":"ディセンバー","month":"マンス","year":"イヤー","subject":"サブジェクト","English":"イングリッシュ","Math":"マス","Japanese":"ジャパニーズ","Science":"サイエンス","Social Studies":"ソーシャル スタディーズ","Music":"ミュージック","Art":"アート","P.E.":"ピーイー","Home Economics":"ホーム エコノミクス","teacher":"ティーチャー","student":"スチューデント","family":"ファミリー","father":"ファーザー","mother":"マザー","parents":"ペアレンツ","brother":"ブラザー","sister":"シスター","child":"チャイルド","children":"チルドレン","son":"サン","daughter":"ドーター","grandfather":"グランドファーザー","grandmother":"グランドマザー","grandparents":"グランドペアレンツ","sport":"スポート","baseball":"ベイスボール","soccer":"サッカー","tennis":"テニス","basketball":"バスケットボール","volleyball":"バレーボール","table tennis":"テーブル テニス","badminton":"バドミントン","golf":"ゴルフ","swimming":"スウィミング","skiing":"スキーイング","go":"ゴウ","meet":"ミート","eat":"イート","like":"ライク","run":"ラン","sing":"シング","swim":"スウィム","stay":"ステイ","ride":"ライド","walk":"ウォーク","help":"ヘルプ","climb":"クライム","bring":"ブリング","take":"テイク","see":"シー","look":"ルック","read":"リード","hear":"ヒア","make":"メイク","wear":"ウェア","hope":"ホウプ","catch":"キャッチ","work":"ワーク","get":"ゲット","come":"カム","do":"ドゥ","use":"ユーズ","speak":"スピーク","tell":"テル","talk":"トーク","try":"トライ","teach":"ティーチ","become":"ビカム","stop":"ストップ","want":"ウォント","beautiful":"ビューティフル","cute":"キュート","great":"グレイト","important":"インポータント","popular":"ポピュラー","famous":"フェイマス","interesting":"インタレスティング","big":"ビッグ","small":"スモール","tall":"トール","too":"トゥー","only":"オンリー","just":"ジャスト","very":"ベリー","so":"ソウ","always":"オールウェイズ","often":"オフン","sometimes":"サムタイムズ","fast":"ファスト","hard":"ハード","well":"ウェル","there":"ゼア","here":"ヒア","wagon":"ワゴン","octopus":"オクトパス","rocket":"ロケット","egg":"エッグ","question":"クエスチョン","spoon":"スプーン","kitten":"キトン","zebra":"ズィーブラ","hate":"ヘイト","mop":"モップ","bake":"ベイク","take out":"テイク アウト","paint":"ペイント","ski":"スキー","skate":"スケート","safe":"セイフ","dangerous":"デインジャラス","same":"セイム","different":"ディファレント","real":"リアル","fake":"フェイク","clean":"クリーン","hike":"ハイク","write":"ライト","boring":"ボーリング","exciting":"エキサイティング","alive":"アライブ","dead":"デッド","tiny":"タイニー","giant":"ジャイアント","dark":"ダーク","light":"ライト","smile":"スマイル","drive":"ドライブ","drink":"ドリンク","glue":"グルー"};
 const PHONICS_OVERRIDES={"cat":"k a t","dog":"d aw g","fish":"f i sh","ship":"sh i p","chair":"ch air","school":"s k oo l","three":"th r ee","night":"n igh t","classroom":"k l a ss r oo m","clock":"k l o k","desk":"d e s k","notebook":"n oh t b oo k","pencil":"p e n s i l","eraser":"ee r a s er","textbook":"t e k s t b oo k","picture":"p i k ch er","computer":"k uh m p y oo t er","train":"t r ai n","bus":"b uh s","car":"k ar","world":"w er l d","country":"k uh n t r ee","Japan":"j uh p a n","the U.S.A.":"th uh y oo ess ay","Canada":"k a n uh d uh","China":"ch ai n uh","Australia":"aw s t r ay l y uh","South Korea":"s ow th k uh r ee uh","the U.K.":"th uh y oo kay","France":"f r a n s","Germany":"j er m uh n ee","Russia":"r uh sh uh","Italy":"i t uh l ee","Spain":"s p ai n","Sunday":"s uh n d ay","Monday":"m uh n d ay","Tuesday":"t oo z d ay","Wednesday":"w e n z d ay","Thursday":"th er z d ay","Friday":"f r ai d ay","Saturday":"s a t er d ay","season":"s ee z uh n","spring":"s p r i ng","summer":"s uh m er","fall":"f aw l","autumn":"aw t uh m","winter":"w i n t er","January":"j a n y oo er ee","February":"f e b r oo er ee","March":"m ar ch","April":"ay p r uh l","May":"m ay","June":"j oo n","July":"j oo l ai","August":"aw g uh s t","September":"s e p t e m b er","October":"o k t oh b er","November":"n oh v e m b er","December":"d i s e m b er","month":"m uh n th","year":"y eer","subject":"s uh b j e k t","English":"i ng g l i sh","Math":"m a th","Japanese":"j a p uh n ee z","Science":"s ai uh n s","Social Studies":"s oh sh uh l s t uh d ee z","Music":"m y oo z i k","Art":"ar t","P.E.":"p ee","Home Economics":"h oh m e k uh n o m i k s","teacher":"t ee ch er","student":"s t oo d uh n t","family":"f a m uh l ee","father":"f ah th er","mother":"m uh th er","parents":"p air uh n t s","brother":"b r uh th er","sister":"s i s t er","child":"ch ai l d","children":"ch i l d r uh n","son":"s uh n","daughter":"d aw t er","grandfather":"g r a n d f ah th er","grandmother":"g r a n d m uh th er","grandparents":"g r a n d p air uh n t s","sport":"s p or t","baseball":"b ay s b aw l","soccer":"s o k er","tennis":"t e n i s","basketball":"b a s k uh t b aw l","volleyball":"v o l ee b aw l","table tennis":"t ay b uh l t e n i s","badminton":"b a d m i n t uh n","golf":"g o l f","swimming":"s w i m i ng","skiing":"s k ee i ng","go":"g oh","meet":"m ee t","eat":"ee t","like":"l ai k","run":"r uh n","sing":"s i ng","swim":"s w i m","stay":"s t ay","ride":"r ai d","walk":"w aw k","have":"h a v","open":"oh p uh n","live":"l i v","know":"n oh","help":"h e l p","play":"p l ay","climb":"k l ai m","bring":"b r i ng","take":"t ay k","watch":"w o ch","see":"s ee","look":"l oo k","read":"r ee d","listen":"l i s uh n","hear":"h eer","make":"m ay k","wear":"w air","wash":"w o sh","hope":"h oh p","ask":"a s k","catch":"k a ch","work":"w er k","get":"g e t","come":"k uh m","do":"d oo","use":"y oo z","speak":"s p ee k","tell":"t e l","talk":"t aw k","try":"t r ai","teach":"t ee ch","study":"s t uh d ee","enjoy":"e n j oi","buy":"b ai","become":"b i k uh m","stop":"s t o p","want":"w o n t","beautiful":"b y oo t uh f uh l","cute":"k y oo t","pretty":"p r i t ee","great":"g r ay t","important":"i m p or t uh n t","popular":"p o p y uh l er","famous":"f ay m uh s","interesting":"i n t er e s t i ng","big":"b i g","small":"s m aw l","tall":"t aw l","high":"h ai","short":"sh or t","long":"l aw ng","too":"t oo","only":"oh n l ee","just":"j uh s t","very":"v e r ee","so":"s oh","always":"aw l w ay z","often":"aw f uh n","sometimes":"s uh m t ai m z","fast":"f a s t","early":"er l ee","hard":"h ar d","well":"w e l","there":"th air","here":"h eer","wagon":"w a g uh n","octopus":"o k t uh p uh s","rocket":"r o k uh t","egg":"e g","question":"k w e s ch uh n","spoon":"s p oo n","kitten":"k i t uh n","zebra":"z ee b r uh","hate":"h ay t","mop":"m o p","bake":"b ay k","take out":"t ay k ow t","paint":"p ay n t","ski":"s k ee","skate":"s k ay t","safe":"s ay f","dangerous":"d ay n j er uh s","late":"l ay t","same":"s ay m","different":"d i f er uh n t","real":"r ee uh l","fake":"f ay k","clean":"k l ee n","hike":"h ai k","write":"r ai t","boring":"b or i ng","exciting":"e k s ai t i ng","alive":"uh l ai v","dead":"d e d","tiny":"t ai n ee","giant":"j ai uh n t","dark":"d ar k","light":"l ai t","brush":"b r uh sh","shop":"sh o p","carry":"k air ee","push":"p oo sh","pinch":"p i n ch","smile":"s m ai l","drive":"d r ai v","close":"k l oh z","drink":"d r i ng k","glue":"g l oo","round":"r ow n d","flat":"f l a t","poor":"p or","rich":"r i ch","low":"l oh","strong":"s t r aw ng","weak":"w ee k","fixed":"f i k s t","broken":"b r oh k uh n","ugly":"uh g l ee","call":"k aw l","give":"g i v","learn":"l er n","think":"th i ng k","dance":"d a n s","get up":"g e t uh p","closed":"k l oh z d","expensive":"e k s p e n s i v","cheap":"ch ee p","many":"m e n ee","few":"f y oo","wide":"w ai d","narrow":"n a r oh","bad":"b a d","good":"g oo d","fat":"f a t","thin":"th i n","careless":"k air l e s","careful":"k air f uh l"};
-const DEFAULT_WORDS=[
- {"en":"wagon","jp":"ワゴン","emoji":"🛒","stars":5},
- {"en":"octopus","jp":"たこ","emoji":"🐙","stars":1},
- {"en":"rocket","jp":"ロケット","emoji":"🚀","stars":3},
- {"en":"egg","jp":"たまご","emoji":"🍳","stars":1},
- {"en":"question","jp":"疑問","emoji":"❓","stars":0},
- {"en":"spoon","jp":"スプーン","emoji":"🥄","stars":0},
- {"en":"kitten","jp":"こねこ","emoji":"🐈","stars":0},
- {"en":"zebra","jp":"シマウマ","emoji":"🦓","stars":0},
- {"en":"hate","jp":"きらい","emoji":"😡","stars":0},
- {"en":"mop","jp":"モップ","emoji":"🧹","stars":0},
- {"en":"bake","jp":"焼く","emoji":"🍞","stars":0},
- {"en":"take out","jp":"取り出す","emoji":"📤","stars":0},
- {"en":"paint","jp":"絵をかく","emoji":"🎨","stars":0},
- {"en":"ski","jp":"スキー","emoji":"🎿","stars":0},
- {"en":"skate","jp":"スケート","emoji":"⛸","stars":0},
- {"en":"safe","jp":"安全な","emoji":"🛡️","stars":0},
- {"en":"dangerous","jp":"危険な","emoji":"⚠️","stars":0},
- {"en":"late","jp":"遅い","emoji":"⏰","stars":0},
- {"en":"same","jp":"同じ","emoji":"🟰","stars":0},
- {"en":"different","jp":"違う","emoji":"🔀","stars":0},
- {"en":"real","jp":"本物","emoji":"✅","stars":0},
- {"en":"fake","jp":"にせもの","emoji":"🎭","stars":0},
- {"en":"clean","jp":"掃除","emoji":"🧼","stars":0},
- {"en":"hike","jp":"ハイキング","emoji":"🥾","stars":0},
- {"en":"write","jp":"書く","emoji":"✍️","stars":0},
- {"en":"boring","jp":"たいくつ","emoji":"🥱","stars":0},
- {"en":"exciting","jp":"興奮する","emoji":"🤩","stars":0},
- {"en":"alive","jp":"生きている","emoji":"🫀","stars":0},
- {"en":"dead","jp":"死んでいる","emoji":"💀","stars":0},
- {"en":"tiny","jp":"小さい","emoji":"🐜","stars":0},
- {"en":"giant","jp":"巨人","emoji":"🗿","stars":0},
- {"en":"dark","jp":"暗い","emoji":"🌑","stars":0},
- {"en":"light","jp":"明るい","emoji":"💡","stars":0},
-{"en":"smile","jp":"ほほえむ","emoji":"😊","stars":0},
-{"en":"drive","jp":"運転する","emoji":"🚗","stars":0},
-{"en":"close","jp":"閉める","emoji":"🚪","stars":0},
-{"en":"use","jp":"使う","emoji":"🛠️","stars":0},
-{"en":"drink","jp":"飲む","emoji":"🥤","stars":0},
-{"en":"glue","jp":"のりでつける","emoji":"🧴","stars":0},
-{"en":"sing","jp":"歌う","emoji":"🎤","stars":0},
-{"en":"open","jp":"開ける","emoji":"📖","stars":0},
-{"en":"open","jp":"開いている","emoji":"🚪","stars":0},
-{"en":"close","jp":"閉じる","emoji":"🚪","stars":0},
-{"en":"round","jp":"丸い","emoji":"⚪","stars":0},
-{"en":"flat","jp":"平らな","emoji":"➖","stars":0},
-{"en":"poor","jp":"貧しい","emoji":"🪙","stars":0},
-{"en":"rich","jp":"裕福な","emoji":"💰","stars":0},
-{"en":"high","jp":"高い","emoji":"⬆️","stars":0},
-{"en":"low","jp":"低い","emoji":"⬇️","stars":0},
-{"en":"study","jp":"勉強する","emoji":"📚","stars":0},
-{"en":"play","jp":"遊ぶ","emoji":"🛝","stars":0},
-{"en":"enjoy","jp":"楽しむ","emoji":"😊","stars":0},
-{"en":"brush","jp":"ブラシをかける","emoji":"🪮","stars":0},
-{"en":"shop","jp":"買い物をする","emoji":"🛍️","stars":0},
-{"en":"carry","jp":"運ぶ","emoji":"📦","stars":0},
-{"en":"push","jp":"押す","emoji":"👉","stars":0},
-{"en":"buy","jp":"買う","emoji":"🛒","stars":0},
-{"en":"wash","jp":"洗う","emoji":"🧼","stars":0},
-{"en":"fish","jp":"魚を釣る","emoji":"🎣","stars":0},
-{"en":"pinch","jp":"つまむ","emoji":"🤏","stars":0},
-{"en":"watch","jp":"見る","emoji":"📺","stars":0},
-{"en":"listen","jp":"聞く","emoji":"🎧","stars":0},
-{"en":"have","jp":"持っている","emoji":"🤲","stars":0},
-{"en":"know","jp":"知っている","emoji":"💡","stars":0},
-{"en":"strong","jp":"強い","emoji":"💪","stars":0},
-{"en":"weak","jp":"弱い","emoji":"🪫","stars":0},
-{"en":"short","jp":"短い","emoji":"↔️","stars":0},
-{"en":"long","jp":"長い","emoji":"📏","stars":0},
-{"en":"fixed","jp":"直っている","emoji":"🔧","stars":0},
-{"en":"broken","jp":"壊れている","emoji":"💔","stars":0},
-{"en":"pretty","jp":"かわいい","emoji":"🌷","stars":0},
-{"en":"ugly","jp":"みにくい","emoji":"👹","stars":0},
-{"en":"call","jp":"呼ぶ、電話する","emoji":"📞","stars":0},
-{"en":"give","jp":"あげる","emoji":"🎁","stars":0},
-{"en":"learn","jp":"学ぶ","emoji":"📖","stars":0},
-{"en":"think","jp":"考える","emoji":"🤔","stars":0},
-{"en":"live","jp":"住む","emoji":"🏠","stars":0},
-{"en":"dance","jp":"踊る","emoji":"💃","stars":0},
-{"en":"get up","jp":"起きる","emoji":"⏰","stars":0},
-{"en":"ask","jp":"たずねる","emoji":"❓","stars":0},
-{"en":"open","jp":"開いている","emoji":"🚪","stars":0},
-{"en":"closed","jp":"閉まっている","emoji":"🔒","stars":0},
-{"en":"early","jp":"早い","emoji":"🌅","stars":0},
-{"en":"late","jp":"遅い","emoji":"⏰","stars":0},
-{"en":"expensive","jp":"高価な","emoji":"💎","stars":0},
-{"en":"cheap","jp":"安い","emoji":"🏷️","stars":0},
-{"en":"many","jp":"たくさんの","emoji":"🔢","stars":0},
-{"en":"few","jp":"少しの","emoji":"🤏","stars":0},
-{"en":"wide","jp":"広い","emoji":"↔️","stars":0},
-{"en":"narrow","jp":"狭い","emoji":"↕️","stars":0},
-{"en":"bad","jp":"悪い","emoji":"👎","stars":0},
-{"en":"good","jp":"良い","emoji":"👍","stars":0},
-{"en":"fat","jp":"太った","emoji":"🐻","stars":0},
-{"en":"thin","jp":"やせた","emoji":"🪶","stars":0},
-{"en":"careless","jp":"不注意な","emoji":"⚠️","stars":0},
-{"en":"careful","jp":"注意深い","emoji":"🔎","stars":0},
- {"en":"brush","jp":"髪をとかす","emoji":"🪥","stars":0},
- {"en":"shop","jp":"買い物をする","emoji":"🛍️","stars":0},
- {"en":"carry","jp":"運ぶ","emoji":"👜","stars":0},
- {"en":"push","jp":"押す","emoji":"👉","stars":0},
- {"en":"fish","jp":"魚をつる","emoji":"🎣","stars":0},
- {"en":"pinch","jp":"つまむ","emoji":"🤏","stars":0},
- {"en":"classroom","jp":"教室","emoji":"🏫","stars":0},
- {"en":"clock","jp":"時計（壁掛け）","emoji":"🕒","stars":0},
- {"en":"desk","jp":"机","emoji":"🪑","stars":0},
- {"en":"chair","jp":"いす","emoji":"🪑","stars":0},
- {"en":"notebook","jp":"ノート","emoji":"📓","stars":0},
- {"en":"pencil","jp":"えんぴつ","emoji":"✏️","stars":0},
- {"en":"eraser","jp":"消しゴム","emoji":"🧽","stars":0},
- {"en":"textbook","jp":"教科書","emoji":"📘","stars":0},
- {"en":"picture","jp":"絵、写真","emoji":"🖼️","stars":0},
- {"en":"computer","jp":"コンピューター","emoji":"💻","stars":0},
- {"en":"train","jp":"電車","emoji":"🚆","stars":0},
- {"en":"bus","jp":"バス","emoji":"🚌","stars":0},
- {"en":"car","jp":"車","emoji":"🚗","stars":0},
- {"en":"school","jp":"学校","emoji":"🏫","stars":0},
- {"en":"world","jp":"世界","emoji":"🌏","stars":0},
- {"en":"country","jp":"国","emoji":"🗺️","stars":0},
- {"en":"Japan","jp":"日本","emoji":"🇯🇵","stars":0},
- {"en":"the U.S.A.","jp":"アメリカ","emoji":"🇺🇸","stars":0},
- {"en":"Canada","jp":"カナダ","emoji":"🇨🇦","stars":0},
- {"en":"China","jp":"中国","emoji":"🇨🇳","stars":0},
- {"en":"Australia","jp":"オーストラリア","emoji":"🇦🇺","stars":0},
- {"en":"South Korea","jp":"韓国","emoji":"🇰🇷","stars":0},
- {"en":"the U.K.","jp":"イギリス","emoji":"🇬🇧","stars":0},
- {"en":"France","jp":"フランス","emoji":"🇫🇷","stars":0},
- {"en":"Germany","jp":"ドイツ","emoji":"🇩🇪","stars":0},
- {"en":"Russia","jp":"ロシア","emoji":"🇷🇺","stars":0},
- {"en":"Italy","jp":"イタリア","emoji":"🇮🇹","stars":0},
- {"en":"Spain","jp":"スペイン","emoji":"🇪🇸","stars":0},
- {"en":"Sunday","jp":"日曜日","emoji":"📅","stars":0},
- {"en":"Monday","jp":"月曜日","emoji":"📅","stars":0},
- {"en":"Tuesday","jp":"火曜日","emoji":"📅","stars":0},
- {"en":"Wednesday","jp":"水曜日","emoji":"📅","stars":0},
- {"en":"Thursday","jp":"木曜日","emoji":"📅","stars":0},
- {"en":"Friday","jp":"金曜日","emoji":"📅","stars":0},
- {"en":"Saturday","jp":"土曜日","emoji":"📅","stars":0},
- {"en":"season","jp":"季節","emoji":"🍀","stars":0},
- {"en":"spring","jp":"春","emoji":"🌸","stars":0},
- {"en":"summer","jp":"夏","emoji":"🌻","stars":0},
- {"en":"fall","jp":"秋","emoji":"🍂","stars":0},
- {"en":"autumn","jp":"秋","emoji":"🍁","stars":0},
- {"en":"winter","jp":"冬","emoji":"❄️","stars":0},
- {"en":"January","jp":"１月","emoji":"📅","stars":0},
- {"en":"February","jp":"２月","emoji":"📅","stars":0},
- {"en":"March","jp":"３月","emoji":"📅","stars":0},
- {"en":"April","jp":"４月","emoji":"📅","stars":0},
- {"en":"May","jp":"５月","emoji":"📅","stars":0},
- {"en":"June","jp":"６月","emoji":"📅","stars":0},
- {"en":"July","jp":"７月","emoji":"📅","stars":0},
- {"en":"August","jp":"８月","emoji":"📅","stars":0},
- {"en":"September","jp":"９月","emoji":"📅","stars":0},
- {"en":"October","jp":"１０月","emoji":"📅","stars":0},
- {"en":"November","jp":"１１月","emoji":"📅","stars":0},
- {"en":"December","jp":"１２月","emoji":"📅","stars":0},
- {"en":"month","jp":"月","emoji":"🗓️","stars":0},
- {"en":"year","jp":"年","emoji":"📆","stars":0},
- {"en":"subject","jp":"教科","emoji":"📚","stars":0},
- {"en":"English","jp":"英語","emoji":"🔤","stars":0},
- {"en":"Math","jp":"算数","emoji":"➗","stars":0},
- {"en":"Japanese","jp":"国語","emoji":"📝","stars":0},
- {"en":"Science","jp":"理科","emoji":"🔬","stars":0},
- {"en":"Social Studies","jp":"社会","emoji":"🌏","stars":0},
- {"en":"Music","jp":"音楽","emoji":"🎵","stars":0},
- {"en":"Art","jp":"図工","emoji":"🎨","stars":0},
- {"en":"P.E.","jp":"体育","emoji":"🏃","stars":0},
- {"en":"Home Economics","jp":"家庭科","emoji":"🍳","stars":0},
- {"en":"teacher","jp":"先生","emoji":"🧑‍🏫","stars":0},
- {"en":"student","jp":"児童、生徒","emoji":"🎒","stars":0},
- {"en":"family","jp":"家族","emoji":"👪","stars":0},
- {"en":"father","jp":"父","emoji":"👨","stars":0},
- {"en":"mother","jp":"母","emoji":"👩","stars":0},
- {"en":"parents","jp":"両親","emoji":"👫","stars":0},
- {"en":"brother","jp":"兄、弟","emoji":"👦","stars":0},
- {"en":"sister","jp":"姉、妹","emoji":"👧","stars":0},
- {"en":"child","jp":"子ども","emoji":"🧒","stars":0},
- {"en":"children","jp":"子どもたち","emoji":"🧒","stars":0},
- {"en":"son","jp":"息子","emoji":"👦","stars":0},
- {"en":"daughter","jp":"娘","emoji":"👧","stars":0},
- {"en":"grandfather","jp":"祖父","emoji":"👴","stars":0},
- {"en":"grandmother","jp":"祖母","emoji":"👵","stars":0},
- {"en":"grandparents","jp":"祖父母","emoji":"👴","stars":0},
- {"en":"sport","jp":"スポーツ","emoji":"🏅","stars":0},
- {"en":"baseball","jp":"野球","emoji":"⚾","stars":0},
- {"en":"soccer","jp":"サッカー","emoji":"⚽","stars":0},
- {"en":"tennis","jp":"テニス","emoji":"🎾","stars":0},
- {"en":"basketball","jp":"バスケットボール","emoji":"🏀","stars":0},
- {"en":"volleyball","jp":"バレーボール","emoji":"🏐","stars":0},
- {"en":"table tennis","jp":"卓球","emoji":"🏓","stars":0},
- {"en":"badminton","jp":"バドミントン","emoji":"🏸","stars":0},
- {"en":"golf","jp":"ゴルフ","emoji":"⛳","stars":0},
- {"en":"swimming","jp":"水泳","emoji":"🏊","stars":0},
- {"en":"skiing","jp":"スキー","emoji":"⛷️","stars":0},
- {"en":"go","jp":"～に行く","emoji":"➡️","stars":0},
- {"en":"meet","jp":"～に会う","emoji":"🤝","stars":0},
- {"en":"eat","jp":"～を食べる","emoji":"🍽️","stars":0},
- {"en":"like","jp":"～を好む","emoji":"❤️","stars":0},
- {"en":"run","jp":"走る","emoji":"🏃","stars":0},
- {"en":"sing","jp":"歌う","emoji":"🎤","stars":0},
- {"en":"swim","jp":"泳ぐ","emoji":"🏊","stars":0},
- {"en":"stay","jp":"とどまる、滞在する","emoji":"🏠","stars":0},
- {"en":"ride","jp":"～に乗る","emoji":"🚲","stars":0},
- {"en":"walk","jp":"歩く","emoji":"🚶","stars":0},
- {"en":"have","jp":"～を持っている","emoji":"🤲","stars":0},
- {"en":"open","jp":"～を開く","emoji":"📖","stars":0},
- {"en":"live","jp":"住む","emoji":"🏠","stars":0},
- {"en":"know","jp":"～を知っている","emoji":"💡","stars":0},
- {"en":"help","jp":"～を助ける","emoji":"🤝","stars":0},
- {"en":"play","jp":"演奏する、行う","emoji":"🎹","stars":0},
- {"en":"climb","jp":"登る","emoji":"🧗","stars":0},
- {"en":"bring","jp":"持ってくる","emoji":"📦","stars":0},
- {"en":"take","jp":"取る","emoji":"✋","stars":0},
- {"en":"watch","jp":"～をみる（映画など）","emoji":"📺","stars":0},
- {"en":"see","jp":"～をみる（目に入る）","emoji":"👀","stars":0},
- {"en":"look","jp":"～をみる（絵など）","emoji":"👁️","stars":0},
- {"en":"read","jp":"～を読む","emoji":"📖","stars":0},
- {"en":"listen","jp":"～を聞く","emoji":"🎧","stars":0},
- {"en":"hear","jp":"聞こえる","emoji":"👂","stars":0},
- {"en":"make","jp":"～を作る","emoji":"🛠️","stars":0},
- {"en":"wear","jp":"～を着る","emoji":"👕","stars":0},
- {"en":"wash","jp":"～を洗う","emoji":"🧼","stars":0},
- {"en":"hope","jp":"～を望む","emoji":"🌟","stars":0},
- {"en":"ask","jp":"～をたずねる","emoji":"❓","stars":0},
- {"en":"catch","jp":"～を捕まえる","emoji":"🫴","stars":0},
- {"en":"work","jp":"働く","emoji":"💼","stars":0},
- {"en":"get","jp":"～を手に入れる","emoji":"🎁","stars":0},
- {"en":"come","jp":"来る","emoji":"➡️","stars":0},
- {"en":"do","jp":"～をする","emoji":"✅","stars":0},
- {"en":"use","jp":"～を使う","emoji":"🛠️","stars":0},
- {"en":"speak","jp":"～を話す","emoji":"🗣️","stars":0},
- {"en":"tell","jp":"伝える","emoji":"💬","stars":0},
- {"en":"talk","jp":"話す","emoji":"💬","stars":0},
- {"en":"try","jp":"～を試みる","emoji":"💪","stars":0},
- {"en":"teach","jp":"～を教える","emoji":"🧑‍🏫","stars":0},
- {"en":"study","jp":"～を勉強する","emoji":"📚","stars":0},
- {"en":"enjoy","jp":"～を楽しむ","emoji":"😊","stars":0},
- {"en":"buy","jp":"～を買う","emoji":"🛍️","stars":0},
- {"en":"become","jp":"～になる","emoji":"🌱","stars":0},
- {"en":"stop","jp":"～を止める","emoji":"🛑","stars":0},
- {"en":"want","jp":"～をしたいと思う","emoji":"💭","stars":0},
- {"en":"beautiful","jp":"美しい","emoji":"🌺","stars":0},
- {"en":"cute","jp":"かわいい","emoji":"🐰","stars":0},
- {"en":"pretty","jp":"かわいい","emoji":"🌷","stars":0},
- {"en":"great","jp":"すばらしい","emoji":"🌟","stars":0},
- {"en":"important","jp":"重要な","emoji":"❗","stars":0},
- {"en":"popular","jp":"人気の","emoji":"👏","stars":0},
- {"en":"famous","jp":"有名な","emoji":"⭐","stars":0},
- {"en":"interesting","jp":"おもしろい","emoji":"🤩","stars":0},
- {"en":"big","jp":"大きい","emoji":"🐘","stars":0},
- {"en":"small","jp":"小さい","emoji":"🐭","stars":0},
- {"en":"tall","jp":"高い（身長など）","emoji":"📏","stars":0},
- {"en":"high","jp":"高い","emoji":"⬆️","stars":0},
- {"en":"short","jp":"短い","emoji":"↔️","stars":0},
- {"en":"long","jp":"長い","emoji":"📏","stars":0},
- {"en":"too","jp":"～も","emoji":"➕","stars":0},
- {"en":"only","jp":"～だけ","emoji":"1️⃣","stars":0},
- {"en":"just","jp":"ちょうど","emoji":"🎯","stars":0},
- {"en":"very","jp":"とても","emoji":"‼️","stars":0},
- {"en":"so","jp":"とても","emoji":"‼️","stars":0},
- {"en":"always","jp":"いつも","emoji":"🔁","stars":0},
- {"en":"often","jp":"しばしば","emoji":"🔄","stars":0},
- {"en":"sometimes","jp":"ときどき","emoji":"🕐","stars":0},
- {"en":"fast","jp":"速く","emoji":"💨","stars":0},
- {"en":"early","jp":"早く","emoji":"🌅","stars":0},
- {"en":"hard","jp":"熱心に","emoji":"💪","stars":0},
- {"en":"well","jp":"上手に","emoji":"👍","stars":0},
- {"en":"there","jp":"そこで","emoji":"👉","stars":0},
- {"en":"here","jp":"ここで","emoji":"👇","stars":0}
-];
+const DEFAULT_WORDS=[{"en":"wagon","jp":"ワゴン","emoji":"🛒","stars":21,"furiganaSegments":[],"furigana":"わぁごぉん","furiganaChars":[{"reading":"わ"},{"reading":"ぁ"},{"reading":"ご"},{"reading":"ぉ"},{"reading":"ん"}]},{"en":"octopus","jp":"たこ","emoji":"🐙","stars":12,"furiganaSegments":[],"furigana":"おくとぉぱぅす","furiganaChars":[{"reading":"お"},{"reading":"く"},{"reading":"と"},{"reading":"ぉ"},{"reading":"ぱ"},{"reading":"ぅ"},{"reading":"す"}]},{"en":"rocket","jp":"ロケット","emoji":"🚀","stars":13,"furiganaSegments":[],"furigana":"ろおくくえと","furiganaChars":[{"reading":"ろ"},{"reading":"お"},{"reading":"く"},{"reading":"く"},{"reading":"え"},{"reading":"と"}]},{"en":"egg","jp":"たまご","emoji":"🍳","stars":8,"furiganaSegments":[],"furigana":"えぐぐ","furiganaChars":[{"reading":"え"},{"reading":"ぐ"},{"reading":"ぐ"}]},{"en":"question","jp":"疑問","emoji":"❓","stars":7,"furiganaSegments":[],"furigana":"くぅえすちぃおん","furiganaChars":[{"reading":"く"},{"reading":"ぅ"},{"reading":"え"},{"reading":"す"},{"reading":"ち"},{"reading":"ぃ"},{"reading":"お"},{"reading":"ん"}]},{"en":"spoon","jp":"スプーン","emoji":"🥄","stars":5,"furiganaSegments":[],"furigana":"すぷぉぉん","furiganaChars":[{"reading":"す"},{"reading":"ぷ"},{"reading":"ぉ"},{"reading":"ぉ"},{"reading":"ん"}]},{"en":"kitten","jp":"こねこ","emoji":"🐈","stars":3,"furiganaSegments":[],"furigana":"きぃててぇん","furiganaChars":[{"reading":"き"},{"reading":"ぃ"},{"reading":"て"},{"reading":"て"},{"reading":"ぇ"},{"reading":"ん"}]},{"en":"zebra","jp":"シマウマ","emoji":"🦓","stars":3,"furiganaSegments":[],"furigana":"じぃぶらぁ","furiganaChars":[{"reading":"じ"},{"reading":"ぃ"},{"reading":"ぶ"},{"reading":"ら"},{"reading":"ぁ"}]},{"en":"hate","jp":"きらい","emoji":"😡","stars":3,"furiganaSegments":[],"furigana":"へぇとー","furiganaChars":[{"reading":"へ"},{"reading":"ぇ"},{"reading":"と"},{"reading":"ー"}]},{"en":"mop","jp":"モップ","emoji":"🧹","stars":3,"furiganaSegments":[],"furigana":"もぉぷ","furiganaChars":[{"reading":"も"},{"reading":"ぉ"},{"reading":"ぷ"}]},{"en":"bake","jp":"焼く","emoji":"🍞","stars":3,"furiganaSegments":[],"furigana":"べぇくー","furiganaChars":[{"reading":"べ"},{"reading":"ぇ"},{"reading":"く"},{"reading":"ー"}]},{"en":"take out","jp":"取り出す","emoji":"📤","stars":3,"furiganaSegments":[],"furigana":"てぇくーあうと","furiganaChars":[{"reading":"て"},{"reading":"ぇ"},{"reading":"く"},{"reading":"ー"},{"reading":""},{"reading":"あ"},{"reading":"う"},{"reading":"と"}]},{"en":"paint","jp":"絵をかく","emoji":"🎨","stars":3,"furiganaSegments":[],"furigana":"ぺぇいんと","furiganaChars":[{"reading":"ぺ"},{"reading":"ぇ"},{"reading":"い"},{"reading":"ん"},{"reading":"と"}]},{"en":"ski","jp":"スキー","emoji":"🎿","stars":3,"furiganaSegments":[],"furigana":"すきぃ","furiganaChars":[{"reading":"す"},{"reading":"き"},{"reading":"ぃ"}]},{"en":"skate","jp":"スケート","emoji":"⛸","stars":3,"furiganaSegments":[],"furigana":"すけぇとー","furiganaChars":[{"reading":"す"},{"reading":"け"},{"reading":"ぇ"},{"reading":"と"},{"reading":"ー"}]},{"en":"safe","jp":"安全な","emoji":"🛡️","stars":3,"furiganaSegments":[],"furigana":"せえふー","furiganaChars":[{"reading":"せ"},{"reading":"え"},{"reading":"ふ"},{"reading":"ー"}]},{"en":"dangerous","jp":"危険な","emoji":"⚠️","stars":3,"furiganaSegments":[],"furigana":"でぇんじぁらぉぅす","furiganaChars":[{"reading":"で"},{"reading":"ぇ"},{"reading":"ん"},{"reading":"じ"},{"reading":"ぁ"},{"reading":"ら"},{"reading":"ぉ"},{"reading":"ぅ"},{"reading":"す"}]},{"en":"late","jp":"遅い","emoji":"⏰","stars":2,"furiganaChars":[{"reading":"れ"},{"reading":"え"},{"reading":"と"},{"reading":"ー"}],"furigana":"れえとー","furiganaSegments":[]},{"en":"same","jp":"同じ","emoji":"🟰","stars":2,"furiganaSegments":[],"furigana":"せえむー","furiganaChars":[{"reading":"せ"},{"reading":"え"},{"reading":"む"},{"reading":"ー"}]},{"en":"different","jp":"違う","emoji":"🔀","stars":2,"furiganaSegments":[],"furigana":"でぃふふぁれぇんと","furiganaChars":[{"reading":"で"},{"reading":"ぃ"},{"reading":"ふ"},{"reading":"ふ"},{"reading":"ぁ"},{"reading":"れ"},{"reading":"ぇ"},{"reading":"ん"},{"reading":"と"}]},{"en":"real","jp":"本物","emoji":"✅","stars":2,"furiganaSegments":[],"furigana":"りぃある","furiganaChars":[{"reading":"り"},{"reading":"ぃ"},{"reading":"あ"},{"reading":"る"}]},{"en":"fake","jp":"にせもの","emoji":"🎭","stars":3,"furiganaSegments":[],"furigana":"ふぇくー","furiganaChars":[{"reading":"ふ"},{"reading":"ぇ"},{"reading":"く"},{"reading":"ー"}]},{"en":"clean","jp":"掃除","emoji":"🧼","stars":3,"furiganaSegments":[],"furigana":"くりーぁん","furiganaChars":[{"reading":"く"},{"reading":"り"},{"reading":"ー"},{"reading":"ぁ"},{"reading":"ん"}]},{"en":"hike","jp":"ハイキング","emoji":"🥾","stars":3,"furiganaSegments":[],"furigana":"はいくー","furiganaChars":[{"reading":"は"},{"reading":"い"},{"reading":"く"},{"reading":"ー"}]},{"en":"write","jp":"書く","emoji":"✍️","stars":3,"furiganaSegments":[],"furigana":"ぅらいとー","furiganaChars":[{"reading":"ぅ"},{"reading":"ら"},{"reading":"い"},{"reading":"と"},{"reading":"ー"}]},{"en":"boring","jp":"たいくつ","emoji":"🥱","stars":3,"furiganaSegments":[],"furigana":"ぼおりいんぐ","furiganaChars":[{"reading":"ぼ"},{"reading":"お"},{"reading":"り"},{"reading":"い"},{"reading":"ん"},{"reading":"ぐ"}]},{"en":"exciting","jp":"興奮する","emoji":"🤩","stars":3,"furiganaSegments":[],"furigana":"えきさいてぃんぐ","furiganaChars":[{"reading":"え"},{"reading":"き"},{"reading":"さ"},{"reading":"い"},{"reading":"て"},{"reading":"ぃ"},{"reading":"ん"},{"reading":"ぐ"}]},{"en":"alive","jp":"生きている","emoji":"🫀","stars":3,"furiganaChars":[{"reading":"あ"},{"reading":"ら"},{"reading":"い"},{"reading":"ぶ"},{"reading":"ー"}],"furigana":"あらいぶー","furiganaSegments":[]},{"en":"dead","jp":"死んでいる","emoji":"💀","stars":3,"furiganaChars":[{"reading":"で"},{"reading":"ー"},{"reading":"ぁ"},{"reading":"ど"}],"furigana":"でーぁど","furiganaSegments":[]},{"en":"tiny","jp":"小さい","emoji":"🐜","stars":2,"furiganaChars":[{"reading":"た"},{"reading":"い"},{"reading":"に"},{"reading":"ぃ"}],"furigana":"たいにぃ","furiganaSegments":[]},{"en":"giant","jp":"巨人","emoji":"🗿","stars":2,"furiganaChars":[{"reading":"じゃ"},{"reading":"い"},{"reading":"あ"},{"reading":"ん"},{"reading":"と"}],"furigana":"じゃいあんと","furiganaSegments":[]},{"en":"dark","jp":"暗い","emoji":"🌑","stars":2,"furiganaChars":[{"reading":"だ"},{"reading":"ぁ"},{"reading":"ー"},{"reading":"く"}],"furigana":"だぁーく","furiganaSegments":[]},{"en":"light","jp":"明るい","emoji":"💡","stars":2,"furiganaChars":[{"reading":"ら"},{"reading":"ぃ"},{"reading":"ぐ"},{"reading":"ぅ"},{"reading":"と"}],"furigana":"らぃぐぅと","furiganaSegments":[]},{"en":"smile","jp":"ほほえむ","emoji":"😊","stars":0,"furiganaChars":[{"reading":"す"},{"reading":"ま"},{"reading":"ぃ"},{"reading":"る"},{"reading":"ー"}],"furigana":"すまぃるー","furiganaSegments":[]},{"en":"drive","jp":"運転する","emoji":"🚗","stars":0,"furiganaChars":[{"reading":"ど"},{"reading":"ら"},{"reading":"い"},{"reading":"ぶ"},{"reading":"ー"}],"furigana":"どらいぶー","furiganaSegments":[]},{"en":"close","jp":"閉める","emoji":"🚪","stars":0,"furiganaChars":[{"reading":"く"},{"reading":"ろ"},{"reading":"ぉ"},{"reading":"ず"},{"reading":"ー"}],"furigana":"くろぉずー","furiganaSegments":[]},{"en":"use","jp":"～を使う","emoji":"🛠️","stars":0,"furiganaChars":[{"reading":"ゆー"},{"reading":"ず"},{"reading":"ー"}],"furigana":"ゆーずー","furiganaSegments":[]},{"en":"drink","jp":"飲む","emoji":"🥤","stars":0,"furiganaChars":[{"reading":"ど"},{"reading":"り"},{"reading":"い"},{"reading":"ん"},{"reading":"く"}],"furigana":"どりいんく","furiganaSegments":[]},{"en":"glue","jp":"のりでつける","emoji":"🧴","stars":0,"furiganaChars":[{"reading":"ぐ"},{"reading":"る"},{"reading":"ぅ"},{"reading":"ー"}],"furigana":"ぐるぅー","furiganaSegments":[]},{"en":"sing","jp":"歌う","emoji":"🎤","stars":0,"furiganaChars":[{"reading":"し"},{"reading":"い"},{"reading":"ん"},{"reading":"ぐ"}],"furigana":"しいんぐ","furiganaSegments":[]},{"en":"open","jp":"～を開く","emoji":"📖","stars":0,"furiganaChars":[{"reading":"おー"},{"reading":"ぷ"},{"reading":"ぇ"},{"reading":"ん"}],"furigana":"おーぷぇん","furiganaSegments":[]},{"en":"open","jp":"～を開く","emoji":"📖","stars":0,"furiganaChars":[{"reading":"おー"},{"reading":"ぷ"},{"reading":"ぇ"},{"reading":"ん"}],"furigana":"おーぷぇん","furiganaSegments":[]},{"en":"close","jp":"閉める","emoji":"🚪","stars":0,"furiganaChars":[{"reading":"く"},{"reading":"ろ"},{"reading":"ぉ"},{"reading":"ず"},{"reading":"ー"}],"furigana":"くろぉずー","furiganaSegments":[]},{"en":"round","jp":"丸い","emoji":"⚪","stars":1,"furiganaChars":[{"reading":"ら"},{"reading":"ぉ"},{"reading":"う"},{"reading":"ん"},{"reading":"ど"}],"furigana":"らぉうんど","furiganaSegments":[]},{"en":"flat","jp":"平らな","emoji":"➖","stars":1,"furiganaChars":[{"reading":"ふ"},{"reading":"ら"},{"reading":"ぁ"},{"reading":"と"}],"furigana":"ふらぁと","furiganaSegments":[]},{"en":"poor","jp":"貧しい","emoji":"🪙","stars":0,"furiganaChars":[{"reading":"ぷ"},{"reading":"ぉ"},{"reading":"ぉ"},{"reading":"あ"}],"furigana":"ぷぉぉあ","furiganaSegments":[]},{"en":"rich","jp":"裕福な","emoji":"💰","stars":0,"furiganaChars":[{"reading":"り"},{"reading":"い"},{"reading":"っ"},{"reading":"ち"}],"furigana":"りいっち","furiganaSegments":[]},{"en":"high","jp":"高い","emoji":"⬆️","stars":0,"furiganaChars":[{"reading":"は"},{"reading":"い"},{"reading":""},{"reading":""}],"furigana":"はい","furiganaSegments":[]},{"en":"low","jp":"低い","emoji":"⬇️","stars":1,"furiganaChars":[{"reading":"ろ"},{"reading":"お"},{"reading":"ぅ"}],"furigana":"ろおぅ","furiganaSegments":[]},{"en":"study","jp":"～を勉強する","emoji":"📚","stars":0,"furiganaChars":[{"reading":"す"},{"reading":"た"},{"reading":"ぁ"},{"reading":"で"},{"reading":"ぃ"}],"furigana":"すたぁでぃ","furiganaSegments":[]},{"en":"play","jp":"演奏する、行う","emoji":"🎹","stars":0,"furiganaChars":[{"reading":"ぷ"},{"reading":"れ"},{"reading":"え"},{"reading":"い"}],"furigana":"ぷれえい","furiganaSegments":[]},{"en":"enjoy","jp":"～を楽しむ","emoji":"😊","stars":0,"furiganaChars":[{"reading":"え"},{"reading":"ん"},{"reading":"じ"},{"reading":"ぉ"},{"reading":"ぃ"}],"furigana":"えんじぉぃ","furiganaSegments":[]},{"en":"brush","jp":"髪をとかす","emoji":"🪥","stars":2,"furiganaChars":[{"reading":"ぶ"},{"reading":"ら"},{"reading":"ぅ"},{"reading":"し"},{"reading":"ゅ"}],"furigana":"ぶらぅしゅ","furiganaSegments":[]},{"en":"shop","jp":"買い物をする","emoji":"🛍️","stars":2,"furiganaChars":[{"reading":"し"},{"reading":"ぃ"},{"reading":"ぉ"},{"reading":"ぷ"}],"furigana":"しぃぉぷ","furiganaSegments":[]},{"en":"carry","jp":"運ぶ","emoji":"👜","stars":2,"furiganaChars":[{"reading":"き"},{"reading":"ゃ"},{"reading":"り"},{"reading":"り"},{"reading":"ぃ"}],"furigana":"きゃりりぃ","furiganaSegments":[]},{"en":"push","jp":"押す","emoji":"👉","stars":2,"furiganaChars":[{"reading":"ぷ"},{"reading":"ぅ"},{"reading":"っし"},{"reading":"ゅ"}],"furigana":"ぷぅっしゅ","furiganaSegments":[]},{"en":"buy","jp":"～を買う","emoji":"🛍️","stars":0,"furiganaChars":[{"reading":"ば"},{"reading":"ぁ"},{"reading":"ぃ"}],"furigana":"ばぁぃ","furiganaSegments":[]},{"en":"wash","jp":"～を洗う","emoji":"🧼","stars":0,"furiganaChars":[{"reading":"う"},{"reading":"ぁ"},{"reading":"し"},{"reading":"ゅ"}],"furigana":"うぁしゅ","furiganaSegments":[]},{"en":"fish","jp":"魚をつる","emoji":"🎣","stars":2,"furiganaChars":[{"reading":"ふ"},{"reading":"ぃ"},{"reading":"し"},{"reading":"ゅ"}],"furigana":"ふぃしゅ","furiganaSegments":[]},{"en":"pinch","jp":"つまむ","emoji":"🤏","stars":2,"furiganaChars":[{"reading":"ぴ"},{"reading":"い"},{"reading":"ん"},{"reading":"ち"},{"reading":"ぃ"}],"furigana":"ぴいんちぃ","furiganaSegments":[]},{"en":"watch","jp":"～をみる（映画など）","emoji":"📺","stars":0,"furiganaChars":[{"reading":"わ"},{"reading":"ぁ"},{"reading":""},{"reading":"ち"},{"reading":"ぃ"}],"furigana":"わぁちぃ","furiganaSegments":[]},{"en":"listen","jp":"～を聞く","emoji":"🎧","stars":0,"furiganaChars":[{"reading":"り"},{"reading":"ぃ"},{"reading":"す"},{"reading":""},{"reading":"ぇ"},{"reading":"ん"}],"furigana":"りぃすぇん","furiganaSegments":[]},{"en":"have","jp":"～を持っている","emoji":"🤲","stars":0,"furiganaChars":[{"reading":"は"},{"reading":"あ"},{"reading":"ぶ"},{"reading":"ー"}],"furigana":"はあぶー","furiganaSegments":[]},{"en":"know","jp":"～を知っている","emoji":"💡","stars":0,"furiganaChars":[{"reading":""},{"reading":"の"},{"reading":"お"},{"reading":"う"}],"furigana":"のおう","furiganaSegments":[]},{"en":"strong","jp":"強い","emoji":"💪","stars":0,"furiganaChars":[{"reading":"す"},{"reading":"と"},{"reading":"ろ"},{"reading":"ぉ"},{"reading":"ん"},{"reading":"ぐ"}],"furigana":"すとろぉんぐ","furiganaSegments":[]},{"en":"weak","jp":"弱い","emoji":"🪫","stars":0,"furiganaChars":[{"reading":"う"},{"reading":"ぃ"},{"reading":"ぁ"},{"reading":"く"}],"furigana":"うぃぁく","furiganaSegments":[]},{"en":"short","jp":"短い","emoji":"↔️","stars":0,"furiganaChars":[{"reading":"し"},{"reading":"ょ"},{"reading":"お"},{"reading":"ぉ"},{"reading":"と"}],"furigana":"しょおぉと","furiganaSegments":[]},{"en":"long","jp":"長い","emoji":"📏","stars":0,"furiganaChars":[{"reading":"ろ"},{"reading":"お"},{"reading":"ん"},{"reading":"ぐ"}],"furigana":"ろおんぐ","furiganaSegments":[]},{"en":"fixed","jp":"直っている","emoji":"🔧","stars":0,"furiganaChars":[{"reading":"ふ"},{"reading":"ぃ"},{"reading":"く"},{"reading":"す"},{"reading":"ど"}],"furigana":"ふぃくすど","furiganaSegments":[]},{"en":"broken","jp":"壊れている","emoji":"💔","stars":0,"furiganaChars":[{"reading":"ぶ"},{"reading":"ろ"},{"reading":"ぉ"},{"reading":"く"},{"reading":"ぇ"},{"reading":"ん"}],"furigana":"ぶろぉくぇん","furiganaSegments":[]},{"en":"pretty","jp":"かわいい","emoji":"🌷","stars":0,"furiganaChars":[{"reading":"ぷ"},{"reading":"り"},{"reading":"ぃ"},{"reading":"て"},{"reading":"て"},{"reading":"ぃ"}],"furigana":"ぷりぃててぃ","furiganaSegments":[]},{"en":"ugly","jp":"みにくい","emoji":"👹","stars":0,"furiganaChars":[{"reading":"あ"},{"reading":"ぐ"},{"reading":"り"},{"reading":"ぃ"}],"furigana":"あぐりぃ","furiganaSegments":[]},{"en":"call","jp":"呼ぶ、電話する","emoji":"📞","stars":0,"furiganaChars":[{"reading":"こ"},{"reading":"ぁ"},{"reading":"る"},{"reading":"る"}],"furigana":"こぁるる","furiganaSegments":[]},{"en":"give","jp":"あげる","emoji":"🎁","stars":0,"furiganaChars":[{"reading":"ぎ"},{"reading":"い"},{"reading":"ぶ"},{"reading":"ー"}],"furigana":"ぎいぶー","furiganaSegments":[]},{"en":"learn","jp":"学ぶ","emoji":"📖","stars":0,"furiganaChars":[{"reading":"ら"},{"reading":"ー"},{"reading":"あ"},{"reading":"ぁ"},{"reading":"ん"}],"furigana":"らーあぁん","furiganaSegments":[]},{"en":"think","jp":"考える","emoji":"🤔","stars":0,"furiganaChars":[{"reading":"し"},{"reading":""},{"reading":"い"},{"reading":"ん"},{"reading":"く"}],"furigana":"しいんく","furiganaSegments":[]},{"en":"live","jp":"住む","emoji":"🏠","stars":0,"furiganaChars":[{"reading":"り"},{"reading":"い"},{"reading":"ぶ"},{"reading":"ー"}],"furigana":"りいぶー","furiganaSegments":[]},{"en":"dance","jp":"踊る","emoji":"💃","stars":0,"furiganaChars":[{"reading":"だ"},{"reading":"ぁ"},{"reading":"ん"},{"reading":"す"},{"reading":"ー"}],"furigana":"だぁんすー","furiganaSegments":[]},{"en":"get up","jp":"起きる","emoji":"⏰","stars":0,"furiganaChars":[{"reading":"げ"},{"reading":"ぇ"},{"reading":"と"},{"reading":""},{"reading":"あ"},{"reading":"ぷ"}],"furigana":"げぇとあぷ","furiganaSegments":[]},{"en":"ask","jp":"～をたずねる","emoji":"❓","stars":0,"furiganaChars":[{"reading":"あ"},{"reading":"す"},{"reading":"く"}],"furigana":"あすく","furiganaSegments":[]},{"en":"open","jp":"～を開く","emoji":"📖","stars":0,"furiganaChars":[{"reading":"おー"},{"reading":"ぷ"},{"reading":"ぇ"},{"reading":"ん"}],"furigana":"おーぷぇん","furiganaSegments":[]},{"en":"closed","jp":"閉まっている","emoji":"🔒","stars":0,"furiganaChars":[{"reading":"く"},{"reading":"ろ"},{"reading":"ぉ"},{"reading":"ず"},{"reading":"ー"},{"reading":"ど"}],"furigana":"くろぉずーど","furiganaSegments":[]},{"en":"early","jp":"早く","emoji":"🌅","stars":0,"furiganaChars":[{"reading":"あ"},{"reading":"ぁ"},{"reading":"ぁ"},{"reading":"り"},{"reading":"ぃ"}],"furigana":"あぁぁりぃ","furiganaSegments":[]},{"en":"late","jp":"遅い","emoji":"⏰","stars":2,"furiganaChars":[{"reading":"れ"},{"reading":"え"},{"reading":"と"},{"reading":"ー"}],"furigana":"れえとー","furiganaSegments":[]},{"en":"expensive","jp":"高価な","emoji":"💎","stars":0,"furiganaChars":[{"reading":"え"},{"reading":"くす"},{"reading":"ぺ"},{"reading":"ぇ"},{"reading":"ん"},{"reading":"し"},{"reading":"ぃ"},{"reading":"ぶ"},{"reading":"ー"}],"furigana":"えくすぺぇんしぃぶー","furiganaSegments":[]},{"en":"cheap","jp":"安い","emoji":"🏷️","stars":0,"furiganaChars":[{"reading":"ち"},{"reading":"ぃ"},{"reading":"ぃ"},{"reading":"ぁ"},{"reading":"ぷ"}],"furigana":"ちぃぃぁぷ","furiganaSegments":[]},{"en":"many","jp":"たくさんの","emoji":"🔢","stars":0,"furiganaChars":[{"reading":"め"},{"reading":"ぇ"},{"reading":"に"},{"reading":"ぃ"}],"furigana":"めぇにぃ","furiganaSegments":[]},{"en":"few","jp":"少しの","emoji":"🤏","stars":0,"furiganaChars":[{"reading":"ふ"},{"reading":"ぇ"},{"reading":"う"}],"furigana":"ふぇう","furiganaSegments":[]},{"en":"wide","jp":"広い","emoji":"↔️","stars":0,"furiganaChars":[{"reading":"わ"},{"reading":"い"},{"reading":"ど"},{"reading":"ー"}],"furigana":"わいどー","furiganaSegments":[]},{"en":"narrow","jp":"狭い","emoji":"↕️","stars":0,"furiganaChars":[{"reading":"な"},{"reading":"ぁ"},{"reading":"ろ"},{"reading":"ろ"},{"reading":"ぉ"},{"reading":"ぅ"}],"furigana":"なぁろろぉぅ","furiganaSegments":[]},{"en":"bad","jp":"悪い","emoji":"👎","stars":0,"furiganaChars":[{"reading":"ば"},{"reading":"ぁ"},{"reading":"ど"}],"furigana":"ばぁど","furiganaSegments":[]},{"en":"good","jp":"良い","emoji":"👍","stars":0,"furiganaChars":[{"reading":"ぐ"},{"reading":"ぉ"},{"reading":"ぉ"},{"reading":"ど"}],"furigana":"ぐぉぉど","furiganaSegments":[]},{"en":"fat","jp":"太った","emoji":"🐻","stars":0,"furiganaChars":[{"reading":"ふ"},{"reading":"ぁ"},{"reading":"と"}],"furigana":"ふぁと","furiganaSegments":[]},{"en":"thin","jp":"やせた","emoji":"🪶","stars":0,"furiganaChars":[{"reading":"す"},{"reading":"ぅ"},{"reading":"い"},{"reading":"ん"}],"furigana":"すぅいん","furiganaSegments":[]},{"en":"careless","jp":"不注意な","emoji":"⚠️","stars":0,"furiganaChars":[{"reading":"け"},{"reading":"え"},{"reading":"あ"},{"reading":"ー"},{"reading":"れ"},{"reading":"ぇ"},{"reading":"す"},{"reading":"す"}],"furigana":"けえあーれぇすす","furiganaSegments":[]},{"en":"careful","jp":"注意深い","emoji":"🔎","stars":0,"furiganaChars":[{"reading":"け"},{"reading":"え"},{"reading":"あ"},{"reading":"ー"},{"reading":"ふ"},{"reading":"ぅ"},{"reading":"る"}],"furigana":"けえあーふぅる","furiganaSegments":[]},{"en":"brush","jp":"髪をとかす","emoji":"🪥","stars":2,"furiganaChars":[{"reading":"ぶ"},{"reading":"ら"},{"reading":"ぅ"},{"reading":"し"},{"reading":"ゅ"}],"furigana":"ぶらぅしゅ","furiganaSegments":[]},{"en":"shop","jp":"買い物をする","emoji":"🛍️","stars":2,"furiganaChars":[{"reading":"し"},{"reading":"ぃ"},{"reading":"ぉ"},{"reading":"ぷ"}],"furigana":"しぃぉぷ","furiganaSegments":[]},{"en":"carry","jp":"運ぶ","emoji":"👜","stars":2,"furiganaChars":[{"reading":"き"},{"reading":"ゃ"},{"reading":"り"},{"reading":"り"},{"reading":"ぃ"}],"furigana":"きゃりりぃ","furiganaSegments":[]},{"en":"push","jp":"押す","emoji":"👉","stars":2,"furiganaChars":[{"reading":"ぷ"},{"reading":"ぅ"},{"reading":"っし"},{"reading":"ゅ"}],"furigana":"ぷぅっしゅ","furiganaSegments":[]},{"en":"fish","jp":"魚をつる","emoji":"🎣","stars":2,"furiganaChars":[{"reading":"ふ"},{"reading":"ぃ"},{"reading":"し"},{"reading":"ゅ"}],"furigana":"ふぃしゅ","furiganaSegments":[]},{"en":"pinch","jp":"つまむ","emoji":"🤏","stars":2,"furiganaChars":[{"reading":"ぴ"},{"reading":"い"},{"reading":"ん"},{"reading":"ち"},{"reading":"ぃ"}],"furigana":"ぴいんちぃ","furiganaSegments":[]},{"en":"classroom","jp":"教室","emoji":"🏫","stars":2,"furiganaChars":[{"reading":"く"},{"reading":"ら"},{"reading":"あ"},{"reading":"す"},{"reading":"す"},{"reading":"る"},{"reading":"ぉ"},{"reading":"ぉ"},{"reading":"む"}],"furigana":"くらあすするぉぉむ","furiganaSegments":[]},{"en":"clock","jp":"時計（壁掛け）","emoji":"🕒","stars":2,"furiganaChars":[{"reading":"く"},{"reading":"ろ"},{"reading":"お"},{"reading":"っ"},{"reading":"く"}],"furigana":"くろおっく","furiganaSegments":[]},{"en":"desk","jp":"机","emoji":"🪑","stars":2,"furiganaChars":[{"reading":"で"},{"reading":"え"},{"reading":"す"},{"reading":"く"}],"furigana":"でえすく","furiganaSegments":[]},{"en":"chair","jp":"いす","emoji":"🪑","stars":2,"furiganaChars":[{"reading":"ち"},{"reading":"ぃ"},{"reading":"え"},{"reading":"い"},{"reading":"あ"}],"furigana":"ちぃえいあ","furiganaSegments":[]},{"en":"notebook","jp":"ノート","emoji":"📓","stars":2,"furiganaChars":[{"reading":"の"},{"reading":"ぉ"},{"reading":"と"},{"reading":"ー"},{"reading":"ぶ"},{"reading":"ぉ"},{"reading":"ぉ"},{"reading":"く"}],"furigana":"のぉとーぶぉぉく","furiganaSegments":[]},{"en":"pencil","jp":"えんぴつ","emoji":"✏️","stars":2,"furiganaChars":[{"reading":"ぺ"},{"reading":"え"},{"reading":"ん"},{"reading":"し"},{"reading":"い"},{"reading":"る"}],"furigana":"ぺえんしいる","furiganaSegments":[]},{"en":"eraser","jp":"消しゴム","emoji":"🧽","stars":2,"furiganaChars":[{"reading":"い"},{"reading":"れ"},{"reading":"え"},{"reading":"さ"},{"reading":"ー"},{"reading":"あ"}],"furigana":"いれえさーあ","furiganaSegments":[]},{"en":"textbook","jp":"教科書","emoji":"📘","stars":2},{"en":"picture","jp":"絵、写真","emoji":"🖼️","stars":2,"furiganaChars":[{"reading":"ぴ"},{"reading":"い"},{"reading":"く"},{"reading":"ち"},{"reading":"ゅ"},{"reading":"あ"},{"reading":"ー"}],"furigana":"ぴいくちゅあー","furiganaSegments":[]},{"en":"computer","jp":"コンピューター","emoji":"💻","stars":2,"furiganaChars":[{"reading":"こ"},{"reading":"お"},{"reading":"ん"},{"reading":"ぴ"},{"reading":"ゅー"},{"reading":"た"},{"reading":"ー"},{"reading":"あ"}],"furigana":"こおんぴゅーたーあ","furiganaSegments":[]},{"en":"train","jp":"電車","emoji":"🚆","stars":2,"furiganaChars":[{"reading":"と"},{"reading":"れ"},{"reading":"ぇ"},{"reading":"い"},{"reading":"ん"}],"furigana":"とれぇいん","furiganaSegments":[]},{"en":"bus","jp":"バス","emoji":"🚌","stars":3,"furiganaChars":[{"reading":"ば"},{"reading":"ぅ"},{"reading":"す"}],"furigana":"ばぅす","furiganaSegments":[]},{"en":"car","jp":"車","emoji":"🚗","stars":3,"furiganaChars":[{"reading":"か"},{"reading":"ぁ"},{"reading":"あ"}],"furigana":"かぁあ","furiganaSegments":[]},{"en":"school","jp":"学校","emoji":"🏫","stars":3,"furiganaChars":[{"reading":"す"},{"reading":"こ"},{"reading":"ー"},{"reading":"ぉ"},{"reading":"ぉ"},{"reading":"る"}],"furigana":"すこーぉぉる","furiganaSegments":[]},{"en":"world","jp":"世界","emoji":"🌏","stars":3,"furiganaChars":[{"reading":"わ"},{"reading":"ぉ"},{"reading":"ぁ"},{"reading":"る"},{"reading":"ど"}],"furigana":"わぉぁるど","furiganaSegments":[]},{"en":"country","jp":"国","emoji":"🌍","stars":2,"furiganaChars":[{"reading":"こ"},{"reading":"ぉ"},{"reading":"う"},{"reading":"ん"},{"reading":"と"},{"reading":"り"},{"reading":"ぃ"}],"furigana":"こぉうんとりぃ","furiganaSegments":[]},{"en":"Japan","jp":"日本","emoji":"🇯🇵","stars":2,"furiganaChars":[{"reading":"じゃ"},{"reading":"あ"},{"reading":"ぱ"},{"reading":"あ"},{"reading":"ん"}],"furigana":"じゃあぱあん","furiganaSegments":[]},{"en":"the U.S.A.","jp":"アメリカ","emoji":"🇺🇸","stars":2,"furiganaChars":[{"reading":"ざ"},{"reading":"ぁ"},{"reading":"ー"},{"reading":""},{"reading":"ゆー"},{"reading":""},{"reading":"えす"},{"reading":""},{"reading":"えー"},{"reading":""}],"furigana":"ざぁーゆーえすえー","furiganaSegments":[]},{"en":"Canada","jp":"カナダ","emoji":"🇨🇦","stars":1,"furiganaChars":[{"reading":"か"},{"reading":"ぁ"},{"reading":"な"},{"reading":"ぁ"},{"reading":"だ"},{"reading":"ぁ"}],"furigana":"かぁなぁだぁ","furiganaSegments":[]},{"en":"China","jp":"中国","emoji":"🇨🇳","stars":1,"furiganaChars":[{"reading":"ち"},{"reading":"ち"},{"reading":"ぃ"},{"reading":"な"},{"reading":"あ"}],"furigana":"ちちぃなあ","furiganaSegments":[]},{"en":"Australia","jp":"オーストラリア","emoji":"🇦🇺","stars":1,"furiganaChars":[{"reading":"あ"},{"reading":"う"},{"reading":"す"},{"reading":"と"},{"reading":"ら"},{"reading":"あ"},{"reading":"り"},{"reading":"い"},{"reading":"あ"}],"furigana":"あうすとらありいあ","furiganaSegments":[]},{"en":"South Korea","jp":"韓国","emoji":"🇰🇷","stars":1,"furiganaChars":[{"reading":"さ"},{"reading":"お"},{"reading":"う"},{"reading":"す"},{"reading":"ぅ"},{"reading":""},{"reading":"こ"},{"reading":"お"},{"reading":"り"},{"reading":"ー"},{"reading":"あ"}],"furigana":"さおうすぅこおりーあ","furiganaSegments":[]},{"en":"the U.K.","jp":"イギリス","emoji":"🇬🇧","stars":1,"furiganaChars":[{"reading":"ざ"},{"reading":"ぁ"},{"reading":"ー"},{"reading":""},{"reading":"ゆー"},{"reading":""},{"reading":"けー"},{"reading":""}],"furigana":"ざぁーゆーけー","furiganaSegments":[]},{"en":"France","jp":"フランス","emoji":"🇫🇷","stars":1,"furiganaChars":[{"reading":"ふ"},{"reading":"ら"},{"reading":"あ"},{"reading":"ん"},{"reading":"す"},{"reading":"ー"}],"furigana":"ふらあんすー","furiganaSegments":[]},{"en":"Germany","jp":"ドイツ","emoji":"🇩🇪","stars":1,"furiganaChars":[{"reading":"じ"},{"reading":"ぃ"},{"reading":"あ"},{"reading":"ま"},{"reading":"あ"},{"reading":"に"},{"reading":"ぃ"}],"furigana":"じぃあまあにぃ","furiganaSegments":[]},{"en":"Russia","jp":"ロシア","emoji":"🇷🇺","stars":1,"furiganaChars":[{"reading":"る"},{"reading":"ぅ"},{"reading":"し"},{"reading":"し"},{"reading":"ぃ"},{"reading":"あ"}],"furigana":"るぅししぃあ","furiganaSegments":[]},{"en":"Italy","jp":"イタリア","emoji":"🇮🇹","stars":1,"furiganaChars":[{"reading":"い"},{"reading":"た"},{"reading":"あ"},{"reading":"り"},{"reading":"ぃ"}],"furigana":"いたありぃ","furiganaSegments":[]},{"en":"Spain","jp":"スペイン","emoji":"🇪🇸","stars":1,"furiganaChars":[{"reading":"す"},{"reading":"ぺ"},{"reading":"え"},{"reading":"い"},{"reading":"ん"}],"furigana":"すぺえいん","furiganaSegments":[]},{"en":"Sunday","jp":"日曜日","emoji":"📅","stars":1,"furiganaChars":[{"reading":"さ"},{"reading":"ぁ"},{"reading":"ん"},{"reading":"で"},{"reading":"ぇ"},{"reading":"ぃ"}],"furigana":"さぁんでぇぃ","furiganaSegments":[]},{"en":"Monday","jp":"月曜日","emoji":"📅","stars":1,"furiganaChars":[{"reading":"ま"},{"reading":"ぁ"},{"reading":"ん"},{"reading":"で"},{"reading":"ぇ"},{"reading":"ぃ"}],"furigana":"まぁんでぇぃ","furiganaSegments":[]},{"en":"Tuesday","jp":"火曜日","emoji":"📅","stars":1,"furiganaChars":[{"reading":"ち"},{"reading":"ぅ"},{"reading":"ー"},{"reading":"ず"},{"reading":"で"},{"reading":"ぇ"},{"reading":"ぃ"}],"furigana":"ちぅーずでぇぃ","furiganaSegments":[]},{"en":"Wednesday","jp":"水曜日","emoji":"📅","stars":1,"furiganaChars":[{"reading":"う"},{"reading":"え"},{"reading":""},{"reading":"ん"},{"reading":"ー"},{"reading":"ず"},{"reading":"で"},{"reading":"ぇ"},{"reading":"ぃ"}],"furigana":"うえんーずでぇぃ","furiganaSegments":[]},{"en":"Thursday","jp":"木曜日","emoji":"📅","stars":1,"furiganaChars":[{"reading":"さ"},{"reading":"さ"},{"reading":"ぅ"},{"reading":"ぁ"},{"reading":"ず"},{"reading":"で"},{"reading":"ぇ"},{"reading":"ぃ"}],"furigana":"ささぅぁずでぇぃ","furiganaSegments":[]},{"en":"Friday","jp":"金曜日","emoji":"📅","stars":1,"furiganaChars":[{"reading":"ふ"},{"reading":"ら"},{"reading":"い"},{"reading":"で"},{"reading":"ぇ"},{"reading":"ぃ"}],"furigana":"ふらいでぇぃ","furiganaSegments":[]},{"en":"Saturday","jp":"土曜日","emoji":"📅","stars":1,"furiganaChars":[{"reading":"さ"},{"reading":"あ"},{"reading":"つ"},{"reading":"ぅ"},{"reading":"あ"},{"reading":"で"},{"reading":"ぇ"},{"reading":"ぃ"}],"furigana":"さあつぅあでぇぃ","furiganaSegments":[]},{"en":"season","jp":"季節","emoji":"🍀","stars":0,"furiganaChars":[{"reading":"し"},{"reading":"ー"},{"reading":"あ"},{"reading":"ず"},{"reading":"ぉ"},{"reading":"ん"}],"furigana":"しーあずぉん","furiganaSegments":[]},{"en":"spring","jp":"春","emoji":"🌸","stars":0,"furiganaChars":[{"reading":"す"},{"reading":"ぷ"},{"reading":"り"},{"reading":"い"},{"reading":"ん"},{"reading":"ぐ"}],"furigana":"すぷりいんぐ","furiganaSegments":[]},{"en":"summer","jp":"夏","emoji":"🌻","stars":0,"furiganaChars":[{"reading":"さ"},{"reading":"ぁ"},{"reading":"ま"},{"reading":"ま"},{"reading":"ー"},{"reading":"ぁ"}],"furigana":"さぁままーぁ","furiganaSegments":[]},{"en":"fall","jp":"秋","emoji":"🍂","stars":0,"furiganaChars":[{"reading":"ふ"},{"reading":"ぉー"},{"reading":"る"},{"reading":"る"}],"furigana":"ふぉーるる","furiganaSegments":[]},{"en":"autumn","jp":"秋","emoji":"🍁","stars":0,"furiganaChars":[{"reading":"お"},{"reading":"ぅ"},{"reading":"た"},{"reading":"ぅ"},{"reading":"む"},{"reading":"ん"}],"furigana":"おぅたぅむん","furiganaSegments":[]},{"en":"winter","jp":"冬","emoji":"❄️","stars":0,"furiganaChars":[{"reading":"う"},{"reading":"い"},{"reading":"ん"},{"reading":"た"},{"reading":"ー"},{"reading":"ぁ"}],"furigana":"ういんたーぁ","furiganaSegments":[]},{"en":"January","jp":"１月","emoji":"📅","stars":0,"furiganaChars":[{"reading":"じ"},{"reading":"ぁ"},{"reading":"に"},{"reading":"ぅ"},{"reading":"あ"},{"reading":"り"},{"reading":"ぃ"}],"furigana":"じぁにぅありぃ","furiganaSegments":[]},{"en":"February","jp":"２月","emoji":"📅","stars":0,"furiganaChars":[{"reading":"ふ"},{"reading":"ぇ"},{"reading":"ぶ"},{"reading":"ら"},{"reading":"ぁ"},{"reading":"ぁ"},{"reading":"り"},{"reading":"ぃ"}],"furigana":"ふぇぶらぁぁりぃ","furiganaSegments":[]},{"en":"March","jp":"３月","emoji":"📅","stars":0,"furiganaChars":[{"reading":"ま"},{"reading":"あ"},{"reading":"ぁ"},{"reading":"ち"},{"reading":"ぃ"}],"furigana":"まあぁちぃ","furiganaSegments":[]},{"en":"April","jp":"４月","emoji":"📅","stars":0,"furiganaChars":[{"reading":"え"},{"reading":"ぷ"},{"reading":"り"},{"reading":"い"},{"reading":"る"}],"furigana":"えぷりいる","furiganaSegments":[]},{"en":"May","jp":"５月","emoji":"📅","stars":0,"furiganaChars":[{"reading":"め"},{"reading":"ぇ"},{"reading":"い"}],"furigana":"めぇい","furiganaSegments":[]},{"en":"June","jp":"６月","emoji":"📅","stars":0,"furiganaChars":[{"reading":"じ"},{"reading":"ゅ"},{"reading":"ん"},{"reading":"ー"}],"furigana":"じゅんー","furiganaSegments":[]},{"en":"July","jp":"７月","emoji":"📅","stars":0,"furiganaChars":[{"reading":"じ"},{"reading":"ゅ"},{"reading":"ら"},{"reading":"ぃ"}],"furigana":"じゅらぃ","furiganaSegments":[]},{"en":"August","jp":"８月","emoji":"📅","stars":0,"furiganaChars":[{"reading":"お"},{"reading":"ぅ"},{"reading":"が"},{"reading":"ぅ"},{"reading":"す"},{"reading":"と"}],"furigana":"おぅがぅすと","furiganaSegments":[]},{"en":"September","jp":"９月","emoji":"📅","stars":0,"furiganaChars":[{"reading":"せ"},{"reading":"ぇ"},{"reading":"ぷ"},{"reading":"て"},{"reading":"ぇ"},{"reading":"ん"},{"reading":"ば"},{"reading":"ー"},{"reading":"あ"}],"furigana":"せぇぷてぇんばーあ","furiganaSegments":[]},{"en":"October","jp":"１０月","emoji":"📅","stars":0,"furiganaChars":[{"reading":"お"},{"reading":"く"},{"reading":"と"},{"reading":"お"},{"reading":"ば"},{"reading":"ー"},{"reading":"あ"}],"furigana":"おくとおばーあ","furiganaSegments":[]},{"en":"November","jp":"１１月","emoji":"📅","stars":0,"furiganaChars":[{"reading":"の"},{"reading":"ぉ"},{"reading":"べ"},{"reading":"ぇ"},{"reading":"ん"},{"reading":"ば"},{"reading":"ー"},{"reading":"ぁ"}],"furigana":"のぉべぇんばーぁ","furiganaSegments":[]},{"en":"December","jp":"１２月","emoji":"📅","stars":0,"furiganaChars":[{"reading":"で"},{"reading":"ぃ"},{"reading":"せ"},{"reading":"え"},{"reading":"ん"},{"reading":"ば"},{"reading":"ー"},{"reading":"あ"}],"furigana":"でぃせえんばーあ","furiganaSegments":[]},{"en":"month","jp":"月","emoji":"🗓️","stars":0,"furiganaChars":[{"reading":"ま"},{"reading":"ぉ"},{"reading":"ん"},{"reading":"す"},{"reading":"す"}],"furigana":"まぉんすす","furiganaSegments":[]},{"en":"year","jp":"年","emoji":"📆","stars":0,"furiganaChars":[{"reading":"い"},{"reading":"い"},{"reading":"あ"},{"reading":"あ"}],"furigana":"いいああ","furiganaSegments":[]},{"en":"subject","jp":"教科","emoji":"📚","stars":0,"furiganaChars":[{"reading":"す"},{"reading":"ぅ"},{"reading":"ぶ"},{"reading":"じ"},{"reading":"ぇ"},{"reading":"く"},{"reading":"と"}],"furigana":"すぅぶじぇくと","furiganaSegments":[]},{"en":"English","jp":"英語","emoji":"🔤","stars":0,"furiganaChars":[{"reading":"い"},{"reading":"ん"},{"reading":"ぐ"},{"reading":"り"},{"reading":"い"},{"reading":"し"},{"reading":"ゅ"}],"furigana":"いんぐりいしゅ","furiganaSegments":[]},{"en":"Math","jp":"算数","emoji":"➗","stars":0,"furiganaChars":[{"reading":"ま"},{"reading":"ぁ"},{"reading":"す"},{"reading":"す"}],"furigana":"まぁすす","furiganaSegments":[]},{"en":"Japanese","jp":"国語","emoji":"📝","stars":0,"furiganaChars":[{"reading":"じ"},{"reading":"ぁ"},{"reading":"ぱ"},{"reading":"あ"},{"reading":"に"},{"reading":"ー"},{"reading":"ず"},{"reading":"ー"}],"furigana":"じぁぱあにーずー","furiganaSegments":[]},{"en":"Science","jp":"理科","emoji":"🔬","stars":0,"furiganaChars":[{"reading":"す"},{"reading":"さ"},{"reading":"い"},{"reading":"え"},{"reading":"ん"},{"reading":"す"},{"reading":"ー"}],"furigana":"すさいえんすー","furiganaSegments":[]},{"en":"Social Studies","jp":"社会","emoji":"🌏","stars":0,"furiganaChars":[{"reading":""},{"reading":"そ"},{"reading":"し"},{"reading":"ぃ"},{"reading":"あ"},{"reading":"る"},{"reading":""},{"reading":"す"},{"reading":"た"},{"reading":"ぁ"},{"reading":"で"},{"reading":"ぃ"},{"reading":""},{"reading":""}],"furigana":"そしぃあるすたぁでぃ","furiganaSegments":[]},{"en":"Music","jp":"音楽","emoji":"🎵","stars":0,"furiganaChars":[{"reading":"み"},{"reading":"ゅー"},{"reading":"じ"},{"reading":"ぃ"},{"reading":"く"}],"furigana":"みゅーじぃく","furiganaSegments":[]},{"en":"Art","jp":"図工","emoji":"🎨","stars":0,"furiganaChars":[{"reading":"あ"},{"reading":"ぁ"},{"reading":"と"}],"furigana":"あぁと","furiganaSegments":[]},{"en":"P.E.","jp":"体育","emoji":"🏃","stars":0,"furiganaChars":[{"reading":"ぴー"},{"reading":""},{"reading":"いー"},{"reading":""}],"furigana":"ぴーいー","furiganaSegments":[]},{"en":"Home Economics","jp":"家庭科","emoji":"🍳","stars":0,"furiganaChars":[{"reading":""},{"reading":""},{"reading":"む"},{"reading":"ー"},{"reading":""},{"reading":"え"},{"reading":"こ"},{"reading":"ぉ"},{"reading":"の"},{"reading":"ぉ"},{"reading":"み"},{"reading":"ぃ"},{"reading":"く"},{"reading":"す"}],"furigana":"むーえこぉのぉみぃくす","furiganaSegments":[]},{"en":"teacher","jp":"先生","emoji":"🧑‍🏫","stars":0,"furiganaChars":[{"reading":"て"},{"reading":"ぃ"},{"reading":"ぁ"},{"reading":"ち"},{"reading":"ぃ"},{"reading":"ー"},{"reading":"ぁ"}],"furigana":"てぃぁちぃーぁ","furiganaSegments":[]},{"en":"student","jp":"児童、生徒","emoji":"🎒","stars":0,"furiganaChars":[{"reading":"す"},{"reading":"ち"},{"reading":"ぅ"},{"reading":"で"},{"reading":"え"},{"reading":"ん"},{"reading":"と"}],"furigana":"すちぅでえんと","furiganaSegments":[]},{"en":"family","jp":"家族","emoji":"👪","stars":0,"furiganaChars":[{"reading":"ふ"},{"reading":"ぁ"},{"reading":"み"},{"reading":"ぃ"},{"reading":"り"},{"reading":"ぃ"}],"furigana":"ふぁみぃりぃ","furiganaSegments":[]},{"en":"father","jp":"父","emoji":"👨","stars":0,"furiganaChars":[{"reading":"ふ"},{"reading":"ぁ"},{"reading":"ざ"},{"reading":"ぁ"},{"reading":"ー"},{"reading":"ぁ"}],"furigana":"ふぁざぁーぁ","furiganaSegments":[]},{"en":"mother","jp":"母","emoji":"👩","stars":0,"furiganaChars":[{"reading":"も"},{"reading":"ぉ"},{"reading":"ざ"},{"reading":"ぁ"},{"reading":"ー"},{"reading":"ぁ"}],"furigana":"もぉざぁーぁ","furiganaSegments":[]},{"en":"parents","jp":"両親","emoji":"👫","stars":0,"furiganaChars":[{"reading":"ぺ"},{"reading":"あ"},{"reading":"れ"},{"reading":"ー"},{"reading":"ん"},{"reading":""},{"reading":"つ"}],"furigana":"ぺあれーんつ","furiganaSegments":[]},{"en":"brother","jp":"兄、弟","emoji":"👦","stars":0,"furiganaChars":[{"reading":"ぶ"},{"reading":"ら"},{"reading":"ぉ"},{"reading":"ざ"},{"reading":"ぁ"},{"reading":"ー"},{"reading":"ぁ"}],"furigana":"ぶらぉざぁーぁ","furiganaSegments":[]},{"en":"sister","jp":"姉、妹","emoji":"👧","stars":0,"furiganaChars":[{"reading":"し"},{"reading":"ぃ"},{"reading":"す"},{"reading":"た"},{"reading":"ー"},{"reading":"ぁ"}],"furigana":"しぃすたーぁ","furiganaSegments":[]},{"en":"child","jp":"子ども","emoji":"🧒","stars":0,"furiganaChars":[{"reading":"ち"},{"reading":"ち"},{"reading":"あい"},{"reading":"る"},{"reading":"ど"}],"furigana":"ちちあいるど","furiganaSegments":[]},{"en":"children","jp":"子どもたち","emoji":"🧒","stars":0,"furiganaChars":[{"reading":"ち"},{"reading":"ち"},{"reading":"ぃ"},{"reading":"る"},{"reading":"ど"},{"reading":"れ"},{"reading":"え"},{"reading":"ん"}],"furigana":"ちちぃるどれえん","furiganaSegments":[]},{"en":"son","jp":"息子","emoji":"👦","stars":0,"furiganaChars":[{"reading":"そ"},{"reading":"お"},{"reading":"ん"}],"furigana":"そおん","furiganaSegments":[]},{"en":"daughter","jp":"娘","emoji":"👧","stars":0,"furiganaChars":[{"reading":"ど"},{"reading":"ぉ"},{"reading":"ぅ"},{"reading":""},{"reading":""},{"reading":"た"},{"reading":"ー"},{"reading":"ぁ"}],"furigana":"どぉぅたーぁ","furiganaSegments":[]},{"en":"grandfather","jp":"祖父","emoji":"👴","stars":0,"furiganaChars":[{"reading":"ぐ"},{"reading":"ら"},{"reading":"ぁ"},{"reading":"ん"},{"reading":"ど"},{"reading":"ふ"},{"reading":"ぁ"},{"reading":"ざ"},{"reading":"ぁ"},{"reading":"ー"},{"reading":"ぁ"}],"furigana":"ぐらぁんどふぁざぁーぁ","furiganaSegments":[]},{"en":"grandmother","jp":"祖母","emoji":"👵","stars":0,"furiganaChars":[{"reading":"ぐ"},{"reading":"ら"},{"reading":"ぁ"},{"reading":"ん"},{"reading":"ど"},{"reading":"も"},{"reading":"ぉ"},{"reading":"ざ"},{"reading":"ぁ"},{"reading":"ー"},{"reading":"ぁ"}],"furigana":"ぐらぁんどもぉざぁーぁ","furiganaSegments":[]},{"en":"grandparents","jp":"祖父母","emoji":"👴","stars":0,"furiganaChars":[{"reading":"ぐ"},{"reading":"ら"},{"reading":"ぁ"},{"reading":"ん"},{"reading":"ど"},{"reading":"ぺ"},{"reading":"あ"},{"reading":"れ"},{"reading":"え"},{"reading":"ん"},{"reading":""},{"reading":"つ"}],"furigana":"ぐらぁんどぺあれえんつ","furiganaSegments":[]},{"en":"sport","jp":"スポーツ","emoji":"🏅","stars":0,"furiganaChars":[{"reading":"す"},{"reading":"ぽ"},{"reading":"お"},{"reading":"ぉ"},{"reading":"つ"}],"furigana":"すぽおぉつ","furiganaSegments":[]},{"en":"baseball","jp":"野球","emoji":"⚾","stars":0,"furiganaChars":[{"reading":"べ"},{"reading":"ぇ"},{"reading":"す"},{"reading":"ー"},{"reading":"ぼ"},{"reading":"ぁ"},{"reading":"る"},{"reading":"る"}],"furigana":"べぇすーぼぁるる","furiganaSegments":[]},{"en":"soccer","jp":"サッカー","emoji":"⚽","stars":0,"furiganaChars":[{"reading":"す"},{"reading":"ぉ"},{"reading":"か"},{"reading":"か"},{"reading":"ー"},{"reading":"ぁ"}],"furigana":"すぉかかーぁ","furiganaSegments":[]},{"en":"tennis","jp":"テニス","emoji":"🎾","stars":0,"furiganaChars":[{"reading":"て"},{"reading":"え"},{"reading":"に"},{"reading":"に"},{"reading":"い"},{"reading":"す"}],"furigana":"てえににいす","furiganaSegments":[]},{"en":"basketball","jp":"バスケットボール","emoji":"🏀","stars":0,"furiganaChars":[{"reading":"ば"},{"reading":"ぁ"},{"reading":"す"},{"reading":"け"},{"reading":"え"},{"reading":"と"},{"reading":"ぼ"},{"reading":"ぁ"},{"reading":"る"},{"reading":"る"}],"furigana":"ばぁすけえとぼぁるる","furiganaSegments":[]},{"en":"volleyball","jp":"バレーボール","emoji":"🏐","stars":0,"furiganaChars":[{"reading":"ぼ"},{"reading":"ぉ"},{"reading":"れ"},{"reading":"れ"},{"reading":"ぇ"},{"reading":"ぃ"},{"reading":"ぼ"},{"reading":"ぁ"},{"reading":"る"},{"reading":"る"}],"furigana":"ぼぉれれぇぃぼぁるる","furiganaSegments":[]},{"en":"table tennis","jp":"卓球","emoji":"🏓","stars":0,"furiganaChars":[{"reading":"て"},{"reading":"ぇ"},{"reading":"ぶ"},{"reading":"る"},{"reading":"ー"},{"reading":""},{"reading":"て"},{"reading":"え"},{"reading":"に"},{"reading":"に"},{"reading":"い"},{"reading":"す"}],"furigana":"てぇぶるーてえににいす","furiganaSegments":[]},{"en":"badminton","jp":"バドミントン","emoji":"🏸","stars":0,"furiganaChars":[{"reading":"ば"},{"reading":"ぁ"},{"reading":"ど"},{"reading":"み"},{"reading":"い"},{"reading":"ん"},{"reading":"と"},{"reading":"ぉ"},{"reading":"ん"}],"furigana":"ばぁどみいんとぉん","furiganaSegments":[]},{"en":"golf","jp":"ゴルフ","emoji":"⛳","stars":0,"furiganaChars":[{"reading":"ご"},{"reading":"お"},{"reading":"る"},{"reading":"ふ"}],"furigana":"ごおるふ","furiganaSegments":[]},{"en":"swimming","jp":"水泳","emoji":"🏊","stars":0,"furiganaChars":[{"reading":"す"},{"reading":"う"},{"reading":"い"},{"reading":"み"},{"reading":"み"},{"reading":"い"},{"reading":"ん"},{"reading":"ぐ"}],"furigana":"すういみみいんぐ","furiganaSegments":[]},{"en":"skiing","jp":"スキー","emoji":"⛷️","stars":0,"furiganaChars":[{"reading":"す"},{"reading":"き"},{"reading":"い"},{"reading":"い"},{"reading":"ん"},{"reading":"ぐ"}],"furigana":"すきいいんぐ","furiganaSegments":[]},{"en":"go","jp":"～に行く","emoji":"➡️","stars":0,"furiganaChars":[{"reading":"ご"},{"reading":"お"}],"furigana":"ごお","furiganaSegments":[]},{"en":"meet","jp":"～に会う","emoji":"🤝","stars":0,"furiganaChars":[{"reading":"み"},{"reading":"ぃ"},{"reading":"ぃ"},{"reading":"と"}],"furigana":"みぃぃと","furiganaSegments":[]},{"en":"eat","jp":"～を食べる","emoji":"🍽️","stars":0,"furiganaChars":[{"reading":"い"},{"reading":"ぁ"},{"reading":"と"}],"furigana":"いぁと","furiganaSegments":[]},{"en":"like","jp":"～を好む","emoji":"❤️","stars":0,"furiganaChars":[{"reading":"ら"},{"reading":"い"},{"reading":"く"},{"reading":"ー"}],"furigana":"らいくー","furiganaSegments":[]},{"en":"run","jp":"走る","emoji":"🏃","stars":0,"furiganaChars":[{"reading":"ら"},{"reading":"う"},{"reading":"ん"}],"furigana":"らうん","furiganaSegments":[]},{"en":"sing","jp":"歌う","emoji":"🎤","stars":0,"furiganaChars":[{"reading":"し"},{"reading":"い"},{"reading":"ん"},{"reading":"ぐ"}],"furigana":"しいんぐ","furiganaSegments":[]},{"en":"swim","jp":"泳ぐ","emoji":"🏊","stars":0,"furiganaChars":[{"reading":"す"},{"reading":"う"},{"reading":"い"},{"reading":"む"}],"furigana":"すういむ","furiganaSegments":[]},{"en":"stay","jp":"とどまる、滞在する","emoji":"🏠","stars":0,"furiganaChars":[{"reading":"す"},{"reading":"て"},{"reading":"え"},{"reading":"い"}],"furigana":"すてえい","furiganaSegments":[]},{"en":"ride","jp":"～に乗る","emoji":"🚲","stars":0,"furiganaChars":[{"reading":"ら"},{"reading":"い"},{"reading":"ど"},{"reading":"ー"}],"furigana":"らいどー","furiganaSegments":[]},{"en":"walk","jp":"歩く","emoji":"🚶","stars":0,"furiganaChars":[{"reading":"わ"},{"reading":"ぁ"},{"reading":"あ"},{"reading":"く"}],"furigana":"わぁあく","furiganaSegments":[]},{"en":"have","jp":"～を持っている","emoji":"🤲","stars":0,"furiganaChars":[{"reading":"は"},{"reading":"あ"},{"reading":"ぶ"},{"reading":"ー"}],"furigana":"はあぶー","furiganaSegments":[]},{"en":"open","jp":"～を開く","emoji":"📖","stars":0,"furiganaChars":[{"reading":"おー"},{"reading":"ぷ"},{"reading":"ぇ"},{"reading":"ん"}],"furigana":"おーぷぇん","furiganaSegments":[]},{"en":"live","jp":"住む","emoji":"🏠","stars":0,"furiganaChars":[{"reading":"り"},{"reading":"い"},{"reading":"ぶ"},{"reading":"ー"}],"furigana":"りいぶー","furiganaSegments":[]},{"en":"know","jp":"～を知っている","emoji":"💡","stars":0,"furiganaChars":[{"reading":""},{"reading":"の"},{"reading":"お"},{"reading":"う"}],"furigana":"のおう","furiganaSegments":[]},{"en":"help","jp":"～を助ける","emoji":"🤝","stars":0,"furiganaChars":[{"reading":"へ"},{"reading":"え"},{"reading":"る"},{"reading":"ぷ"}],"furigana":"へえるぷ","furiganaSegments":[]},{"en":"play","jp":"演奏する、行う","emoji":"🎹","stars":0,"furiganaChars":[{"reading":"ぷ"},{"reading":"れ"},{"reading":"え"},{"reading":"い"}],"furigana":"ぷれえい","furiganaSegments":[]},{"en":"climb","jp":"登る","emoji":"🧗","stars":0},{"en":"bring","jp":"持ってくる","emoji":"📦","stars":0,"furiganaChars":[{"reading":"ぶ"},{"reading":"り"},{"reading":"い"},{"reading":"ん"},{"reading":"ぐ"}],"furigana":"ぶりいんぐ","furiganaSegments":[]},{"en":"take","jp":"取る","emoji":"✋","stars":0,"furiganaChars":[{"reading":"て"},{"reading":"ぇ"},{"reading":"く"},{"reading":"ー"}],"furigana":"てぇくー","furiganaSegments":[]},{"en":"watch","jp":"～をみる（映画など）","emoji":"📺","stars":0,"furiganaChars":[{"reading":"わ"},{"reading":"ぁ"},{"reading":""},{"reading":"ち"},{"reading":"ぃ"}],"furigana":"わぁちぃ","furiganaSegments":[]},{"en":"see","jp":"～をみる（目に入る）","emoji":"👀","stars":0,"furiganaChars":[{"reading":"し"},{"reading":"ぃ"},{"reading":"ぃ"}],"furigana":"しぃぃ","furiganaSegments":[]},{"en":"look","jp":"～をみる（絵など）","emoji":"👁️","stars":0,"furiganaChars":[{"reading":"る"},{"reading":"ぉ"},{"reading":"ぉ"},{"reading":"く"}],"furigana":"るぉぉく","furiganaSegments":[]},{"en":"read","jp":"～を読む","emoji":"📖","stars":0,"furiganaChars":[{"reading":"り"},{"reading":"ぃ"},{"reading":"ぁ"},{"reading":"ど"}],"furigana":"りぃぁど","furiganaSegments":[]},{"en":"listen","jp":"～を聞く","emoji":"🎧","stars":0,"furiganaChars":[{"reading":"り"},{"reading":"ぃ"},{"reading":"す"},{"reading":""},{"reading":"ぇ"},{"reading":"ん"}],"furigana":"りぃすぇん","furiganaSegments":[]},{"en":"hear","jp":"聞こえる","emoji":"👂","stars":0,"furiganaChars":[{"reading":"ひ"},{"reading":"い"},{"reading":"あ"},{"reading":"ぁ"}],"furigana":"ひいあぁ","furiganaSegments":[]},{"en":"make","jp":"～を作る","emoji":"🛠️","stars":0,"furiganaChars":[{"reading":"め"},{"reading":"え"},{"reading":"く"},{"reading":"ー"}],"furigana":"めえくー","furiganaSegments":[]},{"en":"wear","jp":"～を着る","emoji":"👕","stars":0,"furiganaChars":[{"reading":"う"},{"reading":"え"},{"reading":"あ"},{"reading":"ぁ"}],"furigana":"うえあぁ","furiganaSegments":[]},{"en":"wash","jp":"～を洗う","emoji":"🧼","stars":0,"furiganaChars":[{"reading":"う"},{"reading":"ぁ"},{"reading":"し"},{"reading":"ゅ"}],"furigana":"うぁしゅ","furiganaSegments":[]},{"en":"hope","jp":"～を望む","emoji":"🌟","stars":0,"furiganaChars":[{"reading":"ほ"},{"reading":"ぉ"},{"reading":"ぷ"},{"reading":"ー"}],"furigana":"ほぉぷー","furiganaSegments":[]},{"en":"ask","jp":"～をたずねる","emoji":"❓","stars":0,"furiganaChars":[{"reading":"あ"},{"reading":"す"},{"reading":"く"}],"furigana":"あすく","furiganaSegments":[]},{"en":"catch","jp":"～を捕まえる","emoji":"🫴","stars":0,"furiganaChars":[{"reading":"き"},{"reading":"ぁ"},{"reading":""},{"reading":"ち"},{"reading":"ぃ"}],"furigana":"きぁちぃ","furiganaSegments":[]},{"en":"work","jp":"働く","emoji":"💼","stars":0,"furiganaChars":[{"reading":"わ"},{"reading":"ぉ"},{"reading":"あ"},{"reading":"く"}],"furigana":"わぉあく","furiganaSegments":[]},{"en":"get","jp":"～を手に入れる","emoji":"🎁","stars":0,"furiganaChars":[{"reading":"げ"},{"reading":"え"},{"reading":"と"}],"furigana":"げえと","furiganaSegments":[]},{"en":"come","jp":"来る","emoji":"➡️","stars":0,"furiganaChars":[{"reading":"こ"},{"reading":"お"},{"reading":"む"},{"reading":"ー"}],"furigana":"こおむー","furiganaSegments":[]},{"en":"do","jp":"～をする","emoji":"✅","stars":0,"furiganaChars":[{"reading":"ど"},{"reading":"ぉ"}],"furigana":"どぉ","furiganaSegments":[]},{"en":"use","jp":"～を使う","emoji":"🛠️","stars":0,"furiganaChars":[{"reading":"ゆー"},{"reading":"ず"},{"reading":"ー"}],"furigana":"ゆーずー","furiganaSegments":[]},{"en":"speak","jp":"～を話す","emoji":"🗣️","stars":0,"furiganaChars":[{"reading":"す"},{"reading":"ぴ"},{"reading":"ぃ"},{"reading":"ぁ"},{"reading":"く"}],"furigana":"すぴぃぁく","furiganaSegments":[]},{"en":"tell","jp":"伝える","emoji":"💬","stars":0,"furiganaChars":[{"reading":"て"},{"reading":"ぇ"},{"reading":"る"},{"reading":"る"}],"furigana":"てぇるる","furiganaSegments":[]},{"en":"talk","jp":"話す","emoji":"💬","stars":0,"furiganaChars":[{"reading":"と"},{"reading":"ぉ"},{"reading":"ぉ"},{"reading":"く"}],"furigana":"とぉぉく","furiganaSegments":[]},{"en":"try","jp":"～を試みる","emoji":"💪","stars":0,"furiganaChars":[{"reading":"と"},{"reading":"ら"},{"reading":"ぃ"}],"furigana":"とらぃ","furiganaSegments":[]},{"en":"teach","jp":"～を教える","emoji":"🧑‍🏫","stars":0,"furiganaChars":[{"reading":"て"},{"reading":"ぃ"},{"reading":"ぁ"},{"reading":"ち"},{"reading":"ぃ"}],"furigana":"てぃぁちぃ","furiganaSegments":[]},{"en":"study","jp":"～を勉強する","emoji":"📚","stars":0,"furiganaChars":[{"reading":"す"},{"reading":"た"},{"reading":"ぁ"},{"reading":"で"},{"reading":"ぃ"}],"furigana":"すたぁでぃ","furiganaSegments":[]},{"en":"enjoy","jp":"～を楽しむ","emoji":"😊","stars":0,"furiganaChars":[{"reading":"え"},{"reading":"ん"},{"reading":"じ"},{"reading":"ぉ"},{"reading":"ぃ"}],"furigana":"えんじぉぃ","furiganaSegments":[]},{"en":"buy","jp":"～を買う","emoji":"🛍️","stars":0,"furiganaChars":[{"reading":"ば"},{"reading":"ぁ"},{"reading":"ぃ"}],"furigana":"ばぁぃ","furiganaSegments":[]},{"en":"become","jp":"～になる","emoji":"🌱","stars":0,"furiganaChars":[{"reading":"び"},{"reading":"ぃ"},{"reading":"こ"},{"reading":"お"},{"reading":"む"},{"reading":"ー"}],"furigana":"びぃこおむー","furiganaSegments":[]},{"en":"stop","jp":"～を止める","emoji":"🛑","stars":0,"furiganaChars":[{"reading":"す"},{"reading":"と"},{"reading":"ぉ"},{"reading":"ぷ"}],"furigana":"すとぉぷ","furiganaSegments":[]},{"en":"want","jp":"～をしたいと思う","emoji":"💭","stars":0,"furiganaChars":[{"reading":"わ"},{"reading":"ぁ"},{"reading":"ん"},{"reading":"と"}],"furigana":"わぁんと","furiganaSegments":[]},{"en":"beautiful","jp":"美しい","emoji":"🌺","stars":0,"furiganaChars":[{"reading":"び"},{"reading":"ぃ"},{"reading":"ぁ"},{"reading":"ゆ"},{"reading":"て"},{"reading":"ぃ"},{"reading":"ふ"},{"reading":"ぅ"},{"reading":"る"}],"furigana":"びぃぁゆてぃふぅる","furiganaSegments":[]},{"en":"cute","jp":"かわいい","emoji":"🐰","stars":0,"furiganaChars":[{"reading":"き"},{"reading":"ゅ"},{"reading":"と"},{"reading":"ー"}],"furigana":"きゅとー","furiganaSegments":[]},{"en":"pretty","jp":"かわいい","emoji":"🌷","stars":0,"furiganaChars":[{"reading":"ぷ"},{"reading":"り"},{"reading":"ぃ"},{"reading":"て"},{"reading":"て"},{"reading":"ぃ"}],"furigana":"ぷりぃててぃ","furiganaSegments":[]},{"en":"great","jp":"すばらしい","emoji":"🌟","stars":0,"furiganaChars":[{"reading":"ぐ"},{"reading":"れ"},{"reading":"ー"},{"reading":"ぁ"},{"reading":"と"}],"furigana":"ぐれーぁと","furiganaSegments":[]},{"en":"important","jp":"重要な","emoji":"❗","stars":0,"furiganaChars":[{"reading":"い"},{"reading":"む"},{"reading":"ぽ"},{"reading":"お"},{"reading":"ぉ"},{"reading":"た"},{"reading":"あ"},{"reading":"ん"},{"reading":"と"}],"furigana":"いむぽおぉたあんと","furiganaSegments":[]},{"en":"popular","jp":"人気の","emoji":"👏","stars":0,"furiganaChars":[{"reading":"ぽ"},{"reading":"ぉ"},{"reading":"ぴ"},{"reading":"ぅ"},{"reading":"ら"},{"reading":"あ"},{"reading":"ぁ"}],"furigana":"ぽぉぴぅらあぁ","furiganaSegments":[]},{"en":"famous","jp":"有名な","emoji":"⭐","stars":0,"furiganaChars":[{"reading":"ふ"},{"reading":"ぇ"},{"reading":"も"},{"reading":"ぉ"},{"reading":"ぅ"},{"reading":"す"}],"furigana":"ふぇもぉぅす","furiganaSegments":[]},{"en":"interesting","jp":"おもしろい","emoji":"🤩","stars":0,"furiganaChars":[{"reading":"い"},{"reading":"ん"},{"reading":"た"},{"reading":"ー"},{"reading":"れ"},{"reading":"え"},{"reading":"す"},{"reading":"て"},{"reading":"い"},{"reading":"ん"},{"reading":"ぐ"}],"furigana":"いんたーれえすていんぐ","furiganaSegments":[]},{"en":"big","jp":"大きい","emoji":"🐘","stars":0,"furiganaChars":[{"reading":"び"},{"reading":"ぃ"},{"reading":"ぐ"}],"furigana":"びぃぐ","furiganaSegments":[]},{"en":"small","jp":"小さい","emoji":"🐭","stars":0,"furiganaChars":[{"reading":"す"},{"reading":"も"},{"reading":"ぁ"},{"reading":"る"},{"reading":"る"}],"furigana":"すもぁるる","furiganaSegments":[]},{"en":"tall","jp":"高い（身長など）","emoji":"📏","stars":0,"furiganaChars":[{"reading":"た"},{"reading":"ぁ"},{"reading":"る"},{"reading":"る"}],"furigana":"たぁるる","furiganaSegments":[]},{"en":"high","jp":"高い","emoji":"⬆️","stars":0,"furiganaChars":[{"reading":"は"},{"reading":"い"},{"reading":""},{"reading":""}],"furigana":"はい","furiganaSegments":[]},{"en":"short","jp":"短い","emoji":"↔️","stars":0,"furiganaChars":[{"reading":"し"},{"reading":"ょ"},{"reading":"お"},{"reading":"ぉ"},{"reading":"と"}],"furigana":"しょおぉと","furiganaSegments":[]},{"en":"long","jp":"長い","emoji":"📏","stars":0,"furiganaChars":[{"reading":"ろ"},{"reading":"お"},{"reading":"ん"},{"reading":"ぐ"}],"furigana":"ろおんぐ","furiganaSegments":[]},{"en":"too","jp":"～も","emoji":"➕","stars":0,"furiganaChars":[{"reading":"と"},{"reading":"ぉ"},{"reading":"ぉ"}],"furigana":"とぉぉ","furiganaSegments":[]},{"en":"only","jp":"～だけ","emoji":"1️⃣","stars":0,"furiganaChars":[{"reading":"お"},{"reading":"ん"},{"reading":"り"},{"reading":"ぃ"}],"furigana":"おんりぃ","furiganaSegments":[]},{"en":"just","jp":"ちょうど","emoji":"🎯","stars":0,"furiganaChars":[{"reading":"じ"},{"reading":"ゅ"},{"reading":"す"},{"reading":"と"}],"furigana":"じゅすと","furiganaSegments":[]},{"en":"very","jp":"とても","emoji":"‼️","stars":0,"furiganaChars":[{"reading":"べ"},{"reading":"え"},{"reading":"り"},{"reading":"ぃ"}],"furigana":"べえりぃ","furiganaSegments":[]},{"en":"so","jp":"とても","emoji":"‼️","stars":0,"furiganaChars":[{"reading":"そ"},{"reading":"ぉ"}],"furigana":"そぉ","furiganaSegments":[]},{"en":"always","jp":"いつも","emoji":"🔁","stars":0,"furiganaChars":[{"reading":"お"},{"reading":"る"},{"reading":"うぇ"},{"reading":"ぇ"},{"reading":"ぃ"},{"reading":"ず"}],"furigana":"おるうぇぇぃず","furiganaSegments":[]},{"en":"often","jp":"しばしば","emoji":"🔄","stars":0,"furiganaChars":[{"reading":"お"},{"reading":"ふ"},{"reading":""},{"reading":"ぇ"},{"reading":"ん"}],"furigana":"おふぇん","furiganaSegments":[]},{"en":"sometimes","jp":"ときどき","emoji":"🕐","stars":0,"furiganaChars":[{"reading":"さ"},{"reading":"ぉ"},{"reading":"む"},{"reading":"ー"},{"reading":"た"},{"reading":"い"},{"reading":"む"},{"reading":"ー"},{"reading":"ず"}],"furigana":"さぉむーたいむーず","furiganaSegments":[]},{"en":"fast","jp":"速く","emoji":"💨","stars":0,"furiganaChars":[{"reading":"ふ"},{"reading":"ぁ"},{"reading":"す"},{"reading":"と"}],"furigana":"ふぁすと","furiganaSegments":[]},{"en":"early","jp":"早く","emoji":"🌅","stars":0,"furiganaChars":[{"reading":"あ"},{"reading":"ぁ"},{"reading":"ぁ"},{"reading":"り"},{"reading":"ぃ"}],"furigana":"あぁぁりぃ","furiganaSegments":[]},{"en":"hard","jp":"熱心に","emoji":"💪","stars":0,"furiganaChars":[{"reading":"は"},{"reading":"ぁ"},{"reading":"ぁ"},{"reading":"ど"}],"furigana":"はぁぁど","furiganaSegments":[]},{"en":"well","jp":"上手に","emoji":"👍","stars":0,"furiganaChars":[{"reading":"う"},{"reading":"ぇ"},{"reading":"る"},{"reading":"る"}],"furigana":"うぇるる","furiganaSegments":[]},{"en":"there","jp":"そこで","emoji":"👉","stars":0,"furiganaChars":[{"reading":"ぜ"},{"reading":"ぜ"},{"reading":"ぇ"},{"reading":"あ"},{"reading":"ぁ"}],"furigana":"ぜぜぇあぁ","furiganaSegments":[]},{"en":"here","jp":"ここで","emoji":"👇","stars":0,"furiganaChars":[{"reading":"ひ"},{"reading":"ぃ"},{"reading":"あ"},{"reading":"ぁ"}],"furigana":"ひぃあぁ","furiganaSegments":[]}];
 const SAVED_WORDS_KEY='englishWordsAllV3';
 const OLD_WORDS_KEY='englishWordsAllV2';
+const RECOVERY_WORDS=DEFAULT_WORDS;
 const savedWords=JSON.parse(localStorage.getItem(SAVED_WORDS_KEY)||localStorage.getItem(OLD_WORDS_KEY)||'null');
+
+function recoveryKey(w){
+  return String(w.en||'').toLowerCase()+'\u0000'+String(w.jp||'');
+}
+
 function mergeWordLists(defaults,saved){
-  if(!Array.isArray(saved)) return defaults.map(x=>({...x}));
-  const byEn=new Map(saved.map(x=>[String(x.en).toLowerCase(),x]));
+  if(!Array.isArray(saved) || !saved.length) return defaults.map(x=>({...x}));
+  const buckets=new Map();
+  const seen=new Map();
+  saved.forEach(x=>{
+    const k=recoveryKey(x);
+    const a=buckets.get(k)||[];
+    a.push(x); buckets.set(k,a);
+  });
   const merged=defaults.map(d=>{
-    const s=byEn.get(String(d.en).toLowerCase());
+    const k=recoveryKey(d);
+    const n=seen.get(k)||0; seen.set(k,n+1);
+    const s=(buckets.get(k)||[])[n];
     return s ? {...d,...s} : {...d};
   });
-  const defaultKeys=new Set(defaults.map(x=>String(x.en).toLowerCase()));
-  saved.forEach(s=>{ if(!defaultKeys.has(String(s.en).toLowerCase())) merged.push({...s}); });
+  const defaultKeys=new Set(defaults.map(recoveryKey));
+  saved.forEach(s=>{
+    if(!defaultKeys.has(recoveryKey(s))) merged.push({...s});
+  });
   return merged;
 }
+
 let words=mergeWordLists(DEFAULT_WORDS,savedWords);
-words.forEach(w=>{
-  if(Array.isArray(w.furiganaChars)){
-    w.furiganaChars=w.furiganaChars.map(x=>({reading:kataToHira(String(x&&x.reading||''))}));
-  }
-  if(w.furigana) w.furigana=kataToHira(w.furigana);
-});
+
+function overlayRecoveredFurigana(){
+  const buckets=new Map(), seen=new Map();
+  RECOVERY_WORDS.forEach(r=>{
+    const k=recoveryKey(r);
+    const a=buckets.get(k)||[]; a.push(r); buckets.set(k,a);
+  });
+  words.forEach(w=>{
+    const k=recoveryKey(w);
+    const n=seen.get(k)||0; seen.set(k,n+1);
+    const r=(buckets.get(k)||[])[n];
+    if(r && Array.isArray(r.furiganaChars)){
+      w.furiganaChars=r.furiganaChars.map(x=>({reading:normalizeHiragana(x&&x.reading||'')}));
+      w.furigana=normalizeHiragana(r.furigana||'');
+      w.furiganaSegments=[];
+    }
+  });
+}
+overlayRecoveredFurigana();
+try{localStorage.setItem(SAVED_WORDS_KEY,JSON.stringify(words));}catch(e){}
 
 const EMOJI_BY_WORD={"hate":"😡","mop":"🧹","bake":"🥐","take out":"📦","paint":"🖌️","safe":"🛡️","dangerous":"⚠️","early":"🌅","late":"🌙","same":"🟰","different":"↔️","real":"✅","fake":"🎭","eat":"🍽️","clean":"🧽","hike":"🥾","write":"✍️","boring":"🥱","exciting":"🤩","alive":"🫀","dead":"💀","tiny":"🐜","giant":"🦖","dark":"🌑","light":"💡","brush":"🪥","shop":"🛍️","carry":"🧳","push":"👉","fish":"🎣","pinch":"🤏","question":"❓","spoon":"🥄","kitten":"🐱","octopus":"🐙","wagon":"🛒","rocket":"🚀","egg":"🥚","go":"🚶","meet":"🤝","like":"❤️","run":"🏃","sing":"🎤","swim":"🏊","stay":"🏠","ride":"🚲","walk":"🚶","have":"🎒","open":"🔓","live":"🏡","know":"🧠","help":"🆘","play":"🎮","climb":"🧗","bring":"👜","take":"🤲","watch":"🎬","see":"👁️","look":"🔍","read":"📖","listen":"🎧","hear":"👂","make":"🛠️","wear":"👚","wash":"🧼","hope":"🌈","ask":"🙋","catch":"🫴","work":"👷","get":"🎁","come":"🏃","do":"✅","use":"🛠️","speak":"🗣️","tell":"💬","talk":"🗨️","try":"💪","teach":"🧑‍🏫","study":"📚","enjoy":"😊","buy":"🛍️","become":"🌱","stop":"🛑","want":"💭","beautiful":"🌸","cute":"🐰","pretty":"🌷","great":"🌟","important":"❗","popular":"👏","famous":"🏆","interesting":"🔎","big":"🐘","small":"🐭","tall":"🧍","high":"⬆️","short":"📏","long":"📐","too":"➕","only":"🔹","just":"🎯","very":"❗","so":"✨","always":"🔁","often":"🔄","sometimes":"🕐","fast":"💨","hard":"💪","well":"👍","there":"👉","here":"👈","classroom":"🏫","clock":"🕰️","desk":"🪑","chair":"💺","notebook":"📓","pencil":"✏️","eraser":"🧽","textbook":"📚","picture":"🖼️","computer":"🖥️","train":"🚆","bus":"🚌","car":"🚗","school":"🏫","world":"🌎","country":"🗺️","Japan":"🇯🇵","the U.S.A.":"🇺🇸","Canada":"🇨🇦","China":"🇨🇳","Australia":"🇦🇺","South Korea":"🇰🇷","the U.K.":"🇬🇧","France":"🇫🇷","Germany":"🇩🇪","Russia":"🇷🇺","Italy":"🇮🇹","Spain":"🇪🇸","Sunday":"☀️","Monday":"🌙","Tuesday":"🔥","Wednesday":"🌿","Thursday":"⚡","Friday":"🎉","Saturday":"🌈","season":"🍃","spring":"🌸","summer":"☀️","fall":"🍁","autumn":"🍂","winter":"❄️","January":"🧣","February":"💘","March":"🌱","April":"☔","May":"🌷","June":"🏖️","July":"🍉","August":"🌻","September":"🎒","October":"🎃","November":"🍂","December":"🎄","month":"🗓️","year":"📅","subject":"📚","English":"🔤","Math":"➗","Japanese":"🈯","Science":"🔬","Social Studies":"🌏","Music":"🎵","Art":"🎨","P.E.":"🏃","Home Economics":"🍳","teacher":"👩‍🏫","student":"🎒","family":"👨‍👩‍👧‍👦","father":"👨","mother":"👩","parents":"👨‍👩‍👧","brother":"👦","sister":"👧","child":"🧒","children":"👧👦","son":"👦","daughter":"👧","grandfather":"👴","grandmother":"👵","grandparents":"👴👵","sport":"🏅","baseball":"⚾","soccer":"⚽","tennis":"🎾","basketball":"🏀","volleyball":"🏐","table tennis":"🏓","badminton":"🏸","golf":"⛳","swimming":"🏊","skiing":"⛷️"};
 words.forEach(w=>{ if(!w.emoji && EMOJI_BY_WORD[w.en]) w.emoji=EMOJI_BY_WORD[w.en]; });
@@ -1336,114 +1111,112 @@ function checkBoxes(){
    boxes.forEach((b,i)=>{b.style.background=b.value===expected[i]?'#e9fff3':'#fff0f4';b.style.borderColor=b.value===expected[i]?'#69d59b':'#e65777'});
  }
 }
-function normalizeHiragana(s){
-  return Array.from(String(s||''))
-    .map(ch=>/[\u30a1-\u30f6]/.test(ch)
-      ? String.fromCharCode(ch.charCodeAt(0)-0x60)
-      : ch)
-    .filter(ch=>/^[ぁ-ゖー]$/.test(ch))
-    .slice(0,2)
-    .join('');
-}
 function renderRows(){
- const box=$('#rows'); box.innerHTML='';
- if(!words.length){box.innerHTML='<div class=\"empty\">まだたんごがないよ。</div>';return;}
- words.forEach((w,i)=>{
-  const r=document.createElement('div'); r.className='row';
-  const seg=(w.furiganaSegments||[]).map(x=>`${x.reading}|${x.letters}`).join(' / ');
-  const furiSummary=(Array.isArray(w.furiganaChars)&&w.furiganaChars.some(x=>x&&x.reading))
-    ? w.furiganaChars.map(x=>x&&x.reading?normalizeHiragana(x.reading):'・').join('')
-    : '未設定';
-
-  r.innerHTML=`<input value=\"${esc(w.en)}\" data-i=\"${i}\" data-k=\"en\"><input value=\"${esc(w.jp)}\" data-i=\"${i}\" data-k=\"jp\"><input class=\"wide\" value=\"${esc(w.emoji||'✨')}\" data-i=\"${i}\" data-k=\"emoji\"><div class=\"furi-list-view\"><span>よみ</span><b>${esc(furiSummary)}</b></div><div class=\"count\">★ ${w.stars||0}</div><button class=\"btn danger delete\" data-del=\"${i}\">削除</button><button class=\"btn secondary furiedit\" data-furi=\"${i}\">🔤 フリガナ</button>`;
-  box.appendChild(r);
- });
- box.querySelectorAll('input').forEach(inp=>inp.addEventListener('change',()=>{
-  const i=+inp.dataset.i; words[i][inp.dataset.k]=inp.value; save(); renderStudy();
- }));
- box.querySelectorAll('[data-del]').forEach(b=>b.onclick=()=>{
-  words.splice(+b.dataset.del,1); idx=Math.min(idx,Math.max(0,words.length-1)); save(); renderRows(); renderStudy();
- });
- let editingFuriIndex=-1;
-let tempFuriLetters=[];
-
-
-
-function drawFuriCharEditor(){
-  const box=$('#furiCharEditor');
+  const box=$('#rows');
+  if(!box) return;
   box.innerHTML='';
-  const w=words[editingFuriIndex];
-  const chars=String(w.en).toLowerCase().split('');
-  const alphaChars=chars.filter(ch=>/[a-z]/.test(ch));
-
-  let saved=Array.isArray(w.furiganaChars)?w.furiganaChars:[];
-  tempFuriLetters=alphaChars.map((ch,i)=>({
-    letter:ch,
-    reading:normalizeHiragana(saved[i] && saved[i].reading || '')
-  }));
-
-  let ai=0;
-  chars.forEach(ch=>{
-    const d=document.createElement('div');
-    d.className='furi-letter-cell';
-
-    if(/[a-z]/.test(ch)){
-      const pos=ai++;
-      d.innerHTML=`<div class="furi-letter">${esc(ch)}</div>
-        <input class="furi-one" data-pos="${pos}" maxlength="2"
-          inputmode="text" lang="ja" autocapitalize="off"
-          autocomplete="off" spellcheck="false"
-          value="${esc(tempFuriLetters[pos].reading)}"
-          placeholder="ひらがな">`;
-    }else{
-      d.innerHTML=`<div class="furi-letter">↔</div><div class="furi-space">スペース</div>`;
+  if(!Array.isArray(words) || !words.length){
+    box.innerHTML='<div class="empty">まだたんごがないよ。</div>';
+    return;
+  }
+  words.forEach((w,i)=>{
+    const r=document.createElement('div');
+    r.className='row';
+    const readings=Array.isArray(w.furiganaChars)
+      ? w.furiganaChars.map(x=>normalizeHiragana(x&&x.reading||'')).join('')
+      : '';
+    const furiSummary=readings||'未設定';
+    r.innerHTML=
+      '<input value="'+esc(w.en||'')+'" data-i="'+i+'" data-k="en">'+
+      '<input value="'+esc(w.jp||'')+'" data-i="'+i+'" data-k="jp">'+
+      '<input class="wide" value="'+esc(w.emoji||'✨')+'" data-i="'+i+'" data-k="emoji">'+
+      '<div class="furi-list-view"><span>よみ</span><b>'+esc(furiSummary)+'</b></div>'+
+      '<div class="count">★ '+(w.stars||0)+'</div>'+
+      '<button class="btn danger delete" data-del="'+i+'">削除</button>'+
+      '<button class="btn secondary furiedit" data-furi="'+i+'">🔤 フリガナ</button>';
+    box.appendChild(r);
+  });
+  box.querySelectorAll('input').forEach(inp=>inp.addEventListener('change',()=>{
+    const i=+inp.dataset.i;
+    const k=inp.dataset.k;
+    if(words[i]){
+      words[i][k]=inp.value;
+      save();
+      renderRows();
+      renderStudy();
     }
-    box.appendChild(d);
-  });
-
-  box.querySelectorAll('.furi-one').forEach(inp=>{
-    let composing=false;
-
-    const commit=()=>{
-      const pos=+inp.dataset.pos;
-      const v=normalizeHiragana(inp.value);
-      inp.value=v;
-      tempFuriLetters[pos].reading=v;
-    };
-
-    inp.addEventListener('compositionstart',()=>{composing=true;});
-    inp.addEventListener('compositionend',()=>{composing=false;commit();});
-    inp.addEventListener('input',()=>{if(!composing)commit();});
-    inp.addEventListener('change',commit);
-    inp.addEventListener('blur',commit);
-  });
-}
-
-box.querySelectorAll('[data-furi]').forEach(b=>b.onclick=()=>{
-  editingFuriIndex=+b.dataset.furi;
-  $('#furiWord').textContent=words[editingFuriIndex].en;
-  drawFuriCharEditor();
-  $('#furiModal').style.display='flex';
-});
-
-$('#furiSave').onclick=()=>{
-  if(editingFuriIndex<0)return;
-
-  words[editingFuriIndex].furiganaChars=tempFuriLetters.map(x=>({
-    reading:normalizeHiragana(x.reading)
   }));
-  words[editingFuriIndex].furigana=tempFuriLetters.map(x=>x.reading).join('');
-  words[editingFuriIndex].furiganaSegments=[];
+  box.querySelectorAll('[data-del]').forEach(btn=>btn.onclick=()=>{
+    const i=+btn.dataset.del;
+    words.splice(i,1);
+    idx=Math.min(idx,Math.max(0,words.length-1));
+    save(); renderRows(); renderStudy();
+  });
 
-  save();
-  $('#furiModal').style.display='none';
-  renderRows();
-  renderStudy();
-};
+  let editingFuriIndex=-1;
+  let tempFuriLetters=[];
 
-$('#furiCancel').onclick=()=>{
-  $('#furiModal').style.display='none';
-};
+  function drawFuriCharEditor(){
+    const editor=$('#furiCharEditor');
+    if(!editor)return;
+    editor.innerHTML='';
+    const w=words[editingFuriIndex];
+    const chars=String(w.en||'').toLowerCase().split('');
+    const alphaChars=chars.filter(ch=>/[a-z]/.test(ch));
+    const saved=Array.isArray(w.furiganaChars)?w.furiganaChars:[];
+    tempFuriLetters=alphaChars.map((ch,n)=>({
+      letter:ch,
+      reading:normalizeHiragana(saved[n]&&saved[n].reading||'')
+    }));
+    let ai=0;
+    chars.forEach(ch=>{
+      const cell=document.createElement('div');
+      cell.className='furi-letter-cell';
+      if(/[a-z]/.test(ch)){
+        const p=ai++;
+        cell.innerHTML='<div class="furi-letter">'+esc(ch)+'</div>'+
+          '<input class="furi-one" maxlength="2" data-pos="'+p+
+          '" inputmode="text" lang="ja" autocomplete="off" spellcheck="false" placeholder="ひらがな" value="'+
+          esc(tempFuriLetters[p].reading)+'">';
+      }else{
+        cell.innerHTML='<div class="furi-letter">↔</div><div class="furi-space">スペース</div>';
+      }
+      editor.appendChild(cell);
+    });
+    editor.querySelectorAll('.furi-one').forEach(inp=>{
+      let composing=false;
+      const commit=()=>{
+        const p=+inp.dataset.pos;
+        const v=normalizeHiragana(inp.value);
+        inp.value=v;
+        tempFuriLetters[p].reading=v;
+      };
+      inp.addEventListener('compositionstart',()=>composing=true);
+      inp.addEventListener('compositionend',()=>{composing=false;commit();});
+      inp.addEventListener('input',()=>{if(!composing)commit();});
+      inp.addEventListener('change',commit);
+      inp.addEventListener('blur',commit);
+    });
+  }
+
+  box.querySelectorAll('[data-furi]').forEach(btn=>btn.onclick=()=>{
+    editingFuriIndex=+btn.dataset.furi;
+    const word=words[editingFuriIndex];
+    $('#furiWord').textContent=word.en;
+    drawFuriCharEditor();
+    $('#furiModal').style.display='flex';
+  });
+
+  const fSave=$('#furiSave');
+  if(fSave) fSave.onclick=()=>{
+    if(editingFuriIndex<0)return;
+    words[editingFuriIndex].furiganaChars=tempFuriLetters.map(x=>({reading:normalizeHiragana(x.reading)}));
+    words[editingFuriIndex].furigana=tempFuriLetters.map(x=>x.reading).join('');
+    words[editingFuriIndex].furiganaSegments=[];
+    save(); $('#furiModal').style.display='none'; renderRows(); renderStudy();
+  };
+  const fCancel=$('#furiCancel');
+  if(fCancel) fCancel.onclick=()=>$('#furiModal').style.display='none';
 }
 
 const esc=s=>String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
@@ -1475,11 +1248,7 @@ $('#startSelected').onclick=()=>{
 document.addEventListener('keydown',e=>{if(e.key==='Enter' && solved && $('#study').style.display!=='none'){e.preventDefault();if(selectedMode()){selectedNext(1);}else if(activeTest==='all'){idx=(idx+1)%words.length;}else{const r=testRange(activeTest);if(r.end>=r.start)idx=idx>=r.end?r.start:idx+1;}renderStudy();}});
 renderStudy();
 </script>
-<script>
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => navigator.serviceWorker.register('./sw.js').catch(() => {}));
-}
-</script>
+<script>/* no service worker */</script>
 
 <div id="furiModal" class="furi-modal" style="display:none">
  <div class="furi-card">
